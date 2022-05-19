@@ -1,0 +1,25 @@
+/* stylelint-disable-next-line selector-class-pattern */
+.userIcon {
+  color: #c3cbcd;
+  cursor: pointer;
+  font-size: 6rem;
+  margin-left: 75px;
+  margin-top: 65px;
+  position: absolute;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.userIcon:hover {
+  color: #1e1457;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.userIconDiv {
+  background-color: #f4f5f4;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 247px;
+  margin: 5px;
+  position: relative;
+  width: 250px;
+}

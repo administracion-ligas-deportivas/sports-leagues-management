@@ -3,8 +3,12 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Button from '../components/Button';
+import {useNavigate, Link} from 'react-router-dom';
 
 function CreateAdvise() {
+    
+    let navigate = useNavigate();
+    
     const initialValues = {
         nombre:'',
         prioridad:'',
@@ -19,12 +23,16 @@ function CreateAdvise() {
 
     const onSubmit = (data) => {
         axios.post('http://localhost:3001/posts', data).then((response) => {
-            console.log('Correcto');
+            navigate('/');
         });
     };
 
+    const aux = () => {
+        console.log('Funciona');
+      }
   return (
     <div className='crearAnuncio-container'>
+        <Link to="/Home" > Home </Link>
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
                 <label>Nombre: </label>
@@ -36,7 +44,7 @@ function CreateAdvise() {
                 <label>Descripcion: </label>
                 <ErrorMessage name='errorDescripcion' component='span'/>
                 <Field id='inputCrearAnuncio' name='descripcion' placeholder='Descripcion'/>
-                <Button type='submit'>Crear Aviso</Button>
+                <Button onClick={aux} type='submit'>Crear Aviso</Button>
             </Form>
         </Formik>
     </div>

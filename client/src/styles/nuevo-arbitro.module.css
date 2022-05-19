@@ -1,0 +1,72 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable order/properties-alphabetical-order */
+
+@media screen and (min-width: 1025px) {
+  .container {
+    padding: 40px;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2em;
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+  }
+
+  .input {
+    width: 70%;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons div {
+    margin-left: 3em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    padding-bottom: 2em;
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  .buttons div {
+    margin-left: 3em;
+  }
+}

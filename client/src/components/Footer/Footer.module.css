@@ -1,0 +1,62 @@
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooter {
+  align-items: center;
+  background-color: #1a1c9e;
+  color: white;
+  display: flex;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooterDivIcons {
+  display: flex;
+  margin-left: 50px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooter a {
+  display: flex;
+  float: right;
+  margin: 35px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooter a:hover {
+  text-decoration: underline;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooter p {
+  display: flex;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.divFooterIcons {
+  margin-right: 20px;
+  width: 20px;
+}
+
+@media screen and (min-width: 0) and (max-width: 679px) {
+  .divFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pagesContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pageName {
+    padding: 2em;
+  }
+
+  .divFooterDivIcons {
+    padding: 2em;
+  }
+}

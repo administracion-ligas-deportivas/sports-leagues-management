@@ -1,0 +1,64 @@
+/* stylelint-disable order/properties-alphabetical-order */
+/* stylelint-disable color-function-notation */
+
+@media screen and (min-width: 1025px) {
+  .container {
+    padding: 40px;
+  }
+
+  .titlePage {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .subtitlePage {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .input {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .titlePage {
+    font-size: 40pt;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .subtitlePage {
+    font-size: 12pt;
+    font-weight: 500;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .input {
+    width: 45%;
+  }
+}

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) =>
     });
 
     Municipio.assosiate = function(models){
-        User.belongsTo(models.Estado, {foreignKey: 'estado_id', as: 'municipio_estado_id'});
+        Municipio.belongsTo(models.Estado, {foreignKey: 'estado_id', as: 'municipio_estado_id'});
     };
 
     Municipio.assosiate = function(models) {

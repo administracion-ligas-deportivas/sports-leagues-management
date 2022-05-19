@@ -14,5 +14,9 @@ module.exports = (sequelize, DataTypes) =>
         }
     });
 
+    Anuncio.associate = function(models){
+        Anuncio.hasMany(models.Comentario, { as: 'comentarios'});
+    };
+
     return Anuncio;
 };
