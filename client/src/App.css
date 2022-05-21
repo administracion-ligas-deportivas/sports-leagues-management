@@ -64,3 +64,8 @@ body {
   background-color: dodgerblue;
   color: white;
 }
+
+#root
+{
+  height: 100%;
+}

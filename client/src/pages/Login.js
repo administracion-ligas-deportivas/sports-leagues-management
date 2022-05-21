@@ -1,5 +1,5 @@
 // import Head from "next/head";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
@@ -7,6 +7,7 @@ import Input from "../components/Input/index";
 import Label from "../components/Label";
 import Button from "../components/Button/index";
 import axios from "axios";
+import {AuthContext} from '../helpers/AuthContext'
 
 function Login() {
 
@@ -15,27 +16,30 @@ function Login() {
   const[Uemail, setUEmail] = useState("");
   const[Ucontrasenia, setUContrasenia] = useState("");
 
-  const[resetEmail, setResetEmail] = useState(""); 
-  const[resetPassword, setResetPassword] = useState("");
+  const {setAuthState} = useContext(AuthContext);
 
   const loginUser = () => {
     const data = {correo: Uemail, contrasenia: Ucontrasenia};
     axios.post("http://localhost:3001/auth/login", data ).then((Response) => {
-      console.log(Response.data);
-      const email_to_Add = {correo: resetEmail};
-      const pass_to_Add = { contrasenia: resetPassword};
-      setUEmail([...Uemail, email_to_Add]);
-      setUContrasenia([...Ucontrasenia, pass_to_Add]);
-      setResetEmail('');
-      setResetPassword('');
-      navigate('/Home');
+      if(Response.data.error) alert(Response.data.error);
+      else 
+      {
+        localStorage.setItem("accessToken", Response.data.token);
+        setAuthState({
+          nombre:Response.data.nombre,
+          id: Response.data.id,
+          correo: Response.data.userEmail,
+          status: true
+        });
+        navigate('/Home');  
+      }
     })
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
   
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col justify-between h-full full-height">
       <section className={[styles.mainContainer]}>
         <section className={imageClasses}>
           <h1 className={styles.titleLeague}>

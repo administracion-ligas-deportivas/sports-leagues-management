@@ -1,3 +1,12 @@
+body{
+  height:100vh;
+}
+
+#root
+{
+  height: 100%;
+}
+
 .titleLeague {
   color: #1e1457;
   font-size: 3em;
@@ -19,11 +28,13 @@
   flex-flow: wrap;
   flex-direction: row;
   position: relative;
+  height:100vh;
 }
 
 .mainContainer > * {
   padding: 2em;
 }
+
 
 .div1 {
   background: #e7eaf6;
@@ -93,3 +104,4 @@ manera */
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
 }
+

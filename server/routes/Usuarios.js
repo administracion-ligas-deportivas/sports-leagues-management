@@ -3,6 +3,9 @@ const router = express.Router();
 const { Usuario } = require('../models');
 const bcrypt = require('bcrypt');
 
+const {sign} = require('jsonwebtoken');
+const { validateToken } = require('../middlewares/AuthMiddleware');
+ 
 router.post("/", async (req, res) => {
     const {nombre, apellido, correo, contrasenia, telefono} = req.body;
     bcrypt.hash(contrasenia, 10).then((hash) => {
@@ -13,19 +16,23 @@ router.post("/", async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    console.log('a');
     const {correo, contrasenia} = req.body;
-    console.log(correo, contrasenia);
     //Crear consulta para verificar si existe el usuario
     const usuarioCheck = await Usuario.findOne({where: {email: correo}});
     
     if(!usuarioCheck) res.json({error: "No existe este usuario"});
     
     bcrypt.compare(contrasenia, usuarioCheck.contrasenia).then((coinciden) => {
-        if(!coinciden) res.json("Usuario o contraseña erroneo");
+        if(!coinciden) res.json("Usuario o contraseña erroneos");
 
-        res.json('Logueado');
+        //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
+        const accesToken = sign({userEmail: usuarioCheck.email, id: usuarioCheck.id, nombre: usuarioCheck.nombre}, "importantSecret");
+        res.json({token: accesToken, userEmail: usuarioCheck.email, id: usuarioCheck.id, nombre: usuarioCheck.nombre});
     })
+});
+
+router.get('/verify', validateToken, (req, res) => {
+    res.json(req.user);
 });
 
 module.exports = router;

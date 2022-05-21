@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) =>
         comentario: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        usuario: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 
