@@ -28,6 +28,9 @@ app.use('/comentarios', comentariosRouter);
 const usuariosRouter = require('./routes/Usuarios');
 app.use('/auth', usuariosRouter);
 
+const likesRouter = require('./routes/Likes');
+app.use("/like", likesRouter);
+
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
         console.log('Server running on port 3001');

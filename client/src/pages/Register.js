@@ -31,7 +31,7 @@ function Signup() {
       e.preventDefault();
       console.log(usuario);
       await axios.post("http://localhost:3001/auth", usuario).then((response) => {
-        navigate('/login');
+        navigate('/');
       });
   };
 

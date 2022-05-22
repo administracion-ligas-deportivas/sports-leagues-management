@@ -1,11 +1,17 @@
 const express = require('express');
 const { validateToken } = require('../middlewares/AuthMiddleware');
 const router = express.Router();
-const { Anuncio } = require('../models');
+const { Anuncio, Likes } = require('../models');
 
-router.get('/', async (req, res) => {
-    const lista_anuncios = await Anuncio.findAll();
-    res.json(lista_anuncios);
+router.get('/', validateToken, async (req, res) => {
+    const lista_anuncios = await Anuncio.findAll({include: [Likes]});
+
+    const anuncios_liked = await Likes.findAll({where:
+    {
+        UsuarioId: req.user.id,
+    }});
+
+    res.json({lista_anuncios: lista_anuncios, liked:anuncios_liked});
 });
 
 router.get('/byId/:id', async (req, res) => {

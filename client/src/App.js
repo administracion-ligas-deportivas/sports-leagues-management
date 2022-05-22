@@ -11,6 +11,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Button from './components/Button';
 import Label from './components/Label';
+import PageNotFound from './pages/PageNotFound';
 
 
 /**
@@ -84,8 +85,10 @@ function App() {
               <>
                 <Route path="/" element={<Login />}/>
                 <Route path="/Register" element={<Register />}/>
+                
               </>
             )}
+            <Route path='*' element={<PageNotFound/>}></Route>
         </Routes>
       </Router>
       </AuthContext.Provider>

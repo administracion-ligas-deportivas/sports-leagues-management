@@ -30,18 +30,17 @@ function Advise() {
     }, [id]);
 
     const nuevoComentario = () => {
-        axios.post('http://localhost:3001/comentarios', {
-            comentario: crearComentario,
-            AnuncioId: id
+        axios.post('http://localhost:3001/comentarios', 
+            {
+                comentario: crearComentario,
+                AnuncioId: id
             }, 
             {
                 headers:{
                     accessToken: localStorage.getItem("accessToken"),
                 }
             }).then((response) => {
-                if(response.data.error) {
-                    console.log(response.data.error);
-                }
+                if(response.data.error) console.log(response.data.error);
                 else
                 {
                     const comentario_A_Agregar = {comentario: crearComentario, usuario: response.data.usuario};
