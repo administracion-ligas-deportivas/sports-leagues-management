@@ -1,5 +1,5 @@
 // import { library } from "@fortawesome/fontawesome-svg-core";
-import Link from "next/link";
+import {Link} from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,8 +9,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../styles/Navbar.module.css";
+import { useContext } from "react";
+import {AuthContext} from '../helpers/AuthContext';
+//import {useParams} from 'react-router-dom';
 
 function Navbar() {
+  const {autState} = useContext(AuthContext);
+
   return (
     <div className={styles.container}>
       <div>
@@ -20,20 +25,20 @@ function Navbar() {
         />
       </div>
       <div className={styles.opciones}>
-        <Link href="/">
-          <a>Ligas</a>
+        <Link to="/home">
+          Ligas
         </Link>
-        <Link href="/">
-          <a>Torneos</a>
+        <Link to="/home">
+          Torneos
         </Link>
-        <Link href="/">
-          <a>Equipo</a>
+        <Link to="/home">
+          Equipo
         </Link>
-        <Link href="/">
-          <a>Calendario</a>
+        <Link to="/home">
+          Calendario
         </Link>
-        <Link href="/">
-          <a>Estadisticas</a>
+        <Link to="/home">
+          Estadisticas
         </Link>
       </div>
       <div>
@@ -43,10 +48,12 @@ function Navbar() {
         />
       </div>
       <div>
+        <Link to={`/Profile/${autState.id}`}>
         <FontAwesomeIcon
           icon={faCircleUser}
           className={styles.user}
         />
+        Perfil</Link>
       </div>
     </div>
   );

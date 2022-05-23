@@ -9,10 +9,9 @@ import Register from './pages/Register'
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import Button from './components/Button';
-import Label from './components/Label';
 import PageNotFound from './pages/PageNotFound';
-
+import Profile from './pages/Profile';
+import Navbar from './components/Navbar';
 
 /**
  * 
@@ -59,19 +58,25 @@ function App() {
     });
   }, []);
 
-  const logout = () => {
+  /*
+    MOVER A PANTALLA DE PERFIL
+    const logout = () => {
     localStorage.removeItem("accessToken");
     setAuthState({ nombre: "", id: 0, correo: '', status: false });
     //navigate('/');
-  };
+    
+    //Se reemplazó por el Nav
+      <Label>{autState.nombre}</Label>
+      <Button onClick={logout}>Cerrar sesión</Button>
+  */
+
 
   return (
     <AuthContext.Provider value={{autState, setAuthState}}>
       <Router>
         {autState.status && (
           <>
-            <Label>{autState.nombre}</Label>
-            <Button onClick={logout}>Cerrar sesión</Button>
+            <Navbar/>
           </>
         )}
         <Routes>
@@ -80,12 +85,12 @@ function App() {
                 <Route exact path="/Home" element={<Home/>}/>
                 <Route path="/CreateAdvise" element={<CreateAdvise/>}/>
                 <Route path="/Advise/:id" element={<Advise />}/>
+                <Route path="/Profile/:id" element={<Profile />}/>
               </>
             ): (
               <>
                 <Route path="/" element={<Login />}/>
                 <Route path="/Register" element={<Register />}/>
-                
               </>
             )}
             <Route path='*' element={<PageNotFound/>}></Route>

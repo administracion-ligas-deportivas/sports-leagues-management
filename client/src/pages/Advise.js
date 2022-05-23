@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState, useContext} from 'react'
-import {useParams, Link} from 'react-router-dom';
+import {useParams, Link, useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
 import {AuthContext} from '../helpers/AuthContext';
 
@@ -15,7 +15,7 @@ function Advise() {
     const [advise, setAdvise] = useState({});
     const [comentarios, setComentarios] = useState([]);
     const [crearComentario, setcrearComentario] = useState("");
-
+    const navigate = useNavigate();
     const {autState} = useContext(AuthContext);
 
     useEffect(() => {
@@ -57,9 +57,20 @@ function Advise() {
                 accessToken: localStorage.getItem("accessToken"),
             }
         }).then(() => {
-            setComentarios(comentarios.filter((val) => {
+            setAdvise(comentarios.filter((val) => {
                 return val.id !== id;
             }));
+        });
+    };
+
+    const borrarAviso = (id) => {
+        axios.delete(`http://localhost:3001/posts/${id}`, {
+            headers:{
+                accessToken: localStorage.getItem("accessToken"),
+            }
+        }).then(() => {
+            alert('Post eliminado');
+            navigate('/home');
         });
     };
 
@@ -67,6 +78,9 @@ function Advise() {
     <div>
     <Link to="/Home" > Home </Link>
         Advise: {advise.nombre} 
+        {autState.correo === advise.autor && (
+            <Button onClick={() => {borrarAviso(advise.id)}}>Borrar Aviso</Button>
+        )}
         <div>
             COMENTARIOS
             <div>

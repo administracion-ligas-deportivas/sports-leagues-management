@@ -7,12 +7,13 @@ import {useNavigate, Link} from 'react-router-dom';
 
 function CreateAdvise() {
     
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     
     const initialValues = {
         nombre:'',
         prioridad:'',
-        descripcion:''
+        descripcion:'',
+        autor: ''
     };
 
     const validationSchema = Yup.object().shape({
@@ -22,8 +23,13 @@ function CreateAdvise() {
     })
 
     const onSubmit = (data) => {
-        axios.post('http://localhost:3001/posts', data).then((response) => {
-            navigate('/');
+        axios.post('http://localhost:3001/posts', data,
+        {
+            headers: {
+                accessToken: localStorage.getItem('accessToken')
+            }
+        }).then((response) => {
+            navigate('/home');
         });
     };
 

@@ -26,9 +26,9 @@ function Login() {
       {
         localStorage.setItem("accessToken", Response.data.token);
         setAuthState({
+          correo: Response.data.userEmail,
           nombre:Response.data.nombre,
           id: Response.data.id,
-          correo: Response.data.userEmail,
           status: true
         });
         navigate('/Home');  

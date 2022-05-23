@@ -1,19 +1,19 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import {AuthContext} from '../helpers/AuthContext';
+//import {AuthContext} from '../helpers/AuthContext';
 
 function Home(){
 
     const [lista_anuncios, setlista_anuncios] = useState([]);
     const [anuncioLiked, setAnuncioLiked] = useState([]);
-    let navigate = useNavigate();
-    const {autState} = useContext(AuthContext);
+    const navigate = useNavigate();
+    //const {autState} = useContext(AuthContext);
 
     useEffect( () => {
         //Investigar pq la compilación marca error en esta línea pero funciona correctamente (si devuelve autState correctamente)
-        //if(!autState.status) navigate('/');
+        //if(!localStorage.getItem('accessToken')) navigate('/');
         axios.get('http://localhost:3001/posts',{headers: {
             accessToken: localStorage.getItem('accessToken')
         }}).then((response) => {
@@ -65,7 +65,10 @@ function Home(){
                             {value.descripcion}
                         </div>
                         <div className='prioridad'>
-                            {value.Likes.lenght}
+                            Prioridad: {value.prioridad}
+                        </div>
+                        <div className='Autor'>
+                            Autor: {value.autor}
                         </div>
                         <div className='creacion'>
                             

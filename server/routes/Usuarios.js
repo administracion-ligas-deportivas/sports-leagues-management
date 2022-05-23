@@ -28,11 +28,21 @@ router.post('/login', async (req, res) => {
         //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
         const accesToken = sign({userEmail: usuarioCheck.email, id: usuarioCheck.id, nombre: usuarioCheck.nombre}, "importantSecret");
         res.json({token: accesToken, userEmail: usuarioCheck.email, id: usuarioCheck.id, nombre: usuarioCheck.nombre});
-    })
+    });
 });
 
 router.get('/verify', validateToken, (req, res) => {
     res.json(req.user);
+});
+
+router.get('/ProfileInfo/:id', async (req, res) => {
+    const profile_id = req.params.id;
+
+    const profileInfo = await Usuario.findByPk(profile_id, {attributes: {
+        exclude: ["contrasenia"]
+    }});
+
+    res.json(profileInfo);
 });
 
 module.exports = router;
