@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) =>
         },
         descripcion:{
             type: DataTypes.STRING,
+        },
+        autor:
+        {
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     });
 

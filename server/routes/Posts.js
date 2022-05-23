@@ -22,8 +22,19 @@ router.get('/byId/:id', async (req, res) => {
 
 router.post("/", validateToken, async (req, res) => {
     const insersion = req.body;
+    insersion.autor = req.user.userEmail;
+    console.log("A", insersion);
     await Anuncio.create(insersion);
     res.json(insersion);
+});
+
+router.delete('/:AvisoID', validateToken, async (req, res) => {
+    const avisoid = req.params.AvisoID;
+    await Anuncio.destroy({where: {
+        id: avisoid,
+    }});
+
+    res.json("Correct delete");
 });
 
 module.exports = router;
