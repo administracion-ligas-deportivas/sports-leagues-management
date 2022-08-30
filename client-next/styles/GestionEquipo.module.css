@@ -1,0 +1,76 @@
+/* stylelint-disable order/properties-alphabetical-order */
+/* stylelint-disable color-function-notation */
+
+@media screen and (min-width: 1025px) {
+  .container {
+    padding: 40px;
+  }
+
+  .subtitlePage {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .rectangle h1 {
+    font-size: 3em;
+    font-weight: 700;
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .contenido {
+    padding: 20px;
+    width: 80%;
+    background-color: white;
+  }
+
+  .estadisticas {
+    width: 18%;
+    background-color: white;
+  }
+
+  .addIntegrante {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .subtitlePage {
+    font-size: 12pt;
+    font-weight: 500;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .rectangle h1 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .contenido {
+    padding: 20px;
+    width: 80%;
+    background-color: white;
+  }
+
+  .estadisticas {
+    width: 18%;
+    background-color: white;
+  }
+}

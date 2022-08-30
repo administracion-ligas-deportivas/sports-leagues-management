@@ -1,0 +1,71 @@
+/* Los nombres de clases están sujetos a cambios. */
+
+.button {
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+  font-weight: 500;
+  justify-content: center;
+  min-height: 2.5em;
+
+  /* margin-left: 10px; */
+
+  /* margin-top: 25px; */
+
+  /* min-width: 7em; */
+  padding: 0.6em;
+}
+
+.button[disabled] {
+  background-color: rgb(239 239 239);
+  color: rgb(156 156 156);
+  pointer-events: none;
+}
+
+.primary {
+  background-color: #1e1457;
+}
+
+.primary.inverse {
+  background-color: #fff;
+  border: 1px solid currentcolor;
+  color: #1e1457;
+}
+
+.primary.inverse:hover {
+  background-color: rgb(244 246 251);
+}
+
+.primary:hover {
+  background-color: #3c64b1;
+}
+
+/* .button.primary[disabled],
+.button.accent[disabled] {
+  background-color: rgb(244 246 251);
+} */
+
+.secondary {
+  background-color: rgb(224 20 37);
+}
+
+.secondary:hover {
+  /* background-color: rgb(231 50 65); */
+  background-color: rgb(231 50 65);
+}
+
+/* .button.secondary[disabled] {
+  background-color: rgb(255 245 246);
+} */
+
+.accent {
+  background-color: rgb(26 28 158);
+}
+
+.accent:hover {
+  background-color: rgb(36 38 191);
+}

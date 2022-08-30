@@ -1,0 +1,27 @@
+/* stylelint-disable-next-line selector-class-pattern */
+.inputButton {
+  display: flex;
+  font-size: 14px;
+  height: 42px;
+  position: relative;
+  width: 450px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.inputButton input {
+  border: 2px solid #dcddf9;
+  border-radius: 3px;
+  display: block;
+  height: 42px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.inputButton button {
+  margin-left: 10px;
+  width: 125px;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.inputButton input:placeholder-shown {
+  padding: 5px;
+}

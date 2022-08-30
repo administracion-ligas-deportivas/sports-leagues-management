@@ -1,0 +1,21 @@
+{
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "css.lint.unknownAtRules": "ignore",
+  /**
+   * Desactivamos el linter nativo de Visual Studio Code para no tener errores
+   *  de Stylelint y CSS. También evitamos errores duplicados.
+   */
+  "css.validate": false,
+  "[git-commit]": {
+    "editor.rulers": [50, 72],
+    "rewrap.wrappingColumn": 72,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 72
+  },
+  // "editor.rulers": [80],
+  // "editor.wordWrapColumn": 80,
+  // https://qvault.io/clean-code/line-breaks-vs-code-lf-vs-crlf/
+  // Finales de Línea consistentes
+  "files.eol": "\n",
+}

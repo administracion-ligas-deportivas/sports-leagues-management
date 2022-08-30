@@ -1,0 +1,14 @@
+semi: true
+singleQuote: false
+# trailingComma: "none"
+trailingComma: "es5"
+endOfLine: lf
+printWidth: 79
+eslintIntegration: true
+stylelintIntegration: true
+useTabs: false
+tabWidth: 2
+# Hacer que sea un atributo de etiqueta HTML por línea
+# Esto porque así lo pide el eslint con React y ayuda
+# a la legibilidad.
+singleAttributePerLine: true

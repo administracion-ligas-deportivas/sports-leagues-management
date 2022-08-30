@@ -1,0 +1,95 @@
+.titleLeague {
+  color: #1e1457;
+  font-size: 3em;
+  font-weight: 500;
+  line-height: 1em;
+  text-align: center;
+}
+
+.titlePage {
+  font-size: 3em;
+  font-weight: 700;
+  text-align: justify;
+}
+
+.mainContainer {
+  background: #eee;
+  display: flex;
+  flex: 1;
+  flex-flow: wrap;
+  flex-direction: row;
+  position: relative;
+}
+
+.mainContainer > * {
+  padding: 2em;
+}
+
+.div1 {
+  background: #e7eaf6;
+  display: flex;
+}
+
+/* para cambiar el color cuando es en Sign up */
+div.div1su {
+  background: #efefef;
+  float: left;
+  height: 100vh;
+  margin: auto;
+  width: 500px;
+}
+
+.formContainer {
+  /* display: block; */
+
+  background-color: white;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: column;
+  gap: 0.5em;
+  position: relative;
+}
+
+.formContainer button {
+  margin-top: 2rem;
+}
+
+.formContainer label {
+  margin-top: auto;
+}
+
+/* ¿Esta bien manipular el tamaño del input de esta 
+manera */
+
+.container {
+  /* margin: 100px; */
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginContainer {
+  align-items: stretch;
+  background-color: white;
+  display: flex;
+  gap: 2em;
+}
+
+.elementsContainerAnchor {
+  color: #1a1c9e;
+  display: flex;
+  font-size: 14px;
+  justify-content: flex-end;
+}
+
+.elementsContainerAnchor:hover {
+  text-decoration: underline;
+}
+
+/* stylelint-disable-next-line block-no-empty */
+.genderDataContainer {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}

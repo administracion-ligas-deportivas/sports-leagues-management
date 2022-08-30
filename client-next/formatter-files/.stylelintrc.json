@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-order"],
+
+  "rules": {
+    "shorthand-property-no-redundant-values": null,
+    "font-family-name-quotes": "always-unless-keyword",
+    "order/properties-alphabetical-order": true,
+    "selector-class-pattern": null 
+  }
+}

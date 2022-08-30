@@ -1,0 +1,83 @@
+/* stylelint-disable selector-type-case */
+/* stylelint-disable block-no-empty */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable order/properties-alphabetical-order */
+/* stylelint-disable color-function-notation */
+
+@media screen and (min-width: 1025px) {
+  .container {
+    padding: 40px;
+  }
+
+  .titlePage {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .tipoLiga {
+    width: 20%;
+  }
+
+  .numTeams {
+    width: 15%;
+  }
+
+  .fecha {
+    width: 100%;
+  }
+
+  .datos {
+    width: 30%;
+  }
+
+  .rule {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 679px) {
+  .container {
+    padding: 10px;
+  }
+
+  .titlePage {
+    font-size: 40pt;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .rectangle Label {
+    font-size: 12pt;
+  }
+
+  .tipoLiga {
+    width: 35%;
+  }
+
+  .numTeams {
+    width: 60%;
+  }
+
+  .fecha {
+    width: 100%;
+  }
+
+  .datos {
+    width: 30%;
+  }
+
+  .rule {
+    width: 100%;
+  }
+}

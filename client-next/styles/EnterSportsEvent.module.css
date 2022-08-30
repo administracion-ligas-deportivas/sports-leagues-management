@@ -1,0 +1,33 @@
+.section {
+  /* background: #f1f6; */
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  padding: 2em;
+
+  /* gap: 0.5em; */
+
+  /* padding: 0.5em; */
+}
+
+.titlePage {
+  font-size: 3em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.description {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+
+.sectionInput {
+  padding: 2em;
+}
