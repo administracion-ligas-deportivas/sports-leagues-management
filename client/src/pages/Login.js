@@ -1,43 +1,43 @@
 // import Head from "next/head";
 import { useState, useContext } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
 import Input from "../components/Input/index";
 import Label from "../components/Label";
-import Button from "../components/Button/index";
+// import Button from "../components/Button/index";
 import axios from "axios";
-import {AuthContext} from '../helpers/AuthContext'
+import { AuthContext } from "../helpers/AuthContext";
+
+import Button from "@mui/material/Button";
 
 function Login() {
-
   const navigate = useNavigate();
 
-  const[Uemail, setUEmail] = useState("");
-  const[Ucontrasenia, setUContrasenia] = useState("");
+  const [Uemail, setUEmail] = useState("");
+  const [Ucontrasenia, setUContrasenia] = useState("");
 
-  const {setAuthState} = useContext(AuthContext);
+  const { setAuthState } = useContext(AuthContext);
 
   const loginUser = () => {
-    const data = {correo: Uemail, contrasenia: Ucontrasenia};
-    axios.post("http://localhost:3001/auth/login", data ).then((Response) => {
-      if(Response.data.error) alert(Response.data.error);
-      else 
-      {
+    const data = { correo: Uemail, contrasenia: Ucontrasenia };
+    axios.post("http://localhost:3001/auth/login", data).then((Response) => {
+      if (Response.data.error) alert(Response.data.error);
+      else {
         localStorage.setItem("accessToken", Response.data.token);
         setAuthState({
           correo: Response.data.userEmail,
-          nombre:Response.data.nombre,
+          nombre: Response.data.nombre,
           id: Response.data.id,
-          status: true
+          status: true,
         });
-        navigate('/Home');  
+        navigate("/Home");
       }
-    })
+    });
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
-  
+
   return (
     <div className="flex flex-col justify-between h-full full-height">
       <section className={[styles.mainContainer]}>
@@ -45,48 +45,36 @@ function Login() {
           <h1 className={styles.titleLeague}>
             Administración de Ligas Deportivas
           </h1>
-          <img
-            src={myimg}
-            alt="Login_Image"
-            width="300px"
-            height="300px"
-          />
+          <img src={myimg} alt="Login_Image" width="300px" height="300px" />
         </section>
         <main className={[styles.container, styles.loginContainer].join(" ")}>
           <nav className={styles.navLogin}>
-            <Link to="/Register">
-              Registrate
-            </Link>
+            <Link to="/Register">Registrate</Link>
           </nav>
           <h1 className={styles.titlePage}>Inicia sesión</h1>
-          
-            <Label
-              htmlFor="user-label"
-              content="Correo"
-            >
-              <Input
-                id="user-input"
-                placeholder="Correo"
-                onChange={(event)=>{setUEmail(event.target.value)}}
-              />
-            </Label>
-            <Label
-              htmlFor="user-label-pass"
-              content="Contraseña"
-            >
-              <Input
-                id="user-input-pass"
-                placeholder="Contraseña"
-                type="password"
-                onChange={(event)=>{setUContrasenia(event.target.value)}}
-              />
-            </Label>
-            <Button 
-              variant="primary"
-              onClick={loginUser}
-              type="submit">
-              <p>Iniciar sesión</p>
-            </Button>
+
+          <Label htmlFor="user-label" content="Correo">
+            <Input
+              id="user-input"
+              placeholder="Correo"
+              onChange={(event) => {
+                setUEmail(event.target.value);
+              }}
+            />
+          </Label>
+          <Label htmlFor="user-label-pass" content="Contraseña">
+            <Input
+              id="user-input-pass"
+              placeholder="Contraseña"
+              type="password"
+              onChange={(event) => {
+                setUContrasenia(event.target.value);
+              }}
+            />
+          </Label>
+          <Button variant="contained" onClick={loginUser} type="submit">
+            Iniciar sesión
+          </Button>
         </main>
       </section>
     </div>
