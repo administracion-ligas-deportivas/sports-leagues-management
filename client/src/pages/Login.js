@@ -9,8 +9,7 @@ import Label from "../components/Label";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Button, Typography } from "@mui/material";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +19,9 @@ function Login() {
 
   const { setAuthState } = useContext(AuthContext);
 
-  const loginUser = () => {
+  const loginUser = (event) => {
+    event.preventDefault();
+
     const data = { correo: Uemail, contrasenia: Ucontrasenia };
     axios.post("http://localhost:3001/auth/login", data).then((Response) => {
       if (Response.data.error) alert(Response.data.error);
@@ -48,7 +49,10 @@ function Login() {
           </h1>
           <img src={myimg} alt="Login_Image" width="300px" height="300px" />
         </section>
-        <main className={[styles.container, styles.loginContainer].join(" ")}>
+        <form
+          className={[styles.container, styles.loginContainer].join(" ")}
+          onSubmit={loginUser}
+        >
           <nav className={styles.navLogin}>
             <Link to="/Register">Registrate</Link>
           </nav>
@@ -73,10 +77,10 @@ function Login() {
               }}
             />
           </Label>
-          <Button variant="contained" onClick={loginUser} type="submit">
+          <Button variant="contained" type="submit">
             Iniciar sesión
           </Button>
-        </main>
+        </form>
       </section>
     </div>
   );
