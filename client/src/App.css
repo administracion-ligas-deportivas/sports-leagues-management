@@ -1,3 +1,7 @@
+:root {
+  font-family: "Roboto", sans-serif;
+}
+
 .App {
   width: 100vw;
   height: auto;
@@ -65,17 +69,14 @@ body {
   color: white;
 }
 
-#root
-{
+#root {
   height: 100%;
 }
 
-.azul
-{
+.azul {
   color: #555555;
 }
 
-.rojo
-{
+.rojo {
   color: #999999;
 }

@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
         Usuario.belongsTo(models.Municipio, {foreignKey: 'municipio_id', as: 'usuario_municipio_id'});
         Usuario.hasMany(models.Likes, {onDelete: 'Cascade'});
-    };
+    };2
 
     return Usuario;
 };
