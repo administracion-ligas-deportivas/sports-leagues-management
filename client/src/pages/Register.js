@@ -1,38 +1,45 @@
 //import {Image} from "react-router-dom";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
 import Input from "../components/Input/index";
 import Label from "../components/Label";
 import Button from "../components/Button/index";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
+/* ----------------------------------- MUI ---------------------------------- */
+import { TextField } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
+import { DateTime } from "luxon";
 
 function Signup() {
-
   const navigate = useNavigate();
 
   const [usuario, setUsuario] = useState({
-    nombre:"",
-    apellido:"",
-    correo:"",
-    contrasenia:"",
-    telefono: ""
+    nombre: "",
+    apellido: "",
+    correo: "",
+    contrasenia: "",
+    telefono: "",
   });
-  
 
-  const handleChange = ({target: {name, value}}) => {
-    setUsuario({...usuario, [name]:value});
-  }
+  const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
+
+  const handleChange = ({ target: { name, value } }) => {
+    setUsuario({ ...usuario, [name]: value });
+  };
 
   const registerUser = async (e) => {
-      e.preventDefault();
-      console.log(usuario);
-      await axios.post("http://localhost:3001/auth", usuario).then((response) => {
-        navigate('/');
-      });
+    e.preventDefault();
+    console.log(usuario);
+    await axios.post("http://localhost:3001/auth", usuario).then((response) => {
+      navigate("/");
+    });
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
@@ -43,116 +50,82 @@ function Signup() {
           <h1 className={styles.titleLeague}>
             Administración de Ligas Deportivas
           </h1>
-          <img
-            src={myimg}
-            alt="Register_image"
-            width="300px"
-            height="300px"
-          />
+          <img src={myimg} alt="Register_image" width="300px" height="300px" />
         </section>
         <main className={[styles.container, styles.loginContainer].join(" ")}>
-          <Link to="/" >
-            Inicia Sesión
-          </Link>
+          <Link to="/">Inicia Sesión</Link>
           <h1 className={styles.titlePage}>Registro</h1>
-            <Label htmlFor="user-label-pass" content="Nombre(s)" >
-              <Input id="user-input-pass" name="nombre" placeholder="Nombre(s)" onChange={handleChange} />
-            </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Apellido(s)" >
-                <Input
-                  id="user-input-pass"
-                  name="apellido"
-                  placeholder="Apellido(s)"
-                  onChange={handleChange}
-                />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Correo"
-              >
-                <Input
-                  id="user-input-pass"
-                  name="correo"
-                  placeholder="Correo"
-                  onChange={handleChange}
-                />
-              </Label>
-              <Label
-                htmlFor="user-label"
-                content="Teléfono"
-                
-              >
-                <Input
-                  id="user-input"
-                  placeholder="Teléfono"
-                  type="tel"
-                  name="telefono"
-                  onChange={handleChange}
+          <Label htmlFor="user-label-pass" content="Nombre(s)">
+            <Input
+              id="user-input-pass"
+              name="nombre"
+              placeholder="Nombre(s)"
+              onChange={handleChange}
+            />
+          </Label>
+          <Label htmlFor="user-label-pass" content="Apellido(s)">
+            <Input
+              id="user-input-pass"
+              name="apellido"
+              placeholder="Apellido(s)"
+              onChange={handleChange}
+            />
+          </Label>
+          <Label htmlFor="user-label-pass" content="Correo">
+            <Input
+              id="user-input-pass"
+              name="correo"
+              placeholder="Correo"
+              onChange={handleChange}
+            />
+          </Label>
+          <Label htmlFor="user-label" content="Teléfono">
+            <Input
+              id="user-input"
+              placeholder="Teléfono"
+              type="tel"
+              name="telefono"
+              onChange={handleChange}
+            />
+          </Label>
+          <Label htmlFor="user-label-pass" content="Contraseña">
+            <Input
+              id="user-input-pass"
+              name="contrasenia"
+              type="password"
+              placeholder="Contraseña"
+              onChange={handleChange}
+            />
+          </Label>
 
-                />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  name="contrasenia"
-                  type="password"
-                  placeholder="Contraseña"
-                  onChange={handleChange}
-                />
-              </Label>
-              
-            
-              <div className={styles.genderDataContainer}>
-                <Label
-                  htmlFor="user-label-pass"
-                  content="Fecha de nacimiento"
-                >
-                  <Input
-                    id="user-input-pass"
-                    placeholder="DD/MM/AAAA"
-                  />
-                </Label>
-                <Label
-                  htmlFor="user-label-pass"
-                  content="Genero"
-                >
-                  <Input
-                    id="user-input-pass"
-                    placeholder="Género"
-                  />
-                </Label>
-              </div>
-              
-              <Label
-                htmlFor="user-label-pass"
-                content="Contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  placeholder="Contraseña"
-                />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Confirmar contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  placeholder="Confirmar contraseña"
-                />
-              </Label>
-              <Button
-                variant="primary"
-                onClick={registerUser}
-                type="submit"
-              >
-                <p>Registrar</p>
-              </Button>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Date desktop"
+              inputFormat="DD/MM/YYYY"
+              value={fechaNacimiento}
+              onChange={(newValue) => setFechaNacimiento(newValue)}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+
+          <div className={styles.genderDataContainer}>
+            <Label htmlFor="user-label-pass" content="Fecha de nacimiento">
+              <Input id="user-input-pass" placeholder="DD/MM/AAAA" />
+            </Label>
+            <Label htmlFor="user-label-pass" content="Genero">
+              <Input id="user-input-pass" placeholder="Género" />
+            </Label>
+          </div>
+
+          <Label htmlFor="user-label-pass" content="Contraseña">
+            <Input id="user-input-pass" placeholder="Contraseña" />
+          </Label>
+          <Label htmlFor="user-label-pass" content="Confirmar contraseña">
+            <Input id="user-input-pass" placeholder="Confirmar contraseña" />
+          </Label>
+          <Button variant="primary" onClick={registerUser} type="submit">
+            <p>Registrar</p>
+          </Button>
         </main>
       </section>
     </div>
