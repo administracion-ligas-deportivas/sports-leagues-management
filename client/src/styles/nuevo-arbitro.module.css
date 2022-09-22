@@ -65,8 +65,4 @@
     flex-direction: row-reverse;
     justify-content: center;
   }
-
-  .buttons div {
-    margin-left: 3em;
-  }
 }

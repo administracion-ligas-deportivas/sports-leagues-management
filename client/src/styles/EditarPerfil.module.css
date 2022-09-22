@@ -86,6 +86,8 @@
 
   .buttons {
     display: flex;
-    flex-direction: row-reverse;
+    height: auto;
+    padding: 10px;
   }
+
 }

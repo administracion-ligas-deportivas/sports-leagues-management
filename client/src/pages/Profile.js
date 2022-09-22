@@ -4,16 +4,18 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import styles from "../styles/EditarPerfil.module.css";
 import Footer from "../components/Footer";
 import UserIcon from "../components/Icon";
-// import Input from "../components/Input/index";
-
-// import Image from "next/image";
-import Input from "../components/Input";
-import Label from "../components/Label";
-// import Image from "next/image";
-import Button from "../components/Button";
+import {
+  Button,
+  TextField
+  // LocalizationProvider,
+  // DateTimePicker 
+}from "@mui/material";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { 
+  useEffect, 
+  useState 
+} from "react";
 /**
  * 
  * Se eliminó la tag 'Head' ya que no puede ser hija de div
@@ -23,6 +25,7 @@ import { useEffect, useState } from "react";
 export default function EditarPerfil() {
   let {id} = useParams();
   const [user, setUser] = useState({});
+  const [name, setName] = useState();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/ProfileInfo/${id}`).then(
@@ -32,9 +35,13 @@ export default function EditarPerfil() {
           apellido: response.data.apellido,
           correo: response.data.email,
         });
+        setName(response.data.nombre)
       }
     )
   }, [id]);
+
+  
+  console.log(name);
 
   return (
     <>
@@ -47,167 +54,148 @@ export default function EditarPerfil() {
           <h2>Datos Personales</h2>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Nombre(s)
-                <p>{user.nombre}</p>
-              </Label>
+              <TextField
+                fullWidth 
+                id="nombre"
+                label="Nombre"
+                // placeholder="Nombre"
+                value = {name}
+                margin="normal"
+                onChange={(event) => setName(event.target.value)}
+                InputLabelProps={{ shrink: true }}
+              />
             </div>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Apellidos
-                <Input
-                  id="last-name"
-                  placeholder="Apellidos"
-                />
-              </Label>
-            </div>
-          </div>
-          <div className={styles.flexContainer}>
-            <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Fecha de Nacimiento
-                <Input
-                  id="date-birth"
-                  placeholder="Fecha"
-                />
-              </Label>
-            </div>
-            <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Correo
-                <Input
-                  id="email"
-                  placeholder="Correo"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="apellido"
+                label="Apellido"
+                value={user.apellido}
+                onChange={(event) => setUser({ ...user, apellido: event.target.value })}
+                InputLabelProps={{ shrink: true }}
+                margin="normal"
+              />
             </div>
           </div>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Número de Télefono
-                <Input
-                  id="phone-number"
-                  placeholder="Teléfono"
+              <TextField
+                fullWidth 
+                id="fechaNacimiento"
+                label="Fecha de Nacimiento"
+                value=""
+                margin="normal"
+              />
+              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                  renderInput={(props) => <TextField {...props} />}
+                  label="DateTimePicker"
+                  value={value}
+                  onChange={(newValue) => {
+                    setValue(newValue);
+                  }}
                 />
-              </Label>
+              </LocalizationProvider> */}
+            </div>
+            <div className={styles.input}>
+              <TextField
+                fullWidth 
+                id="email"
+                label="Correo"
+                value={user.correo}
+                onChange={(event) => setUser({...user, correo: event.target.value})}
+                InputLabelProps={{ shrink: true }}
+                type='mail'
+                margin="normal"
+            />
+            </div>
+          </div>
+          <div className={styles.flexContainer}>
+            <div className={styles.input}>
+              <TextField
+                fullWidth 
+                id="numero"
+                label="Número de Teléfono"
+                value="(55) 5555-5555"
+                margin="normal"
+              />
             </div>
           </div>
           <h2>Domicilio</h2>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Calle
-                <Input
-                  id="street"
-                  placeholder="Calle"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="direccion"
+                label="Calle"
+                margin="normal"
+              />
             </div>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Colonia
-                <Input
-                  id="colony"
-                  placeholder="Colonia"
-                />
-              </Label>
+            <TextField
+                fullWidth 
+                id="colonia"
+                label="Colonia"
+                margin="normal"
+              />
             </div>
           </div>
           <div className={styles.flexContainer}>
             <div className={styles.input2}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Num. Exterios
-                <Input
-                  id="external-number"
-                  placeholder="Número Exterior"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="num-ext"
+                label="Núm. Exterior"
+                type='number'
+                margin="normal"
+              />
             </div>
             <div className={styles.input2}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Num. Interior
-                <Input
-                  id="internal-number"
-                  placeholder="Número Interior"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="num-int"
+                label="Núm. interior"
+                type='number'
+                margin="normal"
+              />
             </div>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Código Postal
-                <Input
-                  id="postal-code"
-                  placeholder="C.P"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="cp"
+                label="Código Postal"
+                type='number'
+                margin="normal"
+              />
             </div>
           </div>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Estado
-                <Input
-                  id="state"
-                  placeholder="Estado"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="estado"
+                label="Estado"
+                margin="normal"
+              />
             </div>
             <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Municipio
-                <Input
-                  id="municipality"
-                  placeholder="Municipio"
-                />
-              </Label>
+              <TextField
+                fullWidth 
+                id="municipio"
+                label="Municipio"
+                margin="normal"
+              />
             </div>
           </div>
           
           <br />
          
           <div className={styles.buttons}>
-            <Button onClick={()=>{}} variant="primary">
-              <p>Primary</p>
-            </Button>
-            <Button onClick={()=>{}} variant="secondary">
-              <p>Secondary</p>
+            <Button variant="contained">
+              Aceptar
+            </Button>      
+            <Button variant="contained" color="error">
+              Cancelar
             </Button>
           </div>
         </div>
