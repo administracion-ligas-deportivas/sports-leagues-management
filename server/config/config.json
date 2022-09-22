@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "da7a_Bas3",
+    "password": "",
     "database": "ligas_deportivas",
     "host": "localhost",
     "dialect": "mariadb"
