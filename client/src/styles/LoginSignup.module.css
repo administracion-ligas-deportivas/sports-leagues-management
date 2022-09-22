@@ -28,10 +28,23 @@ body{
   flex-flow: wrap;
   flex-direction: row;
   position: relative;
-  height:100vh;
+  height: 100vh;
+}
+
+.mainContainerRegister {
+  background: #eee;
+  display: flex;
+  flex: 1;
+  flex-flow: wrap;
+  flex-direction: row;
+  position: relative;
 }
 
 .mainContainer > * {
+  padding: 2em;
+}
+
+.mainContainerRegister > * {
   padding: 2em;
 }
 
@@ -77,7 +90,8 @@ manera */
   align-items: center;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  /*justify-content: center;*/
+  display: flex;
 }
 
 .loginContainer {

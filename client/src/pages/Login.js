@@ -3,14 +3,16 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
-import Input from "../components/Input/index";
-import Label from "../components/Label";
+//import Input from "../components/Input/index";
+//import Label from "../components/Label";
 // import Button from "../components/Button/index";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
+//import Typography from "@mui/material/Typography";
 
 function Login() {
   const navigate = useNavigate();
@@ -59,26 +61,23 @@ function Login() {
           </nav>
           <h1 className={styles.titlePage}>Inicia sesión</h1>
 
-          <Label htmlFor="user-label" content="Correo">
-            <Input
-              id="user-input"
-              placeholder="Correo"
-              onChange={(event) => {
+          <TextField
+            required
+            id="user-input"
+            label="Correo"
+            onChange={(event) => {
                 setUEmail(event.target.value);
-              }}
-            />
-          </Label>
-          <Label htmlFor="user-label-pass" content="Contraseña">
-            <Input
-              id="user-input-pass"
-              placeholder="Contraseña"
-              type="password"
-              onChange={(event) => {
-                setUContrasenia(event.target.value);
-              }}
-            />
-          </Label>
-          <Button variant="contained" type="submit">
+            }}
+          />
+          <TextField
+            disabled
+            id="user-input-pass"
+            label="Contrseña"
+            onChange={(event) => {
+                setUEmail(event.target.value);
+            }}
+          />
+          <Button variant="contained" onClick={loginUser} type="submit">
             Iniciar sesión
           </Button>
         </form>
