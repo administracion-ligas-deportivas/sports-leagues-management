@@ -4,22 +4,18 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import styles from "../styles/EditarPerfil.module.css";
 import Footer from "../components/Footer";
 import UserIcon from "../components/Icon";
-// import Input from "../components/Input/index";
-
-// import Image from "next/image";
-import Input from "../components/Input";
-import Label from "../components/Label";
-// import Image from "next/image";
-//import Button from "../components/Button";
 import {
   Button,
   TextField
   // LocalizationProvider,
   // DateTimePicker 
-}from "@mui/material"
+}from "@mui/material";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { 
+  useEffect, 
+  useState 
+} from "react";
 /**
  * 
  * Se eliminó la tag 'Head' ya que no puede ser hija de div
@@ -29,6 +25,7 @@ import { useEffect, useState } from "react";
 export default function EditarPerfil() {
   let {id} = useParams();
   const [user, setUser] = useState({});
+  const [name, setName] = useState();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/ProfileInfo/${id}`).then(
@@ -38,11 +35,12 @@ export default function EditarPerfil() {
           apellido: response.data.apellido,
           correo: response.data.email,
         });
+        setName(response.data.nombre)
       }
     )
   }, [id]);
 
-  const name = user.nombre;
+  
   console.log(name);
 
   return (
@@ -60,8 +58,11 @@ export default function EditarPerfil() {
                 fullWidth 
                 id="nombre"
                 label="Nombre"
+                // placeholder="Nombre"
                 value = {name}
                 margin="normal"
+                onChange={(event) => setName(event.target.value)}
+                InputLabelProps={{ shrink: true }}
               />
             </div>
             <div className={styles.input}>
@@ -69,7 +70,9 @@ export default function EditarPerfil() {
                 fullWidth 
                 id="apellido"
                 label="Apellido"
-                value="Apellido"
+                value={user.apellido}
+                onChange={(event) => setUser({ ...user, apellido: event.target.value })}
+                InputLabelProps={{ shrink: true }}
                 margin="normal"
               />
             </div>
@@ -99,7 +102,9 @@ export default function EditarPerfil() {
                 fullWidth 
                 id="email"
                 label="Correo"
-                value="nombre@correo.com"
+                value={user.correo}
+                onChange={(event) => setUser({...user, correo: event.target.value})}
+                InputLabelProps={{ shrink: true }}
                 type='mail'
                 margin="normal"
             />
