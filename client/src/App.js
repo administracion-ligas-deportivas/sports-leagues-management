@@ -6,6 +6,7 @@ import CreateAdvise from './pages/CreateAdvise';
 import Advise from './pages/Advise';
 import Login from './pages/Login';
 import Register from './pages/Register'
+import NuevoArbitro from './pages/NuevoArbitro';
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -86,6 +87,7 @@ function App() {
                 <Route path="/CreateAdvise" element={<CreateAdvise/>}/>
                 <Route path="/Advise/:id" element={<Advise />}/>
                 <Route path="/Profile/:id" element={<Profile />}/>
+                <Route path='/NuevoArbitro' element={<NuevoArbitro />}/>
               </>
             ): (
               <>
