@@ -23,15 +23,14 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 /*-----------------------------------------------------*/
 
 const pages = ['Ligas', 'Torneos', 'Calendario', 'Estadisticas'];
 const settings = ['Perfil', 'Logout'];
+const settingsLinks = ['/Profile/${autState.id}', 'logout'];
 
 
 function Navbar() {
@@ -56,7 +55,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" enableColorOnDark>
+    <AppBar position="static" sx={{ backgroundColor: "#1A1C9E" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -175,11 +174,23 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key='Perfil' onClick={handleCloseUserMenu} >
+                  <Typography 
+                    textAlign="center" 
+                    component='a' 
+                    href={`/Profile/${autState.id}`} 
+                    sx={{
+                      color: 'inherit',
+                      textDecoration: 'none' 
+                    }}
+                  >
+                    Perfil
+                  </Typography>
+              </MenuItem>
+              <MenuItem key='Logout' onClick={handleCloseUserMenu}>
+                <Typography textAlign="center" >Cerrar Sesión</Typography>
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
