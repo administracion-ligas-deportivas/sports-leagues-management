@@ -29,8 +29,6 @@ import MenuItem from '@mui/material/MenuItem';
 /*-----------------------------------------------------*/
 
 const pages = ['Ligas', 'Torneos', 'Calendario', 'Estadisticas'];
-const settings = ['Perfil', 'Logout'];
-const settingsLinks = ['/Profile/${autState.id}', 'logout'];
 
 
 function Navbar() {
@@ -57,27 +55,29 @@ function Navbar() {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1A1C9E" }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faMedal}
-              style={{ marginRight: '10px', fontSize: '2.5rem' }}
-            />
-          </Typography>
+        <Toolbar disableGutters >
+          <Tooltip title="Ligas Deportivas">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/home"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faMedal}
+                style={{ marginRight: '10px', fontSize: '2.5rem' }}
+              />
+            </Typography>
+          </Tooltip>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -150,7 +150,7 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Perfil">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <FontAwesomeIcon
                   icon={faCircleUser}
