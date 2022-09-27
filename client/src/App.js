@@ -14,7 +14,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import Profile from './pages/Profile';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/index';
 
 /**
  * 
