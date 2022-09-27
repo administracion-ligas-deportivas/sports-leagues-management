@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { Button, Typography, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
 
 function Home(){
@@ -49,8 +50,14 @@ function Home(){
     })
 
     return(
+        <>
+        <Stack direction="row" spacing={2}>
+            <Button variant="contained" href="/CreateAdvise"> Crear Aviso </Button>
+            <Button variant="contained" href="/gestion-torneo"> Gestionar Torneo </Button>
+            <Button variant="contained" href="/NuevoArbitro"> Nuevo Arbitro </Button>
+            <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
+        </Stack>
         <div>
-            <Link to="/CreateAdvise" > Crear aviso </Link>
             {
                 lista_anuncios.map((value, key) => {
                 return (
@@ -83,6 +90,7 @@ function Home(){
                 );
             })}
         </div>
+        </>
     );
 };
 
