@@ -52,6 +52,11 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const logoutUser =() => {
+    localStorage.removeItem("accessToken");
+    window.location.href = "/";
+  }
+
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1A1C9E" }}>
       <Container maxWidth="xl">
@@ -187,7 +192,8 @@ function Navbar() {
                     Perfil
                   </Typography>
               </MenuItem>
-              <MenuItem key='Logout' onClick={handleCloseUserMenu}>
+              {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
+              <MenuItem key='Logout' onClick={logoutUser}>
                 <Typography textAlign="center" >Cerrar Sesión</Typography>
               </MenuItem>
 
