@@ -1,19 +1,14 @@
-// import { library } from "@fortawesome/fontawesome-svg-core";
-import {Link} from "react-router-dom";
+import * as React from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMedal,
-  faGear,
   faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./Navbar.module.css";
 import { useContext } from "react";
 import {AuthContext} from '../../helpers/AuthContext';
-//import {useParams} from 'react-router-dom';
 
-import * as React from 'react';
 /*----------------------MUI----------------------------*/
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
