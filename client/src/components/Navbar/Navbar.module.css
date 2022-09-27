@@ -25,6 +25,14 @@
   }
 
   .opciones a {
+    color: black;
+    text-decoration: none;
+    padding: 50px;
+  }
+
+  .opciones a {
+    color: black;
+    text-decoration: none;
     padding: 50px;
   }
 
