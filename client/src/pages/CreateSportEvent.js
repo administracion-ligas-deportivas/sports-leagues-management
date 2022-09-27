@@ -2,8 +2,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 //import Head from "next/head";
 import styles from "../styles/EditarPerfil.module.css";
-import Footer from "../components/Footer";
-import UserIcon from "../components/Icon";
 import {
     Button,
     TextField,
@@ -13,12 +11,6 @@ import {
     OutlinedInput,
     InputAdornment,
 }from "@mui/material";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import { 
-    useEffect, 
-    useState 
-} from "react";
 
 export default function CrearEventoDeportivo() {
     const options = [
@@ -133,8 +125,6 @@ export default function CrearEventoDeportivo() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </>
     );
 }

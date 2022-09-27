@@ -1,22 +1,5 @@
-//import { useState, useContext } from "react";
-//import { Link, useNavigate } from "react-router-dom";
 
-//import "@fortawesome/fontawesome-svg-core/styles.css";
-//import Head from "next/head";
-//import React, {useEffect, useState} from 'react';
-
-//import Jugador from "../components/Jugador";
-//import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-//import Input from "../components/Input/index";
-//import Label from "../components/Label";
-//import Button from "../components/Button";
 import styles from "../styles/GestionTorneo.module.css";
-//import InputCode from "../components/InputCode/index";
-
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 export default function GestionTorneo() {
   return (
@@ -118,7 +101,6 @@ export default function GestionTorneo() {
           </Button>*/}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

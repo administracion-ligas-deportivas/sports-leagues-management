@@ -15,6 +15,7 @@ import axios from 'axios';
 import PageNotFound from './pages/PageNotFound';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar/index';
+import Footer from './components/Footer/index';
 
 /**
  * 
@@ -102,6 +103,8 @@ function App() {
             )}
             <Route path='*' element={<PageNotFound/>}></Route>
         </Routes>
+
+        <Footer/>
       </Router>
       </AuthContext.Provider>
   );

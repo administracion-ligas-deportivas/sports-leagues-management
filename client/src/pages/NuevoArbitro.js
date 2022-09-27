@@ -4,7 +4,6 @@ import{
   Button
 } from "@mui/material";
 
-import Footer from "../components/Footer";
 import UserIcon from "../components/Icon";
 
 import styles from "../styles/nuevo-arbitro.module.css";
@@ -45,8 +44,6 @@ export default function NuevoArbitro() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }
