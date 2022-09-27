@@ -4,9 +4,9 @@ import {useNavigate, Link} from 'react-router-dom';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import { Button, Typography, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
+import style from "../styles/Home.module.css";
 
 function Home(){
-
     const [lista_anuncios, setlista_anuncios] = useState([]);
     const [anuncioLiked, setAnuncioLiked] = useState([]);
     const navigate = useNavigate();
@@ -51,44 +51,46 @@ function Home(){
 
     return(
         <>
-        <Stack direction="row" spacing={2}>
-            <Button variant="contained" href="/CreateAdvise"> Crear Aviso </Button>
-            <Button variant="contained" href="/gestion-torneo"> Gestionar Torneo </Button>
-            <Button variant="contained" href="/NuevoArbitro"> Nuevo Arbitro </Button>
-            <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
-        </Stack>
-        <div>
-            {
-                lista_anuncios.map((value, key) => {
-                return (
-                    <div className='anuncio' 
-                        key={key}> 
-                        <div className='titulo'>
-                            {value.nombre}
+        <div className={style.container}> 
+            <Stack direction="row" spacing={2}>
+                <Button variant="contained" href="/CreateAdvise"> Crear Aviso </Button>
+                <Button variant="contained" href="/gestion-torneo"> Gestionar Torneo </Button>
+                <Button variant="contained" href="/NuevoArbitro"> Nuevo Arbitro </Button>
+                <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
+            </Stack>
+            <div>
+                {
+                    lista_anuncios.map((value, key) => {
+                    return (
+                        <div className='anuncio' 
+                            key={key}> 
+                            <div className='titulo'>
+                                {value.nombre}
+                            </div>
+                            <div className='body' onClick={() => {
+                                navigate(`/Advise/${value.id}`)
+                            }}>
+                                {value.descripcion}
+                            </div>
+                            <div className='prioridad'>
+                                Prioridad: {value.prioridad}
+                            </div>
+                            <div className='Autor'>
+                                Autor: {value.autor}
+                            </div>
+                            <div className='creacion'>
+                                
+                                <ThumbUpAltIcon onClick={() => {meGusta(value.id)}} 
+                                    className={
+                                        //Verifica si se dio like o no
+                                        anuncioLiked.includes(value.id) ? "azul" : "rojo"
+                                    } />
+                                <label> {value.Likes.length}</label>
+                            </div>
                         </div>
-                        <div className='body' onClick={() => {
-                            navigate(`/Advise/${value.id}`)
-                        }}>
-                            {value.descripcion}
-                        </div>
-                        <div className='prioridad'>
-                            Prioridad: {value.prioridad}
-                        </div>
-                        <div className='Autor'>
-                            Autor: {value.autor}
-                        </div>
-                        <div className='creacion'>
-                            
-                            <ThumbUpAltIcon onClick={() => {meGusta(value.id)}} 
-                                className={
-                                    //Verifica si se dio like o no
-                                    anuncioLiked.includes(value.id) ? "azul" : "rojo"
-                                } />
-                            <label> {value.Likes.length}</label>
-                        </div>
-                    </div>
-                );
-            })}
+                    );
+                })}
+            </div>
         </div>
         </>
     );
