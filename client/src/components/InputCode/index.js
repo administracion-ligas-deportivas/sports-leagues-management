@@ -12,9 +12,17 @@ import Button from "../Button";
 import Label from "../Label";
 import Input from "../Input";
 
+/*----------------------MUI----------------------------*/
+import { InputLabel } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
+import Link from '@mui/material/Link';
+/*-----------------------------------------------------*/
+
 // U parametros del Usuario
 // Molecula
-export default function InputCode({ titleU, nameU, placeholderU, contentU }) {
+export default function InputCode({ titleU, nameU, contentU }) {
   // const elementsContainer = [].join(" ");
 
   return (
