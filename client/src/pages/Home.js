@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import { Button, Typography, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
 import style from "../styles/Home.module.css";
 
