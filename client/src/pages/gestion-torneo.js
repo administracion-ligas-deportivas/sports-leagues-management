@@ -1,5 +1,15 @@
 
 import styles from "../styles/GestionTorneo.module.css";
+//import InputCode from "../components/InputCode/index";
+
+/* ----------------------------------- MUI ---------------------------------- */
+import { Button, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
+
+import Jugador from "./../components/Jugador/index"
+//import { useParams } from "react-router-dom";
+//import axios from "axios";
+//import { useEffect, useState } from "react";
 
 export default function GestionTorneo() {
   return (
@@ -7,37 +17,37 @@ export default function GestionTorneo() {
       <section className="container mx-auto py-2">
         <div className={styles.container}>
           <div>
-            <h1 className={styles.titlePage}>Gestión torneo</h1>
+            <h1 className={styles.titlePage}>Gestión evento deportivo</h1>
           </div>
-          <div className={styles.flexContainer}>
-            {/*<div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Nombre
-                <Input
-                  id="tornament-name"
-                  placeholder="Nombre del torneo"
+          <div className={styles.rectangle}>
+            <div className={styles.flexContainer}>
+              <div className={styles.input}>
+                <TextField
+                  fullWidth
+                  disabled
+                  id="sports-event-name"
+                  label="Nombre"
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
                 />
-              </Label>
+              </div>
+              <div className={styles.input}>
+                <TextField
+                  fullWidth
+                  disabled
+                  id="sports-event-sp"
+                  label="Deporte"
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
+                />
+              </div>
             </div>
-            <div className={styles.input}>
-              <Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Deporte
-                <Input
-                  id="tornament-sport"
-                  placeholder="Deporte"
-                />
-              </Label>
-            </div>*/}
-          </div>
-          <div className={styles.flexContainer}>
-            <div className={styles.playersContainer}>
-              {/*<Jugador />
+            <div className={styles.flexContainer}>
+              <div className={styles.playersContainer}>
+                Componente de jugadores
+                <Jugador playerName="kdjskj">
+                </Jugador>
+                {/*<Jugador />
               <Jugador />
               <Jugador />
               <Jugador />
@@ -45,9 +55,10 @@ export default function GestionTorneo() {
               <Jugador />
               <Jugador />
               <Jugador />*/}
-            </div>
-            <div className={styles.playersContainer}>
-              {/*<Jugador />
+              </div>
+              <div className={styles.playersContainer}>
+                Componente de jugadores
+                {/*<Jugador />
               <Jugador />
               <Jugador />
               <Jugador />
@@ -55,53 +66,49 @@ export default function GestionTorneo() {
               <Jugador />
               <Jugador />
               <Jugador />*/}
+              </div>
             </div>
-          </div>
-          <div className={styles.flexContainer}>
-            <div className={styles.input}>
-              {/*<Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Tipo de torneo
-                <Input
-                  id="tornament-type"
-                  placeholder="Tipo de torneo"
+            <div className={styles.flexContainer}>
+              <div className={styles.input}>
+                <TextField
+                  fullWidth
+                  disabled
+                  id="sports-event-type"
+                  label="Tipo de evento"
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
                 />
-              </Label>*/}
-            </div>
-            <div className={styles.input}>
-              {/*<Label
-                className={styles.subtitlePage}
-                htmlFor="new-input"
-              >
-                Añadir árbitro
-                <Input
-                  id="tornament-referee"
-                  placeholder="Nombre del árbitro"
+              </div>
+              <div className={styles.input}>
+                <TextField
+                  fullWidth
+                  disabled
+                  id="sports-event-name"
+                  label="Nombre"
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
                 />
-              </Label>*/}
+              </div>
             </div>
-          </div>
-          <div className={styles.codeContainer}>
-            {/*<InputCode
+            <div className={styles.codeContainer}>
+              {/*<InputCode
               titleU="Código de acceso"
               nameU="accessCode"
               placeholderU="Código"
               contentU="Generar código"
             />*/}
+            </div>
+            <div className={styles.buttons}>
+              <div className={styles.buttonsSingleDiv}>
+                <Button variant="contained" color="error">
+                  Cancelar
+                </Button>
+              </div>
+              <Button variant="contained">Aceptar</Button>
+            </div>
           </div>
-        </div>
-        <div className={styles.buttons}>
-          {/*<Button variant="primary">
-            <p>Aceptar</p>
-          </Button>
-          <Button variant="secondary">
-            <p>Cancelar</p>
-          </Button>*/}
         </div>
       </section>
     </>
   );
 }
-
