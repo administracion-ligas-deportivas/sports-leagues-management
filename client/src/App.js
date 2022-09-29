@@ -18,6 +18,7 @@ import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/index';
 import EnterSportsEvent from './pages/enter-sports-event';
 import EstadisticasPersonales from './pages/estadisticas-personales';
+import AsignarRoles from './pages/AsignarRoles';
 
 /**
  * 
@@ -97,6 +98,7 @@ function App() {
                 <Route path='/CrearEventoDeportivo' element={<CrearEventoDeportivo />}/>
                 <Route path='/EnterSportsEvent' element={<EnterSportsEvent />}/>
                 <Route path="/EstadisticasPersonales" element={<EstadisticasPersonales/>}/>
+                <Route path='/AsignarRoles' element={<AsignarRoles/>}/>
               </>
             ): (
               <>

@@ -60,6 +60,7 @@ function Home(){
                 <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
                 <Button variant='contained' href='/EnterSportsEvent'> Entrar a Evento Deportivo</Button>
                 <Button variant='contained' href='/EstadisticasPersonales'> Estadisticas Personales</Button>
+                <Button variant='contained' href='/AsignarRoles'> Asignar Roles </Button>
             </Stack>
             <div>
                 {

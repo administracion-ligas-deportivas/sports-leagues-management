@@ -188,7 +188,7 @@ export default function EditarPerfil() {
           </div>
           
           <br />
-         
+          
           <div className={styles.buttons}>
             <Button variant="contained">
               Aceptar
