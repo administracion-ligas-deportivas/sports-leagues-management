@@ -1,11 +1,6 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { TextField } from "@mui/material";
-
-import Footer from "../components/Footer";
 import UserIcon from "../components/Icon";
-import Label from "../components/Label";
-import Navbar from "../components/Navbar";
-
 import style from "../styles/estadisticas-personales.module.css";
 
 export default function EstadisticasPersonales() {
