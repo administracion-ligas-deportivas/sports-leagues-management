@@ -16,6 +16,10 @@ import PageNotFound from './pages/PageNotFound';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/index';
+import EnterSportsEvent from './pages/enter-sports-event';
+import EstadisticasPersonales from './pages/estadisticas-personales';
+import AsignarRoles from './pages/AsignarRoles';
+import Equipos from './pages/EquiposEnSistema';
 
 /**
  * 
@@ -93,12 +97,15 @@ function App() {
                 <Route path="/gestion-torneo" element={<GestionTorneo />}/>
                 <Route path='/NuevoArbitro' element={<NuevoArbitro />}/>
                 <Route path='/CrearEventoDeportivo' element={<CrearEventoDeportivo />}/>
+                <Route path='/EnterSportsEvent' element={<EnterSportsEvent />}/>
+                <Route path="/EstadisticasPersonales" element={<EstadisticasPersonales/>}/>
+                <Route path='/AsignarRoles' element={<AsignarRoles/>}/>
+                <Route path='/Equipos' element={<Equipos/>}/>
               </>
             ): (
               <>
                 <Route path="/" element={<Login />}/>
                 <Route path="/Register" element={<Register />}/>
-                {/* <Route path="/gestion-torneo" element={<GestionTorneo />}/>*/}
               </>
             )}
             <Route path='*' element={<PageNotFound/>}></Route>

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import { Button, Typography, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
 import style from "../styles/Home.module.css";
 
@@ -52,11 +52,19 @@ function Home(){
     return(
         <>
         <div className={style.container}> 
+            <h2>Pantallas Realizadas</h2>
             <Stack direction="row" spacing={2}>
                 <Button variant="contained" href="/CreateAdvise"> Crear Aviso </Button>
                 <Button variant="contained" href="/gestion-torneo"> Gestionar Torneo </Button>
                 <Button variant="contained" href="/NuevoArbitro"> Nuevo Arbitro </Button>
                 <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
+                <Button variant='contained' href='/EnterSportsEvent'> Entrar a Evento Deportivo</Button>
+                <Button variant='contained' href='/EstadisticasPersonales'> Estadisticas Personales</Button>
+            </Stack>
+            <br></br>
+            <Stack direction="row" spacing={2}>
+                <Button variant='contained' href='/AsignarRoles'> Asignar Roles </Button>
+                <Button variant='contained' href='/Equipos'> Equipos </Button>
             </Stack>
             <div>
                 {

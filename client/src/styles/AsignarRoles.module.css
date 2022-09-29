@@ -1,0 +1,15 @@
+.container{
+    padding: 20px;
+}
+.container h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container .rectangle{
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 20px;
+}
+.container .rectangle .button{
+    justify-content: end;
+}
