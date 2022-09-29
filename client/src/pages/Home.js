@@ -52,12 +52,14 @@ function Home(){
     return(
         <>
         <div className={style.container}> 
+            <h2>Pantallas Realizadas</h2>
             <Stack direction="row" spacing={2}>
                 <Button variant="contained" href="/CreateAdvise"> Crear Aviso </Button>
                 <Button variant="contained" href="/gestion-torneo"> Gestionar Torneo </Button>
                 <Button variant="contained" href="/NuevoArbitro"> Nuevo Arbitro </Button>
                 <Button variant="contained" href="/CrearEventoDeportivo"> Crear Evento Deportivo </Button>
                 <Button variant='contained' href='/EnterSportsEvent'> Entrar a Evento Deportivo</Button>
+                <Button variant='contained' href='/EstadisticasPersonales'> Estadisticas Personales</Button>
             </Stack>
             <div>
                 {

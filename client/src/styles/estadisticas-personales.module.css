@@ -36,13 +36,13 @@
   }
 
   .input {
-    line-height: 4em;
+    margin: 10px;
     width: 50%;
   }
 
   .input2 {
+    margin: 10px;
     color: gray;
-    line-height: 4em;
     width: 50%;
   }
 }
