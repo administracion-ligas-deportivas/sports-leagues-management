@@ -2,7 +2,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 //import Head from "next/head";
 import styles from "../styles/EditarPerfil.module.css";
-import Footer from "../components/Footer";
 import UserIcon from "../components/Icon";
 import {
   Button,
@@ -189,7 +188,7 @@ export default function EditarPerfil() {
           </div>
           
           <br />
-         
+          
           <div className={styles.buttons}>
             <Button variant="contained">
               Aceptar
@@ -200,8 +199,6 @@ export default function EditarPerfil() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -24,6 +24,17 @@ import Paper from "@mui/material/Paper";
 //import { useParams } from "react-router-dom";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
+import styles from "../styles/EditarPerfil.module.css";
+import {
+    Button,
+    TextField,
+    MenuItem,
+    FormControl,
+    InputLabel,
+    OutlinedInput,
+    InputAdornment,
+}from "@mui/material";
+
 
 export default function CrearEventoDeportivo() {
   const [open, setOpen] = React.useState(false);
@@ -347,3 +358,8 @@ export default function CrearEventoDeportivo() {
     </>
   );
 }
+            </div>
+        </>
+    );
+}
+

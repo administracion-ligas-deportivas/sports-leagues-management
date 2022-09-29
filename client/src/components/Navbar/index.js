@@ -174,11 +174,9 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key='Perfil' onClick={handleCloseUserMenu} >
+              <MenuItem key='Perfil' onClick={handleCloseUserMenu} component='a' href={`/Profile/${autState.id}`} >
                   <Typography 
-                    textAlign="center" 
-                    component='a' 
-                    href={`/Profile/${autState.id}`} 
+                    textAlign="center"
                     sx={{
                       color: 'inherit',
                       textDecoration: 'none' 
@@ -197,49 +195,8 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
-  );
 
-  // return (
-  //   <div className={styles.container}>
-  //     <div>
-  //       <FontAwesomeIcon
-  //         icon={faCompass}
-  //         className={styles.logo}
-  //       />
-  //     </div>
-  //     <div className={styles.opciones}>
-  //       <Link to="/home">
-  //         Ligas
-  //       </Link>
-  //       <Link to="/home">
-  //         Torneos
-  //       </Link>
-  //       <Link to="/home">
-  //         Equipo
-  //       </Link>
-  //       <Link to="/home">
-  //         Calendario
-  //       </Link>
-  //       <Link to="/home">
-  //         Estadisticas
-  //       </Link>
-  //     </div>
-  //     <div>
-  //       <FontAwesomeIcon
-  //         icon={faGear}
-  //         className={styles.config}
-  //       />
-  //     </div>
-  //     <div>
-  //       <Link to={`/Profile/${autState.id}`}>
-  //       <FontAwesomeIcon
-  //         icon={faCircleUser}
-  //         className={styles.user}
-  //       />
-  //       Perfil</Link>
-  //     </div>
-  //   </div>
-  // );
+  );
 }
 
 export default Navbar;

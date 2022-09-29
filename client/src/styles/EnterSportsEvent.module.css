@@ -9,10 +9,14 @@
   flex-direction: column;
   font-size: 0.9em;
   padding: 2em;
+}
 
-  /* gap: 0.5em; */
-
-  /* padding: 0.5em; */
+.containerForm{
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9em;
+  padding: 2em;
+  background-color: rgb(243, 246, 250);
 }
 
 .titlePage {

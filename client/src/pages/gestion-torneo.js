@@ -1,16 +1,4 @@
-//import { useState, useContext } from "react";
-//import { Link, useNavigate } from "react-router-dom";
 
-//import "@fortawesome/fontawesome-svg-core/styles.css";
-//import Head from "next/head";
-//import React, {useEffect, useState} from 'react';
-
-//import Jugador from "../components/Jugador";
-//import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-//import Input from "../components/Input/index";
-//import Label from "../components/Label";
-//import Button from "../components/Button";
 import styles from "../styles/GestionTorneo.module.css";
 //import InputCode from "../components/InputCode/index";
 
@@ -121,7 +109,6 @@ export default function GestionTorneo() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }
