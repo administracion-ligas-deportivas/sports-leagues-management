@@ -24,11 +24,8 @@ import Paper from "@mui/material/Paper";
 //import { useParams } from "react-router-dom";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
-import styles from "../styles/EditarPerfil.module.css";
+//import styles from "../styles/EditarPerfil.module.css";
 import {
-    Button,
-    TextField,
-    MenuItem,
     FormControl,
     InputLabel,
     OutlinedInput,
@@ -358,8 +355,3 @@ export default function CrearEventoDeportivo() {
     </>
   );
 }
-            </div>
-        </>
-    );
-}
-
