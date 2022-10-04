@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ALD",
+  "name": "Administración de Ligas Deportivas",
   "icons": [
     {
       "src": "favicon.ico",
