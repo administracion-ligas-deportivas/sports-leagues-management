@@ -26,10 +26,10 @@ import Paper from "@mui/material/Paper";
 //import { useEffect, useState } from "react";
 //import styles from "../styles/EditarPerfil.module.css";
 import {
-    FormControl,
-    InputLabel,
-    OutlinedInput,
-    InputAdornment,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
 }from "@mui/material";
 
 

@@ -13,7 +13,7 @@ export default function NuevoArbitro() {
     <>
       <div className={styles.container}>
         <div className={styles.rectangle}>
-        <h1>Nuevo Arbitro</h1>
+          <h1>Nuevo Arbitro</h1>
           <div className={styles.flexContainer}>
             <div className={styles.user}>
               <UserIcon />
@@ -27,19 +27,19 @@ export default function NuevoArbitro() {
           </div>
           <div className={styles.flexContainer}>
             <div>
-            <TextField fullWidth id="outlined-basic" label="Clave de liga/torneo"/>
+              <TextField fullWidth id="outlined-basic" label="Clave de liga/torneo"/>
             </div>
           </div>
           <div className={styles.buttons}>
             <div>
-            <Button variant="contained">
+              <Button variant="contained">
               Ingresar
-            </Button>
+              </Button>
             </div>
             <div>
-            <Button variant="contained" color="error">
+              <Button variant="contained" color="error">
               Cancelar
-            </Button>
+              </Button>
             </div>
           </div>
         </div>

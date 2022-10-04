@@ -66,7 +66,7 @@ function Login() {
             id="user-input"
             label="Correo"
             onChange={(event) => {
-                setUEmail(event.target.value);
+              setUEmail(event.target.value);
             }}
           />
           <TextField
@@ -74,7 +74,7 @@ function Login() {
             id="user-input-pass"
             label="Contrseña"
             onChange={(event) => {
-                setUEmail(event.target.value);
+              setUEmail(event.target.value);
             }}
           />
           <Button variant="contained" onClick={loginUser} type="submit">
