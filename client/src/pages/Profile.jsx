@@ -34,9 +34,9 @@ export default function EditarPerfil() {
           apellido: response.data.apellido,
           correo: response.data.email,
         });
-        setName(response.data.nombre)
+        setName(response.data.nombre);
       }
-    )
+    );
   }, [id]);
 
   
@@ -106,7 +106,7 @@ export default function EditarPerfil() {
                 InputLabelProps={{ shrink: true }}
                 type='mail'
                 margin="normal"
-            />
+              />
             </div>
           </div>
           <div className={styles.flexContainer}>
@@ -131,7 +131,7 @@ export default function EditarPerfil() {
               />
             </div>
             <div className={styles.input}>
-            <TextField
+              <TextField
                 fullWidth 
                 id="colonia"
                 label="Colonia"

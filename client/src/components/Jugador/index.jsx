@@ -5,7 +5,7 @@ import { InputLabel } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelIcon from "@mui/icons-material/Cancel";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 /*-----------------------------------------------------*/
 
 function Jugador({ playerName }) {

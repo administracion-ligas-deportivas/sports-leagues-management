@@ -1,25 +1,25 @@
-import "./App.css"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home"
-import CreateAdvise from "./pages/CreateAdvise"
-import Advise from "./pages/Advise"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import GestionTorneo from "./pages/gestion-torneo"
-import NuevoArbitro from "./pages/NuevoArbitro"
-import CrearEventoDeportivo from "./pages/CreateSportEvent"
-import { AuthContext } from "./helpers/AuthContext"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import PageNotFound from "./pages/PageNotFound"
-import Profile from "./pages/Profile"
-import Navbar from "./components/Navbar/index"
-import Footer from "./components/Footer/index"
-import EnterSportsEvent from "./pages/enter-sports-event"
-import EstadisticasPersonales from "./pages/estadisticas-personales"
-import AsignarRoles from "./pages/AsignarRoles"
-import Equipos from "./pages/EquiposEnSistema"
+import Home from "./pages/Home";
+import CreateAdvise from "./pages/CreateAdvise";
+import Advise from "./pages/Advise";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import GestionTorneo from "./pages/gestion-torneo";
+import NuevoArbitro from "./pages/NuevoArbitro";
+import CrearEventoDeportivo from "./pages/CreateSportEvent";
+import { AuthContext } from "./helpers/AuthContext";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import PageNotFound from "./pages/PageNotFound";
+import Profile from "./pages/Profile";
+import Navbar from "./components/Navbar/index";
+import Footer from "./components/Footer/index";
+import EnterSportsEvent from "./pages/enter-sports-event";
+import EstadisticasPersonales from "./pages/estadisticas-personales";
+import AsignarRoles from "./pages/AsignarRoles";
+import Equipos from "./pages/EquiposEnSistema";
 
 /**
  *
@@ -46,7 +46,7 @@ function App() {
     id: 0,
     correo: "",
     status: false,
-  })
+  });
 
   useEffect(() => {
     axios
@@ -57,16 +57,16 @@ function App() {
       })
       .then((response) => {
         if (response.data.error)
-          setAuthState({ nombre: "", id: 0, correo: "", status: false })
+          setAuthState({ nombre: "", id: 0, correo: "", status: false });
         else
           setAuthState({
             nombre: response.data.nombre,
             id: response.data.id,
             correo: response.userEmail,
             status: true,
-          })
-      })
-  }, [])
+          });
+      });
+  }, []);
 
   /*
     MOVER A PANTALLA DE PERFIL
@@ -121,7 +121,7 @@ function App() {
         <Footer />
       </Router>
     </AuthContext.Provider>
-  )
+  );
 }
 
-export default App
+export default App;

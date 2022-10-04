@@ -17,7 +17,7 @@ export default function Button({
   href = "",
   target = "_blank",
   type = "button",
-  onClick = '',
+  onClick = "",
   children,
 }) {
   const allClassNames = [
