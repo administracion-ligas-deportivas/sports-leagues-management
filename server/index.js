@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 const db = require("./models")
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 /*const pool = mariadb.createPool(
 {
