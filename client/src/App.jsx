@@ -20,6 +20,8 @@ import EnterSportsEvent from "./pages/enter-sports-event";
 import EstadisticasPersonales from "./pages/estadisticas-personales";
 import AsignarRoles from "./pages/AsignarRoles";
 import Equipos from "./pages/EquiposEnSistema";
+import TraspasoEquipo from "./pages/TraspasoEquipo";
+import RegistroDeportivo from "./pages/RegistroDeportivo";
 
 /**
  *
@@ -108,6 +110,8 @@ function App() {
               />
               <Route path="/AsignarRoles" element={<AsignarRoles />} />
               <Route path="/Equipos" element={<Equipos />} />
+              <Route path="/TraspasoEquipo" element={<TraspasoEquipo />} />
+              <Route path="/RegistroDeportivo" element={<RegistroDeportivo />} />
             </>
           ) : (
             <>
