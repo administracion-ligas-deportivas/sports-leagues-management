@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 //import Head from "next/head";
-import styles from "../styles/EditarPerfil.module.css";
+import styles from "@/styles/EditarPerfil.module.css";
 import UserIcon from "@/components/Icon";
 import {
   Button,
