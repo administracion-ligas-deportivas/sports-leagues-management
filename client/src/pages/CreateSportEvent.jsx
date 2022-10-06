@@ -3,8 +3,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 //import Head from "next/head";
 //import styles from "../styles/EditarPerfil.module.css";
 import styles from "../styles/create-sports-event.module.css";
-import Footer from "../components/Footer";
-//import UserIcon from "../components/Icon";
+import Footer from "@/components/Footer";
+//import UserIcon from "@/components/Icon";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, TextField, MenuItem, Stack } from "@mui/material";
