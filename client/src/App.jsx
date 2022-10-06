@@ -22,6 +22,7 @@ import AsignarRoles from "./pages/AsignarRoles";
 import Equipos from "./pages/EquiposEnSistema";
 import NuevaChancha from "./pages/agregarCancha";
 import EventosDeportivos from "./pages/EventosDeportivos";
+import MainLayout from "./Layouts/MainLayout";
 
 /**
  *
@@ -84,47 +85,54 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ autState, setAuthState }}>
-      <Router>
-        {autState.status && (
-          <>
-            <Navbar />
-          </>
-        )}
-        <Routes>
-          {autState.status ? (
+      <MainLayout>
+        <Router>
+          {autState.status && (
             <>
-              <Route exact path="/Home" element={<Home />} />
-              <Route path="/CreateAdvise" element={<CreateAdvise />} />
-              <Route path="/Advise/:id" element={<Advise />} />
-              <Route path="/Profile/:id" element={<Profile />} />
-              <Route path="/gestion-torneo" element={<GestionTorneo />} />
-              <Route path="/NuevoArbitro" element={<NuevoArbitro />} />
-              <Route
-                path="/CrearEventoDeportivo"
-                element={<CrearEventoDeportivo />}
-              />
-              <Route path="/EnterSportsEvent" element={<EnterSportsEvent />} />
-              <Route
-                path="/EstadisticasPersonales"
-                element={<EstadisticasPersonales />}
-              />
-              <Route path="/AsignarRoles" element={<AsignarRoles />} />
-              <Route path="/Equipos" element={<Equipos />} />
-              <Route path='/NuevaCancha' element={<NuevaChancha />} />
-              <Route path='/EventosDeportivos' element={<EventosDeportivos />} />
-
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<Login />} />
-              <Route path="/Register" element={<Register />} />
+              <Navbar />
             </>
           )}
-          <Route path="*" element={<PageNotFound />}></Route>
-        </Routes>
+          <Routes>
+            {autState.status ? (
+              <>
+                <Route exact path="/Home" element={<Home />} />
+                <Route path="/CreateAdvise" element={<CreateAdvise />} />
+                <Route path="/Advise/:id" element={<Advise />} />
+                <Route path="/Profile/:id" element={<Profile />} />
+                <Route path="/gestion-torneo" element={<GestionTorneo />} />
+                <Route path="/NuevoArbitro" element={<NuevoArbitro />} />
+                <Route
+                  path="/CrearEventoDeportivo"
+                  element={<CrearEventoDeportivo />}
+                />
+                <Route
+                  path="/EnterSportsEvent"
+                  element={<EnterSportsEvent />}
+                />
+                <Route
+                  path="/EstadisticasPersonales"
+                  element={<EstadisticasPersonales />}
+                />
+                <Route path="/AsignarRoles" element={<AsignarRoles />} />
+                <Route path="/Equipos" element={<Equipos />} />
+                <Route path="/NuevaCancha" element={<NuevaChancha />} />
+                <Route
+                  path="/EventosDeportivos"
+                  element={<EventosDeportivos />}
+                />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/Register" element={<Register />} />
+              </>
+            )}
+            <Route path="*" element={<PageNotFound />}></Route>
+          </Routes>
 
-        <Footer />
-      </Router>
+          <Footer />
+        </Router>
+      </MainLayout>
     </AuthContext.Provider>
   );
 }
