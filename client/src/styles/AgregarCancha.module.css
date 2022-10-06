@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+    padding-top: 20px;
+}
+.container{
+    padding: 20px;
+}
+.container .rectangle{
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 20px;
+}
+.container .rectangle .button{
+    justify-content: end;
+}
+.container .form {
+    padding: 10px;
+}
+.aux{
+    width: 100%;
+}

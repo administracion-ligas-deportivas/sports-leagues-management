@@ -4,7 +4,7 @@ import{
   Button
 } from "@mui/material";
 
-import UserIcon from "../components/Icon";
+import UserIcon from "@/components/Icon";
 
 import styles from "../styles/nuevo-arbitro.module.css";
 

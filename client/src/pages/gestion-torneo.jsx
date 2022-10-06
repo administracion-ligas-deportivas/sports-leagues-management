@@ -1,11 +1,11 @@
 import styles from "../styles/GestionTorneo.module.css";
-//import InputCode from "../components/InputCode/index";
+//import InputCode from "@/components/InputCode/index";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 
-import Jugador from "./../components/Jugador/index";
+import Jugador from "@/components/Jugador/index";
 //import { useParams } from "react-router-dom";
 //import axios from "axios";
 //import { useEffect, useState } from "react";

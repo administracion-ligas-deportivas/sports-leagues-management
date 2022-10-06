@@ -3,9 +3,9 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
-//import Input from "../components/Input/index";
-//import Label from "../components/Label";
-// import Button from "../components/Button/index";
+//import Input from "@/components/Input/index";
+//import Label from "@/components/Label";
+// import Button from "@/components/Button/index";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 

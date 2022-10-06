@@ -1,12 +1,15 @@
-const USERNAME = process.env.DB_USERNAME ?? "root"
-const HOST = process.env.DB_HOST ?? "localhost"
+const username = process.env.DB_USERNAME || "root"
+
+const host = process.env.DB_HOST || "localhost"
+
+
 
 module.exports = {
   development: {
-    username: USERNAME,
+    username,
     password: process.env.DB_PASSWORD,
     database: "ligas_deportivas",
-    host: HOST,
+    host,
     dialect: "mariadb",
   },
   test: {

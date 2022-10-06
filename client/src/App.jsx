@@ -22,6 +22,8 @@ import AsignarRoles from "./pages/AsignarRoles";
 import Equipos from "./pages/EquiposEnSistema";
 import TraspasoEquipo from "./pages/TraspasoEquipo";
 import RegistroDeportivo from "./pages/RegistroDeportivo";
+import NuevaChancha from "./pages/agregarCancha";
+import EventosDeportivos from "./pages/EventosDeportivos";
 
 /**
  *
@@ -112,6 +114,9 @@ function App() {
               <Route path="/Equipos" element={<Equipos />} />
               <Route path="/TraspasoEquipo" element={<TraspasoEquipo />} />
               <Route path="/RegistroDeportivo" element={<RegistroDeportivo />} />
+              <Route path='/NuevaCancha' element={<NuevaChancha />} />
+              <Route path='/EventosDeportivos' element={<EventosDeportivos />} />
+
             </>
           ) : (
             <>
