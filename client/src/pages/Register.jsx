@@ -7,9 +7,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
-//import Input from "../components/Input/index";
-//import Label from "../components/Label";
-//import Button from "../components/Button/index";
+//import Input from "@/components/Input/index";
+//import Label from "@/components/Label";
+//import Button from "@/components/Button/index";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

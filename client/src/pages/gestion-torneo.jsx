@@ -1,12 +1,11 @@
-
 import styles from "../styles/GestionTorneo.module.css";
-//import InputCode from "../components/InputCode/index";
+//import InputCode from "@/components/InputCode/index";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 
-import Jugador from "./../components/Jugador/index";
+import Jugador from "@/components/Jugador/index";
 //import { useParams } from "react-router-dom";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
@@ -45,8 +44,7 @@ export default function GestionTorneo() {
             <div className={styles.flexContainer}>
               <div className={styles.playersContainer}>
                 Componente de jugadores
-                <Jugador playerName="kdjskj">
-                </Jugador>
+                <Jugador playerName="kdjskj"></Jugador>
                 {/*<Jugador />
               <Jugador />
               <Jugador />

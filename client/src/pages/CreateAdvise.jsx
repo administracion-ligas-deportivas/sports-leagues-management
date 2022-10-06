@@ -2,7 +2,7 @@ import React from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import Button from "../components/Button";
+import Button from "@/components/Button";
 import {useNavigate, Link} from "react-router-dom";
 
 function CreateAdvise() {
