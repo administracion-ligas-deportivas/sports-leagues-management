@@ -111,6 +111,10 @@ function Home() {
             {" "}
             Nueva Cancha{" "}
           </Button>
+          <Button variant="contained" href="/EventosDeportivos">
+            {" "}
+            Eventos Deportivos
+          </Button>
         </Stack>
         <div>
           {lista_anuncios.map((value, key) => {
