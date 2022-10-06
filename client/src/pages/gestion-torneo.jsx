@@ -2,7 +2,7 @@ import styles from "../styles/GestionTorneo.module.css";
 //import InputCode from "@/components/InputCode/index";
 
 /* ----------------------------------- MUI ---------------------------------- */
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 
 import Jugador from "@/components/Jugador/index";
@@ -43,27 +43,28 @@ export default function GestionTorneo() {
             </div>
             <div className={styles.flexContainer}>
               <div className={styles.playersContainer}>
-                Componente de jugadores
-                <Jugador playerName="kdjskj"></Jugador>
-                {/*<Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />*/}
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
               </div>
               <div className={styles.playersContainer}>
-                Componente de jugadores
-                {/*<Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />
-              <Jugador />*/}
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
+                <Jugador playerName="usuariosBD Nombre Apellido"></Jugador>
               </div>
             </div>
             <div className={styles.flexContainer}>
@@ -97,12 +98,14 @@ export default function GestionTorneo() {
             />*/}
             </div>
             <div className={styles.buttons}>
-              <div className={styles.buttonsSingleDiv}>
+              <div>
+                <Button variant="contained">Ingresar</Button>
+              </div>
+              <div>
                 <Button variant="contained" color="error">
                   Cancelar
                 </Button>
               </div>
-              <Button variant="contained">Aceptar</Button>
             </div>
           </div>
         </div>

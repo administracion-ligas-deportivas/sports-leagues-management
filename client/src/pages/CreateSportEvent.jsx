@@ -25,12 +25,7 @@ import Paper from "@mui/material/Paper";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
 //import styles from "../styles/EditarPerfil.module.css";
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-}from "@mui/material";
+//import { FormControl, InputLabel, OutlinedInput, InputAdornment }from "@mui/material";
 
 
 export default function CrearEventoDeportivo() {
@@ -48,7 +43,8 @@ export default function CrearEventoDeportivo() {
     boxShadow: 24,
     p: 4,
   };
-  const options = [
+  
+  /*const options = [
     {
       value: "USD",
       label: "$",
@@ -65,7 +61,7 @@ export default function CrearEventoDeportivo() {
       value: "JPY",
       label: "¥",
     },
-  ];
+  ];*/
 
   const sports = [
     {
@@ -246,112 +242,20 @@ export default function CrearEventoDeportivo() {
               </Table>
             </TableContainer>
           </div>
-          {/*<TextField
-            fullWidth
-            id="sports-event-name"
-            label="Nombre del evento deportivo"
-            margin="normal"
-            // onChange={(event) => setName(event.target.value)}
-            // InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            fullWidth
-            id="sports"
-            select
-            label="Deporte"
-            margin="normal"
-            // value={currency}
-            // onChange={handleChange}
-            helperText="Selecciona el deporte"
-          >
-            {sports.map((sports) => (
-              <MenuItem key={sports.value} value={sports.value}>
-                {sports.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-        <div className={styles.numTeams}>
-          <TextField
-            fullWidth
-            id="numTeams"
-            label="Número de Equipos"
-            margin="normal"
-            // onChange={(event) => setName(event.target.value)}
-            // InputLabelProps={{ shrink: true }}
-          />
-        </div>
-        <div className={styles.fecha}>
-          <TextField
-            fullWidth
-            id="dateStart"
-            label="Fecha de inicio"
-            margin="normal"
-            // onChange={(event) => setName(event.target.value)}
-            // InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            fullWidth
-            id="dateEnd"
-            label="Fecha de fin"
-            margin="normal"
-            // onChange={(event) => setName(event.target.value)}
-            // InputLabelProps={{ shrink: true }}
-          />
-        </div>
-        <div className={styles.datos}>
-          <TextField
-            id="category"
-            select
-            label="Categoria"
-            margin="normal"
-            // value={currency}
-            // onChange={handleChange}
-            helperText="Selecciona la categoria"
-          >
-            {options.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            fullWidth
-            id="referees"
-            label="Arbitros"
-            margin="normal"
-            // onChange={(event) => setName(event.target.value)}
-            // InputLabelProps={{ shrink: true }}
-          />
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-            <OutlinedInput
-              id="amount"
-              // value={values.amount}
-              // onChange={handleChange('amount')}
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
-              label="cantidad"
-            />
-          </FormControl>
-        </div>
-        <div className={styles.rules}>
-          <TextField
-            fullWidth
-            margin="normal"
-            id="rules"
-            label="Reglas"
-            multiline
-            rows={5}
-            placeholder=" 1.- Regla 1
-                        2.- Regla 2 
-                        3.- Regla 3"
-          />
-        </div>}*/}
+          <div className={styles.buttons}>
+            <div>
+              <Button variant="contained">
+              Ingresar
+              </Button>
+            </div>
+            <div>
+              <Button variant="contained" color="error">
+              Cancelar
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

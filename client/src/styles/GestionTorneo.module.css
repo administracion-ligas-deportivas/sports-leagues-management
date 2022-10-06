@@ -103,11 +103,17 @@
   .buttons {
     display: flex;
     flex-direction: row-reverse;
-    padding: 10px;
   }
-  
-  .buttonsSingleDiv{
-    margin-right: 10px;
+
+  .buttons div {
+    margin-left: 3em;
+  }
+
+  .playersContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    padding: 1em;
   }
 }
 
@@ -151,8 +157,15 @@
 
   .buttons {
     display: flex;
-    height: auto;
-    padding: 10px;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  .playersContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    padding: 1em;
   }
 
 }

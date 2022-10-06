@@ -103,9 +103,13 @@ function Home() {
             {" "}
             Asignar Roles{" "}
           </Button>
-          <Button variant="contained" href="/Equipos">
+          <Button variant="contained" href="/RegistroDeportivo">
             {" "}
-            Equipos{" "}
+            Registro deportivo{" "}
+          </Button>
+          <Button variant="contained" href="/TraspasoEquipo">
+            {" "}
+            Traspaso de equipo{" "}
           </Button>
           <Button variant="contained" href="/NuevaCancha">
             {" "}
