@@ -14,8 +14,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
-import Navbar from "./components/Navbar/index";
-import Footer from "./components/Footer/index";
 import EnterSportsEvent from "./pages/enter-sports-event";
 import EstadisticasPersonales from "./pages/estadisticas-personales";
 import AsignarRoles from "./pages/AsignarRoles";
@@ -85,16 +83,12 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ autState, setAuthState }}>
-      <MainLayout>
-        <Router>
-          {autState.status && (
-            <>
-              <Navbar />
-            </>
-          )}
+      <Router>
+        <MainLayout>
           <Routes>
             {autState.status ? (
               <>
+                <Route exact path="/" element={<Home />} />
                 <Route exact path="/Home" element={<Home />} />
                 <Route path="/CreateAdvise" element={<CreateAdvise />} />
                 <Route path="/Advise/:id" element={<Advise />} />
@@ -129,10 +123,8 @@ function App() {
             )}
             <Route path="*" element={<PageNotFound />}></Route>
           </Routes>
-
-          <Footer />
-        </Router>
-      </MainLayout>
+        </MainLayout>
+      </Router>
     </AuthContext.Provider>
   );
 }

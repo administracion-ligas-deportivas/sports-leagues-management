@@ -30,8 +30,7 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
-}from "@mui/material";
-
+} from "@mui/material";
 
 export default function CrearEventoDeportivo() {
   const [open, setOpen] = React.useState(false);
@@ -351,7 +350,6 @@ export default function CrearEventoDeportivo() {
         </div>}*/}
         </div>
       </div>
-      <Footer />
     </>
   );
 }
