@@ -24,6 +24,7 @@ import TraspasoEquipo from "./pages/TraspasoEquipo";
 import RegistroDeportivo from "./pages/RegistroDeportivo";
 import NuevaChancha from "./pages/agregarCancha";
 import EventosDeportivos from "./pages/EventosDeportivos";
+import RegistroEstadistico from "./pages/Registrar-Estadistico";
 
 /**
  *
@@ -116,6 +117,7 @@ function App() {
               <Route path="/RegistroDeportivo" element={<RegistroDeportivo />} />
               <Route path='/NuevaCancha' element={<NuevaChancha />} />
               <Route path='/EventosDeportivos' element={<EventosDeportivos />} />
+              <Route path='/RegistroEstadistico' element={<RegistroEstadistico />} />
 
             </>
           ) : (

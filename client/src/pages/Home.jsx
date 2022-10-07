@@ -119,6 +119,10 @@ function Home() {
             {" "}
             Eventos Deportivos
           </Button>
+          <Button variant="contained" href="/RegistroEstadistico">
+            {" "}
+            Registrar Estadistico
+          </Button>
         </Stack>
         <div>
           {lista_anuncios.map((value, key) => {
