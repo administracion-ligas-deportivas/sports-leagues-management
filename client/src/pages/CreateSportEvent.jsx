@@ -25,6 +25,12 @@ import Paper from "@mui/material/Paper";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
 //import styles from "../styles/EditarPerfil.module.css";
+import {
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+} from "@mui/material";
 //import { FormControl, InputLabel, OutlinedInput, InputAdornment }from "@mui/material";
 
 

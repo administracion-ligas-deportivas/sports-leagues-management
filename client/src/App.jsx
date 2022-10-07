@@ -14,8 +14,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
-import Navbar from "./components/Navbar/index";
-import Footer from "./components/Footer/index";
 import EnterSportsEvent from "./pages/enter-sports-event";
 import EstadisticasPersonales from "./pages/estadisticas-personales";
 import AsignarRoles from "./pages/AsignarRoles";
@@ -24,6 +22,7 @@ import TraspasoEquipo from "./pages/TraspasoEquipo";
 import RegistroDeportivo from "./pages/RegistroDeportivo";
 import NuevaChancha from "./pages/agregarCancha";
 import EventosDeportivos from "./pages/EventosDeportivos";
+import MainLayout from "./Layouts/MainLayout";
 import RegistroEstadistico from "./pages/Registrar-Estadistico";
 
 /**
@@ -88,48 +87,46 @@ function App() {
   return (
     <AuthContext.Provider value={{ autState, setAuthState }}>
       <Router>
-        {autState.status && (
-          <>
-            <Navbar />
-          </>
-        )}
-        <Routes>
-          {autState.status ? (
-            <>
-              <Route exact path="/Home" element={<Home />} />
-              <Route path="/CreateAdvise" element={<CreateAdvise />} />
-              <Route path="/Advise/:id" element={<Advise />} />
-              <Route path="/Profile/:id" element={<Profile />} />
-              <Route path="/gestion-torneo" element={<GestionTorneo />} />
-              <Route path="/NuevoArbitro" element={<NuevoArbitro />} />
-              <Route
-                path="/CrearEventoDeportivo"
-                element={<CrearEventoDeportivo />}
-              />
-              <Route path="/EnterSportsEvent" element={<EnterSportsEvent />} />
-              <Route
-                path="/EstadisticasPersonales"
-                element={<EstadisticasPersonales />}
-              />
-              <Route path="/AsignarRoles" element={<AsignarRoles />} />
-              <Route path="/Equipos" element={<Equipos />} />
-              <Route path="/TraspasoEquipo" element={<TraspasoEquipo />} />
-              <Route path="/RegistroDeportivo" element={<RegistroDeportivo />} />
-              <Route path='/NuevaCancha' element={<NuevaChancha />} />
-              <Route path='/EventosDeportivos' element={<EventosDeportivos />} />
-              <Route path='/RegistroEstadistico' element={<RegistroEstadistico />} />
-
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<Login />} />
-              <Route path="/Register" element={<Register />} />
-            </>
-          )}
-          <Route path="*" element={<PageNotFound />}></Route>
-        </Routes>
-
-        <Footer />
+        <MainLayout>
+          <Routes>
+            {autState.status ? (
+              <>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/Home" element={<Home />} />
+                <Route path="/CreateAdvise" element={<CreateAdvise />} />
+                <Route path="/Advise/:id" element={<Advise />} />
+                <Route path="/Profile/:id" element={<Profile />} />
+                <Route path="/gestion-torneo" element={<GestionTorneo />} />
+                <Route path="/NuevoArbitro" element={<NuevoArbitro />} />
+                <Route
+                  path="/CrearEventoDeportivo"
+                  element={<CrearEventoDeportivo />}
+                />
+                <Route
+                  path="/EnterSportsEvent"
+                  element={<EnterSportsEvent />}
+                />
+                <Route
+                  path="/EstadisticasPersonales"
+                  element={<EstadisticasPersonales />}
+                />
+                <Route path="/AsignarRoles" element={<AsignarRoles />} />
+                <Route path="/Equipos" element={<Equipos />} />
+                <Route path="/NuevaCancha" element={<NuevaChancha />} />
+                <Route
+                  path="/EventosDeportivos"
+                  element={<EventosDeportivos />}
+                />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Login />} />
+                <Route path="/Register" element={<Register />} />
+              </>
+            )}
+            <Route path="*" element={<PageNotFound />}></Route>
+          </Routes>
+        </MainLayout>
       </Router>
     </AuthContext.Provider>
   );
