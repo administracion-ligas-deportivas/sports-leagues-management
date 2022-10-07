@@ -18,9 +18,12 @@ import EnterSportsEvent from "./pages/enter-sports-event";
 import EstadisticasPersonales from "./pages/estadisticas-personales";
 import AsignarRoles from "./pages/AsignarRoles";
 import Equipos from "./pages/EquiposEnSistema";
+import TraspasoEquipo from "./pages/TraspasoEquipo";
+import RegistroDeportivo from "./pages/RegistroDeportivo";
 import NuevaChancha from "./pages/agregarCancha";
 import EventosDeportivos from "./pages/EventosDeportivos";
 import MainLayout from "./Layouts/MainLayout";
+import RegistroEstadistico from "./pages/Registrar-Estadistico";
 
 /**
  *
