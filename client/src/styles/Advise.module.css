@@ -1,0 +1,17 @@
+.container{
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.comentarios{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    /* border: 1px solid black; */
+}
+
+.comentarios .coment{
+    line-height: 0%;
+}
+
