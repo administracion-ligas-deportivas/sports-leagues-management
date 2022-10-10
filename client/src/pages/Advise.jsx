@@ -4,7 +4,9 @@ import {useParams, Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../helpers/AuthContext";
 import style from "../styles/Advise.module.css";
 import {Button, TextField} from "@mui/material";
-import {DeleteIcon, SendIcon} from "@mui/icons-material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
  * si no las recibe, actualmente (21/05/2022) da un error en consola (Hacer proyecto sin errores)
@@ -89,13 +91,12 @@ function Advise() {
                   <h4>{comentario.usuario} dijo: </h4>
                   <p>{comentario.comentario}</p>
                   {autState.nombre === comentario.usuario && 
-                    <Button size="small" color="error" startIcon={<DeleteIcon />} variant="contained" onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
+                    <Button startIcon={<DeleteIcon />} size="small" color="error"  variant="contained" onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
                   }
                 </div>
               );
           })}
           <h3>Añadir un comentario:</h3>
-          {/* <input type='text' value={crearComentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setcrearComentario(event.target.value);}}/> */}
           <TextField 
             fullWidth
             size="small"
@@ -105,7 +106,7 @@ function Advise() {
             placeholder='Ingesa tu comentario...' 
             onChange={(event) => {setcrearComentario(event.target.value);}}
           />
-          <Button variant="contained" onClick={nuevoComentario} type='submit' sx={'margin-top: 10px;'} size='small'> Subir comentario </Button>
+          <Button startIcon={<SendIcon />} variant="contained" onClick={nuevoComentario} type='submit' sx={'margin-top: 10px;'} size='small' > Subir comentario </Button>
         </div>
       </div> 
     </>
