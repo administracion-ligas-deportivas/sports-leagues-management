@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, {useEffect, useState, useContext} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
-import Button from "@/components/Button";
+//import Button from "@/components/Button";
 import {AuthContext} from "../helpers/AuthContext";
+
+/* ----------------------------------- MUI ---------------------------------- */
+import { Button} from "@mui/material";
+/* ----------------------------------- MUI ---------------------------------- */
 
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
@@ -76,10 +80,10 @@ function Advise() {
 
   return (
     <div>
-      <Link to="/Home" > Home </Link>
-        Advise: {advise.nombre} 
+      {/*  to="/Home" > Home </Link> */}
+        Aviso: {advise.nombre} 
       {autState.correo === advise.autor && (
-        <Button onClick={() => {borrarAviso(advise.id);}}>Borrar Aviso</Button>
+        <Button onClick={() => {borrarAviso(advise.id);}} variant="contained">Borrar Aviso</Button>
       )}
       <div>
             COMENTARIOS
@@ -91,7 +95,7 @@ function Advise() {
                 <label> <br/> Autor: {comentario.usuario} </label> <br/>
                 <label> Comentario: {comentario.comentario} <br/></label>
                 {autState.nombre === comentario.usuario && 
-                                <Button onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
+                  <Button onClick={() => {borrarComentario(comentario.id);}} variant="contained">Borrar</Button>
                 }
               </div>
             );
@@ -100,7 +104,7 @@ function Advise() {
         <div>
                 Añadir comentario:
           <input type='text' value={crearComentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setcrearComentario(event.target.value);}}/>
-          <Button onClick={nuevoComentario} type='submit'> Subir comentario </Button>
+          <Button onClick={nuevoComentario} type='submit' variant="contained"> Subir comentario </Button>
         </div>
       </div>
     </div>
