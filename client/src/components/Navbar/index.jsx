@@ -8,6 +8,8 @@ import {
 
 import { useContext } from "react";
 import {AuthContext} from "../../helpers/AuthContext";
+import { Link } from "react-router-dom";
+import style from "./Navbar.module.css";
 
 /*----------------------MUI----------------------------*/
 import AppBar from "@mui/material/AppBar";
@@ -57,11 +59,12 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters >
           <Tooltip title="Ligas Deportivas">
+            <Link to="/home" className={style.linkLogo}>
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/home"
+              // component="a"
+              // href="/home"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -77,6 +80,7 @@ function Navbar() {
                 style={{ marginRight: "10px", fontSize: "2.5rem" }}
               />
             </Typography>
+            </Link>
           </Tooltip>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -120,7 +124,7 @@ function Navbar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -174,7 +178,8 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key='Perfil' onClick={handleCloseUserMenu} component='a' href={`/Profile/${autState.id}`} >
+              <MenuItem key='Perfil' onClick={handleCloseUserMenu}  >
+                <Link to={`/Profile/${autState.id}`} className={style.link}>
                 <Typography 
                   textAlign="center"
                   sx={{
@@ -184,6 +189,7 @@ function Navbar() {
                 >
                     Perfil
                 </Typography>
+                </Link>
               </MenuItem>
               {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
               <MenuItem key='Logout' onClick={logoutUser}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { Button, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
@@ -72,87 +72,113 @@ function Home() {
       <div className={style.container}>
         <h2>Pantallas Realizadas</h2>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/CreateAdvise">
-            {" "}
-            Crear Aviso{" "}
-          </Button>
-          <Button variant="contained" href="/gestion-torneo">
-            {" "}
-            Gestionar Torneo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevoArbitro">
-            {" "}
-            Nuevo Arbitro{" "}
-          </Button>
-          <Button variant="contained" href="/CrearEventoDeportivo">
-            {" "}
-            Crear Evento Deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/EnterSportsEvent">
-            {" "}
-            Entrar a Evento Deportivo
-          </Button>
-          <Button variant="contained" href="/EstadisticasPersonales">
-            {" "}
-            Estadisticas Personales
-          </Button>
+          <Link to="/CreateAdvise" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Crear Aviso{" "}
+            </Button>
+          </Link>
+          <Link to="/gestion-torneo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Gestionar Torneo{" "}
+            </Button>
+          </Link>
+          <Link to="/NuevoArbitro" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Nuevo Arbitro{" "}
+            </Button>
+          </Link>
+          <Link to="/CrearEventoDeportivo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Crear Evento Deportivo{" "}
+            </Button>
+          </Link>
+          <Link to="/EnterSportsEvent" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Entrar a Evento Deportivo
+            </Button>
+          </Link>
+          <Link to="/EstadisticasPersonales" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Estadisticas Personales
+            </Button>
+          </Link>
         </Stack>
         <br></br>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/AsignarRoles">
-            {" "}
-            Asignar Roles{" "}
-          </Button>
-          <Button variant="contained" href="/RegistroDeportivo">
-            {" "}
-            Registro deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/TraspasoEquipo">
-            {" "}
-            Traspaso de equipo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevaCancha">
-            {" "}
-            Nueva Cancha{" "}
-          </Button>
-          <Button variant="contained" href="/EventosDeportivos">
-            {" "}
-            Eventos Deportivos
-          </Button>
-          <Button variant="contained" href="/RegistroEstadistico">
-            {" "}
-            Registrar Estadistico
-          </Button>
-          <Button variant="contained" href="/EquiposEnSistema">
-            {" "}
-            Equipos en sistema
-          </Button>
+          <Link to="/AsignarRoles" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Asignar Roles{" "}
+            </Button>
+          </Link>
+          <Link to="/RegistroDeportivo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Registro deportivo{" "}
+            </Button>
+          </Link>
+          <Link to="/TraspasoEquipo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Traspaso de equipo{" "}
+            </Button>
+          </Link>
+          <Link to="/NuevaCancha" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Nueva Cancha{" "}
+            </Button>
+          </Link>
+          <Link to="/EventosDeportivos" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Eventos Deportivos
+            </Button>
+          </Link>
+          <Link to="/RegistroEstadistico" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Registrar Estadistico
+            </Button>
+          </Link>
         </Stack>
-        <div>
+        <h2> Anuncios </h2>
+        <div className={style.containerAnuncio}>
           {lista_anuncios.map((value, key) => {
             return (
-              <div className="anuncio" key={key}>
-                <div className="titulo">{value.nombre}</div>
-                <div
-                  className="body"
-                  onClick={() => {
-                    navigate(`/Advise/${value.id}`);
-                  }}
-                >
-                  {value.descripcion}
+              <div className={style.anuncio} key={key} >
+                { value.nombre === '' ? 
+                  <h3> ANONIMO publico </h3> 
+                  : 
+                  <h3> {value.nombre} publico </h3> 
+                }
+                <div className={style.anuncioBody} onClick={() => {
+                  navigate(`/Advise/${value.id}`);
+                }}>
+                  <div className={style.anuncioText}>
+                    <p>{value.descripcion}</p>
+                  </div>
+                  <div className={style.anuncioInfo}>
+                    <p> <b> Prioridad: </b>  {value.prioridad} </p>
+                    <p> <b> Autor: </b> {value.autor} </p>
+                  </div>
                 </div>
-                <div className="prioridad">Prioridad: {value.prioridad}</div>
-                <div className="Autor">Autor: {value.autor}</div>
-                <div className="creacion">
+                <div className={style.anuncioFooter}>
                   <ThumbUpAltIcon
-                    onClick={() => {
-                      meGusta(value.id);
-                    }}
-                    className={
-                      //Verifica si se dio like o no
-                      anuncioLiked.includes(value.id) ? "azul" : "rojo"
-                    }
-                  />
+                      onClick={() => {
+                        meGusta(value.id);
+                      }}
+                      className={
+                        //Verifica si se dio like o no
+                        anuncioLiked.includes(value.id) ? "azul" : "rojo"
+                      }
+                    />
                   <label> {value.Likes.length}</label>
                 </div>
               </div>

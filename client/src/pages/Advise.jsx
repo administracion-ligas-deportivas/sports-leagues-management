@@ -2,11 +2,12 @@ import axios from "axios";
 import React, {useEffect, useState, useContext} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 //import Button from "@/components/Button";
+import {useParams, Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../helpers/AuthContext";
-
-/* ----------------------------------- MUI ---------------------------------- */
-import { Button} from "@mui/material";
-/* ----------------------------------- MUI ---------------------------------- */
+import style from "../styles/Advise.module.css";
+import {Button, TextField} from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
 
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
@@ -78,37 +79,74 @@ function Advise() {
     });
   };
 
-  return (
-    <div>
-      {/*  to="/Home" > Home </Link> */}
-        Aviso: {advise.nombre} 
-      {autState.correo === advise.autor && (
-        <Button onClick={() => {borrarAviso(advise.id);}} variant="contained">Borrar Aviso</Button>
-      )}
-      <div>
-            COMENTARIOS
-        <div>
-                Mostrar comentarios:
+  return (    
+    <>
+      <h1>Aviso</h1>
+      <div className={style.container}>
+        {
+          advise.nombre === '' ? 
+            <h3>ANONIMO</h3> 
+          : 
+            <h3>{advise.nombre}</h3>
+        }
+        {/* <h3> {advise.nombre} </h3> */}
+        <p>{advise.descripcion}</p>
+        <h2>Comentarios</h2>
+        <div className={style.comentarios}>
           {comentarios.map((comentario, key) => {
-            return(
-              <div key = {key}>
-                <label> <br/> Autor: {comentario.usuario} </label> <br/>
-                <label> Comentario: {comentario.comentario} <br/></label>
-                {autState.nombre === comentario.usuario && 
-                  <Button onClick={() => {borrarComentario(comentario.id);}} variant="contained">Borrar</Button>
-                }
-              </div>
-            );
+              return(
+                <div key = {key} className={style.coment}>
+                  <h4>{comentario.usuario} dijo: </h4>
+                  <p>{comentario.comentario}</p>
+                  {autState.nombre === comentario.usuario && 
+                    <Button startIcon={<DeleteIcon />} size="small" color="error"  variant="contained" onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
+                  }
+                </div>
+              );
           })}
+          <h3>Añadir un comentario:</h3>
+          <TextField 
+            fullWidth
+            size="small"
+            label="Comentar" 
+            variant="outlined" 
+            value={crearComentario} 
+            placeholder='Ingesa tu comentario...' 
+            onChange={(event) => {setcrearComentario(event.target.value);}}
+          />
+          <Button startIcon={<SendIcon />} variant="contained" onClick={nuevoComentario} type='submit' sx={'margin-top: 10px;'} size='small' > Subir comentario </Button>
         </div>
-        <div>
-                Añadir comentario:
-          <input type='text' value={crearComentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setcrearComentario(event.target.value);}}/>
-          <Button onClick={nuevoComentario} type='submit' variant="contained"> Subir comentario </Button>
-        </div>
-      </div>
-    </div>
-    
+      </div> 
+    </>
+    // <div>
+    //   <Link to="/Home" > Home </Link>
+    //     Advise: {advise.nombre} 
+    //   {autState.correo === advise.autor && (
+    //     <Button onClick={() => {borrarAviso(advise.id);}}>Borrar Aviso</Button>
+    //   )}
+    //   <div>
+    //         COMENTARIOS
+    //     <div>
+    //             Mostrar comentarios:
+    //       {comentarios.map((comentario, key) => {
+    //         return(
+    //           <div key = {key}>
+    //             <label> <br/> Autor: {comentario.usuario} </label> <br/>
+    //             <label> Comentario: {comentario.comentario} <br/></label>
+    //             {autState.nombre === comentario.usuario && 
+    //                             <Button onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
+    //             }
+    //           </div>
+    //         );
+    //       })}
+    //     </div>
+    //     <div>
+    //             Añadir comentario:
+    //       <input type='text' value={crearComentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setcrearComentario(event.target.value);}}/>
+    //       <Button onClick={nuevoComentario} type='submit'> Subir comentario </Button>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 
