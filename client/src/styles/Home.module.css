@@ -4,12 +4,13 @@
 
 .containerAnuncio{
   display: flex;
+  flex-flow: row wrap;
   /* background-color: rgb(243, 246, 250);
   border-radius: 10px;
   padding: 20px; */
 }
 .anuncio{
-  width: 100%;
+  min-width: 50%;
   background-color: rgb(243, 246, 250);
   border-radius: 5px;
   margin-bottom: 10px;

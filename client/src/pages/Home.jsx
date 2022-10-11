@@ -129,7 +129,11 @@ function Home() {
           {lista_anuncios.map((value, key) => {
             return (
               <div className={style.anuncio} key={key} >
-                <h3>{value.nombre} publico</h3>
+                { value.nombre === '' ? 
+                  <h3> ANONIMO publico </h3> 
+                  : 
+                  <h3> {value.nombre} publico </h3> 
+                }
                 <div className={style.anuncioBody} onClick={() => {
                   navigate(`/Advise/${value.id}`);
                 }}>
