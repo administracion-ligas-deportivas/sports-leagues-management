@@ -81,7 +81,13 @@ function Advise() {
     <>
       <h1>Aviso</h1>
       <div className={style.container}>
-        <h3>{advise.nombre} </h3>
+        {
+          advise.nombre === '' ? 
+            <h3>ANONIMO</h3> 
+          : 
+            <h3>{advise.nombre}</h3>
+        }
+        {/* <h3> {advise.nombre} </h3> */}
         <p>{advise.descripcion}</p>
         <h2>Comentarios</h2>
         <div className={style.comentarios}>

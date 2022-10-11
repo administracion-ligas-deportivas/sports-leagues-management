@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { Button, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
@@ -72,57 +72,81 @@ function Home() {
       <div className={style.container}>
         <h2>Pantallas Realizadas</h2>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/CreateAdvise">
-            {" "}
-            Crear Aviso{" "}
-          </Button>
-          <Button variant="contained" href="/gestion-torneo">
-            {" "}
-            Gestionar Torneo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevoArbitro">
-            {" "}
-            Nuevo Arbitro{" "}
-          </Button>
-          <Button variant="contained" href="/CrearEventoDeportivo">
-            {" "}
-            Crear Evento Deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/EnterSportsEvent">
-            {" "}
-            Entrar a Evento Deportivo
-          </Button>
-          <Button variant="contained" href="/EstadisticasPersonales">
-            {" "}
-            Estadisticas Personales
-          </Button>
+          <Link to="/CreateAdvise" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Crear Aviso{" "}
+            </Button>
+          </Link>
+          <Link to="/gestion-torneo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Gestionar Torneo{" "}
+            </Button>
+          </Link>
+          <Link to="/NuevoArbitro" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Nuevo Arbitro{" "}
+            </Button>
+          </Link>
+          <Link to="/CrearEventoDeportivo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Crear Evento Deportivo{" "}
+            </Button>
+          </Link>
+          <Link to="/EnterSportsEvent" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Entrar a Evento Deportivo
+            </Button>
+          </Link>
+          <Link to="/EstadisticasPersonales" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Estadisticas Personales
+            </Button>
+          </Link>
         </Stack>
         <br></br>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/AsignarRoles">
-            {" "}
-            Asignar Roles{" "}
-          </Button>
-          <Button variant="contained" href="/RegistroDeportivo">
-            {" "}
-            Registro deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/TraspasoEquipo">
-            {" "}
-            Traspaso de equipo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevaCancha">
-            {" "}
-            Nueva Cancha{" "}
-          </Button>
-          <Button variant="contained" href="/EventosDeportivos">
-            {" "}
-            Eventos Deportivos
-          </Button>
-          <Button variant="contained" href="/RegistroEstadistico">
-            {" "}
-            Registrar Estadistico
-          </Button>
+          <Link to="/AsignarRoles" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Asignar Roles{" "}
+            </Button>
+          </Link>
+          <Link to="/RegistroDeportivo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Registro deportivo{" "}
+            </Button>
+          </Link>
+          <Link to="/TraspasoEquipo" className={style.link}>
+            <Button variant="contained" >
+              {" "}
+              Traspaso de equipo{" "}
+            </Button>
+          </Link>
+          <Link to="/NuevaCancha" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Nueva Cancha{" "}
+            </Button>
+          </Link>
+          <Link to="/EventosDeportivos" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Eventos Deportivos
+            </Button>
+          </Link>
+          <Link to="/RegistroEstadistico" className={style.link}>
+            <Button variant="contained">
+              {" "}
+              Registrar Estadistico
+            </Button>
+          </Link>
         </Stack>
         <h2> Anuncios </h2>
         <div className={style.containerAnuncio}>
