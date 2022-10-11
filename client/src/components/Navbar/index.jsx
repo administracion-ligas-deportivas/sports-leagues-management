@@ -1,13 +1,7 @@
 import * as React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMedal,
-  faCircleUser,
-} from "@fortawesome/free-solid-svg-icons";
-
-import { useContext } from "react";
-import {AuthContext} from "../../helpers/AuthContext";
+import { faMedal, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 /*----------------------MUI----------------------------*/
 import AppBar from "@mui/material/AppBar";
@@ -21,13 +15,13 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import { useAuthProvider } from "@/context/AuthContext";
 /*-----------------------------------------------------*/
 
 const pages = ["Ligas", "Torneos", "Calendario", "Estadisticas"];
 
-
 function Navbar() {
-  const {autState} = useContext(AuthContext);
+  const { authState } = useAuthProvider();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -47,7 +41,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const logoutUser =() => {
+  const logoutUser = () => {
     localStorage.removeItem("accessToken");
     window.location.href = "/";
   };
@@ -55,7 +49,7 @@ function Navbar() {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1A1C9E" }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters >
+        <Toolbar disableGutters>
           <Tooltip title="Ligas Deportivas">
             <Typography
               variant="h6"
@@ -109,13 +103,13 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center" >{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          
+
           <Typography
             variant="h5"
             noWrap
@@ -174,28 +168,31 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key='Perfil' onClick={handleCloseUserMenu} component='a' href={`/Profile/${autState.id}`} >
-                <Typography 
+              <MenuItem
+                key="Perfil"
+                onClick={handleCloseUserMenu}
+                component="a"
+                href={`/Profile/${authState.id}`}
+              >
+                <Typography
                   textAlign="center"
                   sx={{
                     color: "inherit",
-                    textDecoration: "none" 
+                    textDecoration: "none",
                   }}
                 >
-                    Perfil
+                  Perfil
                 </Typography>
               </MenuItem>
               {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
-              <MenuItem key='Logout' onClick={logoutUser}>
-                <Typography textAlign="center" >Cerrar Sesión</Typography>
+              <MenuItem key="Logout" onClick={logoutUser}>
+                <Typography textAlign="center">Cerrar Sesión</Typography>
               </MenuItem>
-
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-
   );
 }
 
