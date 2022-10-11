@@ -24,6 +24,7 @@ import NuevaChancha from "./pages/agregarCancha";
 import EventosDeportivos from "./pages/EventosDeportivos";
 import MainLayout from "./Layouts/MainLayout";
 import RegistroEstadistico from "./pages/Registrar-Estadistico";
+import EquiposEnSistema from "./pages/EquiposEnSistema";
 
 /**
  *
@@ -113,10 +114,11 @@ function App() {
                 <Route path="/AsignarRoles" element={<AsignarRoles />} />
                 <Route path="/Equipos" element={<Equipos />} />
                 <Route path="/NuevaCancha" element={<NuevaChancha />} />
-                <Route
-                  path="/EventosDeportivos"
-                  element={<EventosDeportivos />}
-                />
+                <Route path="/EventosDeportivos" element={<EventosDeportivos />}/>
+                <Route path="/TraspasoEquipo" element={<TraspasoEquipo />}/>
+                <Route path="/RegistroDeportivo" element={<RegistroDeportivo />}/>
+                <Route path="/RegistroEstadistico" element={<RegistroEstadistico />}/>
+                <Route path="/EquiposEnSistema" element={<EquiposEnSistema />}/>
               </>
             ) : (
               <>

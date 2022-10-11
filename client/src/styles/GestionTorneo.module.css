@@ -105,7 +105,14 @@
     flex-direction: row-reverse;
   }
 
+  .buttonsModal {
+    margin-top: 1em;
+    display: flex;
+    justify-content: end;
+  }
+
   .buttons div {
+    margin-top: 2em;
     margin-left: 3em;
   }
 
@@ -114,6 +121,27 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.5em;
     padding: 1em;
+  }
+
+  .inputModal{
+    margin-top: 1em;
+  }
+
+  .inputModalDH{
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content:space-between;
+    width: 100%;
+  }
+
+  .divButtonA{
+    display: flex;
+    justify-content: end;
+  }
+
+  .equipos{
+    margin-top: 1em;
   }
 }
 
@@ -156,6 +184,7 @@
   }
 
   .buttons {
+    margin-top: 2em;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -168,5 +197,26 @@
     padding: 1em;
   }
 
+  .inputModal{
+    margin-top: 1em;
+    /* width: 100%; */
+  }
+
+  .inputModalDH{
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content:space-between;
+    width: 100%;
+  }
+
+  .divButtonA{
+    display: flex;
+    justify-content: end;
+  }
+
+  .equipos{
+    margin-top: 1em;
+  }
 }
 
