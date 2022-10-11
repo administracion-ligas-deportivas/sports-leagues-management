@@ -73,112 +73,85 @@ function Home() {
         <h2>Pantallas Realizadas</h2>
         <Stack direction="row" spacing={2}>
           <Link to="/CreateAdvise" className={style.link}>
-            <Button variant="contained">
-              {" "}
-              Crear Aviso{" "}
-            </Button>
+            <Button variant="contained"> Crear Aviso </Button>
           </Link>
           <Link to="/gestion-torneo" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Gestionar Torneo{" "}
-            </Button>
+            <Button variant="contained"> Gestionar Torneo </Button>
           </Link>
           <Link to="/NuevoArbitro" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Nuevo Arbitro{" "}
-            </Button>
+            <Button variant="contained"> Nuevo Arbitro </Button>
           </Link>
           <Link to="/CrearEventoDeportivo" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Crear Evento Deportivo{" "}
-            </Button>
+            <Button variant="contained"> Crear Evento Deportivo </Button>
           </Link>
           <Link to="/EnterSportsEvent" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Entrar a Evento Deportivo
-            </Button>
+            <Button variant="contained"> Entrar a Evento Deportivo</Button>
           </Link>
           <Link to="/EstadisticasPersonales" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Estadisticas Personales
-            </Button>
+            <Button variant="contained"> Estadisticas Personales</Button>
           </Link>
         </Stack>
         <br></br>
         <Stack direction="row" spacing={2}>
           <Link to="/AsignarRoles" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Asignar Roles{" "}
-            </Button>
+            <Button variant="contained"> Asignar Roles </Button>
           </Link>
           <Link to="/RegistroDeportivo" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Registro deportivo{" "}
-            </Button>
+            <Button variant="contained"> Registro deportivo </Button>
           </Link>
           <Link to="/TraspasoEquipo" className={style.link}>
-            <Button variant="contained" >
-              {" "}
-              Traspaso de equipo{" "}
-            </Button>
+            <Button variant="contained"> Traspaso de equipo </Button>
           </Link>
           <Link to="/NuevaCancha" className={style.link}>
-            <Button variant="contained">
-              {" "}
-              Nueva Cancha{" "}
-            </Button>
+            <Button variant="contained"> Nueva Cancha </Button>
           </Link>
           <Link to="/EventosDeportivos" className={style.link}>
-            <Button variant="contained">
-              {" "}
-              Eventos Deportivos
-            </Button>
+            <Button variant="contained"> Eventos Deportivos</Button>
           </Link>
           <Link to="/RegistroEstadistico" className={style.link}>
-            <Button variant="contained">
-              {" "}
-              Registrar Estadistico
-            </Button>
+            <Button variant="contained"> Registrar Estadistico</Button>
           </Link>
         </Stack>
         <h2> Anuncios </h2>
         <div className={style.containerAnuncio}>
           {lista_anuncios.map((value, key) => {
             return (
-              <div className={style.anuncio} key={key} >
-                { value.nombre === '' ? 
-                  <h3> ANONIMO publico </h3> 
-                  : 
-                  <h3> {value.nombre} publico </h3> 
-                }
-                <div className={style.anuncioBody} onClick={() => {
-                  navigate(`/Advise/${value.id}`);
-                }}>
+              <div className={style.anuncio} key={key}>
+                {value.nombre === "" ? (
+                  <h3> ANONIMO publico </h3>
+                ) : (
+                  <h3> {value.nombre} publico </h3>
+                )}
+                <div
+                  className={style.anuncioBody}
+                  onClick={() => {
+                    navigate(`/Advise/${value.id}`);
+                  }}
+                >
                   <div className={style.anuncioText}>
                     <p>{value.descripcion}</p>
                   </div>
                   <div className={style.anuncioInfo}>
-                    <p> <b> Prioridad: </b>  {value.prioridad} </p>
-                    <p> <b> Autor: </b> {value.autor} </p>
+                    <p>
+                      {" "}
+                      <b> Prioridad: </b> {value.prioridad}{" "}
+                    </p>
+                    <p>
+                      {" "}
+                      <b> Autor: </b> {value.autor}{" "}
+                    </p>
                   </div>
                 </div>
                 <div className={style.anuncioFooter}>
                   <ThumbUpAltIcon
-                      onClick={() => {
-                        meGusta(value.id);
-                      }}
-                      className={
-                        //Verifica si se dio like o no
-                        anuncioLiked.includes(value.id) ? "azul" : "rojo"
-                      }
-                    />
+                    onClick={() => {
+                      meGusta(value.id);
+                    }}
+                    className={
+                      //Verifica si se dio like o no
+                      anuncioLiked.includes(value.id) ? "azul" : "rojo"
+                    }
+                  />
                   <label> {value.Likes.length}</label>
                 </div>
               </div>
