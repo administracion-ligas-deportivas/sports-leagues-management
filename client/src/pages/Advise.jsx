@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {useEffect, useState, useContext} from "react";
-import {useParams, Link, useNavigate} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 //import Button from "@/components/Button";
 import {AuthContext} from "../helpers/AuthContext";
 

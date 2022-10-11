@@ -1,17 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import style from "../styles/Equipos.module.css";
 import { 
-  Button,
   Typography, 
   Stack, 
-  Autocomplete, 
-  TextField,
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
   Accordion,
   AccordionSummary,
   AccordionDetails,

@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 //import Head from "next/head";
 //import styles from "../styles/EditarPerfil.module.css";
 import styles from "../styles/create-sports-event.module.css";
-import Footer from "@/components/Footer";
+//import Footer from "@/components/Footer";
 //import UserIcon from "@/components/Icon";
 
 /* ----------------------------------- MUI ---------------------------------- */
@@ -25,12 +25,7 @@ import Paper from "@mui/material/Paper";
 //import axios from "axios";
 //import { useEffect, useState } from "react";
 //import styles from "../styles/EditarPerfil.module.css";
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-} from "@mui/material";
+// import {FormControl,InputLabel,OutlinedInput,InputAdornment} from "@mui/material";
 //import { FormControl, InputLabel, OutlinedInput, InputAdornment }from "@mui/material";
 
 
@@ -168,6 +163,18 @@ export default function CrearEventoDeportivo() {
                 fullWidth
                 id="sports-event-format"
                 label="Formato para la liga o torneo"
+                margin="normal"
+                // onChange={(event) => setName(event.target.value)}
+                // InputLabelProps={{ shrink: true }}
+              />
+            </div>
+          </div>
+          <div className={styles.flexContainer}>
+            <div className={styles.input}>
+              <TextField
+                fullWidth
+                id="monto-pagar-jugadores"
+                label="Monto a pagar por jugadores"
                 margin="normal"
                 // onChange={(event) => setName(event.target.value)}
                 // InputLabelProps={{ shrink: true }}

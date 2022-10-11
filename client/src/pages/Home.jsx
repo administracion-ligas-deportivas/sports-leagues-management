@@ -123,6 +123,10 @@ function Home() {
             {" "}
             Registrar Estadistico
           </Button>
+          <Button variant="contained" href="/EquiposEnSistema">
+            {" "}
+            Equipos en sistema
+          </Button>
         </Stack>
         <div>
           {lista_anuncios.map((value, key) => {
