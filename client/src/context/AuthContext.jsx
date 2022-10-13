@@ -1,38 +1,76 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
+const ACCESS_TOKEN = ACCESS_TOKEN;
+
+const throwRequestError = (error) => {
+  throw new Error(`HTTP error: ${error}`);
+};
 
 export function AuthProvider({ children }) {
-  const [authState, setAuthState] = useState({
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
     nombre: "",
     id: 0,
     correo: "",
-    status: false,
+    isAuth: false,
   });
+
+  const login = ({ email, password } = {}) => {
+    const data = { correo: email, contrasenia: password };
+    axios
+      .post("http://localhost:3001/auth/login", data)
+      .then((res) => {
+        // if (res.data.error) {
+        //   throwRequestError(res.data.error);
+        // }
+
+        const { token, userEmail, nombre, id } = res.data;
+        localStorage.setItem(ACCESS_TOKEN, token);
+        setUser({
+          correo: userEmail,
+          nombre: nombre,
+          id: id,
+          isAuth: true,
+        });
+        navigate("/Home");
+      })
+      .catch((error) => {
+        throwRequestError(error);
+      });
+  };
 
   useEffect(() => {
     axios
       .get("http://localhost:3001/auth/verify", {
         headers: {
-          accessToken: localStorage.getItem("accessToken"),
+          accessToken: localStorage.getItem(ACCESS_TOKEN),
         },
       })
-      .then((response) => {
-        if (response.data.error)
-          setAuthState({ nombre: "", id: 0, correo: "", status: false });
-        else
-          setAuthState({
-            nombre: response.data.nombre,
-            id: response.data.id,
-            correo: response.userEmail,
-            status: true,
-          });
+      .then((res) => {
+        const { nombre, userEmail, id } = res.data;
+        setUser({
+          nombre,
+          correo: userEmail,
+          id,
+          isAuth: true,
+        });
+      })
+      .catch((error) => {
+        throwRequestError(error);
+        setUser({ nombre: "", id: 0, correo: "", isAuth: false });
       });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authState }}>
+    <AuthContext.Provider
+      value={{
+        login,
+        user,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

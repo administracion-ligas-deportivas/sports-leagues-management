@@ -22,24 +22,7 @@ function Login() {
 
   const { setAuthState } = useContext(AuthContext);
 
-  const loginUser = (event) => {
-    event.preventDefault();
-
-    const data = { correo: Uemail, contrasenia: Ucontrasenia };
-    axios.post("http://localhost:3001/auth/login", data).then((Response) => {
-      if (Response.data.error) alert(Response.data.error);
-      else {
-        localStorage.setItem("accessToken", Response.data.token);
-        setAuthState({
-          correo: Response.data.userEmail,
-          nombre: Response.data.nombre,
-          id: Response.data.id,
-          status: true,
-        });
-        navigate("/Home");
-      }
-    });
-  };
+  const handleLogin = () => {};
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 

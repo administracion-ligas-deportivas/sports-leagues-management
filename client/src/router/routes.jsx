@@ -19,7 +19,7 @@ import PageNotFound from "@/pages/PageNotFound";
 export const routes = [
   {
     element: <Home />,
-    path: "/Home",
+    path: "/",
   },
   {
     element: <Advise />,
@@ -70,7 +70,7 @@ export const routes = [
     element: <EventosDeportivos />,
   },
   {
-    path: "/",
+    path: "/login",
     element: <Login />,
   },
   {
