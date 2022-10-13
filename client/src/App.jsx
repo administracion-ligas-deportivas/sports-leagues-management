@@ -1,31 +1,9 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 
-import Home from "./pages/Home";
-import CreateAdvise from "./pages/CreateAdvise";
-import Advise from "./pages/Advise";
-import Login from "./pages/Login";
-import GestionTorneo from "./pages/gestion-torneo";
-import NuevoArbitro from "./pages/NuevoArbitro";
-import CrearEventoDeportivo from "./pages/CreateSportEvent";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import PageNotFound from "./pages/PageNotFound";
-import EnterSportsEvent from "./pages/enter-sports-event";
-import EstadisticasPersonales from "./pages/estadisticas-personales";
-import AsignarRoles from "./pages/AsignarRoles";
-import TraspasoEquipo from "./pages/TraspasoEquipo";
-import RegistroDeportivo from "./pages/RegistroDeportivo";
-import EventosDeportivos from "./pages/EventosDeportivos";
-import MainLayout from "./Layouts/MainLayout";
-import RegistroEstadistico from "./pages/Registrar-Estadistico";
 import { AuthProvider } from "./context/AuthContext";
-import { router } from "./router";
+import { routes } from "./router/routes";
+import MainLayout from "./Layouts/MainLayout";
 
 /**
  *
@@ -46,6 +24,7 @@ import { router } from "./router";
  */
 
 function App() {
+  const route = useRoutes(routes);
   //const navigate = useNavigate();
 
   /*
@@ -62,11 +41,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <RouterProvider router={router}>
-        <MainLayout>
-          <Route />
-        </MainLayout>
-      </RouterProvider>
+      <MainLayout>{route}</MainLayout>
     </AuthProvider>
   );
 }
