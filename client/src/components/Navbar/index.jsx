@@ -21,7 +21,7 @@ import { useAuthProvider } from "@/context/AuthContext";
 const pages = ["Ligas", "Torneos", "Calendario", "Estadisticas"];
 
 function Navbar() {
-  const { authState } = useAuthProvider();
+  const { user } = useAuthProvider();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -172,7 +172,7 @@ function Navbar() {
                 key="Perfil"
                 onClick={handleCloseUserMenu}
                 component="a"
-                href={`/Profile/${authState.id}`}
+                href={`/Profile/${user.id}`}
               >
                 <Typography
                   textAlign="center"

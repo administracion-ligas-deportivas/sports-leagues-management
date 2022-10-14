@@ -10,24 +10,28 @@ import { TextField } from "@mui/material";
 import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
-  const { login } = useAuthProvider();
+  const { login, user } = useAuthProvider();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
-  const [user, setUser] = useState({
+  const [userData, setuserData] = useState({
     correo: "",
     password: "",
   });
 
-  const onChange = ({ e }) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    setuserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = () => {
-    const { state } = useLocation();
+  const handleLogin = (e) => {
+    e.preventDefault();
     // Si el usuario venía de otra ruta, redirigir a la que iba. Si no, a la raíz.
     const nextPath = state?.location?.pathname ?? "/";
-    login(user);
-    navigate(nextPath);
+    login(userData);
+
+    if (user.isAuthenticated) {
+      navigate(nextPath);
+    }
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
@@ -43,7 +47,7 @@ function Login() {
         </section>
         <form
           className={[styles.container, styles.loginContainer].join(" ")}
-          onSubmit={handleLogin}
+          onSubmit={(e) => handleLogin(e)}
         >
           <nav className={styles.navLogin}>
             <Link to="/Register">Regístrate</Link>

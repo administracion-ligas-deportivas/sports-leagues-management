@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 const ACCESS_TOKEN = "accessToken";
@@ -47,18 +47,27 @@ export function AuthProvider({ children }) {
       });
   };
 
+  const logout = () => {
+    localStorage.removeItem(ACCESS_TOKEN);
+    setUser(null);
+  };
+
   useEffect(() => {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+
+    if (!accessToken) return;
+
     axios
       .get(VERIFY_URL, {
         headers: {
-          accessToken: localStorage.getItem(ACCESS_TOKEN),
+          accessToken,
         },
       })
       .then((res) => {
         const { nombre, correo, id } = res.data;
         setUser({
           nombre,
-          correo: correo,
+          correo,
           id,
           isAuthenticated: true,
         });
@@ -68,11 +77,6 @@ export function AuthProvider({ children }) {
         setUser(null);
       });
   }, []);
-
-  const logout = () => {
-    localStorage.removeItem(ACCESS_TOKEN);
-    setUser(null);
-  };
 
   return (
     <AuthContext.Provider

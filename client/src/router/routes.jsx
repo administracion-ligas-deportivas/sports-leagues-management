@@ -1,3 +1,4 @@
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import {
   Register,
   Equipos,
@@ -20,7 +21,11 @@ import {
 // https://reactrouter.com/en/main/route/route
 export const routes = [
   {
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
     path: "/",
   },
   {
