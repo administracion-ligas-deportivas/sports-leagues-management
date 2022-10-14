@@ -3,7 +3,6 @@ const router = express.Router();
 const { Usuario } = require("../models");
 const bcrypt = require("bcrypt");
 
-const { sign } = require("jsonwebtoken");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 
 router.post("/", async (req, res) => {
@@ -18,45 +17,6 @@ router.post("/", async (req, res) => {
     });
   });
   res.json("Usuario registrado exitosamente");
-});
-
-router.post("/login", async (req, res) => {
-  const { correo, password } = req.body;
-  //Crear consulta para verificar si existe el usuario
-  const usuarioCheck = await Usuario.findOne({ where: { correo } });
-  console.log(
-    "🚀 ~ file: Usuarios.js ~ line 27 ~ router.post ~ usuarioCheck",
-    usuarioCheck
-  );
-
-  if (!usuarioCheck) {
-    console.log(
-      "🚀 ~ file: Usuarios.js ~ line 33 ~ router.post ~ !usuarioCheck",
-      !usuarioCheck
-    );
-    res.json({ error: "Usuario o contraseña incorrectos" });
-    return;
-  }
-
-  bcrypt.compare(password, usuarioCheck.password).then((coinciden) => {
-    if (!coinciden) res.json("Usuario o contraseña incorrectos");
-
-    //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
-    const accessToken = sign(
-      {
-        userEmail: usuarioCheck.correo,
-        id: usuarioCheck.id,
-        nombre: usuarioCheck.nombre,
-      },
-      "importantSecret"
-    );
-    res.json({
-      token: accessToken,
-      correo: usuarioCheck.correo,
-      id: usuarioCheck.id,
-      nombre: usuarioCheck.nombre,
-    });
-  });
 });
 
 router.get("/verify", validateToken, (req, res) => {

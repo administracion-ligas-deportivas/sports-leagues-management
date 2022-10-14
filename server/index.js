@@ -24,8 +24,6 @@ app.use(express.json());
     database: "ligas_deportivas",
 });*/
 
-//Routers
-
 app.use("/api/posts", postRouter);
 app.use("/api/comentarios", comentariosRouter);
 app.use("/api/auth", usuariosRouter);
