@@ -4,12 +4,16 @@ const express = require("express");
 //const mariadb = require('mariadb');
 const app = express();
 const cors = require("cors");
-
-app.use(express.json());
-app.use(cors());
-
 const db = require("./models");
-const PORT = process.env.PORT || 3001;
+
+const postRouter = require("./controllers/posts");
+const comentariosRouter = require("./controllers/comentarios");
+const usuariosRouter = require("./controllers/usuarios");
+const likesRouter = require("./controllers/likes");
+const loginRouter = require("./controllers/login");
+
+app.use(cors());
+app.use(express.json());
 
 /*const pool = mariadb.createPool(
 {
@@ -21,20 +25,21 @@ const PORT = process.env.PORT || 3001;
 });*/
 
 //Routers
-const postRouter = require("./routes/Posts");
-app.use("/posts", postRouter);
 
-const comentariosRouter = require("./routes/Comentarios");
-app.use("/comentarios", comentariosRouter);
+app.use("/api/posts", postRouter);
+app.use("/api/comentarios", comentariosRouter);
+app.use("/api/auth", usuariosRouter);
+app.use("/api/like", likesRouter);
+app.use("/api/login", loginRouter);
 
-const usuariosRouter = require("./routes/Usuarios");
-app.use("/auth", usuariosRouter);
-
-const likesRouter = require("./routes/Likes");
-app.use("/like", likesRouter);
-
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
+const PORT = process.env.PORT || 3001;
+const server = db.sequelize.sync().then(() => {
+  return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 });
+
+module.exports = {
+  app,
+  server,
+};

@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
     Usuario.create({
       nombre: nombre,
       apellido: apellido,
-      email: correo,
+      correo: correo,
       password: hash,
       telefono: telefono,
     });
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { correo, password } = req.body;
   //Crear consulta para verificar si existe el usuario
-  const usuarioCheck = await Usuario.findOne({ where: { email: correo } });
+  const usuarioCheck = await Usuario.findOne({ where: { correo } });
   console.log(
     "🚀 ~ file: Usuarios.js ~ line 27 ~ router.post ~ usuarioCheck",
     usuarioCheck
@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
     //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
     const accessToken = sign(
       {
-        userEmail: usuarioCheck.email,
+        userEmail: usuarioCheck.correo,
         id: usuarioCheck.id,
         nombre: usuarioCheck.nombre,
       },
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
     );
     res.json({
       token: accessToken,
-      correo: usuarioCheck.email,
+      correo: usuarioCheck.correo,
       id: usuarioCheck.id,
       nombre: usuarioCheck.nombre,
     });
