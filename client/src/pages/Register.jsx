@@ -30,7 +30,7 @@ function Signup() {
     nombre: "",
     apellido: "",
     correo: "",
-    contrasenia: "",
+    password: "",
     telefono: "",
   });
 
@@ -108,7 +108,7 @@ function Signup() {
             disabled
             id="user-input-pass"
             type="password"
-            name="contrasenia"
+            name="password"
             label="Contraseña"
             onChange={handleChange}
           />
@@ -147,7 +147,7 @@ function Signup() {
             disabled
             id="user-input-pass"
             type="password"
-            name="contrasenia"
+            name="password"
             label="Contrase{a"
             onChange={handleChange}
           />
@@ -157,7 +157,7 @@ function Signup() {
             disabled
             id="user-input-pass"
             type="password"
-            name="contrasenia"
+            name="password"
             label="Confirmar contraseña"
             onChange={handleChange}
           />
@@ -203,7 +203,7 @@ function Signup() {
               >
                 <Input
                   id="user-input-pass"
-                  name="contrasenia"
+                  name="password"
                   type="password"
                   placeholder="Contraseña"
                   onChange={handleChange}

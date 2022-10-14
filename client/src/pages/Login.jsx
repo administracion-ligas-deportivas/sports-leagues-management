@@ -1,28 +1,34 @@
 // import Head from "next/head";
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import myimg from "../public/img-login.png";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import myimg from "/img/login.png";
 import styles from "../styles/LoginSignup.module.css";
-//import Input from "@/components/Input/index";
-//import Label from "@/components/Label";
-// import Button from "@/components/Button/index";
-import axios from "axios";
-import { AuthContext } from "../helpers/AuthContext";
 
 /* ----------------------------------- MUI ---------------------------------- */
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
-//import Typography from "@mui/material/Typography";
+import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
+  const { login } = useAuthProvider();
   const navigate = useNavigate();
 
-  const [Uemail, setUEmail] = useState("");
-  const [Ucontrasenia, setUContrasenia] = useState("");
+  const [user, setUser] = useState({
+    correo: "",
+    password: "",
+  });
 
-  const { setAuthState } = useContext(AuthContext);
+  const onChange = ({ e }) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    const { state } = useLocation();
+    // Si el usuario venía de otra ruta, redirigir a la que iba. Si no, a la raíz.
+    const nextPath = state?.location?.pathname ?? "/";
+    login(user);
+    navigate(nextPath);
+  };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 
@@ -37,30 +43,28 @@ function Login() {
         </section>
         <form
           className={[styles.container, styles.loginContainer].join(" ")}
-          onSubmit={loginUser}
+          onSubmit={handleLogin}
         >
           <nav className={styles.navLogin}>
-            <Link to="/Register">Registrate</Link>
+            <Link to="/Register">Regístrate</Link>
           </nav>
           <h1 className={styles.titlePage}>Inicia sesión</h1>
 
           <TextField
             required
-            id="user-input"
+            id="correo"
             label="Correo"
-            onChange={(event) => {
-              setUEmail(event.target.value);
-            }}
+            name="correo"
+            onChange={(event) => onChange(event)}
           />
           <TextField
             disabled
-            id="user-input-pass"
-            label="Contrseña"
-            onChange={(event) => {
-              setUEmail(event.target.value);
-            }}
+            id="password"
+            label="Contraseña"
+            name="password"
+            onChange={(event) => onChange(event)}
           />
-          <Button variant="contained" onClick={loginUser} type="submit">
+          <Button variant="contained" type="submit">
             Iniciar sesión
           </Button>
         </form>

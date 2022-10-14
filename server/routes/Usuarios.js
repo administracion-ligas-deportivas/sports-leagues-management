@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
     if (!coinciden) res.json("Usuario o contraseña erroneos");
 
     //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
-    const accesToken = sign(
+    const accessToken = sign(
       {
         userEmail: usuarioCheck.email,
         id: usuarioCheck.id,
@@ -40,8 +40,8 @@ router.post("/login", async (req, res) => {
       "importantSecret"
     );
     res.json({
-      token: accesToken,
-      userEmail: usuarioCheck.email,
+      token: accessToken,
+      correo: usuarioCheck.email,
       id: usuarioCheck.id,
       nombre: usuarioCheck.nombre,
     });

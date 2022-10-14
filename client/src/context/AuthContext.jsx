@@ -3,39 +3,44 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
-const ACCESS_TOKEN = ACCESS_TOKEN;
+const ACCESS_TOKEN = "accessToken";
+const API_PORT = 3001;
+const BASE_AUTH_URL = `http://localhost:${API_PORT}/auth`;
+const LOGIN_URL = `${BASE_AUTH_URL}/login`;
+const VERIFY_URL = `${BASE_AUTH_URL}/verify`;
 
 const throwRequestError = (error) => {
   throw new Error(`HTTP error: ${error}`);
 };
 
 export function AuthProvider({ children }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [user, setUser] = useState({
     nombre: "",
-    id: 0,
     correo: "",
-    isAuth: false,
+    id: 0,
+    isAuthenticated: false,
   });
 
-  const login = ({ email, password } = {}) => {
-    const data = { correo: email, contrasenia: password };
+  const login = ({ correo, password } = {}) => {
+    const data = { correo, password };
     axios
-      .post("http://localhost:3001/auth/login", data)
+      .post(LOGIN_URL, data)
       .then((res) => {
         // if (res.data.error) {
         //   throwRequestError(res.data.error);
         // }
 
-        const { token, userEmail, nombre, id } = res.data;
+        const { token, correo, nombre, id } = res.data;
         localStorage.setItem(ACCESS_TOKEN, token);
         setUser({
-          correo: userEmail,
+          correo: correo,
           nombre: nombre,
           id: id,
-          isAuth: true,
+          isAuthenticated: true,
         });
-        navigate("/Home");
+
+        // navigate("/");
       })
       .catch((error) => {
         throwRequestError(error);
@@ -44,31 +49,37 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/verify", {
+      .get(VERIFY_URL, {
         headers: {
           accessToken: localStorage.getItem(ACCESS_TOKEN),
         },
       })
       .then((res) => {
-        const { nombre, userEmail, id } = res.data;
+        const { nombre, correo, id } = res.data;
         setUser({
           nombre,
-          correo: userEmail,
+          correo: correo,
           id,
-          isAuth: true,
+          isAuthenticated: true,
         });
       })
       .catch((error) => {
         throwRequestError(error);
-        setUser({ nombre: "", id: 0, correo: "", isAuth: false });
+        setUser(null);
       });
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem(ACCESS_TOKEN);
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider
       value={{
-        login,
         user,
+        login,
+        logout,
       }}
     >
       {children}
