@@ -1,36 +1,37 @@
 module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define("Usuario", {
-    nombre:
-        {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     apellido: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    contrasenia: {
+    password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     telefono: {
       type: DataTypes.INTEGER,
     },
     municipio_id: {
-      type: DataTypes.INTEGER
-    }
-
+      type: DataTypes.INTEGER,
+    },
   });
 
-  Usuario.associate = (models) =>
-  {
-    Usuario.belongsTo(models.Municipio, {foreignKey: "municipio_id", as: "usuario_municipio_id"});
-    Usuario.hasMany(models.Likes, {onDelete: "Cascade"});
-  };2;
+  Usuario.associate = (models) => {
+    Usuario.belongsTo(models.Municipio, {
+      foreignKey: "municipio_id",
+      as: "usuario_municipio_id",
+    });
+    Usuario.hasMany(models.Likes, { onDelete: "Cascade" });
+  };
+  2;
 
   return Usuario;
 };

@@ -7,13 +7,13 @@ const { sign } = require("jsonwebtoken");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 
 router.post("/", async (req, res) => {
-  const { nombre, apellido, correo, contrasenia, telefono } = req.body;
-  bcrypt.hash(contrasenia, 10).then((hash) => {
+  const { nombre, apellido, correo, password, telefono } = req.body;
+  bcrypt.hash(password, 10).then((hash) => {
     Usuario.create({
       nombre: nombre,
       apellido: apellido,
       email: correo,
-      contrasenia: hash,
+      password: hash,
       telefono: telefono,
     });
   });
@@ -21,13 +21,13 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { correo, contrasenia } = req.body;
+  const { correo, password } = req.body;
   //Crear consulta para verificar si existe el usuario
   const usuarioCheck = await Usuario.findOne({ where: { email: correo } });
 
   if (!usuarioCheck) res.json({ error: "No existe este usuario" });
 
-  bcrypt.compare(contrasenia, usuarioCheck.contrasenia).then((coinciden) => {
+  bcrypt.compare(password, usuarioCheck.password).then((coinciden) => {
     if (!coinciden) res.json("Usuario o contraseña erroneos");
 
     //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
         id: usuarioCheck.id,
         nombre: usuarioCheck.nombre,
       },
-      "importantSecret",
+      "importantSecret"
     );
     res.json({
       token: accesToken,
@@ -57,7 +57,7 @@ router.get("/ProfileInfo/:id", async (req, res) => {
 
   const profileInfo = await Usuario.findByPk(profile_id, {
     attributes: {
-      exclude: ["contrasenia"],
+      exclude: ["password"],
     },
   });
 
