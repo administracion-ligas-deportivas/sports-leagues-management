@@ -1,8 +1,5 @@
-const username = process.env.DB_USERNAME || "root"
-
-const host = process.env.DB_HOST || "localhost"
-
-
+const username = process.env.DB_USERNAME || "root";
+const host = process.env.DB_HOST || "localhost";
 
 module.exports = {
   development: {
@@ -26,4 +23,4 @@ module.exports = {
     host: "127.0.0.1",
     dialect: "mariadb",
   },
-}
+};

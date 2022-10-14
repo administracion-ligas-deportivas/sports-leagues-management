@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "lint": "eslint . --ext .js,.ts, ",
+    "lint:fix": "eslint . --ext .js,.ts, --fix"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +22,8 @@
     "nodemon": "^2.0.16",
     "sequelize": "^6.19.2",
     "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0"
   }
 }

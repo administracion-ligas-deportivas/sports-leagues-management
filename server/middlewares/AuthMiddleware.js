@@ -1,19 +1,19 @@
-const {verify} = require('jsonwebtoken');
+const {verify} = require("jsonwebtoken");
 
 const validateToken = (req, res, next) => {
-    const accessToken = req.header("accessToken");
+  const accessToken = req.header("accessToken");
 
-    if(!accessToken) return res.json({error: "Usuario no logueado"});
+  if(!accessToken) return res.json({error: "Usuario no logueado"});
 
-    try{
-        const validToken = verify(accessToken, 'importantSecret');
-        req.user = validToken;
-        if(validToken) return next();
+  try{
+    const validToken = verify(accessToken, "importantSecret");
+    req.user = validToken;
+    if(validToken) return next();
 
-    }catch(err)
-    {
-        return res.json({error: err});
-    }
-}
+  }catch(err)
+  {
+    return res.json({error: err});
+  }
+};
 
 module.exports = {validateToken};
