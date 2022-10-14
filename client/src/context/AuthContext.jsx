@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
-const ACCESS_TOKEN = "accessToken";
+const ACCESS_TOKEN_STRING = "accessToken";
 const API_PORT = 3001;
 const BASE_AUTH_URL = `http://localhost:${API_PORT}/auth`;
 const LOGIN_URL = `${BASE_AUTH_URL}/login`;
@@ -23,19 +23,19 @@ export function AuthProvider({ children }) {
   });
 
   const login = ({ correo, password } = {}) => {
-    const data = { correo, password };
     axios
-      .post(LOGIN_URL, data)
+      .post(LOGIN_URL, { correo, password })
       .then((res) => {
+        console.log("🚀 ~ file: AuthContext.jsx ~ line 29 ~ .then ~ res", res);
         // if (res.data.error) {
         //   throwRequestError(res.data.error);
         // }
 
         const { token, correo, nombre, id } = res.data;
-        localStorage.setItem(ACCESS_TOKEN, token);
+        localStorage.setItem(ACCESS_TOKEN_STRING, token);
         setUser({
-          correo: correo,
-          nombre: nombre,
+          correo,
+          nombre,
           id: id,
           isAuthenticated: true,
         });
@@ -48,14 +48,12 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(ACCESS_TOKEN_STRING);
     setUser(null);
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem(ACCESS_TOKEN);
-
-    if (!accessToken) return;
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STRING);
 
     axios
       .get(VERIFY_URL, {
@@ -64,6 +62,7 @@ export function AuthProvider({ children }) {
         },
       })
       .then((res) => {
+        console.log("🚀 ~ file: AuthContext.jsx ~ line 64 ~ .then ~ res", res);
         const { nombre, correo, id } = res.data;
         setUser({
           nombre,

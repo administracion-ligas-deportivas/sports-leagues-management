@@ -24,11 +24,22 @@ router.post("/login", async (req, res) => {
   const { correo, password } = req.body;
   //Crear consulta para verificar si existe el usuario
   const usuarioCheck = await Usuario.findOne({ where: { email: correo } });
+  console.log(
+    "🚀 ~ file: Usuarios.js ~ line 27 ~ router.post ~ usuarioCheck",
+    usuarioCheck
+  );
 
-  if (!usuarioCheck) res.json({ error: "No existe este usuario" });
+  if (!usuarioCheck) {
+    console.log(
+      "🚀 ~ file: Usuarios.js ~ line 33 ~ router.post ~ !usuarioCheck",
+      !usuarioCheck
+    );
+    res.json({ error: "Usuario o contraseña incorrectos" });
+    return;
+  }
 
   bcrypt.compare(password, usuarioCheck.password).then((coinciden) => {
-    if (!coinciden) res.json("Usuario o contraseña erroneos");
+    if (!coinciden) res.json("Usuario o contraseña incorrectos");
 
     //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
     const accessToken = sign(

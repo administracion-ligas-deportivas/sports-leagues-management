@@ -18,6 +18,7 @@ function Login() {
     correo: "",
     password: "",
   });
+  const [error, setError] = useState("");
 
   const onChange = (e) => {
     setuserData({ ...userData, [e.target.name]: e.target.value });
@@ -29,9 +30,14 @@ function Login() {
     const nextPath = state?.location?.pathname ?? "/";
     login(userData);
 
-    if (user.isAuthenticated) {
-      navigate(nextPath);
+    if (user?.isAuthenticated) {
+      // navigate(nextPath);
     }
+
+    setError("Usuario o contraseña incorrectos");
+    setTimeout(() => {
+      setError("");
+    }, 3000);
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
@@ -62,12 +68,12 @@ function Login() {
             onChange={(event) => onChange(event)}
           />
           <TextField
-            disabled
             id="password"
             label="Contraseña"
             name="password"
             onChange={(event) => onChange(event)}
           />
+          {error && <p className="text-red-500">{error}</p>}
           <Button variant="contained" type="submit">
             Iniciar sesión
           </Button>
