@@ -30,10 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "deporte_id",
       as: "formato_evento_deportivo_deporte_id",
     });
-    /* formato_evento_deportivo.belongsTo(models.tipo_evento_deportivo, {
+    formato_evento_deportivo.belongsTo(models.tipo_evento_deportivo, {
       foreignKey: "tipo_evento_deportivo",
       as: "formato_evento_deportivo_tipo_evento_deportivo_id",
-    }); */
+    });
   };
 
   return formato_evento_deportivo;
