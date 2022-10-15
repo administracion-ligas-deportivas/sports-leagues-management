@@ -8,7 +8,7 @@ const db = require("./models");
 
 const postRouter = require("./controllers/posts");
 const comentariosRouter = require("./controllers/comentarios");
-const usuariosRouter = require("./controllers/usuarios");
+const usersRouter = require("./controllers/usuarios");
 const likesRouter = require("./controllers/likes");
 const loginRouter = require("./controllers/login");
 
@@ -26,7 +26,7 @@ app.use(express.json());
 
 app.use("/api/posts", postRouter);
 app.use("/api/comentarios", comentariosRouter);
-app.use("/api/auth", usuariosRouter);
+app.use("/api/users", usersRouter);
 app.use("/api/like", likesRouter);
 app.use("/api/login", loginRouter);
 
