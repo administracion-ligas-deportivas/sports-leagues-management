@@ -14,19 +14,20 @@ const validateToken = (req, res, next) => {
     token = authorization.split(" ")[1];
   }
 
+  let decodedToken = {};
   try {
-    const decodedToken = jwt.verify(token, process.env.SECRET);
-
-    if (!token || !decodedToken.id) {
-      return res
-        .status(401)
-        .json({ error: "El token no se encuentra o no es válido" });
-    }
-
-    if (decodedToken) return next();
+    decodedToken = jwt.verify(token, process.env.SECRET);
   } catch (error) {
-    return res.status(400).json({ error });
+    console.log(error);
+    // return res.status(400).json({ error });
   }
+
+  if (!token || !decodedToken.id) {
+    return res
+      .status(401)
+      .json({ error: "El token no se encuentra o no es válido" });
+  }
+  if (decodedToken) return next();
 };
 
 module.exports = { validateToken };
