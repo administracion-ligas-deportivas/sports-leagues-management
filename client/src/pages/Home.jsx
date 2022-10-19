@@ -90,6 +90,9 @@ function Home() {
           <Link to="/EstadisticasPersonales" className={style.link}>
             <Button variant="contained"> Estadisticas Personales</Button>
           </Link>
+          <Link to="/GestionEquipoJugador" className={style.link}>
+            <Button variant="contained"> Gestión de equipo jugador</Button>
+          </Link>
         </Stack>
         <br></br>
         <Stack direction="row" spacing={2}>
@@ -110,6 +113,12 @@ function Home() {
           </Link>
           <Link to="/RegistroEstadistico" className={style.link}>
             <Button variant="contained"> Registrar Estadistico</Button>
+          </Link>
+          <Link to="/EquiposEnSistema" className={style.link}>
+            <Button variant="contained"> Equipos en sistema</Button>
+          </Link>
+          <Link to="/GestionEquipo" className={style.link}>
+            <Button variant="contained"> Gestión de equipo</Button>
           </Link>
         </Stack>
         <h2> Anuncios </h2>

@@ -1,15 +1,9 @@
 import React from "react";
 import {
   Button,
-  Typography,
   Stack,
   Autocomplete,
   TextField,
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
 } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
 import style from "../styles/AgregarCancha.module.css";

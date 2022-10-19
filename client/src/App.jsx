@@ -25,6 +25,8 @@ import EventosDeportivos from "./pages/EventosDeportivos";
 import MainLayout from "./Layouts/MainLayout";
 import RegistroEstadistico from "./pages/Registrar-Estadistico";
 import EquiposEnSistema from "./pages/EquiposEnSistema";
+import GestionEquipo from "./pages/GestionEquipo";
+import GestionEquipoJugador from "./pages/GestionEquipoJugador";
 
 /**
  *
@@ -119,6 +121,8 @@ function App() {
                 <Route path="/RegistroDeportivo" element={<RegistroDeportivo />}/>
                 <Route path="/RegistroEstadistico" element={<RegistroEstadistico />}/>
                 <Route path="/EquiposEnSistema" element={<EquiposEnSistema />}/>
+                <Route path="/GestionEquipo" element={<GestionEquipo />}/>
+                <Route path="/GestionEquipoJugador" element={<GestionEquipoJugador />}/>
               </>
             ) : (
               <>
