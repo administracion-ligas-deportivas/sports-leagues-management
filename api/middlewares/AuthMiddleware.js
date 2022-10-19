@@ -6,8 +6,10 @@ const validateToken = (req, res, next) => {
   if (!accessToken) return res.json({ error: "Usuario no logueado" });
 
   try {
-    const validToken = verify(accessToken, "importantSecret");
+    const validToken = verify(accessToken, process.env.SECRET);
+
     req.user = validToken;
+
     if (validToken) return next();
   } catch (error) {
     return res.status(400).json({ error });

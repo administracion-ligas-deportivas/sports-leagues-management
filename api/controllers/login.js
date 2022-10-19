@@ -25,12 +25,13 @@ loginRouter.post("/", async (request, response) => {
   };
 
   //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
-  const token = jwt.sign(userForToken, "importantSecret");
+  const token = jwt.sign(userForToken, process.env.SECRET);
 
   // Status code default: 200
   response.send({
     token,
     nombre: user.nombre,
+    apellido: user.apellido,
     ...userForToken,
   });
 });
