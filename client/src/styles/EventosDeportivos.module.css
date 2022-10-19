@@ -13,3 +13,10 @@
 .container .rectangle .button{
     justify-content: end;
 }
+
+.buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1em;
+}
