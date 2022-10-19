@@ -1,15 +1,8 @@
-//import {Image} from "react-router-dom";
 import * as React from "react";
-//import dayjs, { Dayjs } from 'dayjs';
-//import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import myimg from "../public/img-login.png";
 import styles from "../styles/LoginSignup.module.css";
-//import Input from "@/components/Input/index";
-//import Label from "@/components/Label";
-//import Button from "@/components/Button/index";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +14,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTime } from "luxon";
 import Button from "@mui/material/Button";
 //import TextField from "@mui/material";
-//import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function Signup() {
   const navigate = useNavigate();
