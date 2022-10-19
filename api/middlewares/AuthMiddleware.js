@@ -1,16 +1,29 @@
-const { verify } = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const validateToken = (req, res, next) => {
-  const accessToken = req.header("accessToken");
+  // Equivalente a req.header("Authorization"), pero con Express.
+  // const accessToken = req.header("accessToken");
+  const authorization = req.get("authorization");
+  let token = null;
 
-  if (!accessToken) return res.json({ error: "Usuario no logueado" });
+  // El "Bearer" nos lo pueden pasar en cualquier case: "BEARER", "Bearer",
+  // "bearer", ...
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    // 7 caracteres ocupa "bearer ".
+    /* token = authorization.substring(7); */
+    token = authorization.split(" ")[1];
+  }
 
   try {
-    const validToken = verify(accessToken, process.env.SECRET);
+    const decodedToken = jwt.verify(token, process.env.SECRET);
 
-    req.user = validToken;
+    if (!token || !decodedToken.id) {
+      return res
+        .status(401)
+        .json({ error: "El token no se encuentra o no es válido" });
+    }
 
-    if (validToken) return next();
+    if (decodedToken) return next();
   } catch (error) {
     return res.status(400).json({ error });
   }
