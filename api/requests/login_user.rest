@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
   "correo": "correo@correo.com",
-  "password": "correo"
+  "password": "correodsfa"
 }

@@ -16,6 +16,7 @@ loginRouter.post("/", async (request, response) => {
     response.status(401).json({
       error: "Correo o contraseña incorrectos",
     });
+    return;
   }
 
   const userForToken = {
