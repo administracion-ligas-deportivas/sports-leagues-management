@@ -1,9 +1,11 @@
 import "./App.css";
 import { useRoutes } from "react-router-dom";
-
-import { AuthProvider } from "./context/AuthContext";
 import { routes } from "./router/routes";
+
 import MainLayout from "./Layouts/MainLayout";
+import { useAuthProvider } from "./context/AuthContext";
+import { useEffect } from "react";
+import { authService } from "./services/auth";
 
 /**
  *
@@ -24,8 +26,20 @@ import MainLayout from "./Layouts/MainLayout";
  */
 
 function App() {
+  const { verifyLoggedUser } = useAuthProvider();
   const route = useRoutes(routes);
   //const navigate = useNavigate();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    verifyLoggedUser(signal);
+
+    return () => {
+      controller.abort();
+    };
+  });
 
   /*
     MOVER A PANTALLA DE PERFIL
@@ -39,11 +53,7 @@ function App() {
       <Button onClick={logout}>Cerrar sesión</Button>
   */
 
-  return (
-    <AuthProvider>
-      <MainLayout>{route}</MainLayout>
-    </AuthProvider>
-  );
+  return <MainLayout>{route}</MainLayout>;
 }
 
 export default App;

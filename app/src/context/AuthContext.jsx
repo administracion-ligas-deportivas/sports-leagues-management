@@ -47,11 +47,7 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  useEffect(() => {
-    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
-    const controller = new AbortController();
-    const { signal } = controller;
-
+  const verifyLoggedUser = (signal) => {
     authService
       .authenticateLoggedUser(signal)
       .then((data) => {
@@ -76,6 +72,14 @@ export function AuthProvider({ children }) {
         logRequestError(error);
         setUser(null);
       });
+  };
+
+  useEffect(() => {
+    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    verifyLoggedUser(signal);
 
     return () => controller.abort();
   }, []);
@@ -86,6 +90,7 @@ export function AuthProvider({ children }) {
         user,
         login,
         logout,
+        verifyLoggedUser,
       }}
     >
       {children}

@@ -21,16 +21,16 @@ import {
 // https://reactrouter.com/en/main/route/route
 export const routes = [
   {
+    path: "/",
     element: (
       <ProtectedRoute>
         <Home />
       </ProtectedRoute>
     ),
-    path: "/",
   },
   {
-    element: <Advise />,
     path: "/Advise/:id",
+    element: <Advise />,
   },
   {
     path: "/CreateAdvise",
