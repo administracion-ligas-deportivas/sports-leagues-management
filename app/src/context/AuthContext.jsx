@@ -3,11 +3,11 @@ import { createContext, useContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
-const ACCESS_TOKEN_STRING = "accessToken";
+const ACCESS_TOKEN_STRING = "ald_access_token";
 const API_PORT = 3001;
-const BASE_AUTH_URL = `http://localhost:${API_PORT}/auth`;
+const BASE_AUTH_URL = `http://localhost:${API_PORT}/api`;
 const LOGIN_URL = `${BASE_AUTH_URL}/login`;
-const VERIFY_URL = `${BASE_AUTH_URL}/verify`;
+const VERIFY_URL = `${BASE_AUTH_URL}/users/verify`;
 
 const throwRequestError = (error) => {
   throw new Error(`HTTP error: ${error}`);
@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
   // const navigate = useNavigate();
   const [user, setUser] = useState({
     nombre: "",
+    apellido: "",
     correo: "",
     id: 0,
     isAuthenticated: false,
@@ -26,17 +27,14 @@ export function AuthProvider({ children }) {
     axios
       .post(LOGIN_URL, { correo, password })
       .then((res) => {
-        console.log("🚀 ~ file: AuthContext.jsx ~ line 29 ~ .then ~ res", res);
-        // if (res.data.error) {
-        //   throwRequestError(res.data.error);
-        // }
+        const { token, correo, nombre, apellido, id } = res.data;
 
-        const { token, correo, nombre, id } = res.data;
         localStorage.setItem(ACCESS_TOKEN_STRING, token);
         setUser({
           correo,
           nombre,
-          id: id,
+          id,
+          apellido,
           isAuthenticated: true,
         });
 
@@ -53,28 +51,44 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem(ACCESS_TOKEN_STRING);
+    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
+    const controller = new AbortController();
+    const { signal } = controller;
 
-    axios
-      .get(VERIFY_URL, {
-        headers: {
-          accessToken,
-        },
-      })
-      .then((res) => {
-        console.log("🚀 ~ file: AuthContext.jsx ~ line 64 ~ .then ~ res", res);
-        const { nombre, correo, id } = res.data;
+    const token = localStorage.getItem(ACCESS_TOKEN_STRING);
+
+    if (!token) {
+      return;
+    }
+
+    const accessToken = `Bearer ${token}`;
+
+    fetch(VERIFY_URL, { signal, headers: { Authorization: accessToken } })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(
+          "🚀 ~ file: AuthContext.jsx ~ line 85 ~ .then ~ data",
+          data
+        );
+        const { user } = data;
+        const { nombre, apellido, correo, id } = user;
         setUser({
           nombre,
+          apellido,
           correo,
           id,
           isAuthenticated: true,
         });
       })
       .catch((error) => {
+        if (error.name === "AbortError") {
+          console.log(error.message);
+        }
         throwRequestError(error);
         setUser(null);
       });
+
+    return () => controller.abort();
   }, []);
 
   return (

@@ -14,14 +14,14 @@ function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const [userData, setuserData] = useState({
+  const [userData, setUserData] = useState({
     correo: "",
     password: "",
   });
   const [error, setError] = useState("");
 
-  const onChange = (e) => {
-    setuserData({ ...userData, [e.target.name]: e.target.value });
+  const onChange = ({ target }) => {
+    setUserData({ ...userData, [target.name]: target.value });
   };
 
   const handleLogin = (e) => {
@@ -30,8 +30,10 @@ function Login() {
     const nextPath = state?.location?.pathname ?? "/";
     login(userData);
 
+    console.log("🚀 ~ file: Login.jsx ~ line 34 ~ handleLogin ~ user", user);
     if (user?.isAuthenticated) {
       // navigate(nextPath);
+      return;
     }
 
     setError("Usuario o contraseña incorrectos");

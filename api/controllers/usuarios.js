@@ -29,8 +29,10 @@ usersRouter.post("/", async (req, res) => {
 });
 
 usersRouter.get("/verify", userAuthenticator, (req, res) => {
+  const { user } = req;
   res.json({
     message: "Se ha validado la sesión del usuario correctamente",
+    user,
   });
 });
 

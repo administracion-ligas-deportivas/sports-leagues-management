@@ -23,6 +23,8 @@ loginRouter.post("/", async (request, response) => {
   const expiresIn = 60 * 60 * 24 * 7;
   const userForToken = {
     correo: user.correo,
+    nombre: user.nombre,
+    apellido: user.apellido,
     id: user.id,
   };
 
@@ -34,8 +36,6 @@ loginRouter.post("/", async (request, response) => {
   // Status code default: 200
   response.send({
     token,
-    nombre: user.nombre,
-    apellido: user.apellido,
     ...userForToken,
   });
 });
