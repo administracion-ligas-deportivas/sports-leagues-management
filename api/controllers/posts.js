@@ -1,17 +1,18 @@
 const express = require("express");
-const { validateToken } = require("../middlewares/AuthMiddleware");
+const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 const router = express.Router();
 const { Anuncio, Likes } = require("../models");
 
-router.get("/", validateToken, async (req, res) => {
-  const lista_anuncios = await Anuncio.findAll({include: [Likes]});
+router.get("/", userAuthenticator, async (req, res) => {
+  const lista_anuncios = await Anuncio.findAll({ include: [Likes] });
 
-  const anuncios_liked = await Likes.findAll({where:
-    {
+  const anuncios_liked = await Likes.findAll({
+    where: {
       UsuarioId: req.user.id,
-    }});
+    },
+  });
 
-  res.json({lista_anuncios: lista_anuncios, liked:anuncios_liked});
+  res.json({ lista_anuncios: lista_anuncios, liked: anuncios_liked });
 });
 
 router.get("/byId/:id", async (req, res) => {
@@ -20,7 +21,7 @@ router.get("/byId/:id", async (req, res) => {
   res.json(advise);
 });
 
-router.post("/", validateToken, async (req, res) => {
+router.post("/", userAuthenticator, async (req, res) => {
   const insersion = req.body;
   insersion.autor = req.user.userEmail;
   console.log("A", insersion);
@@ -28,11 +29,13 @@ router.post("/", validateToken, async (req, res) => {
   res.json(insersion);
 });
 
-router.delete("/:AvisoID", validateToken, async (req, res) => {
+router.delete("/:AvisoID", userAuthenticator, async (req, res) => {
   const avisoid = req.params.AvisoID;
-  await Anuncio.destroy({where: {
-    id: avisoid,
-  }});
+  await Anuncio.destroy({
+    where: {
+      id: avisoid,
+    },
+  });
 
   res.json("Correct delete");
 });

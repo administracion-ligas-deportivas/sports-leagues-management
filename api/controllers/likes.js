@@ -1,9 +1,9 @@
 const express = require("express");
-const { validateToken } = require("../middlewares/AuthMiddleware");
+const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 const router = express.Router();
 const { Likes } = require("../models");
 
-router.post("/", validateToken, async (req, res) => {
+router.post("/", userAuthenticator, async (req, res) => {
   const { PostID } = req.body;
   const userID = req.user.id;
 

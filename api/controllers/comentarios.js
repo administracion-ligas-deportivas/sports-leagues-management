@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Comentario } = require("../models");
-const {validateToken} = require("../middlewares/AuthMiddleware");
+const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 
 //Obtener información
 router.get("/:AnuncioID", async (req, res) => {
@@ -11,7 +11,7 @@ router.get("/:AnuncioID", async (req, res) => {
 });
 
 //Insertar información en la base de datos
-router.post("/", validateToken, async (req, res) => {
+router.post("/", userAuthenticator, async (req, res) => {
   const comentario = req.body;
   const autor = req.user.nombre;
   comentario.usuario = autor;
@@ -19,7 +19,7 @@ router.post("/", validateToken, async (req, res) => {
   res.json(comentario);
 });
 
-router.delete("/:commentID", validateToken, async (req, res) => {
+router.delete("/:commentID", userAuthenticator, async (req, res) => {
   const commentid = req.params.commentID;
   await Comentario.destroy({where: {
     id: commentid,

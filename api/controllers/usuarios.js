@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const { Usuario } = require("../models");
 const bcrypt = require("bcrypt");
 
-const { validateToken } = require("../middlewares/AuthMiddleware");
+const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 
 usersRouter.get("/", async (req, res) => {
   const usuarios = await Usuario.findAll();
@@ -28,7 +28,7 @@ usersRouter.post("/", async (req, res) => {
   res.status(201).json("Usuario registrado exitosamente");
 });
 
-usersRouter.get("/verify", validateToken, (req, res) => {
+usersRouter.get("/verify", userAuthenticator, (req, res) => {
   res.json({
     message: "Se ha validado la sesión del usuario correctamente",
   });
