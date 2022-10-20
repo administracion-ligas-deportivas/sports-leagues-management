@@ -2,7 +2,7 @@ import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
-const ACCESS_TOKEN_STRING = "ald_access_token";
+const ACCESS_TOKEN_STRING = "aldLoggedUser";
 
 const AuthContext = createContext();
 
@@ -16,7 +16,8 @@ export function AuthProvider({ children }) {
     nombre: "",
     apellido: "",
     correo: "",
-    id: 0,
+    id: null,
+    token: "",
     isAuthenticated: false,
   });
 
@@ -26,15 +27,16 @@ export function AuthProvider({ children }) {
       .then((data) => {
         const { token, correo, nombre, apellido, id } = data;
 
-        localStorage.setItem(ACCESS_TOKEN_STRING, token);
         setUser({
           correo,
           nombre,
           id,
           apellido,
+          token,
           isAuthenticated: true,
         });
 
+        localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
         // navigate("/");
       })
       .catch((error) => {
@@ -56,13 +58,14 @@ export function AuthProvider({ children }) {
           data
         );
         const { user } = data;
-        const { nombre, apellido, correo, id } = user;
+        const { nombre, apellido, correo, id, token } = user;
         setUser({
           nombre,
           apellido,
           correo,
           id,
           isAuthenticated: true,
+          token,
         });
       })
       .catch((error) => {
@@ -75,14 +78,26 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
-    const controller = new AbortController();
-    const { signal } = controller;
+    const loggedUserJson = window.localStorage.getItem("aldLoggedUser");
 
-    verifyLoggedUser(signal);
-
-    return () => controller.abort();
+    if (loggedUserJson) {
+      const user = JSON.parse(loggedUserJson);
+      setUser(user);
+      console.log("Se ha recuperado el usuario desde el localStorage", {
+        user,
+      });
+    }
   }, []);
+
+  //   useEffect(() => {
+  //     // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
+  //     const controller = new AbortController();
+  //     const { signal } = controller;
+  //
+  //     verifyLoggedUser(signal);
+  //
+  //     return () => controller.abort();
+  //   }, []);
 
   return (
     <AuthContext.Provider

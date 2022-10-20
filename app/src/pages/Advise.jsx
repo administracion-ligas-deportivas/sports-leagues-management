@@ -1,25 +1,25 @@
 import axios from "axios";
-import React, {useEffect, useState, useContext} from "react";
-import {useParams, Link, useNavigate} from "react-router-dom";
-import {AuthContext} from "../helpers/AuthContext";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useAuthProvider } from "@/context/AuthContext";
 import style from "../styles/Advise.module.css";
-import {Button, TextField} from "@mui/material";
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
+import { Button, TextField } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
 
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
  * si no las recibe, actualmente (21/05/2022) da un error en consola (Hacer proyecto sin errores)
- * 
+ *
  */
 
 function Advise() {
-  let {id} = useParams();
+  let { id } = useParams();
   const [advise, setAdvise] = useState({});
   const [comentarios, setComentarios] = useState([]);
   const [crearComentario, setcrearComentario] = useState("");
   const navigate = useNavigate();
-  const {autState} = useContext(AuthContext);
+  const { user } = useAuthProvider();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((Response) => {
@@ -33,51 +33,62 @@ function Advise() {
   }, [id]);
 
   const nuevoComentario = () => {
-    axios.post("http://localhost:3001/comentarios", 
-      {
-        comentario: crearComentario,
-        AnuncioId: id
-      }, 
-      {
-        headers:{
-          accessToken: localStorage.getItem("accessToken"),
+    axios
+      .post(
+        "http://localhost:3001/comentarios",
+        {
+          comentario: crearComentario,
+          AnuncioId: id,
+        },
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
         }
-      }).then((response) => {
-      if(response.data.error) console.log(response.data.error);
-      else
-      {
-        const comentario_A_Agregar = {comentario: crearComentario, usuario: response.data.usuario};
-        setComentarios([...comentarios, comentario_A_Agregar]);
-        setcrearComentario("");
-      }
-                
-    });
+      )
+      .then((response) => {
+        if (response.data.error) console.log(response.data.error);
+        else {
+          const comentario_A_Agregar = {
+            comentario: crearComentario,
+            usuario: response.data.usuario,
+          };
+          setComentarios([...comentarios, comentario_A_Agregar]);
+          setcrearComentario("");
+        }
+      });
   };
 
   const borrarComentario = (id) => {
-    axios.delete(`http://localhost:3001/comentarios/${id}`, {
-      headers:{
-        accessToken: localStorage.getItem("accessToken"),
-      }
-    }).then(() => {
-      setAdvise(comentarios.filter((val) => {
-        return val.id !== id;
-      }));
-    });
+    axios
+      .delete(`http://localhost:3001/comentarios/${id}`, {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then(() => {
+        setAdvise(
+          comentarios.filter((val) => {
+            return val.id !== id;
+          })
+        );
+      });
   };
 
   const borrarAviso = (id) => {
-    axios.delete(`http://localhost:3001/posts/${id}`, {
-      headers:{
-        accessToken: localStorage.getItem("accessToken"),
-      }
-    }).then(() => {
-      alert("Post eliminado");
-      navigate("/home");
-    });
+    axios
+      .delete(`http://localhost:3001/posts/${id}`, {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then(() => {
+        alert("Post eliminado");
+        navigate("/home");
+      });
   };
 
-  return (    
+  return (
     <>
       <h1>Aviso</h1>
       <div className={style.container}>
@@ -86,34 +97,56 @@ function Advise() {
         <h2>Comentarios</h2>
         <div className={style.comentarios}>
           {comentarios.map((comentario, key) => {
-              return(
-                <div key = {key} className={style.coment}>
-                  <h4>{comentario.usuario} dijo: </h4>
-                  <p>{comentario.comentario}</p>
-                  {autState.nombre === comentario.usuario && 
-                    <Button startIcon={<DeleteIcon />} size="small" color="error"  variant="contained" onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
-                  }
-                </div>
-              );
+            return (
+              <div key={key} className={style.coment}>
+                <h4>{comentario.usuario} dijo: </h4>
+                <p>{comentario.comentario}</p>
+                {user.nombre === comentario.usuario && (
+                  <Button
+                    startIcon={<DeleteIcon />}
+                    size="small"
+                    color="error"
+                    variant="contained"
+                    onClick={() => {
+                      borrarComentario(comentario.id);
+                    }}
+                  >
+                    Borrar
+                  </Button>
+                )}
+              </div>
+            );
           })}
           <h3>Añadir un comentario:</h3>
-          <TextField 
+          <TextField
             fullWidth
             size="small"
-            label="Comentar" 
-            variant="outlined" 
-            value={crearComentario} 
-            placeholder='Ingesa tu comentario...' 
-            onChange={(event) => {setcrearComentario(event.target.value);}}
+            label="Comentar"
+            variant="outlined"
+            value={crearComentario}
+            placeholder="Ingesa tu comentario..."
+            onChange={(event) => {
+              setcrearComentario(event.target.value);
+            }}
           />
-          <Button startIcon={<SendIcon />} variant="contained" onClick={nuevoComentario} type='submit' sx={'margin-top: 10px;'} size='small' > Subir comentario </Button>
+          <Button
+            startIcon={<SendIcon />}
+            variant="contained"
+            onClick={nuevoComentario}
+            type="submit"
+            sx={"margin-top: 10px;"}
+            size="small"
+          >
+            {" "}
+            Subir comentario{" "}
+          </Button>
         </div>
-      </div> 
+      </div>
     </>
     // <div>
     //   <Link to="/Home" > Home </Link>
-    //     Advise: {advise.nombre} 
-    //   {autState.correo === advise.autor && (
+    //     Advise: {advise.nombre}
+    //   {user.correo === advise.autor && (
     //     <Button onClick={() => {borrarAviso(advise.id);}}>Borrar Aviso</Button>
     //   )}
     //   <div>
@@ -125,7 +158,7 @@ function Advise() {
     //           <div key = {key}>
     //             <label> <br/> Autor: {comentario.usuario} </label> <br/>
     //             <label> Comentario: {comentario.comentario} <br/></label>
-    //             {autState.nombre === comentario.usuario && 
+    //             {user.nombre === comentario.usuario &&
     //                             <Button onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
     //             }
     //           </div>

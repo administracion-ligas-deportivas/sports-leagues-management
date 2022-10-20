@@ -31,6 +31,12 @@ function Login() {
     login(userData);
 
     console.log("🚀 ~ file: Login.jsx ~ line 34 ~ handleLogin ~ user", user);
+
+    setUserData({
+      correo: "",
+      password: "",
+    });
+
     if (user?.isAuthenticated) {
       // navigate(nextPath);
       return;
@@ -68,12 +74,15 @@ function Login() {
             label="Correo"
             name="correo"
             onChange={(event) => onChange(event)}
+            value={userData.correo}
           />
           <TextField
             id="password"
             label="Contraseña"
             name="password"
             onChange={(event) => onChange(event)}
+            type="password"
+            value={userData.password}
           />
           {error && <p className="text-red-500">{error}</p>}
           <Button variant="contained" type="submit">

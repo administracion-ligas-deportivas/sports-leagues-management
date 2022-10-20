@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ACCESS_TOKEN_STRING = "ald_access_token";
+const ACCESS_TOKEN_STRING = "aldLoggedUser";
 const API_PORT = 3001;
 const BASE_AUTH_URL = `http://localhost:${API_PORT}/api`;
 const LOGIN_URL = `${BASE_AUTH_URL}/login`;

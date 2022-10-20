@@ -128,33 +128,42 @@ function Home() {
         <div className={style.containerAnuncio}>
           {lista_anuncios.map((value, key) => {
             return (
-              <div className={style.anuncio} key={key} >
-                { value.nombre === '' ? 
-                  <h3> ANONIMO publico </h3> 
-                  : 
-                  <h3> {value.nombre} publico </h3> 
-                }
-                <div className={style.anuncioBody} onClick={() => {
-                  navigate(`/Advise/${value.id}`);
-                }}>
+              <div className={style.anuncio} key={key}>
+                {value.nombre === "" ? (
+                  <h3> ANONIMO publico </h3>
+                ) : (
+                  <h3> {value.nombre} publico </h3>
+                )}
+                <div
+                  className={style.anuncioBody}
+                  onClick={() => {
+                    navigate(`/Advise/${value.id}`);
+                  }}
+                >
                   <div className={style.anuncioText}>
                     <p>{value.descripcion}</p>
                   </div>
                   <div className={style.anuncioInfo}>
-                    <p> <b> Prioridad: </b>  {value.prioridad} </p>
-                    <p> <b> Autor: </b> {value.autor} </p>
+                    <p>
+                      {" "}
+                      <b> Prioridad: </b> {value.prioridad}{" "}
+                    </p>
+                    <p>
+                      {" "}
+                      <b> Autor: </b> {value.autor}{" "}
+                    </p>
                   </div>
                 </div>
                 <div className={style.anuncioFooter}>
                   <ThumbUpAltIcon
-                      onClick={() => {
-                        meGusta(value.id);
-                      }}
-                      className={
-                        //Verifica si se dio like o no
-                        anuncioLiked.includes(value.id) ? "azul" : "rojo"
-                      }
-                    />
+                    onClick={() => {
+                      meGusta(value.id);
+                    }}
+                    className={
+                      //Verifica si se dio like o no
+                      anuncioLiked.includes(value.id) ? "azul" : "rojo"
+                    }
+                  />
                   <label> {value.Likes.length}</label>
                 </div>
               </div>
