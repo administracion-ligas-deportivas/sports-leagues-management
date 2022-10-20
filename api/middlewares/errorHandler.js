@@ -22,7 +22,7 @@ const errorHandler = (error, req, res, next) => {
 
   // https://fullstackopen.com/es/part3/validacion_y_es_lint
   // Si mandamos next, el error se pasa al siguiente middleware, pero se termina
-  // el programa en este caso.
+  // el programa en este caso.7
   // next(error);
 };
 

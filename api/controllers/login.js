@@ -19,13 +19,17 @@ loginRouter.post("/", async (request, response) => {
     return;
   }
 
+  // 7 días - Que cada 7 días se tenga que volver a loguear.
+  const expiresIn = 60 * 60 * 24 * 7;
   const userForToken = {
     correo: user.correo,
     id: user.id,
   };
 
   //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
-  const token = jwt.sign(userForToken, process.env.SECRET);
+  const token = jwt.sign(userForToken, process.env.SECRET, {
+    expiresIn,
+  });
 
   // Status code default: 200
   response.send({

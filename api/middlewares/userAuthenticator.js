@@ -3,12 +3,7 @@ const jwt = require("jsonwebtoken");
 const userAuthenticator = (req, res, next) => {
   const { token } = req;
 
-  // 7 días - Que cada 7 días se tenga que volver a loguear.
-  const expiresIn = 60 * 60 * 24 * 7;
-
-  const decodedToken = jwt.verify(token, process.env.SECRET, {
-    expiresIn,
-  });
+  const decodedToken = jwt.verify(token, process.env.SECRET);
 
   if (!token || !decodedToken.id) {
     return res
