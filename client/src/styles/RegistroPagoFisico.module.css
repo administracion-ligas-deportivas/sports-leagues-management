@@ -1,0 +1,14 @@
+.rectangle{
+    background-color: rgb(243, 246, 250);
+    border-radius: 10px;
+    padding: 20px;
+}
+.buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 25px;
+}
+
+.buttons div {
+margin-left: 3em;
+}
