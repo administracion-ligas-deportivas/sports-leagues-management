@@ -121,6 +121,11 @@ function Home() {
             <Button variant="contained"> Gestión de equipo</Button>
           </Link>
         </Stack>
+        <Stack direction="row" spacing={2}>
+          <Link to="/RegistroPagoFisico" className={style.link}>
+            <Button variant="contained"> Registro de pago físico </Button>
+          </Link>
+        </Stack>
         <h2> Anuncios </h2>
         <div className={style.containerAnuncio}>
           {lista_anuncios.map((value, key) => {

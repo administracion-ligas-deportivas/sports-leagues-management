@@ -27,7 +27,7 @@ import RegistroEstadistico from "./pages/Registrar-Estadistico";
 import EquiposEnSistema from "./pages/EquiposEnSistema";
 import GestionEquipo from "./pages/GestionEquipo";
 import GestionEquipoJugador from "./pages/GestionEquipoJugador";
-
+import RegistroPagoFísico from "./pages/RegistroPagoFísico";
 /**
  *
  * En react se puede hacer un "if" con
@@ -123,6 +123,7 @@ function App() {
                 <Route path="/EquiposEnSistema" element={<EquiposEnSistema />}/>
                 <Route path="/GestionEquipo" element={<GestionEquipo />}/>
                 <Route path="/GestionEquipoJugador" element={<GestionEquipoJugador />}/>
+                <Route path='/RegistroPagoFisico' element={<RegistroPagoFísico />}/>
               </>
             ) : (
               <>
