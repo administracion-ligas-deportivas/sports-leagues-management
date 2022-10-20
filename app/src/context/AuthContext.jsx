@@ -1,16 +1,13 @@
-import axios from "axios";
+import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
-const AuthContext = createContext();
 const ACCESS_TOKEN_STRING = "ald_access_token";
-const API_PORT = 3001;
-const BASE_AUTH_URL = `http://localhost:${API_PORT}/api`;
-const LOGIN_URL = `${BASE_AUTH_URL}/login`;
-const VERIFY_URL = `${BASE_AUTH_URL}/users/verify`;
 
-const throwRequestError = (error) => {
-  throw new Error(`HTTP error: ${error}`);
+const AuthContext = createContext();
+
+const logRequestError = (error) => {
+  console.log(`🔻 ${error}`);
 };
 
 export function AuthProvider({ children }) {
@@ -24,10 +21,10 @@ export function AuthProvider({ children }) {
   });
 
   const login = ({ correo, password } = {}) => {
-    axios
-      .post(LOGIN_URL, { correo, password })
-      .then((res) => {
-        const { token, correo, nombre, apellido, id } = res.data;
+    authService
+      .login({ correo, password })
+      .then((data) => {
+        const { token, correo, nombre, apellido, id } = data;
 
         localStorage.setItem(ACCESS_TOKEN_STRING, token);
         setUser({
@@ -41,12 +38,12 @@ export function AuthProvider({ children }) {
         // navigate("/");
       })
       .catch((error) => {
-        throwRequestError(error);
+        logRequestError(error);
       });
   };
 
   const logout = () => {
-    localStorage.removeItem(ACCESS_TOKEN_STRING);
+    authService.logout();
     setUser(null);
   };
 
@@ -55,16 +52,8 @@ export function AuthProvider({ children }) {
     const controller = new AbortController();
     const { signal } = controller;
 
-    const token = localStorage.getItem(ACCESS_TOKEN_STRING);
-
-    if (!token) {
-      return;
-    }
-
-    const accessToken = `Bearer ${token}`;
-
-    fetch(VERIFY_URL, { signal, headers: { Authorization: accessToken } })
-      .then((res) => res.json())
+    authService
+      .authenticateLoggedUser(signal)
       .then((data) => {
         console.log(
           "🚀 ~ file: AuthContext.jsx ~ line 85 ~ .then ~ data",
@@ -84,7 +73,7 @@ export function AuthProvider({ children }) {
         if (error.name === "AbortError") {
           console.log(error.message);
         }
-        throwRequestError(error);
+        logRequestError(error);
         setUser(null);
       });
 

@@ -21,7 +21,7 @@ import { useAuthProvider } from "@/context/AuthContext";
 const pages = ["Ligas", "Torneos", "Calendario", "Estadisticas"];
 
 function Navbar() {
-  const { user } = useAuthProvider();
+  const { user, logout } = useAuthProvider();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -41,9 +41,8 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const logoutUser = () => {
-    localStorage.removeItem("accessToken");
-    window.location.href = "/";
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -152,43 +151,45 @@ function Navbar() {
                 />
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem
-                key="Perfil"
-                onClick={handleCloseUserMenu}
-                component="a"
-                href={`/Profile/${user.id}`}
+            {user && (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-                <Typography
-                  textAlign="center"
-                  sx={{
-                    color: "inherit",
-                    textDecoration: "none",
-                  }}
+                <MenuItem
+                  key="Perfil"
+                  onClick={handleCloseUserMenu}
+                  component="a"
+                  href={`/Profile/${user.id}`}
                 >
-                  Perfil
-                </Typography>
-              </MenuItem>
-              {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
-              <MenuItem key="Logout" onClick={logoutUser}>
-                <Typography textAlign="center">Cerrar Sesión</Typography>
-              </MenuItem>
-            </Menu>
+                  <Typography
+                    textAlign="center"
+                    sx={{
+                      color: "inherit",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Perfil
+                  </Typography>
+                </MenuItem>
+                {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
+                <MenuItem key="Logout" onClick={handleLogout}>
+                  <Typography textAlign="center">Cerrar Sesión</Typography>
+                </MenuItem>
+              </Menu>
+            )}
           </Box>
         </Toolbar>
       </Container>
