@@ -1,5 +1,6 @@
 import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 const ACCESS_TOKEN_STRING = "aldLoggedUser";
@@ -21,27 +22,15 @@ export function AuthProvider({ children }) {
     isAuthenticated: false,
   });
 
-  const login = ({ correo, password } = {}) => {
-    authService
-      .login({ correo, password })
-      .then((data) => {
-        const { token, correo, nombre, apellido, id } = data;
+  const login = async ({ correo, password } = {}) => {
+    const user = await authService.login({ correo, password });
+    // const { token, correo: userEmail, nombre, apellido, id } = user;
 
-        setUser({
-          correo,
-          nombre,
-          id,
-          apellido,
-          token,
-          isAuthenticated: true,
-        });
-
-        localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
-        // navigate("/");
-      })
-      .catch((error) => {
-        logRequestError(error);
-      });
+    localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
+    setUser({
+      ...user,
+      isAuthenticated: true,
+    });
   };
 
   const logout = () => {
@@ -49,7 +38,7 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const verifyLoggedUser = (signal) => {
+  const verifyLoggedUser = async (signal) => {
     authService
       .authenticateLoggedUser(signal)
       .then((data) => {
@@ -76,6 +65,10 @@ export function AuthProvider({ children }) {
         setUser(null);
       });
   };
+
+  useEffect(() => {
+    
+  }, [user]);
 
   useEffect(() => {
     const loggedUserJson = window.localStorage.getItem("aldLoggedUser");

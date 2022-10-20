@@ -1,5 +1,5 @@
 // import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import myimg from "/img/login.png";
 import styles from "../styles/LoginSignup.module.css";
@@ -10,9 +10,10 @@ import { TextField } from "@mui/material";
 import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
-  const { login, user } = useAuthProvider();
+  const { login } = useAuthProvider();
   const navigate = useNavigate();
   const { state } = useLocation();
+  const nextPath = state?.location?.pathname ?? "/";
 
   const [userData, setUserData] = useState({
     correo: "",
@@ -24,25 +25,22 @@ function Login() {
     setUserData({ ...userData, [target.name]: target.value });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Si el usuario venía de otra ruta, redirigir a la que iba. Si no, a la raíz.
-    const nextPath = state?.location?.pathname ?? "/";
-    login(userData);
 
-    console.log("🚀 ~ file: Login.jsx ~ line 34 ~ handleLogin ~ user", user);
-
-    setUserData({
-      correo: "",
-      password: "",
-    });
-
-    if (user?.isAuthenticated) {
-      // navigate(nextPath);
-      return;
+    try {
+      // Si el usuario venía de otra ruta, redirigir a la que iba. Si no, a la
+      // raíz.
+      await login(userData);
+      setUserData({
+        correo: "",
+        password: "",
+      });
+      navigate(nextPath);
+    } catch (e) {
+      setError("Usuario o contraseña incorrectos");
     }
 
-    setError("Usuario o contraseña incorrectos");
     setTimeout(() => {
       setError("");
     }, 3000);

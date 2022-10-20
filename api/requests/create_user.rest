@@ -2,9 +2,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "correo": "correo@correo.com",
-  "password": "correo",
-  "nombre": "correo",
-  "apellido": "correo",
+  "correo": "agus@correo.com",
+  "password": "agus",
+  "nombre": "Agus",
+  "apellido": "Sánchez",
   "telefono": "0123456789"
 }

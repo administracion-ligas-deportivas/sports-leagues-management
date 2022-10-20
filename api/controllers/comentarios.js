@@ -11,6 +11,7 @@ router.get("/:AnuncioID", async (req, res) => {
 });
 
 //Insertar información en la base de datos
+// POST /api/comentarios/
 router.post("/", userAuthenticator, async (req, res) => {
   const comentario = req.body;
   const autor = req.user.nombre;
