@@ -25,7 +25,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 /*-----------------------------------------------------*/
 
-const pages = ["Ligas", "Torneos", "Calendario", "Estadisticas"];
+const pages = ["Equipos", "Torneos", "Calendario", "Estadisticas"];
 
 
 function Navbar() {
@@ -112,45 +112,94 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu} >
                   <Typography textAlign="center" >{page}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              <Link to="/EquiposEnSistema" className={style.link}>
+                <MenuItem key='Equipos' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Equipos</Typography>
+                </MenuItem>
+              </Link>
+              <Link to="/EventosDeportivos" className={style.link}>
+                <MenuItem key='EventosDeportivos' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Eventos Deportivos</Typography>
+                </MenuItem>
+              </Link>
+              <Link to="/calendario" className={style.link}>
+                <MenuItem key='Calendario' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Calendario</Typography>
+                </MenuItem>
+              </Link>
+              <Link to="/EstadisticasPersonales" className={style.link}>
+                <MenuItem key='Estadisticas' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Estadisticas</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
           
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faMedal}
-              style={{ marginRight: "10px", fontSize: "2.5rem" }}
-            />
-          </Typography>
+          <Link to='/home' className={style.linkLogo}>
+            <Typography
+              variant="h5"
+              // noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                paddingRight: "80px",
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faMedal}
+                style={{ marginRight: "10px", fontSize: "2.5rem" }}
+              />
+            </Typography>
+          </Link>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            <Link to="/EquiposEnSistema" className={style.link}>
               <Button
-                key={page}
+                key="Equipos"
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                Equipos
               </Button>
-            ))}
+            </Link>
+            <Link to="/EventosDeportivos" className={style.link}>
+              <Button
+                key="EventosDeportivos"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Eventos Deportivos
+              </Button>
+            </Link>
+            <Link to="/Calendario" className={style.link}>
+              <Button
+                key="Calendario"  
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Calendario
+              </Button>
+            </Link>
+            <Link to="/EstadisticasPersonales" className={style.link}>
+              <Button
+                key="Estadisticas"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Estadisticas
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
