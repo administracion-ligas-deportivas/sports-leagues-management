@@ -6,11 +6,14 @@ import MainLayout from "./Layouts/MainLayout";
 import { useAuthProvider } from "./context/AuthContext";
 
 function App() {
-  const { isFetchingUser } = useAuthProvider();
+  const { user, isFetchingUser } = useAuthProvider();
 
   const route = useRoutes(routes);
 
-  if (isFetchingUser || isFetchingUser === undefined) {
+  if (
+    !user?.isAuthenticated &&
+    (isFetchingUser || isFetchingUser === undefined)
+  ) {
     return <div>Cargando...</div>;
   }
 

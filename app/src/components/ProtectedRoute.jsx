@@ -15,12 +15,7 @@ export function ProtectedRoute({ children }) {
     return <div>Cargando usuario...</div>;
   }
 
-  console.log(
-    "🚀 ~ file: ProtectedRoute.jsx ~ line 19 ~ ProtectedRoute ~ user",
-    user
-  );
-
-  if (!user) {
+  if (!user?.isAuthenticated) {
     return <Navigate to="/login" state={{ location }} />;
   }
 

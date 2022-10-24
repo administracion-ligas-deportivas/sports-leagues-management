@@ -14,15 +14,14 @@ const logRequestError = (error) => {
 export function AuthProvider({ children }) {
   // const navigate = useNavigate();
 
-  // const [user, setUser] = useState({
-  //   nombre: "",
-  //   apellido: "",
-  //   correo: "",
-  //   id: null,
-  //   token: "",
-  //   isAuthenticated: false,
-  // });
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    nombre: "",
+    apellido: "",
+    correo: "",
+    id: null,
+    token: "",
+    isAuthenticated: false,
+  });
 
   const [isFetchingUser, setIsFetchingUser] = useState();
 
