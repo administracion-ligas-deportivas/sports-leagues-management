@@ -10,7 +10,7 @@ import { TextField } from "@mui/material";
 import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
-  const { login } = useAuthProvider();
+  const { user, login } = useAuthProvider();
   const navigate = useNavigate();
   const { state } = useLocation();
   const nextPath = state?.location?.pathname ?? "/";
@@ -20,6 +20,13 @@ function Login() {
     password: "",
   });
   const [error, setError] = useState("");
+
+  // Redirect if user is logged in
+  useEffect(() => {
+    if (user) {
+      navigate(nextPath);
+    }
+  }, [user]);
 
   const onChange = ({ target }) => {
     setUserData({ ...userData, [target.name]: target.value });
@@ -71,6 +78,7 @@ function Login() {
             id="correo"
             label="Correo"
             name="correo"
+            autoComplete="email"
             onChange={(event) => onChange(event)}
             value={userData.correo}
           />
@@ -80,6 +88,7 @@ function Login() {
             name="password"
             onChange={(event) => onChange(event)}
             type="password"
+            autoComplete="current-password"
             value={userData.password}
           />
           {error && <p className="text-red-500">{error}</p>}

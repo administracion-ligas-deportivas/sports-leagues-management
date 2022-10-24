@@ -16,11 +16,18 @@ const logout = () => {
 };
 
 const authenticateLoggedUser = async (signal) => {
-  const token = localStorage.getItem(ACCESS_TOKEN_STRING);
+  const user = localStorage.getItem(ACCESS_TOKEN_STRING);
+
+  if (!user) {
+    // Throw exception
+    throw new Error("No hay user en el localStorage");
+  }
+
+  const { token } = JSON.parse(user);
 
   if (!token) {
     // Throw exception
-    throw new Error("No hay token");
+    throw new Error("No hay token en el localStorage");
   }
 
   const accessToken = `Bearer ${token}`;

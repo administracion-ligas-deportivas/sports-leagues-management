@@ -13,14 +13,18 @@ const logRequestError = (error) => {
 
 export function AuthProvider({ children }) {
   // const navigate = useNavigate();
-  const [user, setUser] = useState({
-    nombre: "",
-    apellido: "",
-    correo: "",
-    id: null,
-    token: "",
-    isAuthenticated: false,
-  });
+
+  // const [user, setUser] = useState({
+  //   nombre: "",
+  //   apellido: "",
+  //   correo: "",
+  //   id: null,
+  //   token: "",
+  //   isAuthenticated: false,
+  // });
+  const [user, setUser] = useState(null);
+
+  const [isFetchingUser, setIsFetchingUser] = useState();
 
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
@@ -38,23 +42,38 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const verifyLoggedUser = async (signal) => {
+  //   useEffect(() => {
+  //     const loggedUserJson = window.localStorage.getItem("aldLoggedUser");
+  //
+  //     if (loggedUserJson) {
+  //       const user = JSON.parse(loggedUserJson);
+  //       setUser(user);
+  //       console.log("Se ha recuperado el usuario desde el localStorage", {
+  //         user,
+  //       });
+  //     }
+  //   }, []);
+
+  useEffect(() => {
+    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
+    // const controller = new AbortController();
+    // const { signal } = controller;
+
+    setIsFetchingUser(true);
+
     authService
-      .authenticateLoggedUser(signal)
+      .authenticateLoggedUser()
       .then((data) => {
         console.log(
           "🚀 ~ file: AuthContext.jsx ~ line 85 ~ .then ~ data",
           data
         );
+
         const { user } = data;
-        const { nombre, apellido, correo, id, token } = user;
+
         setUser({
-          nombre,
-          apellido,
-          correo,
-          id,
+          ...user,
           isAuthenticated: true,
-          token,
         });
       })
       .catch((error) => {
@@ -63,42 +82,23 @@ export function AuthProvider({ children }) {
         }
         logRequestError(error);
         setUser(null);
+      })
+      .finally(() => {
+        // Si hago que el isFetchingUser sea falso en el finally, será falso
+        // cuando se aborte el useEffect que efectúa el modo estricto de React.
+        setIsFetchingUser(false);
       });
-  };
 
-  useEffect(() => {
-    
-  }, [user]);
-
-  useEffect(() => {
-    const loggedUserJson = window.localStorage.getItem("aldLoggedUser");
-
-    if (loggedUserJson) {
-      const user = JSON.parse(loggedUserJson);
-      setUser(user);
-      console.log("Se ha recuperado el usuario desde el localStorage", {
-        user,
-      });
-    }
+    // return () => controller.abort();
   }, []);
-
-  //   useEffect(() => {
-  //     // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
-  //     const controller = new AbortController();
-  //     const { signal } = controller;
-  //
-  //     verifyLoggedUser(signal);
-  //
-  //     return () => controller.abort();
-  //   }, []);
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        isFetchingUser,
         login,
         logout,
-        verifyLoggedUser,
       }}
     >
       {children}
