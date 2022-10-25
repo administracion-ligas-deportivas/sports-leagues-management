@@ -90,12 +90,12 @@ function Home() {
           <Link to="/EstadisticasPersonales" className={style.link}>
             <Button variant="contained"> Estadisticas Personales</Button>
           </Link>
-          <Link to="/GestionEquipoJugador" className={style.link}>
-            <Button variant="contained"> Gestión de equipo jugador</Button>
-          </Link>
         </Stack>
         <br></br>
         <Stack direction="row" spacing={2}>
+          <Link to="/GestionEquipoJugador" className={style.link}>
+            <Button variant="contained"> Gestión de equipo jugador</Button>
+          </Link>
           <Link to="/AsignarRoles" className={style.link}>
             <Button variant="contained"> Asignar Roles </Button>
           </Link>
@@ -111,6 +111,9 @@ function Home() {
           <Link to="/EventosDeportivos" className={style.link}>
             <Button variant="contained"> Eventos Deportivos</Button>
           </Link>
+        </Stack>
+        <br></br>
+        <Stack direction="row" spacing={2}>
           <Link to="/RegistroEstadistico" className={style.link}>
             <Button variant="contained"> Registrar Estadistico</Button>
           </Link>
@@ -120,8 +123,6 @@ function Home() {
           <Link to="/GestionEquipo" className={style.link}>
             <Button variant="contained"> Gestión de equipo</Button>
           </Link>
-        </Stack>
-        <Stack direction="row" spacing={2}>
           <Link to="/RegistroPagoFisico" className={style.link}>
             <Button variant="contained"> Registro de pago físico </Button>
           </Link>
