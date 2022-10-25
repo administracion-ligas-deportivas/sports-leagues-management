@@ -1,15 +1,9 @@
 import { useAuthProvider } from "@/context/AuthContext";
-import { useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, Outlet } from "react-router-dom";
 
-export function ProtectedRoute({ children }) {
+export function ProtectedRoute() {
   const { user, isFetchingUser } = useAuthProvider();
   const location = useLocation();
-
-  console.log(
-    "🚀 ~ file: ProtectedRoute.jsx ~ line 10 ~ ProtectedRoute ~ isFetchingUser",
-    isFetchingUser
-  );
 
   if (isFetchingUser || isFetchingUser === undefined) {
     return <div>Cargando usuario...</div>;
@@ -19,5 +13,5 @@ export function ProtectedRoute({ children }) {
     return <Navigate to="/login" state={{ location }} />;
   }
 
-  return children;
+  return <Outlet />;
 }

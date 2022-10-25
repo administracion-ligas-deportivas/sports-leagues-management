@@ -1,6 +1,5 @@
 import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 const ACCESS_TOKEN_STRING = "aldLoggedUser";

@@ -1,4 +1,6 @@
-import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { ProtectedRoute } from "@/components/ProtectedRoutes/ProtectedRoute";
+import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedUser";
+
 import {
   Register,
   Equipos,
@@ -21,69 +23,74 @@ import {
 // https://reactrouter.com/en/main/route/route
 export const routes = [
   {
-    path: "/",
-    element: (
-      <ProtectedRoute>
-        <Home />
-      </ProtectedRoute>
-    ),
+    element: <ProtectedRoute />,
+    children: [
+      { path: "/", element: <Home /> },
+      {
+        path: "/Advise/:id",
+        element: <Advise />,
+      },
+      {
+        path: "/CreateAdvise",
+        element: <CreateAdvise />,
+      },
+      {
+        path: "/Profile/:id",
+        element: <Profile />,
+      },
+      {
+        path: "/gestion-torneo",
+        element: <GestionTorneo />,
+      },
+      {
+        path: "/NuevoArbitro",
+        element: <NuevoArbitro />,
+      },
+      {
+        path: "/CrearEventoDeportivo",
+        element: <CrearEventoDeportivo />,
+      },
+      {
+        path: "/EnterSportsEvent",
+        element: <EnterSportsEvent />,
+      },
+      {
+        path: "/EstadisticasPersonales",
+        element: <EstadisticasPersonales />,
+      },
+      {
+        path: "/AsignarRoles",
+        element: <AsignarRoles />,
+      },
+      {
+        path: "/Equipos",
+        element: <Equipos />,
+      },
+      {
+        path: "/NuevaCancha",
+        element: <NuevaChancha />,
+      },
+      {
+        path: "/EventosDeportivos",
+        element: <EventosDeportivos />,
+      },
+    ],
   },
   {
-    path: "/Advise/:id",
-    element: <Advise />,
+    element: <RedirectLoggedUser />,
+    loader: <div>Cargando...</div>,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
-  {
-    path: "/CreateAdvise",
-    element: <CreateAdvise />,
-  },
-  {
-    path: "/Profile/:id",
-    element: <Profile />,
-  },
-  {
-    path: "/gestion-torneo",
-    element: <GestionTorneo />,
-  },
-  {
-    path: "/NuevoArbitro",
-    element: <NuevoArbitro />,
-  },
-  {
-    path: "/CrearEventoDeportivo",
-    element: <CrearEventoDeportivo />,
-  },
-  {
-    path: "/EnterSportsEvent",
-    element: <EnterSportsEvent />,
-  },
-  {
-    path: "/EstadisticasPersonales",
-    element: <EstadisticasPersonales />,
-  },
-  {
-    path: "/AsignarRoles",
-    element: <AsignarRoles />,
-  },
-  {
-    path: "/Equipos",
-    element: <Equipos />,
-  },
-  {
-    path: "/NuevaCancha",
-    element: <NuevaChancha />,
-  },
-  {
-    path: "/EventosDeportivos",
-    element: <EventosDeportivos />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
-  },
+
   {
     path: "*",
     element: <PageNotFound />,

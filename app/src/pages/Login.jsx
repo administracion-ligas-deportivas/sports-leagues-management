@@ -10,7 +10,7 @@ import { TextField } from "@mui/material";
 import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
-  const { user, login } = useAuthProvider();
+  const { login } = useAuthProvider();
   const navigate = useNavigate();
   const { state } = useLocation();
   const nextPath = state?.location?.pathname ?? "/";
@@ -20,13 +20,6 @@ function Login() {
     password: "",
   });
   const [error, setError] = useState("");
-
-  // Redirect if user is logged in
-  useEffect(() => {
-    if (user) {
-      navigate(nextPath);
-    }
-  }, [user]);
 
   const onChange = ({ target }) => {
     setUserData({ ...userData, [target.name]: target.value });
