@@ -6,6 +6,7 @@ import axios from "axios";
 
 /*-----------PAGINAS/RUTAS-----------*/
 import Home from "./pages/Home";
+import HomeAdmin from "./pages/HomeAdmin";
 import CreateAdvise from "./pages/CreateAdvise";
 import Advise from "./pages/Advise";
 import Login from "./pages/Login";
@@ -96,7 +97,7 @@ function App() {
             {autState.status ? (
               <>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/Home" element={<Home />} />
+                <Route exact path="/Home" element={<HomeAdmin />} />
                 <Route path="/CreateAdvise" element={<CreateAdvise />} />
                 <Route path="/Advise/:id" element={<Advise />} />
                 <Route path="/Profile/:id" element={<Profile />} />
