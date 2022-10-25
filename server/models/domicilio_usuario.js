@@ -35,8 +35,10 @@ module.exports = (sequelize, DataTypes) => {
 
   domicilio_usuario.associate = (models) => {
     domicilio_usuario.belongsTo(models.Municipio, {
-      foreignKey: "municipio_id",
-      as: "domicilio_usuario_municipio_id",
+      foreignKey: "municipio_id"
+    });
+    domicilio_usuario.belongsTo(models.Usuario, {
+      foreignKey: "usuario_id",
     });
   };
   return domicilio_usuario;
