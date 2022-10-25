@@ -38,10 +38,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "municipio_id",
       as: "domicilio_usuario_municipio_id",
     });
-    domicilio_usuario.belongsTo(models.Usuario, {
-      foreignKey: "usuario_id",
-      as: "domicilio_usuario_usuario_id",
-    });
   };
   return domicilio_usuario;
 };
