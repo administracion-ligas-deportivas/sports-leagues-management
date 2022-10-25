@@ -1,14 +1,11 @@
 import "./App.css";
 import { useRoutes } from "react-router-dom";
-import { routes } from "./router/routes";
-
-import MainLayout from "./Layouts/MainLayout";
 import { useAuthProvider } from "./context/AuthContext";
+import { routes } from "./router/routes";
 
 function App() {
   const { user, isFetchingUser } = useAuthProvider();
-
-  const route = useRoutes(routes);
+  const currentRoute = useRoutes(routes);
 
   if (
     !user?.isAuthenticated &&
@@ -17,7 +14,7 @@ function App() {
     return <div>Cargando...</div>;
   }
 
-  return <MainLayout>{route}</MainLayout>;
+  return currentRoute;
 }
 
 export default App;

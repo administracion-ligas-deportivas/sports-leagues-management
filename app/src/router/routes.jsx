@@ -1,5 +1,6 @@
 import { ProtectedRoute } from "@/components/ProtectedRoutes/ProtectedRoute";
 import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedUser";
+import MainLayout from "@/Layouts/MainLayout";
 
 import {
   Register,
@@ -23,7 +24,11 @@ import {
 // https://reactrouter.com/en/main/route/route
 export const routes = [
   {
-    element: <ProtectedRoute />,
+    element: (
+      <MainLayout>
+        <ProtectedRoute />
+      </MainLayout>
+    ),
     children: [
       { path: "/", element: <Home /> },
       {
