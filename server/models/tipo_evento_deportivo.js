@@ -10,5 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  sequelize.associate = (models) => {
+    tipo_evento_deportivo.hasMany(models.formato_evento_deportivo, {
+      foreignKey: "tipo_evento_deportivo_id",
+    });
+  };
   return tipo_evento_deportivo;
 };
