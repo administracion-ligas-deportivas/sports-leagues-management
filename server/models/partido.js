@@ -31,13 +31,15 @@ module.exports = (sequelize, DataTypes) => {
     });
     partido.hasMany(models.equipo_partido, {
       foreignKey: "partido_id",
-      as: "equipo_partido_partido_id",
     });
     partido.belongsTo(models.cancha, {
       foreignKey: "cancha_id",
     });
     partido.belongsTo(models.Usuario, {
       foreignKey: "estadistico_id",
+    });
+    partido.belongsTo(models.evento_deportivo, {
+      foreignKey: "evento_deportivo_id",
     });
   };
   return partido;
