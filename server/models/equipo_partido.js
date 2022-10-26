@@ -25,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     });
     equipo_partido.belongsTo(models.equipo, {
       foreignKey: "equipo_id",
-      as: "equipo_partido_equipo_id",
     });
   };
   return equipo_partido;
