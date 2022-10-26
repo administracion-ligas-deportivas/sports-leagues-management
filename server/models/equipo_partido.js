@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   equipo_partido.associate = (models) => {
     equipo_partido.belongsTo(models.partido, {
       foreignKey: "partido_id",
-      as: "equipo_partido_partido_id",
     });
     equipo_partido.belongsTo(models.equipo, {
       foreignKey: "equipo_id",
