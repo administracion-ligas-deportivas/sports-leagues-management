@@ -6,7 +6,7 @@ import style from "../styles/Advise.module.css";
 import { Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import { fetchPostsById } from "@/services/posts";
+import { fetchPostById } from "@/services/posts";
 import {
   createComentario,
   deleteComentario,
@@ -20,7 +20,7 @@ import {
  */
 
 function Advise() {
-  let { anuncioId } = useParams();
+  let { id: anuncioId } = useParams();
   const [advise, setAdvise] = useState({});
   const [comentarios, setComentarios] = useState([]);
   const [comentario, setComentario] = useState("");
@@ -28,7 +28,7 @@ function Advise() {
   const { user } = useAuthProvider();
 
   useEffect(() => {
-    fetchPostsById(anuncioId).then((posts) => {
+    fetchPostById(anuncioId).then((posts) => {
       setAdvise(posts);
     });
 
