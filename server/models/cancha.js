@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
   cancha.associate = (models) => {
     cancha.belongsTo(models.deportivo, {
       foreignKey: "deportivo_id",
-      as: "cancha_deportivo_id",
+    });
+    cancha.hasMany(models.partido, {
+      foreignKey: "deportivo_id",
     });
   };
   return cancha;
