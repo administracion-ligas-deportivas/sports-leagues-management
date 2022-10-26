@@ -112,7 +112,7 @@ function Advise() {
             label="Comentar"
             variant="outlined"
             value={comentario}
-            placeholder="Ingesa tu comentario..."
+            placeholder="Ingresa tu comentario..."
             onChange={(event) => {
               setComentario(event.target.value);
             }}
@@ -125,8 +125,7 @@ function Advise() {
             sx={{ marginTop: "10px" }}
             size="small"
           >
-            {" "}
-            Subir comentario{" "}
+            Subir comentario
           </Button>
         </div>
       </div>

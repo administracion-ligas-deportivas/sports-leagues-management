@@ -17,12 +17,11 @@ router.get("/:anuncioId", async (req, res) => {
 // POST /api/comentarios/
 router.post("/", userAuthenticator, async (req, res) => {
   const { body, user } = req;
-  const { comentario } = body;
-  const { nombre: autor } = user;
+  const { nombre } = user;
 
-  comentario.usuario = autor;
-
+  const comentario = { ...body, usuario: nombre };
   const newComment = await Comentario.create(comentario);
+
   res.json(newComment);
 });
 

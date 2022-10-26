@@ -1,9 +1,9 @@
 import axios from "axios";
 import { authService } from "./auth";
 
-const baseUrl = "/api/comentarios/";
+const baseUrl = "/api/comentarios";
 // Ejecutar la función cada que se llama al Token, por si cambia.
-const token = () => authService.getBearerToken();
+const token = authService.getBearerToken();
 
 export const fetchComentariosByAnuncioId = async (anuncioId) => {
   const response = await fetch(`${baseUrl}/${anuncioId}`);
