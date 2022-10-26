@@ -10,5 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  sequelize.associate = (models) => {
+    deporte.hasMany(models.estadistica_deporte, {
+      foregeingKey: "deporte_id",
+    });
+    deporte.hasMany(models.formato_evento_deportivo, {
+      foregeingKey: "deporte_id",
+    });
+  };
   return deporte;
 };
