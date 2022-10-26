@@ -13,11 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   permiso_rol.associate = (models) => {
     permiso_rol.belongsTo(models.rol, {
       foreignKey: "rol_id",
-      as: "permiso_rol_rol_id",
     });
     permiso_rol.belongsTo(models.permiso, {
       foreignKey: "permiso_id",
-      as: "permiso_rol_permiso_id",
     });
   };
   return permiso_rol;

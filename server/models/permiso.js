@@ -9,5 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  permiso.associate = (models) => {
+    permiso.hasMany(models.permiso_rol, {
+      foreignKey: "permiso_id",
+    });
+  };
   return permiso;
 };
