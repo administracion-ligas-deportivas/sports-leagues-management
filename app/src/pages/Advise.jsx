@@ -122,7 +122,7 @@ function Advise() {
             variant="contained"
             onClick={nuevoComentario}
             type="submit"
-            sx={"margin-top: 10px;"}
+            sx={{ marginTop: "10px" }}
             size="small"
           >
             {" "}
