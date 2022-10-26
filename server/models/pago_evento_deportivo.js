@@ -37,15 +37,13 @@ module.exports = (sequelize, DataTypes) => {
   pago_evento_deportivo.associate = (models) => {
     pago_evento_deportivo.belongsTo(models.Usuario, {
       foreignKey: "usuario_id",
-      as: "pago_evento_deportivo_usuario_id",
     });
+
     pago_evento_deportivo.belongsTo(models.evento_deportivo, {
       foreignKey: "evento_deportivo_id",
-      as: "pago_evento_deportivo_ evento_deportivo_id",
     });
     pago_evento_deportivo.belongsTo(models.equipo, {
       foreignKey: "equipo_id",
-      as: "pago_evento_deportivo_equipo_id",
     });
   };
 
