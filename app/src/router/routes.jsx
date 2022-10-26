@@ -32,15 +32,15 @@ export const routes = [
     children: [
       { path: "/", element: <Home /> },
       {
-        path: "/Advise/:id",
+        path: "/advise/:id",
         element: <Advise />,
       },
       {
-        path: "/CreateAdvise",
+        path: "/create-advise",
         element: <CreateAdvise />,
       },
       {
-        path: "/Profile/:id",
+        path: "/profile/:id",
         element: <Profile />,
       },
       {
@@ -48,35 +48,35 @@ export const routes = [
         element: <GestionTorneo />,
       },
       {
-        path: "/NuevoArbitro",
+        path: "/nuevo-arbitro",
         element: <NuevoArbitro />,
       },
       {
-        path: "/CrearEventoDeportivo",
+        path: "/crear-evento-deportivo",
         element: <CrearEventoDeportivo />,
       },
       {
-        path: "/EnterSportsEvent",
+        path: "/enter-sports-event",
         element: <EnterSportsEvent />,
       },
       {
-        path: "/EstadisticasPersonales",
+        path: "/estadisticas-personales",
         element: <EstadisticasPersonales />,
       },
       {
-        path: "/AsignarRoles",
+        path: "/asignar-roles",
         element: <AsignarRoles />,
       },
       {
-        path: "/Equipos",
+        path: "/equipos",
         element: <Equipos />,
       },
       {
-        path: "/NuevaCancha",
+        path: "/nueva-cancha",
         element: <NuevaChancha />,
       },
       {
-        path: "/EventosDeportivos",
+        path: "/eventos-deportivos",
         element: <EventosDeportivos />,
       },
     ],
