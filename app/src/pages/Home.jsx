@@ -5,6 +5,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { Button, Stack } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
 import style from "../styles/Home.module.css";
+import { authService } from "@/services/auth";
 
 function Home() {
   const [lista_anuncios, setlista_anuncios] = useState([]);
@@ -16,9 +17,9 @@ function Home() {
     //Investigar pq la compilación marca error en esta línea pero funciona correctamente (si devuelve autState correctamente)
     //if(!localStorage.getItem('accessToken')) navigate('/');
     axios
-      .get("http://localhost:3001/posts", {
+      .get("/api/posts", {
         headers: {
-          accessToken: localStorage.getItem("accessToken"),
+          Authorization: authService.getBearerToken(),
         },
       })
       .then((response) => {
@@ -34,11 +35,11 @@ function Home() {
   const meGusta = (avisoID) => {
     axios
       .post(
-        "http://localhost:3001/like/",
+        "/api/like/",
         { PostID: avisoID },
         {
           headers: {
-            accessToken: localStorage.getItem("accessToken"),
+            Authorization: authService.getBearerToken(),
           },
         }
       )

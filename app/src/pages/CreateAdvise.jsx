@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Stack, TextField } from "@mui/material";
 import styles from "../styles/RegistroDeportivo.module.css";
+import { authService } from "@/services/auth";
 /* ----------------------------------- MUI ---------------------------------- */
 
 function CreateAdvise() {
@@ -29,13 +30,13 @@ function CreateAdvise() {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/posts", data, {
+      .post("/api/posts", data, {
         headers: {
-          accessToken: localStorage.getItem("accessToken"),
+          Authorization: authService.getBearerToken(),
         },
       })
       .then(() => {
-        navigate("/home");
+        navigate("/");
       });
   };
 
@@ -46,8 +47,8 @@ function CreateAdvise() {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: onSubmit}
-  );
+    onSubmit: onSubmit,
+  });
 
   return (
     <div className={styles.container}>
@@ -99,7 +100,9 @@ function CreateAdvise() {
           {/* <Button variant="contained" onClick={aux} type="submit">Crear aviso</Button> */}
           <div className={styles.buttons}>
             <div>
-              <Button  variant="contained" onClick={aux} type="submit">Crear aviso</Button>
+              <Button variant="contained" onClick={aux} type="submit">
+                Crear aviso
+              </Button>
             </div>
             <div>
               <Button variant="contained" color="error">

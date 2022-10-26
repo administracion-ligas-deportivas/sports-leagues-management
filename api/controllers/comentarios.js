@@ -4,27 +4,35 @@ const { Comentario } = require("../models");
 const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 
 //Obtener información
-router.get("/:AnuncioID", async (req, res) => {
-  const anuncioId = req.params.AnuncioID;
-  const comentarios = await Comentario.findAll({ where: { AnuncioId: anuncioId } });
+router.get("/:anuncioId", async (req, res) => {
+  const { anuncioId } = req.params;
+
+  const comentarios = await Comentario.findAll({
+    where: { AnuncioId: anuncioId },
+  });
   res.json(comentarios);
 });
 
 //Insertar información en la base de datos
 // POST /api/comentarios/
 router.post("/", userAuthenticator, async (req, res) => {
-  const comentario = req.body;
-  const autor = req.user.nombre;
+  const { body, user } = req;
+  const { comentario } = body;
+  const { nombre: autor } = user;
+
   comentario.usuario = autor;
-  await Comentario.create(comentario);
-  res.json(comentario);
+
+  const newComment = await Comentario.create(comentario);
+  res.json(newComment);
 });
 
-router.delete("/:commentID", userAuthenticator, async (req, res) => {
-  const commentid = req.params.commentID;
-  await Comentario.destroy({where: {
-    id: commentid,
-  }});
+router.delete("/:commentId", userAuthenticator, async (req, res) => {
+  const { commentId } = req.params;
+  await Comentario.destroy({
+    where: {
+      id: commentId,
+    },
+  });
 
   res.json("Correct delete");
 });

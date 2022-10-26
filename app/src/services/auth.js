@@ -1,10 +1,19 @@
 import axios from "axios";
 
 const ACCESS_TOKEN_STRING = "aldLoggedUser";
-const API_PORT = 3001;
-const BASE_AUTH_URL = `http://localhost:${API_PORT}/api`;
-const LOGIN_URL = `${BASE_AUTH_URL}/login`;
-const VERIFY_URL = `${BASE_AUTH_URL}/users/verify`;
+
+const baseUrl = "/api";
+const LOGIN_URL = `${baseUrl}/login`;
+const VERIFY_URL = `${baseUrl}/users/verify`;
+
+const getUserFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem(ACCESS_TOKEN_STRING));
+};
+
+const getBearerToken = (token) => {
+  const authToken = token ?? getUserFromLocalStorage()?.token;
+  return `Bearer ${authToken}`;
+};
 
 const login = async ({ correo, password } = {}) => {
   const { data } = await axios.post(LOGIN_URL, { correo, password });
@@ -16,26 +25,26 @@ const logout = () => {
 };
 
 const authenticateLoggedUser = async (signal) => {
-  const user = localStorage.getItem(ACCESS_TOKEN_STRING);
+  const user = getUserFromLocalStorage();
 
-  if (!user) {
+  if (!user?.token) {
     // Throw exception
-    throw new Error("No hay user en el localStorage");
+    throw new Error("No hay user o token en el localStorage");
   }
 
-  const { token } = JSON.parse(user);
-
-  if (!token) {
-    // Throw exception
-    throw new Error("No hay token en el localStorage");
-  }
-
-  const accessToken = `Bearer ${token}`;
+  const bearerToken = getBearerToken(user?.token);
+  console.log(
+    "🚀 ~ file: auth.js ~ line 36 ~ authenticateLoggedUser ~ bearerToken",
+    bearerToken
+  );
 
   const data = await fetch(VERIFY_URL, {
     signal,
-    headers: { Authorization: accessToken },
-  }).then((res) => res.json());
+    headers: { Authorization: bearerToken },
+  }).then((res) => {
+    console.log(res);
+    return res.json();
+  });
 
   return data;
 };
@@ -44,6 +53,8 @@ const authService = {
   login,
   logout,
   authenticateLoggedUser,
+  getBearerToken,
+  ACCESS_TOKEN_STRING,
 };
 
 export { authService };

@@ -6,6 +6,12 @@ import style from "../styles/Advise.module.css";
 import { Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
+import { fetchPostsById } from "@/services/posts";
+import {
+  createComentario,
+  deleteComentario,
+  fetchComentariosByAnuncioId,
+} from "@/services/comentarios";
 
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
@@ -14,65 +20,47 @@ import SendIcon from "@mui/icons-material/Send";
  */
 
 function Advise() {
-  let { id } = useParams();
+  let { anuncioId } = useParams();
   const [advise, setAdvise] = useState({});
   const [comentarios, setComentarios] = useState([]);
-  const [crearComentario, setcrearComentario] = useState("");
+  const [comentario, setComentario] = useState("");
   const navigate = useNavigate();
   const { user } = useAuthProvider();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((Response) => {
-      setAdvise(Response.data);
+    fetchPostsById(anuncioId).then((posts) => {
+      setAdvise(posts);
     });
 
-    axios.get(`http://localhost:3001/comentarios/${id}`).then((Response) => {
-      setComentarios(Response.data);
+    fetchComentariosByAnuncioId(anuncioId).then((comentarios) => {
+      setComentarios(comentarios);
     });
     //Este arreglo evita que se envíen solicitudes constantemente
-  }, [id]);
+  }, [anuncioId]);
 
   const nuevoComentario = () => {
-    axios
-      .post(
-        "http://localhost:3001/comentarios",
-        {
-          comentario: crearComentario,
-          AnuncioId: id,
-        },
-        {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        }
-      )
-      .then((response) => {
-        if (response.data.error) console.log(response.data.error);
-        else {
-          const comentario_A_Agregar = {
-            comentario: crearComentario,
-            usuario: response.data.usuario,
-          };
-          setComentarios([...comentarios, comentario_A_Agregar]);
-          setcrearComentario("");
-        }
+    createComentario(anuncioId, comentario)
+      .then((nuevoComentario) => {
+        const comment = {
+          comentario,
+          usuario: nuevoComentario.usuario,
+        };
+        setComentarios([...comentarios, comment]);
+        setComentario("");
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   const borrarComentario = (id) => {
-    axios
-      .delete(`http://localhost:3001/comentarios/${id}`, {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
-      .then(() => {
-        setAdvise(
-          comentarios.filter((val) => {
-            return val.id !== id;
-          })
-        );
-      });
+    deleteComentario(id).then(() => {
+      setAdvise(
+        comentarios.filter((val) => {
+          return val.id !== id;
+        })
+      );
+    });
   };
 
   const borrarAviso = (id) => {
@@ -123,10 +111,10 @@ function Advise() {
             size="small"
             label="Comentar"
             variant="outlined"
-            value={crearComentario}
+            value={comentario}
             placeholder="Ingesa tu comentario..."
             onChange={(event) => {
-              setcrearComentario(event.target.value);
+              setComentario(event.target.value);
             }}
           />
           <Button
@@ -167,7 +155,7 @@ function Advise() {
     //     </div>
     //     <div>
     //             Añadir comentario:
-    //       <input type='text' value={crearComentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setcrearComentario(event.target.value);}}/>
+    //       <input type='text' value={comentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setComentario(event.target.value);}}/>
     //       <Button onClick={nuevoComentario} type='submit'> Subir comentario </Button>
     //     </div>
     //   </div>

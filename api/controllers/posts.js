@@ -22,11 +22,13 @@ router.get("/byId/:id", async (req, res) => {
 });
 
 router.post("/", userAuthenticator, async (req, res) => {
-  const insersion = req.body;
-  insersion.autor = req.user.userEmail;
-  console.log("A", insersion);
-  await Anuncio.create(insersion);
-  res.json(insersion);
+  const { body, user } = req;
+  const { correo } = user;
+
+  const data = { ...body, autor: correo };
+
+  const anuncio = await Anuncio.create(data);
+  res.json(anuncio);
 });
 
 router.delete("/:AvisoID", userAuthenticator, async (req, res) => {
