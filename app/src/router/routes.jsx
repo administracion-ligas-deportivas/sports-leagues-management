@@ -83,7 +83,6 @@ export const routes = [
   },
   {
     element: <RedirectLoggedUser />,
-    loader: <div>Cargando...</div>,
     children: [
       {
         path: "/login",

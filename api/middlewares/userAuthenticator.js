@@ -11,10 +11,6 @@ const userAuthenticator = (req, res, next) => {
       .json({ error: "El token no se encuentra o no es válido" });
   }
 
-  console.log(
-    "🚀 ~ file: userAuthenticator.js ~ line 15 ~ userAuthenticator ~ decodedToken",
-    decodedToken
-  );
   const { id, correo, nombre, apellido } = decodedToken;
 
   // Con Express podemos mutar el objeto request.

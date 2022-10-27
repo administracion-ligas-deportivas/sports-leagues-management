@@ -31,21 +31,21 @@ function Advise() {
     fetchPostById(anuncioId).then((posts) => {
       setAdvise(posts);
     });
-
     fetchComentariosByAnuncioId(anuncioId).then((comentarios) => {
       setComentarios(comentarios);
     });
-    //Este arreglo evita que se envíen solicitudes constantemente
-  }, [anuncioId]);
+  }, []);
 
-  const nuevoComentario = () => {
+  useEffect(() => {
+    console.log({ comentarios });
+  }, [comentarios]);
+
+  const nuevoComentario = (e) => {
+    e.preventDefault();
+
     createComentario(anuncioId, comentario)
-      .then((nuevoComentario) => {
-        const comment = {
-          comentario,
-          usuario: nuevoComentario.usuario,
-        };
-        setComentarios([...comentarios, comment]);
+      .then((newComment) => {
+        setComentarios([...comentarios, newComment]);
         setComentario("");
       })
       .catch((error) => {
@@ -55,9 +55,9 @@ function Advise() {
 
   const borrarComentario = (id) => {
     deleteComentario(id).then(() => {
-      setAdvise(
-        comentarios.filter((val) => {
-          return val.id !== id;
+      setComentarios((currentComments) =>
+        currentComments.filter((comment) => {
+          return comment.id !== id;
         })
       );
     });
@@ -83,10 +83,13 @@ function Advise() {
         <h3>{advise.nombre} </h3>
         <p>{advise.descripcion}</p>
         <h2>Comentarios</h2>
-        <div className={style.comentarios}>
-          {comentarios.map((comentario, key) => {
+        <form
+          className={style.comentarios}
+          onSubmit={(e) => nuevoComentario(e)}
+        >
+          {comentarios.map((comentario) => {
             return (
-              <div key={key} className={style.coment}>
+              <div key={comentario.id} className={style.coment}>
                 <h4>{comentario.usuario} dijo: </h4>
                 <p>{comentario.comentario}</p>
                 {user.nombre === comentario.usuario && (
@@ -120,14 +123,13 @@ function Advise() {
           <Button
             startIcon={<SendIcon />}
             variant="contained"
-            onClick={nuevoComentario}
             type="submit"
             sx={{ marginTop: "10px" }}
             size="small"
           >
             Subir comentario
           </Button>
-        </div>
+        </form>
       </div>
     </>
     // <div>

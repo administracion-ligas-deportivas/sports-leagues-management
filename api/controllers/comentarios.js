@@ -10,6 +10,10 @@ router.get("/:anuncioId", async (req, res) => {
   const comentarios = await Comentario.findAll({
     where: { AnuncioId: anuncioId },
   });
+  console.log(
+    "🚀 ~ file: comentarios.js ~ line 13 ~ router.get ~ comentarios",
+    { comentarios }
+  );
   res.json(comentarios);
 });
 
@@ -26,14 +30,19 @@ router.post("/", userAuthenticator, async (req, res) => {
 });
 
 router.delete("/:commentId", userAuthenticator, async (req, res) => {
+  const { params } = req;
   const { commentId } = req.params;
+  console.log("🚀 ~ file: comentarios.js ~ line 30 ~ router.delete ~ req", {
+    params,
+  });
+
   await Comentario.destroy({
     where: {
       id: commentId,
     },
   });
 
-  res.json("Correct delete");
+  res.json({ message: "Correct delete" });
 });
 
 module.exports = router;
