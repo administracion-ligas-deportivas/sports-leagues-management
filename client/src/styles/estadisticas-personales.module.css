@@ -3,7 +3,7 @@
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 40px;
+    /* padding: 40px; */
   }
 
   .container h1 {
@@ -44,6 +44,16 @@
     margin: 10px;
     color: gray;
     width: 50%;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons div {
+    margin-left: 3em;
   }
 }
 
@@ -86,5 +96,13 @@
   .input2 {
     color: gray;
     line-height: 2em;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    gap: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
   }
 }

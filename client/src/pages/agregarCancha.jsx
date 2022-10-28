@@ -19,14 +19,14 @@ export default function AgregarCancha() {
 
   return (
     <>
-      <h1>Registro de Canchas</h1>
       <div className={style.container}>
+        <h1>Registro de canchas</h1>
         <div className={style.rectangle}>
           <Stack spacing={2} direction="row" className={style.form}>
             <Autocomplete
               id="buscar-usuario"
               fullWidth
-              size="small"
+              // size="small"
               options={canchas}
               renderInput={(params) => (
                 <TextField {...params} label="Deportivo" />
@@ -37,25 +37,28 @@ export default function AgregarCancha() {
               fullWidth
               label="Nombre de la cancha"
               variant="outlined"
-              size="small"
+              // size="small"
             />
           </Stack>
-          <Stack spacing={2} direction="row" className={style.form}>
+          <Stack spacing={2} direction="row" className={style.formS}>
             <TextField
               fullWidth
               id="outlined-basic"
               label="Número de cancha"
               variant="outlined"
-              size="small"
+              // size="small"
             />
-            <div className={style.aux}></div>
           </Stack>
-          <Stack direction="row" spacing={2} className={style.button}>
-            <Button variant="contained" color="error">
-              Cancelar
-            </Button>
-            <Button variant="contained">Guardar</Button>
-          </Stack>
+          <div className={style.buttons}>
+            <div>
+              <Button variant="contained">Guardar</Button>
+            </div>
+            <div>
+              <Button variant="contained" color="error">
+                Cancelar
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </>

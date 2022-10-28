@@ -75,8 +75,8 @@ function Home() {
           <Link to="/CreateAdvise" className={style.link}>
             <Button variant="contained"> Crear Aviso </Button>
           </Link>
-          <Link to="/gestion-torneo" className={style.link}>
-            <Button variant="contained"> Gestionar Torneo </Button>
+          <Link to="/GestionEventoDep" className={style.link}>
+            <Button variant="contained"> Gestionar Evento Deportivo </Button>
           </Link>
           <Link to="/NuevoArbitro" className={style.link}>
             <Button variant="contained"> Nuevo Arbitro </Button>

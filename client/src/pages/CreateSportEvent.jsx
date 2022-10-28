@@ -1,11 +1,6 @@
 import * as React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-//import Head from "next/head";
-//import styles from "../styles/EditarPerfil.module.css";
 import styles from "../styles/create-sports-event.module.css";
-//import Footer from "@/components/Footer";
-//import UserIcon from "@/components/Icon";
-
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, TextField, MenuItem, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -20,14 +15,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 /* ----------------------------------- MUI ---------------------------------- */
-
-//import { useParams } from "react-router-dom";
-//import axios from "axios";
-//import { useEffect, useState } from "react";
-//import styles from "../styles/EditarPerfil.module.css";
-// import {FormControl,InputLabel,OutlinedInput,InputAdornment} from "@mui/material";
-//import { FormControl, InputLabel, OutlinedInput, InputAdornment }from "@mui/material";
-
 
 export default function CrearEventoDeportivo() {
   const [open, setOpen] = React.useState(false);
@@ -44,25 +31,6 @@ export default function CrearEventoDeportivo() {
     boxShadow: 24,
     p: 4,
   };
-  
-  /*const options = [
-    {
-      value: "USD",
-      label: "$",
-    },
-    {
-      value: "EUR",
-      label: "€",
-    },
-    {
-      value: "BTC",
-      label: "฿",
-    },
-    {
-      value: "JPY",
-      label: "¥",
-    },
-  ];*/
 
   const sports = [
     {
