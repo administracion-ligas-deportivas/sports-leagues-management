@@ -1,71 +1,62 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { fetchPosts } from "@/services/posts";
+import { likePost } from "@/services/likes";
+
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { Button, Stack } from "@mui/material";
-//import {AuthContext} from '../helpers/AuthContext';
 import style from "../styles/Home.module.css";
-import { authService } from "@/services/auth";
 
 function Home() {
-  const [lista_anuncios, setlista_anuncios] = useState([]);
-  const [anuncioLiked, setAnuncioLiked] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [likedPost, setLikedPost] = useState([]);
   const navigate = useNavigate();
-  //const {autState} = useContext(AuthContext);
 
   useEffect(() => {
-    //Investigar pq la compilación marca error en esta línea pero funciona correctamente (si devuelve autState correctamente)
-    //if(!localStorage.getItem('accessToken')) navigate('/');
-    axios
-      .get("/api/posts", {
-        headers: {
-          Authorization: authService.getBearerToken(),
-        },
-      })
-      .then((response) => {
-        setlista_anuncios(response.data.lista_anuncios);
-        setAnuncioLiked(
-          response.data.liked.map((like) => {
-            return like.AnuncioId;
-          })
-        );
-      });
+    console.log({ posts });
+  }, [posts]);
+
+  useEffect(() => {
+    fetchPosts().then((response) => {
+      console.log(
+        "🚀 ~ file: Home.jsx ~ line 18 ~ fetchPosts ~ response",
+        response
+      );
+      setPosts(response.lista_anuncios);
+      setLikedPost(
+        response.liked.map((like) => {
+          return like.AnuncioId;
+        })
+      );
+    });
   }, []);
 
   const meGusta = (avisoID) => {
-    axios
-      .post(
-        "/api/like/",
-        { PostID: avisoID },
-        {
-          headers: {
-            Authorization: authService.getBearerToken(),
-          },
-        }
-      )
-      .then((response) => {
-        setlista_anuncios(
-          lista_anuncios.map((post) => {
-            if (post.id === avisoID)
-              if (response.data.liked)
-                return { ...post, Likes: [...post.Likes, 0] };
-              else {
-                const auxArray = post.Likes;
-                auxArray.pop();
-                return { ...post, Likes: auxArray };
-              }
-            else return post;
-          })
-        );
-
-        if (anuncioLiked.includes(avisoID)) {
-          setAnuncioLiked(
-            anuncioLiked.filter((id) => {
-              return id !== avisoID;
-            })
-          );
-        } else setAnuncioLiked([...anuncioLiked, avisoID]);
+    likePost(avisoID).then((response) => {
+      console.log({ response });
+      const newPosts = posts.map((post) => {
+        if (post.id === avisoID)
+          if (response.liked) return { ...post, Likes: [...post.Likes, 0] };
+          else {
+            const auxArray = post.Likes;
+            auxArray.pop();
+            return { ...post, Likes: auxArray };
+          }
+        else return post;
       });
+
+      setPosts(newPosts);
+
+      if (!likedPost.includes(avisoID)) {
+        setLikedPost([...likedPost, avisoID]);
+        return;
+      }
+      const liked = likedPost.filter((id) => {
+        return id !== avisoID;
+      });
+      setLikedPost(liked);
+    });
   };
 
   return (
@@ -127,7 +118,7 @@ function Home() {
         </Stack>
         <h2> Anuncios </h2>
         <div className={style.containerAnuncio}>
-          {lista_anuncios.map((value, key) => {
+          {posts.map((value, key) => {
             return (
               <div className={style.anuncio} key={key}>
                 {value.nombre === "" ? (
@@ -162,7 +153,7 @@ function Home() {
                     }}
                     className={
                       //Verifica si se dio like o no
-                      anuncioLiked.includes(value.id) ? "azul" : "rojo"
+                      likedPost.includes(value.id) ? "azul" : "rojo"
                     }
                   />
                   <label> {value.Likes.length}</label>

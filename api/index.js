@@ -34,7 +34,7 @@ app.use(tokenExtractor);
 app.use("/api/posts", postRouter);
 app.use("/api/comentarios", comentariosRouter);
 app.use("/api/users", usersRouter);
-app.use("/api/like", likesRouter);
+app.use("/api/likes", likesRouter);
 app.use("/api/login", loginRouter);
 
 /* 

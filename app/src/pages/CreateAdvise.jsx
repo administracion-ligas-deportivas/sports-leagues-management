@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Stack, TextField } from "@mui/material";
 import styles from "../styles/RegistroDeportivo.module.css";
 import { authService } from "@/services/auth";
+import { createPost } from "@/services/posts";
 /* ----------------------------------- MUI ---------------------------------- */
 
 function CreateAdvise() {
@@ -29,15 +30,9 @@ function CreateAdvise() {
   });
 
   const onSubmit = (data) => {
-    axios
-      .post("/api/posts", data, {
-        headers: {
-          Authorization: authService.getBearerToken(),
-        },
-      })
-      .then(() => {
-        navigate("/");
-      });
+    createPost(data).then(() => {
+      navigate("/");
+    });
   };
 
   const aux = () => {
