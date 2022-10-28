@@ -47,6 +47,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     setUser((user) => ({ ...user, isLoading: true }));
+
     // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
     // const controller = new AbortController();
     // const { signal } = controller;
@@ -54,11 +55,6 @@ export function AuthProvider({ children }) {
     authService
       .authenticateLoggedUser()
       .then((data) => {
-        console.log(
-          "🚀 ~ file: AuthContext.jsx ~ line 85 ~ .then ~ data",
-          data
-        );
-
         const { user } = data;
 
         setUser({ ...user, isAuthenticated: true, isLoading: false });
@@ -96,7 +92,7 @@ export function useAuthProvider() {
   const context = useContext(AuthContext);
 
   if (context === undefined) {
-    throw new Error("useAuth must be used within a AuthProvider");
+    throw new Error("useAuthProvider must be used within a AuthProvider");
   }
 
   return context;

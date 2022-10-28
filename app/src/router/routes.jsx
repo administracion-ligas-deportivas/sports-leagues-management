@@ -20,6 +20,7 @@ import {
   Login,
   PageNotFound,
 } from "@/pages";
+import { Navigate } from "react-router-dom";
 
 // https://reactrouter.com/en/main/route/route
 export const routes = [
@@ -31,6 +32,7 @@ export const routes = [
     ),
     children: [
       { path: "/", element: <Home /> },
+      { path: "/home", element: <Navigate to="/" replace={true} /> },
       {
         path: "/advise/:id",
         element: <Advise />,
