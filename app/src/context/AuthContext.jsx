@@ -1,6 +1,7 @@
 import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { usenavigate } from "react-router-dom";
 
 const ACCESS_TOKEN_STRING = "aldLoggedUser";
 
@@ -11,8 +12,6 @@ const logRequestError = (error) => {
 };
 
 export function AuthProvider({ children }) {
-  // const navigate = useNavigate();
-
   const [user, setUser] = useState({
     nombre: "",
     apellido: "",
@@ -20,44 +19,37 @@ export function AuthProvider({ children }) {
     id: null,
     token: "",
     isAuthenticated: false,
+    isLoading: true,
   });
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const [nextPath, setNextPath] = useState(null);
 
-  const [isFetchingUser, setIsFetchingUser] = useState();
+  useEffect(() => {
+    setNextPath(() => state?.location?.pathname ?? "/");
+    console.log({ nextPath });
+  }, [state]);
 
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
     // const { token, correo: userEmail, nombre, apellido, id } = user;
 
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
-    setUser({
-      ...user,
-      isAuthenticated: true,
-    });
+    setUser({ ...user, isAuthenticated: true });
+    navigate(nextPath);
   };
 
   const logout = () => {
     authService.logout();
     setUser(null);
+    // navigate("/login", { state: { location } });
   };
 
-  //   useEffect(() => {
-  //     const loggedUserJson = window.localStorage.getItem("aldLoggedUser");
-  //
-  //     if (loggedUserJson) {
-  //       const user = JSON.parse(loggedUserJson);
-  //       setUser(user);
-  //       console.log("Se ha recuperado el usuario desde el localStorage", {
-  //         user,
-  //       });
-  //     }
-  //   }, []);
-
   useEffect(() => {
+    setUser((user) => ({ ...user, isLoading: true }));
     // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
     // const controller = new AbortController();
     // const { signal } = controller;
-
-    setIsFetchingUser(true);
 
     authService
       .authenticateLoggedUser()
@@ -69,10 +61,8 @@ export function AuthProvider({ children }) {
 
         const { user } = data;
 
-        setUser({
-          ...user,
-          isAuthenticated: true,
-        });
+        setUser({ ...user, isAuthenticated: true, isLoading: false });
+        navigate(nextPath);
       })
       .catch((error) => {
         if (error.name === "AbortError") {
@@ -82,9 +72,7 @@ export function AuthProvider({ children }) {
         setUser(null);
       })
       .finally(() => {
-        // Si hago que el isFetchingUser sea falso en el finally, será falso
-        // cuando se aborte el useEffect que efectúa el modo estricto de React.
-        setIsFetchingUser(false);
+        setUser((user) => ({ ...user, isLoading: false }));
       });
 
     // return () => controller.abort();
@@ -94,7 +82,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
-        isFetchingUser,
+        nextPath,
         login,
         logout,
       }}

@@ -1,18 +1,14 @@
 import "./App.css";
 import { useRoutes } from "react-router-dom";
-import { useAuthProvider } from "./context/AuthContext";
 import { routes } from "./router/routes";
 
 function App() {
-  const { user, isFetchingUser } = useAuthProvider();
   const currentRoute = useRoutes(routes);
+  // useNavigation se debe de utilizar con un "data router".
+  // const navigation = useNavigation();
 
-  if (
-    !user?.isAuthenticated &&
-    (isFetchingUser || isFetchingUser === undefined)
-  ) {
-    return <div>Cargando...</div>;
-  }
+  // https://reactrouter.com/en/main/start/overview#pending-navigation-ui
+  // if (navigation.state === "loading") return <div>Cargando...</div>;
 
   return currentRoute;
 }

@@ -2,8 +2,16 @@ const jwt = require("jsonwebtoken");
 
 const userAuthenticator = (req, res, next) => {
   const { token } = req;
+  console.log(
+    "🚀 ~ file: userAuthenticator.js ~ line 5 ~ userAuthenticator ~ token",
+    token
+  );
 
   const decodedToken = jwt.verify(token, process.env.SECRET);
+  console.log(
+    "🚀 ~ file: userAuthenticator.js ~ line 8 ~ userAuthenticator ~ decodedToken",
+    decodedToken
+  );
 
   if (!token || !decodedToken.id) {
     return res

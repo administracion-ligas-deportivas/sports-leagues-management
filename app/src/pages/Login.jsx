@@ -1,6 +1,6 @@
 // import Head from "next/head";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import myimg from "/img/login.png";
 import styles from "../styles/LoginSignup.module.css";
 
@@ -11,14 +11,12 @@ import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
   const { login } = useAuthProvider();
-  const navigate = useNavigate();
-  const { state } = useLocation();
-  const nextPath = state?.location?.pathname ?? "/";
 
   const [userData, setUserData] = useState({
     correo: "",
     password: "",
   });
+
   const [error, setError] = useState("");
 
   const onChange = ({ target }) => {
@@ -36,7 +34,6 @@ function Login() {
         correo: "",
         password: "",
       });
-      navigate(nextPath);
     } catch (e) {
       setError("Usuario o contraseña incorrectos");
     }

@@ -59,7 +59,7 @@ function Signup() {
           <img src={myimg} alt="Register_image" width="300px" height="300px" />
         </section>
         <main className={[styles.container, styles.loginContainer].join(" ")}>
-          <Link to="/">Inicia sesión</Link>
+          <Link to="/login">Inicia sesión</Link>
           <h1 className={styles.titlePage}>Registro</h1>
 
           {/*<Label htmlFor="user-label-pass" content="Nombre(s)" >

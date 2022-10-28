@@ -25,9 +25,9 @@ import {
 export const routes = [
   {
     element: (
-      <MainLayout>
-        <ProtectedRoute />
-      </MainLayout>
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
     ),
     children: [
       { path: "/", element: <Home /> },

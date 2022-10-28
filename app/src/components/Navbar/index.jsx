@@ -41,10 +41,6 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1A1C9E" }}>
       <Container maxWidth="xl">
@@ -185,7 +181,7 @@ function Navbar() {
                   </Typography>
                 </MenuItem>
                 {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
-                <MenuItem key="Logout" onClick={handleLogout}>
+                <MenuItem key="Logout" onClick={logout}>
                   <Typography textAlign="center">Cerrar Sesión</Typography>
                 </MenuItem>
               </Menu>

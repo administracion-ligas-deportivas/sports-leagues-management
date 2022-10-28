@@ -1,17 +1,24 @@
 import { useAuthProvider } from "@/context/AuthContext";
-import { Navigate, useLocation, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export function ProtectedRoute() {
-  const { user, isFetchingUser } = useAuthProvider();
+// No utilizamos Outlet porque no renderizamos la pantalla de la ruta, sino el
+// MainLayout en este caso.
+export function ProtectedRoute({ children }) {
+  const { user } = useAuthProvider();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  if (isFetchingUser || isFetchingUser === undefined) {
+  useEffect(() => {
+    if (!user?.isLoading && !user?.isAuthenticated) {
+      navigate("/login", { state: { location } });
+      return;
+    }
+  }, [user, navigate, location]);
+
+  if (user?.isLoading) {
     return <div>Cargando usuario...</div>;
   }
 
-  if (!user?.isAuthenticated) {
-    return <Navigate to="/login" state={{ location }} />;
-  }
-
-  return <Outlet />;
+  return user?.isAuthenticated && children;
 }
