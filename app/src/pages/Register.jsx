@@ -10,7 +10,6 @@ import styles from "../styles/LoginSignup.module.css";
 //import Input from "@/components/Input/index";
 //import Label from "@/components/Label";
 //import Button from "@/components/Button/index";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 /* ----------------------------------- MUI ---------------------------------- */
@@ -20,6 +19,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTime } from "luxon";
 import Button from "@mui/material/Button";
+import { createUser } from "@/services/users";
 //import TextField from "@mui/material";
 //import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
@@ -43,7 +43,7 @@ function Signup() {
   const registerUser = async (e) => {
     e.preventDefault();
     console.log(usuario);
-    await axios.post("http://localhost:3001/auth", usuario).then((response) => {
+    createUser(usuario).then(() => {
       navigate("/");
     });
   };
