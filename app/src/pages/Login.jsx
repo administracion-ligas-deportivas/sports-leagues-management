@@ -1,5 +1,5 @@
 // import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import myimg from "/img/login.png";
 import styles from "../styles/LoginSignup.module.css";

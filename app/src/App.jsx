@@ -1,6 +1,9 @@
-import "./App.css";
+import { SWRConfig } from "swr";
 import { useRoutes } from "react-router-dom";
 import { routes } from "./router/routes";
+import "./App.css";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function App() {
   const currentRoute = useRoutes(routes);
@@ -10,7 +13,7 @@ function App() {
   // https://reactrouter.com/en/main/start/overview#pending-navigation-ui
   // if (navigation.state === "loading") return <div>Cargando...</div>;
 
-  return currentRoute;
+  return <SWRConfig value={{ fetcher }}>{currentRoute}</SWRConfig>;
 }
 
 export default App;
