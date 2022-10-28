@@ -3,7 +3,7 @@ const tokenExtractor = (req, res, next) => {
   // Equivalente a req.header("Authorization"), pero con Express.
   // const accessToken = req.header("accessToken");
   const authorization = req.get("authorization");
-  console.log("🚀 ~ file: tokenExtractor.js ~ line 6 ~ tokenExtractor ~ authorization", authorization)
+
   let token = "";
 
   // El "Bearer" nos lo pueden pasar en cualquier case: "BEARER", "Bearer",

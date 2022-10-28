@@ -74,6 +74,7 @@ function Advise() {
       .then((newComment) => {
         setComentarios((currentComments) => [...currentComments, newComment]);
         setComentario("");
+        setError("");
       })
       .catch((error) => {
         console.log(error);
