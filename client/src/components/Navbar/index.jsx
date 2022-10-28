@@ -1,5 +1,6 @@
 import * as React from "react";
 
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMedal,
@@ -59,7 +60,7 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters >
           <Tooltip title="Ligas Deportivas">
-            <Link to="/home" className={style.linkLogo}>
+            <Link to="/" className={style.linkLogo}>
             <Typography
               variant="h6"
               noWrap
@@ -140,7 +141,7 @@ function Navbar() {
             </Menu>
           </Box>
           
-          <Link to='/home' className={style.linkLogo}>
+          <Link to='/' className={style.linkLogo}>
             <Typography
               variant="h5"
               // noWrap
