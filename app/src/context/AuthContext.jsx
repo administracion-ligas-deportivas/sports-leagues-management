@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import { useUser } from "@/hooks/useUser";
+import { authService } from "@/services/auth";
+>>>>>>> a16c17a4418f1cb5868bffe8f52a3ad6e7cdb98e
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "@/hooks/useUser";
@@ -5,6 +10,11 @@ import { authService } from "@/services/auth";
 import { ACCESS_TOKEN_STRING } from "@/constants/auth";
 // import { usenavigate } from "react-router-dom";
 
+<<<<<<< HEAD
+=======
+const ACCESS_TOKEN_STRING = "aldLoggedUser";
+
+>>>>>>> a16c17a4418f1cb5868bffe8f52a3ad6e7cdb98e
 const logRequestError = (error) => {
   console.log(`🔻 ${error}`);
 };
@@ -25,7 +35,6 @@ export function AuthProvider({ children }) {
 
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
-
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
 
     mutateUser(user);
