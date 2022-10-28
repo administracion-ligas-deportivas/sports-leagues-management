@@ -5,41 +5,31 @@ import styles from "@/styles/EditarPerfil.module.css";
 import UserIcon from "@/components/Icon";
 import {
   Button,
-  TextField
+  TextField,
   // LocalizationProvider,
-  // DateTimePicker 
-}from "@mui/material";
+  // DateTimePicker
+} from "@mui/material";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-import { 
-  useEffect, 
-  useState 
-} from "react";
-/**
- * 
- * Se eliminó la tag 'Head' ya que no puede ser hija de div
- */
-
+import { useEffect, useState } from "react";
+import { fetchUser } from "@/services/users";
 
 export default function EditarPerfil() {
-  let {id} = useParams();
+  let { id } = useParams();
   const [user, setUser] = useState({});
   const [name, setName] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/ProfileInfo/${id}`).then(
-      (response)=>{
-        setUser({
-          nombre: response.data.nombre,
-          apellido: response.data.apellido,
-          correo: response.data.email,
-        });
-        setName(response.data.nombre);
-      }
-    );
+    fetchUser(id).then((response) => {
+      setUser({
+        nombre: response.nombre,
+        apellido: response.apellido,
+        correo: response.email,
+      });
+      
+      setName(response.nombre);
+    });
   }, [id]);
 
-  
   console.log(name);
 
   return (
@@ -54,11 +44,11 @@ export default function EditarPerfil() {
           <div className={styles.flexContainer}>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="nombre"
                 label="Nombre"
                 // placeholder="Nombre"
-                value = {name}
+                value={name}
                 margin="normal"
                 onChange={(event) => setName(event.target.value)}
                 InputLabelProps={{ shrink: true }}
@@ -66,11 +56,13 @@ export default function EditarPerfil() {
             </div>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="apellido"
                 label="Apellido"
                 value={user.apellido}
-                onChange={(event) => setUser({ ...user, apellido: event.target.value })}
+                onChange={(event) =>
+                  setUser({ ...user, apellido: event.target.value })
+                }
                 InputLabelProps={{ shrink: true }}
                 margin="normal"
               />
@@ -79,7 +71,7 @@ export default function EditarPerfil() {
           <div className={styles.flexContainer}>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="fechaNacimiento"
                 label="Fecha de Nacimiento"
                 value=""
@@ -98,13 +90,15 @@ export default function EditarPerfil() {
             </div>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="email"
                 label="Correo"
                 value={user.correo}
-                onChange={(event) => setUser({...user, correo: event.target.value})}
+                onChange={(event) =>
+                  setUser({ ...user, correo: event.target.value })
+                }
                 InputLabelProps={{ shrink: true }}
-                type='mail'
+                type="mail"
                 margin="normal"
               />
             </div>
@@ -112,7 +106,7 @@ export default function EditarPerfil() {
           <div className={styles.flexContainer}>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="numero"
                 label="Número de Teléfono"
                 value="(55) 5555-5555"
@@ -124,7 +118,7 @@ export default function EditarPerfil() {
           <div className={styles.flexContainer}>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="direccion"
                 label="Calle"
                 margin="normal"
@@ -132,7 +126,7 @@ export default function EditarPerfil() {
             </div>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="colonia"
                 label="Colonia"
                 margin="normal"
@@ -142,57 +136,50 @@ export default function EditarPerfil() {
           <div className={styles.flexContainer}>
             <div className={styles.input2}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="num-ext"
                 label="Núm. Exterior"
-                type='number'
+                type="number"
                 margin="normal"
               />
             </div>
             <div className={styles.input2}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="num-int"
                 label="Núm. interior"
-                type='number'
+                type="number"
                 margin="normal"
               />
             </div>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="cp"
                 label="Código Postal"
-                type='number'
+                type="number"
                 margin="normal"
               />
             </div>
           </div>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <TextField
-                fullWidth 
-                id="estado"
-                label="Estado"
-                margin="normal"
-              />
+              <TextField fullWidth id="estado" label="Estado" margin="normal" />
             </div>
             <div className={styles.input}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="municipio"
                 label="Municipio"
                 margin="normal"
               />
             </div>
           </div>
-          
+
           <br />
-          
+
           <div className={styles.buttons}>
-            <Button variant="contained">
-              Aceptar
-            </Button>      
+            <Button variant="contained">Aceptar</Button>
             <Button variant="contained" color="error">
               Cancelar
             </Button>

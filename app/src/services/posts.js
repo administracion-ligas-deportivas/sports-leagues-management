@@ -30,3 +30,12 @@ export const createPost = async (data) => {
     body: JSON.stringify(data),
   });
 };
+
+export const deletePost = async (id) => {
+  await fetch(`${baseUrl}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: authService.getBearerToken(),
+    },
+  });
+};

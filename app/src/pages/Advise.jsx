@@ -1,11 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "../styles/Advise.module.css";
 import { Alert, Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import { fetchPostById } from "@/services/posts";
+import { deletePost, fetchPostById } from "@/services/posts";
 import {
   createComentario,
   deleteComentario,
@@ -99,16 +98,10 @@ function Advise() {
   };
 
   const borrarAviso = (id) => {
-    axios
-      .delete(`http://localhost:3001/posts/${id}`, {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
-      .then(() => {
-        alert("Post eliminado");
-        navigate("/");
-      });
+    deletePost(id).then(() => {
+      alert("Post eliminado");
+      navigate("/");
+    });
   };
 
   return (

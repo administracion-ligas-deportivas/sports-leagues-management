@@ -22,7 +22,6 @@ import Paper from "@mui/material/Paper";
 /* ----------------------------------- MUI ---------------------------------- */
 
 //import { useParams } from "react-router-dom";
-//import axios from "axios";
 //import { useEffect, useState } from "react";
 //import styles from "../styles/EditarPerfil.module.css";
 import {
@@ -32,7 +31,6 @@ import {
   InputAdornment,
 } from "@mui/material";
 //import { FormControl, InputLabel, OutlinedInput, InputAdornment }from "@mui/material";
-
 
 export default function CrearEventoDeportivo() {
   const [open, setOpen] = React.useState(false);
@@ -49,7 +47,7 @@ export default function CrearEventoDeportivo() {
     boxShadow: 24,
     p: 4,
   };
-  
+
   /*const options = [
     {
       value: "USD",
@@ -250,13 +248,11 @@ export default function CrearEventoDeportivo() {
           </div>
           <div className={styles.buttons}>
             <div>
-              <Button variant="contained">
-              Ingresar
-              </Button>
+              <Button variant="contained">Ingresar</Button>
             </div>
             <div>
               <Button variant="contained" color="error">
-              Cancelar
+                Cancelar
               </Button>
             </div>
           </div>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ACCESS_TOKEN_STRING } from "@/constants/auth";
 
 const baseUrl = "/api";
@@ -15,7 +14,15 @@ const getBearerToken = (token) => {
 };
 
 const login = async ({ correo, password } = {}) => {
-  const { data } = await axios.post(LOGIN_URL, { correo, password });
+  const response = await fetch(LOGIN_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ correo, password }),
+  });
+
+  const data = await response.json();
   return data;
 };
 

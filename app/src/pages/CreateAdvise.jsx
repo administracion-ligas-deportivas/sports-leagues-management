@@ -1,16 +1,14 @@
 import React from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 //import Button from "@/components/Button";
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { createPost } from "@/services/posts";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Stack, TextField } from "@mui/material";
 import styles from "../styles/RegistroDeportivo.module.css";
-import { authService } from "@/services/auth";
-import { createPost } from "@/services/posts";
 /* ----------------------------------- MUI ---------------------------------- */
 
 function CreateAdvise() {
