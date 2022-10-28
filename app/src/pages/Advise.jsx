@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuthProvider } from "@/context/AuthContext";
 import style from "../styles/Advise.module.css";
-import { Button, TextField } from "@mui/material";
+import { Alert, Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import { fetchPostById } from "@/services/posts";
@@ -20,21 +20,43 @@ import {
  */
 
 function Advise() {
-  let { id: anuncioId } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuthProvider();
+  const { id: anuncioId } = useParams();
+
   const [advise, setAdvise] = useState({});
   const [comentarios, setComentarios] = useState([]);
   const [comentario, setComentario] = useState("");
-  const navigate = useNavigate();
-  const { user } = useAuthProvider();
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchPostById(anuncioId).then((posts) => {
-      setAdvise(posts);
-    });
-    fetchComentariosByAnuncioId(anuncioId).then((comentarios) => {
-      setComentarios(comentarios);
-    });
+    fetchPostById(anuncioId)
+      .then((posts) => {
+        setAdvise(posts);
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/404");
+      });
+
+    fetchComentariosByAnuncioId(anuncioId)
+      .then((comentarios) => {
+        setComentarios(comentarios);
+      })
+      .catch(() => {
+        setError("Error al cargar los comentarios");
+      });
   }, []);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setError("");
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [error]);
 
   useEffect(() => {
     console.log({ comentarios });
@@ -43,24 +65,35 @@ function Advise() {
   const nuevoComentario = (e) => {
     e.preventDefault();
 
+    if (comentario.trim() === "") {
+      setError("El comentario no puede estar vacío");
+      return;
+    }
+
     createComentario(anuncioId, comentario)
       .then((newComment) => {
-        setComentarios([...comentarios, newComment]);
+        setComentarios((currentComments) => [...currentComments, newComment]);
         setComentario("");
       })
       .catch((error) => {
         console.log(error);
+        setError("Error al crear el comentario");
       });
   };
 
   const borrarComentario = (id) => {
-    deleteComentario(id).then(() => {
-      setComentarios((currentComments) =>
-        currentComments.filter((comment) => {
-          return comment.id !== id;
-        })
-      );
-    });
+    deleteComentario(id)
+      .then(() => {
+        setComentarios((currentComments) =>
+          currentComments.filter((comment) => {
+            return comment.id !== id;
+          })
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        setError("Error al borrar el comentario");
+      });
   };
 
   const borrarAviso = (id) => {
@@ -72,7 +105,7 @@ function Advise() {
       })
       .then(() => {
         alert("Post eliminado");
-        navigate("/home");
+        navigate("/");
       });
   };
 
@@ -120,6 +153,11 @@ function Advise() {
               setComentario(event.target.value);
             }}
           />
+          {error && (
+            <Alert severity="warning" style={{ marginTop: ".5rem" }}>
+              {error}
+            </Alert>
+          )}
           <Button
             startIcon={<SendIcon />}
             variant="contained"
@@ -132,35 +170,6 @@ function Advise() {
         </form>
       </div>
     </>
-    // <div>
-    //   <Link to="/Home" > Home </Link>
-    //     Advise: {advise.nombre}
-    //   {user.correo === advise.autor && (
-    //     <Button onClick={() => {borrarAviso(advise.id);}}>Borrar Aviso</Button>
-    //   )}
-    //   <div>
-    //         COMENTARIOS
-    //     <div>
-    //             Mostrar comentarios:
-    //       {comentarios.map((comentario, key) => {
-    //         return(
-    //           <div key = {key}>
-    //             <label> <br/> Autor: {comentario.usuario} </label> <br/>
-    //             <label> Comentario: {comentario.comentario} <br/></label>
-    //             {user.nombre === comentario.usuario &&
-    //                             <Button onClick={() => {borrarComentario(comentario.id);}}>Borrar</Button>
-    //             }
-    //           </div>
-    //         );
-    //       })}
-    //     </div>
-    //     <div>
-    //             Añadir comentario:
-    //       <input type='text' value={comentario} placeholder='Ingesa tu comentario...' onChange={(event) => {setComentario(event.target.value);}}/>
-    //       <Button onClick={nuevoComentario} type='submit'> Subir comentario </Button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
 
