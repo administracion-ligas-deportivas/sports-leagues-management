@@ -1,3 +1,4 @@
+import { useUser } from "@/hooks/useUser";
 import { authService } from "@/services/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -5,22 +6,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const ACCESS_TOKEN_STRING = "aldLoggedUser";
 
-const AuthContext = createContext();
-
 const logRequestError = (error) => {
   console.log(`🔻 ${error}`);
 };
 
+const AuthContext = createContext();
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState({
-    nombre: "",
-    apellido: "",
-    correo: "",
-    id: null,
-    token: "",
-    isAuthenticated: false,
-    isLoading: true,
-  });
+  const { user, isError, mutateUser } = useUser();
+
+  // const [user, setUser] = useState({
+  //   nombre: "",
+  //   apellido: "",
+  //   correo: "",
+  //   id: null,
+  //   token: "",
+  //   isAuthenticated: false,
+  //   isLoading: true,
+  // });
+
   const { state } = useLocation();
   const navigate = useNavigate();
   const [nextPath, setNextPath] = useState(null);
@@ -33,51 +37,35 @@ export function AuthProvider({ children }) {
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
     // const { token, correo: userEmail, nombre, apellido, id } = user;
-
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
-    setUser({ ...user, isAuthenticated: true });
+
+    mutateUser(user);
     navigate(nextPath);
   };
 
-  const logout = () => {
+  const logout = async () => {
     authService.logout();
-    setUser(null);
-    // navigate("/login", { state: { location } });
+    await mutateUser(null);
   };
 
-  useEffect(() => {
-    setUser((user) => ({ ...user, isLoading: true }));
-
-    // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
-    // const controller = new AbortController();
-    // const { signal } = controller;
-
-    authService
-      .authenticateLoggedUser()
-      .then((data) => {
-        const { user } = data;
-
-        setUser({ ...user, isAuthenticated: true, isLoading: false });
-        navigate(nextPath);
-      })
-      .catch((error) => {
-        if (error.name === "AbortError") {
-          console.log(error.message);
-        }
-        logRequestError(error);
-        setUser(null);
-      })
-      .finally(() => {
-        setUser((user) => ({ ...user, isLoading: false }));
-      });
-
-    // return () => controller.abort();
-  }, []);
+  //   useEffect(() => {
+  //     if (user) {
+  //       navigate(nextPath);
+  //     }
+  //     if (isError) {
+  //       logRequestError(isError);
+  //     }
+  //
+  //     // https://github.com/midudev/preguntas-entrevista-react#c%C3%B3mo-puedes-cancelar-una-petici%C3%B3n-a-una-api-en-useeffect-correctamente
+  //     // const controller = new AbortController();
+  //     // const { signal } = controller;
+  //
+  //     // return () => controller.abort();
+  //   }, [user, isError, nextPath]);
 
   return (
     <AuthContext.Provider
       value={{
-        user,
         nextPath,
         login,
         logout,

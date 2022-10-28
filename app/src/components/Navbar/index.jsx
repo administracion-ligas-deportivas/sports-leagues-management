@@ -16,12 +16,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useAuthProvider } from "@/context/AuthContext";
+import { useUser } from "@/hooks/useUser";
 /*-----------------------------------------------------*/
 
 const pages = ["Ligas", "Torneos", "Calendario", "Estadisticas"];
 
 function Navbar() {
-  const { user, logout } = useAuthProvider();
+  const { logout } = useAuthProvider();
+  const { user, isLoading } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -139,14 +141,18 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Perfil">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                <FontAwesomeIcon
-                  icon={faCircleUser}
-                  style={{ fontSize: "2.5rem", color: "white" }}
-                />
-              </IconButton>
-            </Tooltip>
+            {isLoading ? (
+              <span>Cargando...</span>
+            ) : (
+              <Tooltip title="Perfil">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    style={{ fontSize: "2.5rem", color: "white" }}
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
             {user && (
               <Menu
                 sx={{ mt: "45px" }}
@@ -181,7 +187,7 @@ function Navbar() {
                   </Typography>
                 </MenuItem>
                 {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
-                <MenuItem key="Logout" onClick={logout}>
+                <MenuItem key="Logout" onClick={async () => logout()}>
                   <Typography textAlign="center">Cerrar Sesión</Typography>
                 </MenuItem>
               </Menu>

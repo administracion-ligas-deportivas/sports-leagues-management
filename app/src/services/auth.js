@@ -24,11 +24,12 @@ const logout = () => {
   localStorage.removeItem(ACCESS_TOKEN_STRING);
 };
 
-const authenticateLoggedUser = async (signal) => {
+const authenticateLoggedUser = async () => {
   const user = getUserFromLocalStorage();
 
   if (!user?.token) {
     // Throw exception
+    // return { user: null };
     throw new Error("No hay user o token en el localStorage");
   }
 
@@ -39,7 +40,6 @@ const authenticateLoggedUser = async (signal) => {
   );
 
   const data = await fetch(VERIFY_URL, {
-    signal,
     headers: { Authorization: bearerToken },
   }).then((res) => {
     console.log(res);

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuthProvider } from "@/context/AuthContext";
 import style from "../styles/Advise.module.css";
 import { Alert, Button, TextField } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -12,6 +11,7 @@ import {
   deleteComentario,
   fetchComentariosByAnuncioId,
 } from "@/services/comentarios";
+import { useUser } from "@/hooks/useUser";
 
 /**
  * Cambiar componente de botón para hacer que pueda recibir funciones onClick y que también no pase nada
@@ -21,7 +21,8 @@ import {
 
 function Advise() {
   const navigate = useNavigate();
-  const { user } = useAuthProvider();
+  const { user } = useUser();
+  console.log("🚀 ~ file: Advise.jsx ~ line 25 ~ Advise ~ user", user);
   const { id: anuncioId } = useParams();
 
   const [advise, setAdvise] = useState({});
