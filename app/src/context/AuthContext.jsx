@@ -25,6 +25,7 @@ export function AuthProvider({ children }) {
 
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
+    console.log("🚀 ~ file: AuthContext.jsx ~ line 28 ~ login ~ user", user);
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
 
     mutateUser(user);

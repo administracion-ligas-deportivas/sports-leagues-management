@@ -1,5 +1,5 @@
-import useSWR from "swr";
 import { authService } from "@/services/auth";
+import useSWR from "swr";
 
 // https://swr.vercel.app/docs/getting-started#make-it-reusable
 export function useUser() {
@@ -8,9 +8,12 @@ export function useUser() {
     "/api/users/verify",
     authService.authenticateLoggedUser
   );
+  console.log("🚀 ~ file: useUser.js ~ line 8 ~ useUser ~ data", error);
+
   // const mutateUser = useCallback((user) => mutate(user), [mutate]);
 
   return {
+    user: error ? null : data?.user,
     isLoading: !error && !data,
     isError: error,
     mutateUser: mutate,
