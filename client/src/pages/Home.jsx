@@ -76,7 +76,7 @@ function Home() {
     return (
         <>
             <div className={style.container}>
-                <Carousel showArrows={false} autoPlay={true} infiniteLoop={true} showStatus={false} dynamicHeight={true} showIndicators={false} showThumbs={false}>
+                <Carousel showArrows={true} autoPlay={true} infiniteLoop={true} showStatus={false} dynamicHeight={true} showIndicators={true} showThumbs={false}>
                     <div>
                         <img src={football}/>
                     </div>
