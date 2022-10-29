@@ -10,9 +10,10 @@
 }
 .linkLogo{
   text-decoration: none;
-  text-align: center;
+  justify-content: first baseline;
   color: white;
 }
+
 @media screen and (min-width: 1025px) {
   .container {
     padding: 5px;

@@ -1,7 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthContext } from "./helpers/AuthContext";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
+/*-----------PAGINAS/RUTAS-----------*/
 import Home from "./pages/Home";
+import HomeAdmin from "./pages/HomeAdmin";
 import CreateAdvise from "./pages/CreateAdvise";
 import Advise from "./pages/Advise";
 import Login from "./pages/Login";
@@ -9,9 +14,6 @@ import Register from "./pages/Register";
 import GestionEventoDep from "./pages/GestionEventoDep";
 import NuevoArbitro from "./pages/NuevoArbitro";
 import CrearEventoDeportivo from "./pages/CreateSportEvent";
-import { AuthContext } from "./helpers/AuthContext";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import EnterSportsEvent from "./pages/enter-sports-event";
@@ -27,7 +29,7 @@ import RegistroEstadistico from "./pages/Registrar-Estadistico";
 import EquiposEnSistema from "./pages/EquiposEnSistema";
 import GestionEquipo from "./pages/GestionEquipo";
 import GestionEquipoJugador from "./pages/GestionEquipoJugador";
-
+import RegistroPagoFísico from "./pages/RegistroPagoFísico";
 /**
  *
  * En react se puede hacer un "if" con
@@ -95,7 +97,7 @@ function App() {
             {autState.status ? (
               <>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/Home" element={<Home />} />
+                <Route exact path="/Home" element={<HomeAdmin />} />
                 <Route path="/CreateAdvise" element={<CreateAdvise />} />
                 <Route path="/Advise/:id" element={<Advise />} />
                 <Route path="/Profile/:id" element={<Profile />} />
@@ -123,6 +125,7 @@ function App() {
                 <Route path="/EquiposEnSistema" element={<EquiposEnSistema />}/>
                 <Route path="/GestionEquipo" element={<GestionEquipo />}/>
                 <Route path="/GestionEquipoJugador" element={<GestionEquipoJugador />}/>
+                <Route path='/RegistroPagoFisico' element={<RegistroPagoFísico />}/>
               </>
             ) : (
               <>

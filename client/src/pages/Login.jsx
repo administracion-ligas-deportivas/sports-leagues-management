@@ -36,7 +36,7 @@ function Login() {
           id: Response.data.id,
           status: true,
         });
-        navigate("/Home");
+        navigate("/");
       }
     });
   };
