@@ -93,7 +93,7 @@ function Advise() {
   return (
     <>
       <h1>Aviso</h1>
-      <div className={style.container}>
+      <div className={style.rectangle}>
         {advise.nombre === "" ? <h3>ANONIMO</h3> : <h3>{advise.nombre}</h3>}
         {/* <h3> {advise.nombre} </h3> */}
         <p>{advise.descripcion}</p>
@@ -105,17 +105,19 @@ function Advise() {
                 <h4>{comentario.usuario} dijo: </h4>
                 <p>{comentario.comentario}</p>
                 {autState.nombre === comentario.usuario && (
-                  <Button
-                    startIcon={<DeleteIcon />}
-                    size="small"
-                    color="error"
-                    variant="contained"
-                    onClick={() => {
-                      borrarComentario(comentario.id);
-                    }}
-                  >
-                    Borrar
-                  </Button>
+                  <div className={style.buttonsDel}>
+                    <Button
+                      startIcon={<DeleteIcon />}
+                      size="small"
+                      color="error"
+                      variant="contained"
+                      onClick={() => {
+                        borrarComentario(comentario.id);
+                      }}
+                    >
+                      Borrar
+                    </Button>
+                  </div>
                 )}
               </div>
             );
@@ -132,17 +134,19 @@ function Advise() {
               setcrearComentario(event.target.value);
             }}
           />
-          <Button
-            startIcon={<SendIcon />}
-            variant="contained"
-            onClick={nuevoComentario}
-            type="submit"
-            sx={"margin-top: 10px;"}
-            size="small"
-          >
-            {" "}
-            Subir comentario{" "}
-          </Button>
+          <div className={style.buttons}>
+            <Button
+              startIcon={<SendIcon />}
+              variant="contained"
+              onClick={nuevoComentario}
+              type="submit"
+              sx={"margin-top: 10px;"}
+              size="small"
+            >
+              {" "}
+              Subir comentario{" "}
+            </Button>
+          </div>
         </div>
       </div>
     </>

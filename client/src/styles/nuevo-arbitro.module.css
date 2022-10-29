@@ -3,7 +3,13 @@
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 40px;
+    /* padding: 40px; */
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
   }
 
   .rectangle {
@@ -28,6 +34,7 @@
   }
 
   .buttons {
+    margin-top: 1em;
     display: flex;
     flex-direction: row-reverse;
   }
@@ -61,6 +68,8 @@
   }
 
   .buttons {
+    margin-top: 1em;
+    gap: 1em;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;

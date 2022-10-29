@@ -72,7 +72,7 @@ function Home() {
                 } else setAnuncioLiked([...anuncioLiked, avisoID]);
             });
     };
-
+  
     return (
         <>
             <div className={style.container}>

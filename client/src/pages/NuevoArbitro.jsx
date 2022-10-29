@@ -12,8 +12,8 @@ export default function NuevoArbitro() {
   return (
     <>
       <div className={styles.container}>
+        <h1>Nuevo árbitro</h1>
         <div className={styles.rectangle}>
-          <h1>Nuevo Arbitro</h1>
           <div className={styles.flexContainer}>
             <div className={styles.user}>
               <UserIcon />

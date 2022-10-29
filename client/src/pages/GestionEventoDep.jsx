@@ -22,7 +22,7 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 /* ----------------------------------- MUI ---------------------------------- */
 // import { DateTime } from "luxon";
 
-export default function GestionTorneo() {
+export default function GestionEventoDep() {
   //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   function randomString(length, chars) {
     //Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
@@ -85,9 +85,7 @@ export default function GestionTorneo() {
     <>
       <section className="container mx-auto py-2">
         <div className={styles.container}>
-          <div>
-            <h1 className={styles.titlePage}>Gestión evento deportivo</h1>
-          </div>
+          <h1>Gestión evento deportivo</h1>
           <div className={styles.rectangle}>
             <div className={styles.flexContainer}>
               <div className={styles.input}>
@@ -191,7 +189,7 @@ export default function GestionTorneo() {
                           renderInput={(params) => (
                             <TextField
                               {...params}
-                              label="Equipo A participante"
+                              label="Equipo A participante" 
                             />
                           )}
                         />
@@ -222,7 +220,7 @@ export default function GestionTorneo() {
                           sx={{ width: 505 }}
                           // value={fechaNacimiento}
                           // onChange={(newValue) => setFechaNacimiento(newValue)}
-                          renderInput={(params) => <TextField {...params} />}
+                          renderInput={(params) => <TextField {...params} sx={{width: "100%"}}/>} 
                         />
                       </LocalizationProvider>
                       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -231,7 +229,7 @@ export default function GestionTorneo() {
                           sx={{ width: 505 }}
                           // value={value}
                           // onChange={handleChange}
-                          renderInput={(params) => <TextField {...params} />}
+                          renderInput={(params) => <TextField {...params} sx={{width: "100%"}}/>}
                         />
                       </LocalizationProvider>
                     </div>

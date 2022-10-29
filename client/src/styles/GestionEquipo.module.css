@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 40px;
+    /* padding: 40px; */
   }
 
   .container h1 {
@@ -32,12 +32,15 @@
   }
 
   .buttons {
-    margin-top: 2em;
+    margin-top: 1em;
     display: flex;
     flex-direction: row-reverse;
-    gap: 1em;
   }
 
+  .buttons div {
+    margin-left: 3em;
+  }
+  
   .table{
     height: 300;
     width: 100%;

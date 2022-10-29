@@ -1,37 +1,64 @@
-.section {
-  /* background: #f1f6; */
-  height: 100vh;
-  position: relative;
+@media screen and (min-width: 1025px) {
+  .container {
+    /* padding: 40px; */
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons div {
+    margin-top: 2em;
+    margin-left: 3em;
+  }
+
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9em;
-  padding: 2em;
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .buttons {
+    margin-top: 2em;
+    gap: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
 }
 
-.containerForm{
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9em;
-  padding: 2em;
-  background-color: rgb(243, 246, 250);
-}
 
-.titlePage {
-  font-size: 3em;
-  font-weight: 700;
-  text-align: center;
-}
-
-.description {
-  font-size: 20px;
-  font-weight: 600;
-  padding-bottom: 2em;
-  padding-top: 2em;
-}
-
-.sectionInput {
-  padding: 2em;
-}

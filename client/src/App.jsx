@@ -11,7 +11,7 @@ import CreateAdvise from "./pages/CreateAdvise";
 import Advise from "./pages/Advise";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import GestionTorneo from "./pages/gestion-torneo";
+import GestionEventoDep from "./pages/GestionEventoDep";
 import NuevoArbitro from "./pages/NuevoArbitro";
 import CrearEventoDeportivo from "./pages/CreateSportEvent";
 import PageNotFound from "./pages/PageNotFound";
@@ -101,7 +101,7 @@ function App() {
                 <Route path="/CreateAdvise" element={<CreateAdvise />} />
                 <Route path="/Advise/:id" element={<Advise />} />
                 <Route path="/Profile/:id" element={<Profile />} />
-                <Route path="/gestion-torneo" element={<GestionTorneo />} />
+                <Route path="/GestionEventoDep" element={<GestionEventoDep />} />
                 <Route path="/NuevoArbitro" element={<NuevoArbitro />} />
                 <Route
                   path="/CrearEventoDeportivo"
