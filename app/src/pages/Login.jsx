@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import myimg from "/img/login.png";
-import styles from "../styles/LoginSignup.module.css";
+import styles from "@/styles/LoginSignup.module.css";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button } from "@mui/material";

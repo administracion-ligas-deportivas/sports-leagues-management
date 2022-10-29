@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Stack, TextField } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
-import styles from "../styles/RegistroDeportivo.module.css";
+import styles from "@/styles/RegistroDeportivo.module.css";
 
 export default function RegistroDeportivo() {
   return (

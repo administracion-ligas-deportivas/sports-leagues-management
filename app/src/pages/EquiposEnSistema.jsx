@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import style from "../styles/Equipos.module.css";
+import style from "@/styles/Equipos.module.css";
 import { 
   Button,
   Typography, 

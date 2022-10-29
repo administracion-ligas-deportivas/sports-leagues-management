@@ -6,7 +6,7 @@ import{
 
 import UserIcon from "@/components/Icon";
 
-import styles from "../styles/nuevo-arbitro.module.css";
+import styles from "@/styles/nuevo-arbitro.module.css";
 
 export default function NuevoArbitro() {
   return (

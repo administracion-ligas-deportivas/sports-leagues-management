@@ -1,6 +1,6 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import UserIcon from "../components/Icon";
-import styles from "../styles/RegistroEstadistico.module.css";
+import styles from "@/styles/RegistroEstadistico.module.css";
 import { 
     TextField,
     Button

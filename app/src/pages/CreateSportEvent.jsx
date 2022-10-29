@@ -1,8 +1,8 @@
 import * as React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 //import Head from "next/head";
-//import styles from "../styles/EditarPerfil.module.css";
-import styles from "../styles/create-sports-event.module.css";
+//import styles from "@/styles/EditarPerfil.module.css";
+import styles from "@/styles/create-sports-event.module.css";
 import Footer from "@/components/Footer";
 //import UserIcon from "@/components/Icon";
 
@@ -23,7 +23,7 @@ import Paper from "@mui/material/Paper";
 
 //import { useParams } from "react-router-dom";
 //import { useEffect, useState } from "react";
-//import styles from "../styles/EditarPerfil.module.css";
+//import styles from "@/styles/EditarPerfil.module.css";
 import {
   FormControl,
   InputLabel,

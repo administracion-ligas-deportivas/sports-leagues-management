@@ -1,4 +1,4 @@
-import styles from "../styles/GestionTorneo.module.css";
+import styles from "@/styles/GestionTorneo.module.css";
 //import InputCode from "@/components/InputCode/index";
 
 /* ----------------------------------- MUI ---------------------------------- */

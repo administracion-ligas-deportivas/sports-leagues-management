@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
-import style from "../styles/TraspasoEquipo.module.css";
+import style from "@/styles/TraspasoEquipo.module.css";
 
 export default function TraspasoEquipo() {
   const equipos = [

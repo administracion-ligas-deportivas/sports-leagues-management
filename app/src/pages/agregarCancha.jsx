@@ -12,7 +12,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
-import style from "../styles/AgregarCancha.module.css";
+import style from "@/styles/AgregarCancha.module.css";
 
 export default function AgregarCancha() {
   const canchas = [

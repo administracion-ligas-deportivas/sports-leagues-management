@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { fetchPosts } from "@/services/posts";
 import { likePost } from "@/services/likes";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { Button, Stack } from "@mui/material";
-import style from "../styles/Home.module.css";
+import style from "@/styles/Home.module.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -19,10 +18,6 @@ function Home() {
 
   useEffect(() => {
     fetchPosts().then((response) => {
-      console.log(
-        "🚀 ~ file: Home.jsx ~ line 18 ~ fetchPosts ~ response",
-        response
-      );
       setPosts(response.lista_anuncios);
       setLikedPost(
         response.liked.map((like) => {

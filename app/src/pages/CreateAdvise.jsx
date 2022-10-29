@@ -8,7 +8,7 @@ import { createPost } from "@/services/posts";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Stack, TextField } from "@mui/material";
-import styles from "../styles/RegistroDeportivo.module.css";
+import styles from "@/styles/RegistroDeportivo.module.css";
 /* ----------------------------------- MUI ---------------------------------- */
 
 function CreateAdvise() {

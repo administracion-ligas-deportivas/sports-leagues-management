@@ -12,7 +12,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
-import style from "../styles/AsignarRoles.module.css";
+import style from "@/styles/AsignarRoles.module.css";
 
 export default function AsignarRoles(){
   const usuarios = [

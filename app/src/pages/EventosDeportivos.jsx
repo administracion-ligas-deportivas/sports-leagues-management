@@ -14,7 +14,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import style from "../styles/EventosDeportivos.module.css";
+import style from "@/styles/EventosDeportivos.module.css";
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },

@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 //import Head from "next/head";
-import styles from "../styles/EnterSportsEvent.module.css";
+import styles from "@/styles/EnterSportsEvent.module.css";
 import {
   Button,
   TextField
