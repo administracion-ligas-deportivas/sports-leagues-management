@@ -19,6 +19,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "no-var": "error",
+    "eol-last": ["error", "always"],
   },
   settings: {
     react: {

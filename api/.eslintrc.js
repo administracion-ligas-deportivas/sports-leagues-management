@@ -15,5 +15,6 @@ module.exports = {
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "no-var": "error",
+    "eol-last": ["error", "always"],
   },
 };
