@@ -1,5 +1,4 @@
 import Image from "next/image";
-import myimg from "../../public/football-generic.jpg";
 import styles from "./Statistics.module.css";
 
 // pj = partidos jugados, pg = partidos ganados, pp = partidos perdidos
@@ -25,11 +24,7 @@ export default function SingleStat({ pj, pg, pp, pe, nj }) {
         <div className={styles.singleStatpp}>
           <p>Número de jugadores</p> <p>{nj}</p>
         </div>
-        <Image
-          src={myimg}
-          width="229px"
-          height="175px"
-        />
+        <Image src="/football-generic.jpg" width="229px" height="175px" />
       </div>
     </section>
   );

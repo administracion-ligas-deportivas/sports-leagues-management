@@ -1,17 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import style from "@/styles/Equipos.module.css";
-import { 
-  Button,
-  Typography, 
-  Stack, 
-  Autocomplete, 
-  TextField,
-  FormLabel,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
+// import { useNavigate } from "react-router-dom";
+import styles from "@/styles/Equipos.module.css";
+import {
+  Typography,
+  Stack,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -21,9 +13,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function EquiposEnSistema() {
   return (
     <>
-      <div className={style.container}>
+      <div className={styles.container}>
         <h1>Equipos</h1>
-        <Stack direction="column" spacing={2} className={style.rectangle}>
+        <Stack direction="column" spacing={2} className={styles.rectangle}>
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -34,8 +26,9 @@ export default function EquiposEnSistema() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -49,8 +42,9 @@ export default function EquiposEnSistema() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
               </Typography>
             </AccordionDetails>
           </Accordion>

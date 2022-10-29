@@ -1,6 +1,6 @@
 import Register from "@/pages/Register";
 import Equipos from "@/pages/EquiposEnSistema";
-import NuevaChancha from "@/pages/agregarCancha";
+import NuevaChancha from "@/pages/AgregarCancha";
 import Advise from "@/pages/Advise";
 import AsignarRoles from "@/pages/AsignarRoles";
 import CreateAdvise from "@/pages/CreateAdvise";
