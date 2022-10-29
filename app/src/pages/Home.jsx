@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { fetchPosts } from "@/services/posts";
 import { likePost } from "@/services/likes";
 
+import { Carousel } from "react-responsive-carousel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import { Button, Stack } from "@mui/material";
-import style from "@/styles/Home.module.css";
 
-function Home() {
+import style from "@/styles/Home.module.css";
+// requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import football from "/football.jpg";
+import baseball from "/baseball.jpg";
+import softball from "/softball.jpg";
+
+export default function Home() {
   const [posts, setPosts] = useState([]);
   const [likedPost, setLikedPost] = useState([]);
   const navigate = useNavigate();
@@ -57,60 +63,26 @@ function Home() {
   return (
     <>
       <div className={style.container}>
-        <h2>Pantallas Realizadas</h2>
-        <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/CreateAdvise">
-            {" "}
-            Crear Aviso{" "}
-          </Button>
-          <Button variant="contained" href="/gestion-torneo">
-            {" "}
-            Gestionar Torneo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevoArbitro">
-            {" "}
-            Nuevo Arbitro{" "}
-          </Button>
-          <Button variant="contained" href="/CrearEventoDeportivo">
-            {" "}
-            Crear Evento Deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/EnterSportsEvent">
-            {" "}
-            Entrar a Evento Deportivo
-          </Button>
-          <Button variant="contained" href="/EstadisticasPersonales">
-            {" "}
-            Estadisticas Personales
-          </Button>
-        </Stack>
-        <br></br>
-        <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="/AsignarRoles">
-            {" "}
-            Asignar Roles{" "}
-          </Button>
-          <Button variant="contained" href="/RegistroDeportivo">
-            {" "}
-            Registro deportivo{" "}
-          </Button>
-          <Button variant="contained" href="/TraspasoEquipo">
-            {" "}
-            Traspaso de equipo{" "}
-          </Button>
-          <Button variant="contained" href="/NuevaCancha">
-            {" "}
-            Nueva Cancha{" "}
-          </Button>
-          <Button variant="contained" href="/EventosDeportivos">
-            {" "}
-            Eventos Deportivos
-          </Button>
-          <Button variant="contained" href="/RegistroEstadistico">
-            {" "}
-            Registrar Estadistico
-          </Button>
-        </Stack>
+        <Carousel
+          showArrows={true}
+          autoPlay={true}
+          infiniteLoop={true}
+          showStatus={false}
+          dynamicHeight={true}
+          showIndicators={true}
+          showThumbs={false}
+        >
+          <div>
+            <img src={football} />
+          </div>
+          <div>
+            <img src={baseball} />
+          </div>
+          <div>
+            <img src={softball} />
+          </div>
+        </Carousel>
+
         <h2> Anuncios </h2>
         <div className={style.containerAnuncio}>
           {posts.map((value, key) => {
@@ -161,5 +133,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

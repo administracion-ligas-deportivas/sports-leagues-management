@@ -1,39 +1,34 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
-
-//import Head from "next/head";
 import styles from "@/styles/EnterSportsEvent.module.css";
-import {
-  Button,
-  TextField
-}from "@mui/material";
-import { useParams } from "react-router-dom";
-import { 
-  useEffect, 
-  useState 
-} from "react";
+import { Button, TextField } from "@mui/material";
 
 function EnterSportsEvent() {
   return (
     <>
       <section className={styles.section}>
         <div className={styles.container}>
-          <h1 className={styles.titlePage}>Nombre del equipo</h1>
-          <div className={styles.containerForm}>
-            <p className={styles.description}>
+          <h1>Ingresar a evento deportivo</h1>
+          <div className={styles.rectangle}>
+            <h2>
               Ingreso a liga/torneo: <br /> Por favor ingrese el código que le
               haya brindado el organizador del evento.
-            </p>
-            <div className={styles.form}>
-              <TextField
-                fullWidth
-                margin="normal"
-                id="codigoAcceso"
-                label="Código de acceso"
-                variant="outlined"
-              />
-              <Button variant="contained" className={styles.Button}>
-                Ingresar
-              </Button>
+            </h2>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="codigoAcceso"
+              label="Código de acceso"
+              variant="outlined"
+            />
+            <div className={styles.buttons}>
+              <div>
+                <Button variant="contained">Ingresar</Button>
+              </div>
+              <div>
+                <Button variant="contained" color="error">
+                  Cancelar
+                </Button>
+              </div>
             </div>
           </div>
         </div>

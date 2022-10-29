@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useUser } from "@/hooks/useUser";
 import { authService } from "@/services/auth";
 import { ACCESS_TOKEN_STRING } from "@/constants/auth";
@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
   const { mutateUser } = useUser();
 
   const { state } = useLocation();
-  const navigate = useNavigate();
   const [nextPath, setNextPath] = useState(null);
 
   useEffect(() => {
@@ -25,11 +24,14 @@ export function AuthProvider({ children }) {
 
   const login = async ({ correo, password } = {}) => {
     const user = await authService.login({ correo, password });
-    console.log("🚀 ~ file: AuthContext.jsx ~ line 28 ~ login ~ user", user);
+
+    if (user?.error) {
+      throw new Error(user.error);
+    }
+
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
 
     mutateUser(user);
-    navigate(nextPath);
   };
 
   const logout = async () => {

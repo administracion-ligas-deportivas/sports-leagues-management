@@ -1,16 +1,17 @@
 // import Head from "next/head";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import myimg from "/img/login.png";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import styles from "@/styles/LoginSignup.module.css";
 
 /* ----------------------------------- MUI ---------------------------------- */
-import { Button } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useAuthProvider } from "@/context/AuthContext";
 
 function Login() {
   const { login } = useAuthProvider();
+  const loginImg = "/img/login.png";
 
   const [userData, setUserData] = useState({
     correo: "",
@@ -37,11 +38,17 @@ function Login() {
     } catch (e) {
       setError("Usuario o contraseña incorrectos");
     }
+  };
 
-    setTimeout(() => {
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
       setError("");
     }, 3000);
-  };
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [error]);
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 
@@ -52,14 +59,14 @@ function Login() {
           <h1 className={styles.titleLeague}>
             Administración de Ligas Deportivas
           </h1>
-          <img src={myimg} alt="Login_Image" width="300px" height="300px" />
+          <img src={loginImg} alt="Login_Image" width="300px" height="300px" />
         </section>
         <form
           className={[styles.container, styles.loginContainer].join(" ")}
           onSubmit={(e) => handleLogin(e)}
         >
           <nav className={styles.navLogin}>
-            <Link to="/Register">Regístrate</Link>
+            <Link to="/register">Regístrate</Link>
           </nav>
           <h1 className={styles.titlePage}>Inicia sesión</h1>
 
@@ -81,7 +88,7 @@ function Login() {
             autoComplete="current-password"
             value={userData.password}
           />
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <Alert severity="error">{error}</Alert>}
           <Button variant="contained" type="submit">
             Iniciar sesión
           </Button>

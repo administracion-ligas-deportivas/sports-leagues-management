@@ -1,17 +1,88 @@
-.container{
-    background-color: rgb(243, 246, 250);
-    border-radius: 10px;
-    padding: 20px;
+@media screen and (min-width: 1025px) {
+    .container {
+        /* padding: 40px; */
+    }
+
+    h1 {
+        font-size: 3em;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .container h2 {
+        font-size: 18pt;
+        font-weight: bold;
+    }
+
+    .rectangle {
+        padding: 40px;
+        background-color: rgb(243, 246, 250);
+    }
+
+    .comentarios{
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        /* border: 1px solid black; */
+    }
+    
+    .comentarios .coment{
+        line-height: 0%;
+    }
+
+    .buttons {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .buttonsDel{
+        margin-top: 1em;
+        display: flex;
+    }
 }
 
-.comentarios{
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    /* border: 1px solid black; */
-}
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 10px;
+    }
 
-.comentarios .coment{
-    line-height: 0%;
-}
+    h1 {
+        font-size: 3em;
+        font-weight: 700;
+        text-align: center;
+    }
 
+    h2 {
+        font-size: 18pt;
+        font-weight: bold;
+    }
+
+    .rectangle {
+        padding: 40px;
+        background-color: rgb(243, 246, 250);
+    }
+
+    .buttons {
+        margin-top: 1em;
+        gap: 1em;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+
+    .comentarios{
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        /* border: 1px solid black; */
+    }
+
+    .buttonsDel{
+        margin-top: 1em;
+        gap: 1em;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content:left;
+    }
+}

@@ -3,6 +3,17 @@
 /* stylelint-disable order/properties-alphabetical-order */
 /* stylelint-disable color-function-notation */
 
+.link{
+  text-decoration: none;
+  text-align: center;
+  color: black
+}
+.linkLogo{
+  text-decoration: none;
+  justify-content: first baseline;
+  color: white;
+}
+
 @media screen and (min-width: 1025px) {
   .container {
     padding: 5px;

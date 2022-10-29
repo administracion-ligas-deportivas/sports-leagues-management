@@ -1,14 +1,18 @@
-/* stylelint-disable order/properties-alphabetical-order */
-/* stylelint-disable color-function-notation */
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 40px;
+    /* padding: 40px; */
   }
 
-  .subtitlePage {
-    font-size: 1.5em;
-    font-weight: 500;
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 18pt;
+    font-weight: bold;
   }
 
   .rectangle {
@@ -16,29 +20,36 @@
     background-color: rgb(243, 246, 250);
   }
 
-  .rectangle h1 {
-    font-size: 3em;
-    font-weight: 700;
-  }
-
   .flexContainer {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
   }
 
-  .contenido {
-    padding: 20px;
-    width: 80%;
-    background-color: white;
+  .input {
+    width: 45%;
   }
 
-  .estadisticas {
-    width: 18%;
-    background-color: white;
+  .buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
   }
 
-  .addIntegrante {
-    padding: 10px;
+  .buttons div {
+    margin-left: 3em;
+  }
+  
+  .table{
+    height: 300;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .contenedorAbandonar{
+    width: 100%;
+    margin-top: 4em;
   }
 }
 
@@ -47,9 +58,15 @@
     padding: 10px;
   }
 
-  .subtitlePage {
-    font-size: 12pt;
-    font-weight: 500;
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 18pt;
+    font-weight: bold;
   }
 
   .rectangle {
@@ -57,20 +74,31 @@
     background-color: rgb(243, 246, 250);
   }
 
-  .rectangle h1 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
+  .flexContainer {
+    justify-content: space-between;
   }
 
-  .contenido {
-    padding: 20px;
-    width: 80%;
-    background-color: white;
+  .input {
+    width: 100%;
   }
 
-  .estadisticas {
-    width: 18%;
-    background-color: white;
+  .buttons {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .table{
+    height: 300;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .contenedorAbandonar{
+    width: 100%;
+    margin-top: 4em;
   }
 }
+

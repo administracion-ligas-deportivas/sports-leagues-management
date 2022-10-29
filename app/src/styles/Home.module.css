@@ -2,12 +2,14 @@
   padding: 10px;
 }
 
+.link{
+  text-decoration: none;
+  color: #000;
+}
+
 .containerAnuncio{
   display: flex;
   flex-flow: row wrap;
-  /* background-color: rgb(243, 246, 250);
-  border-radius: 10px;
-  padding: 20px; */
 }
 .anuncio{
   min-width: 50%;
