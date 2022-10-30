@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+}
+.img{
+    height: 100%;
+    width: 100%;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin: 0 2rem;
+}
+.title{
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.parrafo{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+.error{
+    font-size: 8pt;
+    color: gray;
+
+}
+.link{
+    text-decoration: none;
+}
+.cuadro{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: center;
+    margin: 0 10rem;
+}

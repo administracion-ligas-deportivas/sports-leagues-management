@@ -1,0 +1,22 @@
+.container{
+    padding: 20px;
+}
+.container h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.container .rectangle{
+    background-color: rgb(243, 246, 250);
+    border-radius: 10px;
+    padding: 20px;
+}
+.container .rectangle .button{
+    justify-content: end;
+}
+
+.buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1em;
+}
