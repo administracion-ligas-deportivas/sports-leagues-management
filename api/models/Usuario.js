@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       fecha_nacimiento: {
         type: DataTypes.DATEONLY,
       },
-      email: {
+      correo: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      contrasenia: {
+      password: {
         type: DataTypes.STRING,
       },
       telefono: {
