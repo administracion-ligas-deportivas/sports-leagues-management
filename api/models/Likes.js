@@ -1,5 +1,4 @@
-module.exports = (sequelize, DataTypes) => 
-{
+module.exports = (sequelize, DataTypes) => {
   const Likes = sequelize.define("Likes");
 
   return Likes;
