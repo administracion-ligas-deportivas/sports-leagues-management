@@ -1,0 +1,95 @@
+@media screen and (min-width: 1025px) {
+    .container {
+        /* padding: 40px; */
+    }
+
+    .container h1 {
+        font-size: 3em;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .container h2 {
+        font-size: 18pt;
+        font-weight: bold;
+    }
+
+    .rectangle {
+        padding: 40px;
+        background-color: rgb(243, 246, 250);
+    }
+
+    .flexContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .input {
+        width: 45%;
+    }
+
+    .input2 {
+        width: 15%;
+    }
+
+    .buttons {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .buttons div {
+        margin-left: 3em;
+    }
+
+
+    .autoc {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5em;
+        padding-top: .5em;
+    }
+
+
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 3em;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .container h2 {
+        font-size: 18pt;
+        font-weight: bold;
+    }
+
+    .rectangle {
+        padding: 40px;
+        background-color: rgb(243, 246, 250);
+    }
+
+    .flexContainer {
+        justify-content: space-between;
+    }
+
+    .autoc {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5em;
+        padding-top: .5em;
+    }
+
+    .buttons {
+        margin-top: 1em;
+        gap: 1em;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+}

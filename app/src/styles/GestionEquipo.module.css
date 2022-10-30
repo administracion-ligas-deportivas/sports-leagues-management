@@ -1,0 +1,104 @@
+
+@media screen and (min-width: 1025px) {
+  .container {
+    /* padding: 40px; */
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
+  }
+
+  .input {
+    width: 45%;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons div {
+    margin-left: 3em;
+  }
+  
+  .table{
+    height: 300;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .contenedorAbandonar{
+    width: 100%;
+    margin-top: 4em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 10px;
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    justify-content: space-between;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .buttons {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .table{
+    height: 300;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .contenedorAbandonar{
+    width: 100%;
+    margin-top: 4em;
+  }
+}
+

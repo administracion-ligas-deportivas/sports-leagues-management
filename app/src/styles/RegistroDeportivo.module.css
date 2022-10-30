@@ -1,0 +1,74 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable order/properties-alphabetical-order */
+
+@media screen and (min-width: 1025px) {
+    .container {
+      /* padding: 40px; */
+    }
+  
+    .container h1 {
+      font-size: 3em;
+      font-weight: 700;
+      text-align: center;
+    }
+  
+    .rectangle {
+      padding: 40px;
+      background-color: rgb(243, 246, 250);
+    }
+  
+    .flexContainer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1em;
+    }
+  
+    .input {
+      width: 100%;
+    }
+
+    .buttons {
+      margin-top: 1em;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  
+    .buttons div {
+      margin-left: 3em;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .container h1 {
+      font-size: 3em;
+      font-weight: 700;
+      text-align: center;
+    }
+  
+    .rectangle {
+      padding: 40px;
+      background-color: rgb(243, 246, 250);
+    }
+
+    .flexContainer {
+      justify-content: space-between;
+    }
+  
+    .input {
+      width: 100%;
+    }
+
+    .buttons {
+      margin-top: 1em;
+      gap: 1em;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+    }
+  }
+  
+  

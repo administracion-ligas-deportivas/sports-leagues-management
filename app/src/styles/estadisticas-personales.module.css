@@ -1,0 +1,108 @@
+/* stylelint-disable color-function-notation */
+/* stylelint-disable order/properties-alphabetical-order */
+
+@media screen and (min-width: 1025px) {
+  .container {
+    /* padding: 40px; */
+  }
+
+  .container h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2em;
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+  }
+
+  .input {
+    margin: 10px;
+    width: 50%;
+  }
+
+  .input2 {
+    margin: 10px;
+    color: gray;
+    width: 50%;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .buttons div {
+    margin-left: 3em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+
+  .container h1 {
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .container h2 {
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .rectangle {
+    padding: 40px;
+    background-color: rgb(243, 246, 250);
+  }
+
+  .flexContainer {
+    justify-content: space-between;
+    padding-bottom: 2em;
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input {
+    line-height: 2em;
+  }
+
+  .input2 {
+    color: gray;
+    line-height: 2em;
+  }
+
+  .buttons {
+    margin-top: 1em;
+    gap: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+}
