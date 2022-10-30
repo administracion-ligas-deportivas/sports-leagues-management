@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+    },
+    {
+      paranoid: true,
     }
   );
 

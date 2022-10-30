@@ -1,14 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-  const deporte = sequelize.define("deporte", {
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const deporte = sequelize.define(
+    "deporte",
+    {
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      descripcion: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
     },
-    descripcion: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  });
+    {
+      paranoid: true,
+    }
+  );
 
   sequelize.associate = (models) => {
     deporte.hasMany(models.estadistica_deporte, {

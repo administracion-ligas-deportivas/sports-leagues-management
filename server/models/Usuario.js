@@ -1,47 +1,47 @@
 module.exports = (sequelize, DataTypes) => {
-  const Usuario = sequelize.define("Usuario", {
-    rol_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    genero: {
-      type: DataTypes.ENUM("hombre", "mujer"),
-      allowNull: false,
-    },
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    apellido: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    fecha_nacimiento: {
-      type: DataTypes.DATEONLY,
-      allowNull: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    contrasenia: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    telefono: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+  const Usuario = sequelize.define(
+    "Usuario",
+    {
+      rol_id: {
+        type: DataTypes.INTEGER,
+      },
+      genero: {
+        type: DataTypes.ENUM("hombre", "mujer"),
+      },
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      apellido: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      fecha_nacimiento: {
+        type: DataTypes.DATEONLY,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      contrasenia: {
+        type: DataTypes.STRING,
+      },
+      telefono: {
+        type: DataTypes.INTEGER,
+      },
 
-    tiempo_registro: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
+      tiempo_registro: {
+        type: DataTypes.DATE,
+      },
 
-    municipio_id: {
-      type: DataTypes.INTEGER,
+      municipio_id: {
+        type: DataTypes.INTEGER,
+      },
     },
-  });
+    {
+      paranoid: true,
+    }
+  );
 
   /*  Usuario.associate = (models) => {
     Usuario.hasOne(models.domicilio_usuario, {
@@ -84,6 +84,7 @@ module.exports = (sequelize, DataTypes) => {
       through: "estadistico_evento_deportivo",
       foreignKey: "estadistico_id",
     });
+    Usuario.hasMany(models.Likes, { onDelete: "cascade" });
   };
 
   return Usuario;

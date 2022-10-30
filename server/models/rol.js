@@ -1,14 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-  const rol = sequelize.define("rol", {
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const rol = sequelize.define(
+    "rol",
+    {
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      descripcion: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    descripcion: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
+    {
+      paranoid: true,
+    }
+  );
   rol.associate = (models) => {
     rol.hasMany(models.permiso_rol, {
       foreignKey: "rol_id",

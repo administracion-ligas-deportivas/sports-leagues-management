@@ -1,14 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-  const rol_usuario = sequelize.define("rol_usuario", {
-    rol_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+  const rol_usuario = sequelize.define(
+    "rol_usuario",
+    {
+      rol_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      usuario_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
-    usuario_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-  });
+    {
+      paranoid: true,
+    }
+  );
 
   rol_usuario.associate = (models) => {
     rol_usuario.belongsTo(models.rol, {
