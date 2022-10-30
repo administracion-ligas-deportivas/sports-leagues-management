@@ -17,7 +17,7 @@ const likesRouter = require("./controllers/likes");
 const loginRouter = require("./controllers/login");
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json())
 
 /*const pool = mariadb.createPool(
 {
