@@ -20,7 +20,8 @@ import {
   Login,
   PageNotFound,
 } from "@/pages";
-import { Navigate } from "react-router-dom";
+import EquiposEnSistema from "@/pages/EquiposEnSistema";
+import HomeAdmin from "@/pages/HomeAdmin";
 
 // https://reactrouter.com/en/main/route/route
 export const routes = [
@@ -32,7 +33,7 @@ export const routes = [
     ),
     children: [
       { path: "/", element: <Home /> },
-      { path: "/home", element: <Navigate to="/" replace={true} /> },
+      { path: "/home", element: <HomeAdmin /> },
       {
         path: "/advise/:id",
         element: <Advise />,
@@ -60,6 +61,10 @@ export const routes = [
       {
         path: "/enter-sports-event",
         element: <EnterSportsEvent />,
+      },
+      {
+        path: "/equipos-en-sistema",
+        element: <EquiposEnSistema />,
       },
       {
         path: "/estadisticas-personales",
