@@ -12,6 +12,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import football from "/football.jpg";
 import baseball from "/baseball.jpg";
 import softball from "/softball.jpg";
+import Button from "@mui/material/Button";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -83,7 +84,10 @@ export default function Home() {
           </div>
         </Carousel>
 
-        <h2> Anuncios </h2>
+        <div className={style.flex}>
+          <h2> Anuncios </h2>
+          <Button variant="contained" onClick={() => navigate("/create-advise")} sx={{height: 30, marginTop: 2,}}> Crear aviso </Button>
+        </div>
         <div className={style.containerAnuncio}>
           {posts.map((value, key) => {
             return (

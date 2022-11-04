@@ -2,6 +2,13 @@
   padding: 10px;
 }
 
+.flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .link{
   text-decoration: none;
   color: #000;
