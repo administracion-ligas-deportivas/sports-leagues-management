@@ -7,6 +7,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Button
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -48,6 +49,16 @@ export default function EquiposEnSistema() {
               </Typography>
             </AccordionDetails>
           </Accordion>
+          <div className={styles.buttons}>
+            <div>
+              <Button variant="contained">Guardar</Button>
+            </div>
+            <div>
+              <Button variant="contained" color="error">
+                Cancelar
+              </Button>
+            </div>
+          </div>
         </Stack>
       </div>
     </>

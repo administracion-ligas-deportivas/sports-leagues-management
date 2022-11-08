@@ -1,27 +1,45 @@
 import * as React from "react";
+import { useAuthProvider } from "@/context/AuthContext";
+import { useUser } from "@/hooks/useUser";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 /*----------------------MUI----------------------------*/
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { useAuthProvider } from "@/context/AuthContext";
-import { useUser } from "@/hooks/useUser";
-import { Link } from "react-router-dom";
-/*-----------------------------------------------------*/
-import styles from "./Navbar.module.css";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Tooltip,
+  MenuItem,
+  Button,
+} from "@mui/material";
 
-const pages = ["Equipos", "Torneos", "Calendario", "Estadisticas"];
+const navElements = [
+  {
+    to: "/equipos-en-sistema",
+    text: "Equipos",
+  },
+  {
+    to: "/eventos-deportivos",
+    text: "Eventos deportivos",
+  },
+  {
+    to: "/calendario",
+    text: "Calendario",
+  },
+  {
+    to: "/estadisticas-personales",
+    text: "Mis estadísticas",
+  },
+];
 
 function Navbar() {
   const { logout } = useAuthProvider();
@@ -103,31 +121,19 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center" >{page}</Typography>
-                </MenuItem>
-              ))} */}
-              <Link to="/EquiposEnSistema" className={styles.link}>
-                <MenuItem key="Equipos" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Equipos</Typography>
-                </MenuItem>
-              </Link>
-              <Link to="/EventosDeportivos" className={styles.link}>
-                <MenuItem key="EventosDeportivos" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Eventos Deportivos</Typography>
-                </MenuItem>
-              </Link>
-              <Link to="/calendario" className={styles.link}>
-                <MenuItem key="Calendario" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Calendario</Typography>
-                </MenuItem>
-              </Link>
-              <Link to="/EstadisticasPersonales" className={styles.link}>
-                <MenuItem key="Estadisticas" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Estadisticas</Typography>
-                </MenuItem>
-              </Link>
+              {navElements.map((element) => {
+                return (
+                  <Link
+                    to={element.to}
+                    key={element.to}
+                    className={styles.link}
+                  >
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{element.text}</Typography>
+                    </MenuItem>
+                  </Link>
+                );
+              })}
             </Menu>
           </Box>
 
@@ -155,42 +161,18 @@ function Navbar() {
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link to="/EquiposEnSistema" className={styles.link}>
-              <Button
-                key="Equipos"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Equipos
-              </Button>
-            </Link>
-            <Link to="/EventosDeportivos" className={styles.link}>
-              <Button
-                key="EventosDeportivos"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Eventos Deportivos
-              </Button>
-            </Link>
-            <Link to="/Calendario" className={styles.link}>
-              <Button
-                key="Calendario"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Calendario
-              </Button>
-            </Link>
-            <Link to="/EstadisticasPersonales" className={styles.link}>
-              <Button
-                key="Estadisticas"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Estadisticas
-              </Button>
-            </Link>
+            {navElements.map((element) => {
+              return (
+                <Link key={element.to} to={element.to} className={styles.link}>
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {element.text}
+                  </Button>
+                </Link>
+              );
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -236,7 +218,6 @@ function Navbar() {
                     </Typography>
                   </Link>
                 </MenuItem>
-                {/* <MenuItem key='Logout' onClick={handleCloseUserMenu}> */}
                 <MenuItem key="Logout" onClick={async () => logout()}>
                   <Typography textAlign="center">Cerrar Sesión</Typography>
                 </MenuItem>

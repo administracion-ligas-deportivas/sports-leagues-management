@@ -2,16 +2,10 @@ import React from "react";
 import { 
   Button,
   Typography, 
-  Stack, 
-  Autocomplete, 
-  TextField,
-  FormLabel,
-  FormControl,
+  Stack,
   FormGroup,
   FormControlLabel,
   Checkbox,
-  Radio,
-  RadioGroup,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import style from "@/styles/EventosDeportivos.module.css";
@@ -39,7 +33,7 @@ export default function EventosDeportivos(){
   return(
     <>
       <div className={style.container}>
-        <h1>Eventos Deportivos</h1>
+        <h1>Eventos deportivos</h1>
         <div className={style.rectangle}>    
           <Stack spacing={2} direction="row">
             <div style={{ width: "20%" }}></div>
@@ -59,6 +53,16 @@ export default function EventosDeportivos(){
               />
             </div>
           </Stack>
+          <div className={style.buttons}>
+            <div>
+              <Button variant="contained">Guardar</Button>
+            </div>
+            <div>
+              <Button variant="contained" color="error">
+                Cancelar
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </>

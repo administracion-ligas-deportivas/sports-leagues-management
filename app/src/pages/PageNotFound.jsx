@@ -22,10 +22,9 @@ function PageNotFound() {
           </p>
           <p className={style.error}>Error 404 | Page not found</p>
           <div className={style.cuadro}>
-            <Link to="/home" className={style.link}>
+            <Link to="/" className={style.link}>
               <Button variant="outlined" size="large">
-                {" "}
-                Inicio{" "}
+                Inicio
               </Button>
             </Link>
           </div>

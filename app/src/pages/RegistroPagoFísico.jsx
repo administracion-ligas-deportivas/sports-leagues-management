@@ -13,7 +13,7 @@ import { Button } from "@mui/material";
 import { DateTime } from "luxon";
 import style from "@/styles/RegistroPagoFisico.module.css";
 
-export default function RegistroPagoFísico() {
+export default function RegistroPagoFisico() {
   const [fechaPago, setFechaPago] = useState(DateTime.now());
 
   return (
