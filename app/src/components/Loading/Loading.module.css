@@ -1,0 +1,37 @@
+@media screen and (min-width: 1025px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* position: relative; */
+    }
+    
+    .img {
+        margin-top: 5em;
+    }
+
+    .img p {
+        color: gray;
+        font-size: 13px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* position: relative; */
+    }
+    
+    .img {
+        margin-top: 5em;
+    }
+
+    .img p {
+        color: gray;
+        font-size: 13px;
+        text-align: center;
+    }
+}

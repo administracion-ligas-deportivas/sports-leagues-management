@@ -3,8 +3,8 @@ import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedU
 import MainLayout from "@/Layouts/MainLayout";
 
 import {
+  Loading,
   Register,
-  Equipos,
   NuevaChancha,
   Advise,
   AsignarRoles,
@@ -12,16 +12,22 @@ import {
   CrearEventoDeportivo,
   EnterSportsEvent,
   EstadisticasPersonales,
-  GestionTorneo,
   Home,
   NuevoArbitro,
   Profile,
   EventosDeportivos,
   Login,
   PageNotFound,
+  HomeAdmin,
+  GestionEventoDep,
+  GestionEquipoJugador,
+  RegistroDeportivo,
+  TraspasoEquipo,
+  RegistroEstadistico,
+  EquiposEnSistema,
+  GestionEquipo,
+  RegistroPagoFisico,
 } from "@/pages";
-import EquiposEnSistema from "@/pages/EquiposEnSistema";
-import HomeAdmin from "@/pages/HomeAdmin";
 
 // https://reactrouter.com/en/main/route/route
 export const routes = [
@@ -33,7 +39,7 @@ export const routes = [
     ),
     children: [
       { path: "/", element: <Home /> },
-      { path: "/home", element: <HomeAdmin /> },
+      { path: "/home-admin", element: <HomeAdmin /> },
       {
         path: "/advise/:id",
         element: <Advise />,
@@ -47,8 +53,8 @@ export const routes = [
         element: <Profile />,
       },
       {
-        path: "/gestion-torneo",
-        element: <GestionTorneo />,
+        path: "/gestion-evento-deportivo",
+        element: <GestionEventoDep />,
       },
       {
         path: "/nuevo-arbitro",
@@ -75,16 +81,44 @@ export const routes = [
         element: <AsignarRoles />,
       },
       {
-        path: "/equipos",
-        element: <Equipos />,
-      },
-      {
         path: "/nueva-cancha",
         element: <NuevaChancha />,
       },
       {
         path: "/eventos-deportivos",
         element: <EventosDeportivos />,
+      },
+      {
+        path: "/home-admin",
+        element: <HomeAdmin />,
+      },
+      {
+        path: "/gestion-equipo-jugador",
+        element: <GestionEquipoJugador />,
+      },
+      {
+        path: "/registro-deportivo",
+        element: <RegistroDeportivo />,
+      },
+      {
+        path: "/traspaso-equipo",
+        element: <TraspasoEquipo />,
+      },
+      {
+        path: "/registro-estadistico",
+        element: <RegistroEstadistico />,
+      },
+      {
+        path: "/equipos-en-sistema",
+        element: <EquiposEnSistema />,
+      },
+      {
+        path: "/gestion-equipo",
+        element: <GestionEquipo />,
+      },
+      {
+        path: "/registro-pago-fisico",
+        element: <RegistroPagoFisico />,
       },
     ],
   },
@@ -104,5 +138,9 @@ export const routes = [
   {
     path: "*",
     element: <PageNotFound />,
+  },
+  {
+    path: "/loading",
+    element: <Loading />,
   },
 ];

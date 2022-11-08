@@ -34,46 +34,45 @@ export default function GestionEquipoJugador() {
 
   return (
     <>
-      <section className="container mx-auto py-2">
-        <Stack className={styles.container}>
-          <Stack>
-            <h1 className={styles.titlePage}>Gestión de equipo</h1>
-          </Stack>
-          <Stack className={styles.rectangle}>
-            <div className={styles.flexContainer}>
-              <Stack className={styles.input}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="nombre-equipo"
-                  label="Nombre del equipo"
-                  margin="normal"
-                  // InputLabelProps={{ shrink: true }}
-                />
-              </Stack>
-              <Stack className={styles.input}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="deporte-equipo"
-                  label="Deporte"
-                  margin="normal"
-                  // InputLabelProps={{ shrink: true }}
-                />
-              </Stack>
-            </div>
-            <div className={styles.flexContainer}>
-              <Stack className={styles.input}>
-                <TextField
-                  fullWidth
-                  disabled
-                  id="capitan-equipo"
-                  label="Capitán del equipo"
-                  margin="normal"
-                  // InputLabelProps={{ shrink: true }}
-                />
-              </Stack>
-              {/* <Stack className={styles.input}> 
+      <div className={styles.container}>
+        <Stack>
+          <h1 className={styles.titlePage}>Gestión de equipo</h1>
+        </Stack>
+        <Stack className={styles.rectangle}>
+          <div className={styles.flexContainer}>
+            <Stack className={styles.input}>
+              <TextField
+                fullWidth
+                disabled
+                id="nombre-equipo"
+                label="Nombre del equipo"
+                margin="normal"
+                // InputLabelProps={{ shrink: true }}
+              />
+            </Stack>
+            <Stack className={styles.input}>
+              <TextField
+                fullWidth
+                disabled
+                id="deporte-equipo"
+                label="Deporte"
+                margin="normal"
+                // InputLabelProps={{ shrink: true }}
+              />
+            </Stack>
+          </div>
+          <div className={styles.flexContainer}>
+            <Stack className={styles.input}>
+              <TextField
+                fullWidth
+                disabled
+                id="capitan-equipo"
+                label="Capitán del equipo"
+                margin="normal"
+                // InputLabelProps={{ shrink: true }}
+              />
+            </Stack>
+            {/* <Stack className={styles.input}> 
                 <TextField
                   fullWidth
                   //disabled
@@ -84,55 +83,51 @@ export default function GestionEquipoJugador() {
                   InputLabelProps={{ shrink: true }}
                 />
               {/* </Stack> */}
-            </div>
-            <div
-              style={{ height: 320, width: "100%" }}
-              className={styles.table}
+          </div>
+          <div style={{ height: 320, width: "100%" }} className={styles.table}>
+            <Typography variant="h6" gutterBottom>
+              Miembros del equipo:
+            </Typography>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={4}
+              rowsPerPageOptions={[4]}
+              disableSelectionOnClick
+              experimentalFeatures={{ newEditingApi: true }}
+            />
+          </div>
+          <div className={styles.contenedorAbandonar}>
+            <Typography variant="h6" gutterBottom>
+              Abandonar equipo.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Presiona el botón de abandonar, para dejar de ser parte de este
+              equipo. Una vez completado el proceso, ya no formaras parte del
+              equipo, de querer volver a el será necesario solicitar ser añadido
+              al mismo de nuevo.
+            </Typography>
+            <Button
+              variant="outlined"
+              startIcon={<DirectionsRunIcon />}
+              // size="small"
+              color="error"
             >
-              <Typography variant="h6" gutterBottom>
-                Miembros del equipo:
-              </Typography>
-              <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={4}
-                rowsPerPageOptions={[4]}
-                disableSelectionOnClick
-                experimentalFeatures={{ newEditingApi: true }}
-              />
+              Abandonar
+            </Button>
+          </div>
+          <div className={styles.buttons}>
+            <div>
+              <Button variant="contained">Guardar</Button>
             </div>
-            <div className={styles.contenedorAbandonar}>
-              <Typography variant="h6" gutterBottom>
-                Abandonar equipo.
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Presiona el botón de abandonar, para dejar de ser parte de este
-                equipo. Una vez completado el proceso, ya no formaras parte del
-                equipo, de querer volver a el será necesario solicitar ser
-                añadido al mismo de nuevo.
-              </Typography>
-              <Button
-                variant="outlined"
-                startIcon={<DirectionsRunIcon />}
-                // size="small"
-                color="error"
-              >
-                Abandonar
+            <div>
+              <Button variant="contained" color="error">
+                Cancelar
               </Button>
             </div>
-            <div className={styles.buttons}>
-              <div>
-                <Button variant="contained">Guardar</Button>
-              </div>
-              <div>
-                <Button variant="contained" color="error">
-                  Cancelar
-                </Button>
-              </div>
-            </div>
-          </Stack>
+          </div>
         </Stack>
-      </section>
+      </div>
     </>
   );
 }

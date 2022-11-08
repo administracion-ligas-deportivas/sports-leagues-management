@@ -175,14 +175,15 @@ export default function EditarPerfil() {
               />
             </div>
           </div>
-
-          <br />
-
           <div className={styles.buttons}>
-            <Button variant="contained">Aceptar</Button>
-            <Button variant="contained" color="error">
-              Cancelar
-            </Button>
+            <div>
+              <Button variant="contained">Guardar</Button>
+            </div>
+            <div>
+              <Button variant="contained" color="error">
+                Cancelar
+              </Button>
+            </div>
           </div>
         </div>
       </div>
