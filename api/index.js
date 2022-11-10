@@ -54,7 +54,7 @@ app.use(unknownEndpoint);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
-const server = db.sequelize.sync().then(() => {
+const server = db.sequelize.sync({ force: true }).then(() => {
   return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
