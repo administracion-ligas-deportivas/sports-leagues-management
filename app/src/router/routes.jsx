@@ -12,6 +12,8 @@ import {
   CrearEventoDeportivo,
   EnterSportsEvent,
   EstadisticasPersonales,
+  GestionEquipoJugador,
+  GestionTorneo,
   Home,
   NuevoArbitro,
   Profile,
@@ -38,8 +40,19 @@ export const routes = [
       </ProtectedRoute>
     ),
     children: [
+
+      { 
+        path: "/", 
+        element: <Home /> 
+      },
+      { 
+        path: "/home", 
+        element: <HomeAdmin /> 
+      },
+
       { path: "/", element: <Home /> },
       { path: "/home-admin", element: <HomeAdmin /> },
+
       {
         path: "/advise/:id",
         element: <Advise />,
@@ -89,6 +102,10 @@ export const routes = [
         element: <EventosDeportivos />,
       },
       {
+
+        path: "/gestion-equipo-jugador",
+        element: <GestionEquipoJugador />,
+      },
         path: "/home-admin",
         element: <HomeAdmin />,
       },

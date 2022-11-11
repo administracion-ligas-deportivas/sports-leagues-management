@@ -6,6 +6,9 @@ import CreateAdvise from "@/pages/CreateAdvise";
 import CrearEventoDeportivo from "@/pages/CreateSportEvent";
 import EnterSportsEvent from "@/pages/enter-sports-event";
 import EstadisticasPersonales from "@/pages/estadisticas-personales";
+
+import GestionEquipoJugador from "@/pages/GestionEquipoJugador";
+import GestionTorneo from "@/pages/gestion-torneo";
 import Home from "@/pages/Home";
 import NuevoArbitro from "@/pages/NuevoArbitro";
 import Profile from "@/pages/Profile";
@@ -33,6 +36,8 @@ export {
   CrearEventoDeportivo,
   EnterSportsEvent,
   EstadisticasPersonales,
+  GestionEquipoJugador,
+  GestionTorneo,
   Home,
   NuevoArbitro,
   Profile,

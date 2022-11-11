@@ -15,7 +15,6 @@ function PageNotFound() {
         </div>
         <div className={style.content}>
           <h1 className={style.title}>Oh, no!</h1>
-          {/* <p className={style.parrafo}>Al parecer has alcanzado el limite permitido, pero no te preocupes, aquí está el camino de regreso</p> */}
           <p className={style.parrafo}>
             A veces uno gana y a veces uno se pierde, pero no te preocupes que
             aqui está el camino de regreso

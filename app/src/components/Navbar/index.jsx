@@ -72,8 +72,6 @@ function Navbar() {
               <Typography
                 variant="h6"
                 noWrap
-                // component="a"
-                // href="/home"
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex" },
@@ -84,9 +82,9 @@ function Navbar() {
                   textDecoration: "none",
                 }}
               >
-                <FontAwesomeIcon
+                <link rel="manifest" href="manifest.json" /><FontAwesomeIcon
                   icon={faMedal}
-                  styles={{ marginRight: "10px", fontSize: "2.5rem" }}
+                  styles={{ marginRight: "10px", fontSize: "20px" }}
                 />
               </Typography>
             </Link>
