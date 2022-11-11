@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import style from "@/styles/Home.module.css";
 
 const pages = [
+  // { to: "/registro-estadistico", text: "Registrar Estadistico" },
+  // { to: "/nuevo-arbitro", text: "Nuevo Arbitro " },
   { to: "/create-advise", text: "Crear Aviso" },
-  { to: "/gestion-torneo", text: "Gestionar Torneo" },
-  { to: "/nuevo-arbitro", text: "Nuevo Arbitro " },
   { to: "/crear-evento-deportivo", text: "Crear Evento Deportivo" },
   { to: "/enter-sports-event", text: "Entrar a Evento Deportivo" },
   { to: "/estadisticas-personales", text: "Estadisticas Personales" },
@@ -15,10 +15,13 @@ const pages = [
   { to: "/traspaso-equipo", text: "Traspaso de equipo" },
   { to: "/nueva-cancha", text: "Nueva Cancha" },
   { to: "/eventos-deportivos", text: "Eventos Deportivos" },
-  { to: "/registro-estadistico", text: "Registrar Estadistico" },
   { to: "/equipos-en-sistema", text: "Equipos en sistema" },
   { to: "/gestion-equipo", text: "Gestión de equipo" },
   { to: "/registro-pago-fisico", text: "Registro de pago físico " },
+  { to: "/profile/:id", text: "Perfil " },
+  { to: "/", text: "Home" },
+  { to: "/gestion-evento-deportivo", text: "Gestión evento deportivo" },
+  { to: "/gestion-equipo-jugador", text: "Gestión equipo jugador" },
 ];
 
 function HomeAdmin() {

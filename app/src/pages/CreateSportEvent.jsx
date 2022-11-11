@@ -166,7 +166,7 @@ export default function CrearEventoDeportivo() {
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   Para crear un equipo en este evento deportivo, por favor
-                  ingrese el nombre del equipo y correo del capitán.
+                  ingrese el nombre del equipo y correo del encargado de equipo.
                 </Typography>
                 <div>
                   <div className={styles.inputModal}>
@@ -183,7 +183,7 @@ export default function CrearEventoDeportivo() {
                     <TextField
                       fullWidth
                       id="captain-email-team-se"
-                      label="Correo del capitán de equipo"
+                      label="Correo del encargado de equipo"
                       margin="normal"
                       // onChange={(event) => setName(event.target.value)}
                       // InputLabelProps={{ shrink: true }}

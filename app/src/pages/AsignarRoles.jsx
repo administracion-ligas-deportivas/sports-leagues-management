@@ -31,7 +31,7 @@ export default function AsignarRoles() {
   return (
     <>
       <div className={styles.container}>
-        <h1>Asignar Roles</h1>
+        <h1>Asignar roles</h1>
         <Stack spacing={2} className={styles.rectangle}>
           <h2>Asignar rol a los usuarios</h2>
           <Typography>

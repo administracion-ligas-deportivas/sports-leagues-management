@@ -3,7 +3,7 @@
 
 @media screen and (min-width: 1025px) {
   .container {
-    padding: 40px;
+    /* padding: 40px; */
   }
 
   .container h1 {
@@ -41,9 +41,14 @@
   }
 
   .buttons {
+    margin-top: 1em;
     display: flex;
     flex-direction: row-reverse;
-  }
+}
+
+.buttons div {
+    margin-left: 3em;
+}
 }
 
 @media screen and (max-width: 1024px) {
@@ -85,9 +90,11 @@
   }
 
   .buttons {
+    margin-top: 1em;
+    gap: 1em;
     display: flex;
-    height: auto;
-    padding: 10px;
-  }
+    flex-direction: row-reverse;
+    justify-content: center;
+}
 
 }

@@ -26,13 +26,13 @@ export default function GestionEventoDep() {
   //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   function randomString(length, chars) {
     //Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
-    var mask = "";
+    let mask = "";
     if (chars.indexOf("a") > -1) mask += "abcdefghijklmnopqrstuvwxyz";
     if (chars.indexOf("A") > -1) mask += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (chars.indexOf("#") > -1) mask += "0123456789";
     if (chars.indexOf("!") > -1) mask += "!@#$%&*?/";
-    var result = "";
-    for (var i = length; i > 0; --i)
+    let result = "";
+    for (let i = length; i > 0; --i)
       result += mask[Math.floor(Math.random() * mask.length)];
     return result;
   }

@@ -9,31 +9,13 @@
         text-align: center;
     }
 
-    .container h2 {
-        font-size: 18pt;
-        font-weight: bold;
-    }
-
     .rectangle {
         padding: 40px;
         background-color: rgb(243, 246, 250);
     }
-
-    .flexContainer {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .input {
-        width: 45%;
-    }
-
-    .input2 {
-        width: 15%;
-    }
-
+    
     .buttons {
-        margin-top: 1em;
+        margin-top: 3em;
         display: flex;
         flex-direction: row-reverse;
     }
@@ -64,11 +46,6 @@
         text-align: center;
     }
 
-    .container h2 {
-        font-size: 18pt;
-        font-weight: bold;
-    }
-
     .rectangle {
         padding: 40px;
         background-color: rgb(243, 246, 250);
@@ -86,7 +63,7 @@
     }
 
     .buttons {
-        margin-top: 1em;
+        margin-top: 3em;
         gap: 1em;
         display: flex;
         flex-direction: row-reverse;
