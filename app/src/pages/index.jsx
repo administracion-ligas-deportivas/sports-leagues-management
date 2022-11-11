@@ -6,7 +6,7 @@ import CreateAdvise from "@/pages/CreateAdvise";
 import CrearEventoDeportivo from "@/pages/CreateSportEvent";
 import EnterSportsEvent from "@/pages/enter-sports-event";
 import EstadisticasPersonales from "@/pages/estadisticas-personales";
-
+import RegistroEstadistico from "@/pages/Registrar-Estadistico";
 import GestionEquipoJugador from "@/pages/GestionEquipoJugador";
 import GestionTorneo from "@/pages/gestion-torneo";
 import Home from "@/pages/Home";
@@ -17,10 +17,8 @@ import Login from "@/pages/Login";
 import PageNotFound from "@/pages/PageNotFound";
 import HomeAdmin from "@/pages/HomeAdmin";
 import GestionEventoDep from "@/pages/GestionEventoDep";
-import GestionEquipoJugador from "@/pages/GestionEquipoJugador";
 import RegistroDeportivo from "@/pages/RegistroDeportivo";
 import TraspasoEquipo from "@/pages/TraspasoEquipo";
-import RegistroEstadistico from "@/pages/Registrar-Estadistico";
 import EquiposEnSistema from "@/pages/EquiposEnSistema";
 import GestionEquipo from "@/pages/GestionEquipo";
 import RegistroPagoFisico from "@/pages/RegistroPagoFísico";
@@ -38,6 +36,7 @@ export {
   EstadisticasPersonales,
   GestionEquipoJugador,
   GestionTorneo,
+  RegistroEstadistico,
   Home,
   NuevoArbitro,
   Profile,
@@ -46,10 +45,8 @@ export {
   PageNotFound,
   HomeAdmin,
   GestionEventoDep,
-  GestionEquipoJugador,
   RegistroDeportivo,
   TraspasoEquipo,
-  RegistroEstadistico,
   EquiposEnSistema,
   GestionEquipo,
   RegistroPagoFisico,
