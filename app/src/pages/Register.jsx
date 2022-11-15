@@ -1,46 +1,55 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "@/services/users";
 
-/* ----------------------------------- MUI ---------------------------------- */
-import { TextField } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TextField, Button, Alert } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTime } from "luxon";
-import Button from "@mui/material/Button";
-//import TextField from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import styles from "@/styles/LoginSignup.module.css";
 import myimg from "/img-login.png";
+import styles from "@/styles/LoginSignup.module.css";
+import { registerSchema } from "@/validations/registerSchema";
+import { useState } from "react";
 
 function Signup() {
   const navigate = useNavigate();
-
-  const [usuario, setUsuario] = useState({
-    nombre: "",
-    apellido: "",
-    correo: "",
-    password: "",
-    telefono: "",
+  const [serverError, setServerError] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    setError,
+  } = useForm({
+    resolver: yupResolver(registerSchema),
   });
 
-  const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
+  const registerUser = async (userData) => {
+    if (userData.password !== userData.confirmPassword) {
+      setError("confirmPassword", {
+        type: "focus",
+        message: "Las contraseñas no coinciden",
+      });
+      return;
+    }
+    console.log(
+      "🚀 ~ file: Register.jsx ~ line 44 ~ registerUser ~ userData",
+      userData
+    );
 
-  const handleChange = ({ target: { name, value } }) => {
-    setUsuario({ ...usuario, [name]: value });
-  };
-
-  const registerUser = async (e) => {
-    e.preventDefault();
-    console.log(usuario);
-    createUser(usuario).then(() => {
-      navigate("/");
-    });
+    createUser(userData)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        setServerError(error);
+      });
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
+
   return (
     <div className="flex flex-col justify-between h-full">
       <section className={[styles.mainContainerRegister]}>
@@ -50,7 +59,10 @@ function Signup() {
           </h1>
           <img src={myimg} alt="Register_image" width="300px" height="300px" />
         </section>
-        <main className={[styles.container, styles.loginContainer].join(" ")}>
+        <form
+          onSubmit={handleSubmit(registerUser)}
+          className={[styles.container, styles.loginContainer].join(" ")}
+        >
           <Link to="/login">Inicia sesión</Link>
           <h1 className={styles.titlePage}>Registro</h1>
 
@@ -60,50 +72,45 @@ function Signup() {
 
           {/*TextField para los nombres*/}
           <TextField
-            required
+            error={errors.nombre}
+            helperText={errors.nombre?.message}
             id="user-input-pass"
             name="nombre"
             label="Nombre(s)"
-            onChange={handleChange}
+            {...register("nombre")}
           />
 
           {/*TextField para los apellidos*/}
           <TextField
-            required
+            error={errors.apellido}
+            helperText={errors.apellido?.message}
             id="user-input-pass"
             name="apellido"
             label="Apellido(s)"
-            onChange={handleChange}
+            {...register("apellido")}
           />
 
           {/*TextField para el correo*/}
           <TextField
-            required
+            error={errors.correo}
+            helperText={errors.correo?.message}
             id="user-input-pass"
             name="correo"
             label="Correo"
-            onChange={handleChange}
+            {...register("correo")}
           />
 
           {/*TextField para el teléfono*/}
           <TextField
-            required
+            error={errors.telefono}
+            helperText={errors.telefono?.message}
             id="user-input"
             type="tel"
             name="telefono"
             label="Teléfono"
-            onChange={handleChange}
+            {...register("telefono")}
           />
 
-          {/*TextField para la contraseña*/}
-          <TextField
-            disabled
-            id="user-input-pass"
-            type="password"
-            name="password"
-            label="Contraseña"
-            onChange={handleChange}
-          />
           <div className={styles.genderDataContainer}>
             {/*TextField para el fecha de nacimiento*/}
             {/*<DesktopDatePicker
@@ -120,15 +127,15 @@ function Signup() {
               id="user-input-pass"
               name="genero"
               label="Género"
-              onChange={handleChange}
+              {...register("genero")}
             />
 
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="Date desktop"
                 inputFormat="DD/MM/YYYY"
-                value={fechaNacimiento}
-                onChange={(newValue) => setFechaNacimiento(newValue)}
+                defaultValue={DateTime.now()}
+                {...register("fechaNacimiento")}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
@@ -136,116 +143,34 @@ function Signup() {
 
           {/*TextField para contraseña*/}
           <TextField
-            disabled
+            error={errors.password}
+            helperText={errors.password?.message}
             id="user-input-pass"
             type="password"
             name="password"
-            label="Contrase{a"
-            onChange={handleChange}
+            label="Contraseña"
+            {...register("password")}
           />
 
           {/*TextField para confirmar contraseña */}
           <TextField
-            disabled
+            error={errors.confirmPassword}
+            helperText={errors.confirmPassword?.message}
             id="user-input-pass"
             type="password"
             name="password"
             label="Confirmar contraseña"
-            onChange={handleChange}
+            {...register("confirmPassword", {
+              // validate: (value) => value === watch("password"),
+            })}
           />
 
-          {/*<Label
-                htmlFor="user-label-pass"
-                content="Apellido(s)" >
-                <Input
-                  id="user-input-pass"
-                  name="apellido"
-                  placeholder="Apellido(s)"
-                  onChange={handleChange}
-            />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Correo"
-              >
-                <Input
-                  id="user-input-pass"
-                  name="correo"
-                  placeholder="Correo"
-                  onChange={handleChange}
-                />
-              </Label>
-              <Label
-                htmlFor="user-label"
-                content="Teléfono"
-                
-              >
-                <Input
-                  id="user-input"
-                  placeholder="Teléfono"
-                  type="tel"
-                  name="telefono"
-                  onChange={handleChange}
+          {serverError && <Alert severity="error">{serverError}</Alert>}
 
-                />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  name="password"
-                  type="password"
-                  placeholder="Contraseña"
-                  onChange={handleChange}
-                />
-              </Label>
-              
-            
-              <div className={styles.genderDataContainer}>
-                <Label
-                  htmlFor="user-label-pass"
-                  content="Fecha de nacimiento"
-                >
-                  <Input
-                    id="user-input-pass"
-                    placeholder="DD/MM/AAAA"
-                  />
-                </Label>
-                <Label
-                  htmlFor="user-label-pass"
-                  content="Genero"
-                >
-                  <Input
-                    id="user-input-pass"
-                    placeholder="Género"
-                  />
-                </Label>
-              </div>
-              
-              <Label
-                htmlFor="user-label-pass"
-                content="Contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  placeholder="Contraseña"
-                />
-              </Label>
-              <Label
-                htmlFor="user-label-pass"
-                content="Confirmar contraseña"
-              >
-                <Input
-                  id="user-input-pass"
-                  placeholder="Confirmar contraseña"
-                />
-              </Label>*/}
-          <Button variant="contained" onClick={registerUser} type="submit">
+          <Button variant="contained" type="submit">
             Registrar
           </Button>
-        </main>
+        </form>
       </section>
     </div>
   );
