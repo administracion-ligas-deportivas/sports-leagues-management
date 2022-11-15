@@ -35,7 +35,7 @@ const login = async (request, response) => {
 
   //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
   const token = jwt.sign(userForToken, process.env.SECRET, {
-    EXPIRE_IN_DAYS,
+    expiresIn: EXPIRE_IN_DAYS,
   });
 
   // Status code default: 200
