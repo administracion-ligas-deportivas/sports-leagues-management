@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const estadistica_jugador_partido = sequelize.define(
     "estadistica_jugador_partido",
     {
-      estadistica_deporte_id: {
+      estadistica_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -35,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     estadistica_jugador_partido.belongsTo(models.partido, {
       foreignKey: "partido_id",
     });
-    estadistica_jugador_partido.belongsTo(models.estadistica_deporte, {
-      foreignKey: "estadistica_deporte_id",
+    estadistica_jugador_partido.belongsTo(models.estadistica, {
+      foreignKey: "estadistica_id",
     });
     estadistica_jugador_partido.belongsTo(models.Usuario, {
       foreignKey: "jugador_id",

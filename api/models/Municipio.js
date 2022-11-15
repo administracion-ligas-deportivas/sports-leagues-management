@@ -17,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Municipio.assosiate = function (models) {
-    Municipio.hasMany(models.domicilio_usuario, { foreignKey: "municipio_id" });
-  };
-  Municipio.assosiate = function (models) {
     Municipio.belongsTo(models.Estado, {
       foreignKey: "municipio_id",
     });
