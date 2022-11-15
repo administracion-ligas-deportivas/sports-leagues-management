@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./models");
+const { PORT } = require("./config/config");
 
 const {
   errorHandler,
@@ -48,7 +49,6 @@ middleware devolverá un mensaje de error en formato JSON.
 app.use(unknownEndpoint);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3001;
 const server = db.sequelize.sync({ alter: true }).then(() => {
   return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

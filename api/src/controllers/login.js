@@ -34,7 +34,7 @@ const login = async (request, response) => {
   };
 
   //En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
-  const token = jwt.sign(userForToken, process.env.SECRET, {
+  const token = jwt.sign(userForToken, process.env.JWT_SECRET, {
     expiresIn: EXPIRE_IN_DAYS,
   });
 

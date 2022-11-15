@@ -7,7 +7,7 @@ const userAuthenticator = (req, res, next) => {
     token
   );
 
-  const decodedToken = jwt.verify(token, process.env.SECRET);
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
   console.log(
     "🚀 ~ file: userAuthenticator.js ~ line 8 ~ userAuthenticator ~ decodedToken",
     decodedToken
