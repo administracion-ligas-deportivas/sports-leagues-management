@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
-  Usuario.create({
+  const user = await Usuario.create({
     nombre,
     apellido,
     correo,
@@ -21,7 +21,13 @@ const createUser = async (req, res) => {
     telefono,
   });
 
-  res.status(201).json("Usuario registrado exitosamente");
+  if (!user) {
+    return res
+      .status(400)
+      .json({ error: "No se ha podido registrar el usuario" });
+  }
+
+  res.status(201).json(user);
 };
 
 const verifyUser = (req, res) => {

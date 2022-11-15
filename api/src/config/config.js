@@ -1,26 +1,16 @@
-const username = process.env.DB_USERNAME || "root";
-const host = process.env.DB_HOST || "localhost";
+const PORT = process.env.PORT || 3001;
+
+const DB_USERNAME = process.env.DB_USERNAME || "root";
+const DB_HOST = process.env.DB_HOST || "localhost";
+const DB_DATABASE = process.env.DB_DATABASE || "ligas_deportivas";
+const DB_PORT = process.env.DB_PORT || 3306;
+const DB_PASSWORD = process.env.DB_PASSWORD;
 
 module.exports = {
-  development: {
-    username,
-    password: process.env.DB_PASSWORD,
-    database: "ligas_deportivas",
-    host,
-    dialect: "mariadb",
-  },
-  test: {
-    username: "root",
-    password: null,
-    database: "database_test",
-    host: "127.0.0.1",
-    dialect: "mariadb",
-  },
-  production: {
-    username: "root",
-    password: null,
-    database: "database_production",
-    host: "127.0.0.1",
-    dialect: "mariadb",
-  },
+  PORT,
+  DB_USERNAME,
+  DB_HOST,
+  DB_DATABASE,
+  DB_PORT,
+  DB_PASSWORD,
 };
