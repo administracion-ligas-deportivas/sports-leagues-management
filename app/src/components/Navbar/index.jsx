@@ -82,7 +82,8 @@ function Navbar() {
                   textDecoration: "none",
                 }}
               >
-                <link rel="manifest" href="manifest.json" /><FontAwesomeIcon
+                <link rel="manifest" href="manifest.json" />
+                <FontAwesomeIcon
                   icon={faMedal}
                   styles={{ marginRight: "10px", fontSize: "20px" }}
                 />
@@ -203,8 +204,8 @@ function Navbar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key="Perfil" onClick={handleCloseUserMenu}>
-                  <Link to={`/profile/${user.id}`} className={styles.link}>
+                <Link to={`/profile/${user.id}`} className={styles.link}>
+                  <MenuItem key="Perfil" onClick={handleCloseUserMenu}>
                     <Typography
                       textAlign="center"
                       sx={{
@@ -214,8 +215,8 @@ function Navbar() {
                     >
                       Perfil
                     </Typography>
-                  </Link>
-                </MenuItem>
+                  </MenuItem>
+                </Link>
                 <MenuItem key="Logout" onClick={async () => logout()}>
                   <Typography textAlign="center">Cerrar Sesión</Typography>
                 </MenuItem>
