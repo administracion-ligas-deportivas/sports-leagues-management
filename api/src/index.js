@@ -10,11 +10,13 @@ const { errorHandler } = require("./middlewares/errorHandler");
 const { unknownEndpoint } = require("./middlewares/unknownEndpoint");
 const { tokenExtractor } = require("./middlewares/tokenExtractor");
 
-const postRouter = require("./controllers/posts");
-const comentariosRouter = require("./controllers/comentarios");
-const usersRouter = require("./controllers/usuarios");
-const likesRouter = require("./controllers/likes");
-const loginRouter = require("./controllers/login");
+const {
+  postsRouter,
+  comentariosRouter,
+  usersRouter,
+  likesRouter,
+  loginRouter,
+} = require("./routes");
 
 app.use(cors());
 app.use(express.json());
@@ -31,7 +33,7 @@ app.use(express.json());
 // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
 app.use(tokenExtractor);
 
-app.use("/api/posts", postRouter);
+app.use("/api/posts", postsRouter);
 app.use("/api/comentarios", comentariosRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/likes", likesRouter);
