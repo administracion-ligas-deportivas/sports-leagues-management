@@ -6,32 +6,27 @@ const app = express();
 const cors = require("cors");
 const db = require("./models");
 
-const { errorHandler } = require("./middlewares/errorHandler");
-const { unknownEndpoint } = require("./middlewares/unknownEndpoint");
-const { tokenExtractor } = require("./middlewares/tokenExtractor");
+const {
+  errorHandler,
+  unknownEndpoint,
+  tokenExtractor,
+} = require("./middlewares");
 
-const postRouter = require("./controllers/posts");
-const comentariosRouter = require("./controllers/comentarios");
-const usersRouter = require("./controllers/usuarios");
-const likesRouter = require("./controllers/likes");
-const loginRouter = require("./controllers/login");
+const {
+  postsRouter,
+  comentariosRouter,
+  usersRouter,
+  likesRouter,
+  loginRouter,
+} = require("./routes");
 
 app.use(cors());
 app.use(express.json());
 
-/*const pool = mariadb.createPool(
-{
-    host: "localhost",
-    user: "root",
-    password: "da7a_Bas3",
-    port: 3310,
-    database: "ligas_deportivas",
-});*/
-
 // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
 app.use(tokenExtractor);
 
-app.use("/api/posts", postRouter);
+app.use("/api/posts", postsRouter);
 app.use("/api/comentarios", comentariosRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/likes", likesRouter);

@@ -1,25 +1,19 @@
-const express = require("express");
-const router = express.Router();
 const { Comentario } = require("../models");
-const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
 
-//Obtener información
-router.get("/:anuncioId", async (req, res) => {
-  const { anuncioId } = req.params;
+const getCommentsByPostId = async (req, res) => {
+  const { postId } = req.params;
 
   const comentarios = await Comentario.findAll({
-    where: { AnuncioId: anuncioId },
+    where: { AnuncioId: postId },
   });
   console.log(
     "🚀 ~ file: comentarios.js ~ line 13 ~ router.get ~ comentarios",
     { comentarios }
   );
   res.json(comentarios);
-});
+};
 
-//Insertar información en la base de datos
-// POST /api/comentarios/
-router.post("/", userAuthenticator, async (req, res) => {
+const addPostComment = async (req, res) => {
   const { body, user } = req;
   const { nombre } = user;
 
@@ -27,9 +21,9 @@ router.post("/", userAuthenticator, async (req, res) => {
   const newComment = await Comentario.create(comentario);
 
   res.json(newComment);
-});
+};
 
-router.delete("/:commentId", userAuthenticator, async (req, res) => {
+const deleteCommentById = async (req, res) => {
   const { params } = req;
   const { commentId } = req.params;
   console.log("🚀 ~ file: comentarios.js ~ line 30 ~ router.delete ~ req", {
@@ -43,6 +37,6 @@ router.delete("/:commentId", userAuthenticator, async (req, res) => {
   });
 
   res.json({ message: "Correct delete" });
-});
+};
 
-module.exports = router;
+module.exports = { getCommentsByPostId, addPostComment, deleteCommentById };

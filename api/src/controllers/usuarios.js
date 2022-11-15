@@ -1,16 +1,12 @@
-const express = require("express");
-const usersRouter = express.Router();
-const { Usuario } = require("../models");
 const bcrypt = require("bcrypt");
+const { Usuario } = require("../models");
 
-const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
-
-usersRouter.get("/", async (req, res) => {
+const getUsers = async (req, res) => {
   const usuarios = await Usuario.findAll();
   res.json(usuarios);
-});
+};
 
-usersRouter.post("/", async (req, res) => {
+const createUser = async (req, res) => {
   const { body } = req;
   const { nombre, apellido, correo, password, telefono } = body;
 
@@ -26,23 +22,21 @@ usersRouter.post("/", async (req, res) => {
   });
 
   res.status(201).json("Usuario registrado exitosamente");
-});
+};
 
-usersRouter.get("/verify", userAuthenticator, (req, res) => {
+const verifyUser = (req, res) => {
   const { user } = req;
 
   res.json({
     message: "Se ha validado la sesión del usuario correctamente",
     user,
   });
-});
+};
 
-http://localhost:3001/api/users
+const getUserById = async (req, res) => {
+  const { userId } = req.params;
 
-usersRouter.get("/:id", async (req, res) => {
-  const { id } = req.params;
-
-  Usuario.findByPk(id, {
+  Usuario.findByPk(userId, {
     attributes: {
       exclude: ["password"],
     },
@@ -52,6 +46,11 @@ usersRouter.get("/:id", async (req, res) => {
       res.status(404).end();
     })
     .catch((err) => res.status(500).json({ error: err.message }));
-});
+};
 
-module.exports = usersRouter;
+module.exports = {
+  getUsers,
+  createUser,
+  verifyUser,
+  getUserById,
+};
