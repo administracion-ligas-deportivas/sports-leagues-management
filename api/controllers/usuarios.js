@@ -30,11 +30,14 @@ usersRouter.post("/", async (req, res) => {
 
 usersRouter.get("/verify", userAuthenticator, (req, res) => {
   const { user } = req;
+
   res.json({
     message: "Se ha validado la sesión del usuario correctamente",
     user,
   });
 });
+
+http://localhost:3001/api/users
 
 usersRouter.get("/:id", async (req, res) => {
   const { id } = req.params;

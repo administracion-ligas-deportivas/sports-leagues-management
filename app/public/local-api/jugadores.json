@@ -1,0 +1,17 @@
+{
+  "total": 2,
+  "jugadores": [
+    {
+      "id": 1,
+      "nombre": "Javier",
+      "apellido": "Juárez",
+      "fechaNacimiento": "2000-02-28"
+    },
+    {
+      "id": 2,
+      "nombre": "José",
+      "apellido": "Juárez",
+      "fechaNacimiento": "2000-02-28"
+    }
+  ]
+}
