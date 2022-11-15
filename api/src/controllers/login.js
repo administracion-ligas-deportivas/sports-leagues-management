@@ -29,6 +29,7 @@ const login = async (request, response) => {
     correo: user.correo,
     nombre: user.nombre,
     apellido: user.apellido,
+    fechaNacimiento: user.fechaNacimiento,
     id: user.id,
   };
 

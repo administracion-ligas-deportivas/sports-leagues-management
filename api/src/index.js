@@ -6,9 +6,11 @@ const app = express();
 const cors = require("cors");
 const db = require("./models");
 
-const { errorHandler } = require("./middlewares/errorHandler");
-const { unknownEndpoint } = require("./middlewares/unknownEndpoint");
-const { tokenExtractor } = require("./middlewares/tokenExtractor");
+const {
+  errorHandler,
+  unknownEndpoint,
+  tokenExtractor,
+} = require("./middlewares");
 
 const {
   postsRouter,
@@ -20,15 +22,6 @@ const {
 
 app.use(cors());
 app.use(express.json());
-
-/*const pool = mariadb.createPool(
-{
-    host: "localhost",
-    user: "root",
-    password: "da7a_Bas3",
-    port: 3310,
-    database: "ligas_deportivas",
-});*/
 
 // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
 app.use(tokenExtractor);

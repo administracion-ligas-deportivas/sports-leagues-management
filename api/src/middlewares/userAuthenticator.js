@@ -19,10 +19,11 @@ const userAuthenticator = (req, res, next) => {
       .json({ error: "El token no se encuentra o no es válido" });
   }
 
-  const { id, correo, nombre, apellido } = decodedToken;
+  const { iat, exp, ...userProps } = decodedToken;
+  console.log({ userProps });
 
   // Con Express podemos mutar el objeto request.
-  req.user = { id, correo, nombre, apellido };
+  req.user = { ...userProps };
 
   // Con next() continuamos la ejecución del middleware.
   next();
