@@ -9,6 +9,7 @@ export function useUser() {
     authService.authenticateLoggedUser
   );
 
+  console.log({ data });
   // const mutateUser = useCallback((user) => mutate(user), [mutate]);
 
   return {

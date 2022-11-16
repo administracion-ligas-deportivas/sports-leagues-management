@@ -7,9 +7,12 @@ import { DataGrid } from "@mui/x-data-grid";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import { useJugadores } from "@/hooks/useJugadores";
 /* ----------------------------------- MUI ---------------------------------- */
 
 export default function GestionEquipo() {
+  const { jugadores, deleteJugador } = useJugadores();
+
   //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   function randomString(length, chars) {
     //Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
@@ -32,21 +35,23 @@ export default function GestionEquipo() {
       width: 90,
       renderCell: () => {
         return (
-          <IconButton>
+          <IconButton onClick={(e) => deleteJugador(e.target.value.id)}>
             <DeleteIcon />
           </IconButton>
         );
       },
     },
     {
-      field: "firstName",
-      width: 325,
+      field: "nombre",
       headerName: "Nombre(s)",
     },
     {
-      field: "lastName",
-      width: 325,
+      field: "apellido",
       headerName: "Apellidos",
+    },
+    {
+      field: "fechaNacimiento",
+      headerName: "Fecha de nacimiento",
     },
   ];
 
@@ -118,7 +123,7 @@ export default function GestionEquipo() {
               Miembros del equipo:
             </Typography>
             <DataGrid
-              rows={rows}
+              rows={jugadores}
               columns={columns}
               pageSize={4}
               rowsPerPageOptions={[4]}

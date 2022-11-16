@@ -12,25 +12,13 @@ import {
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchUser } from "@/services/users";
+import { useUser } from "@/hooks/useUser";
 
 export default function EditarPerfil() {
-  let { id } = useParams();
-  const [user, setUser] = useState({});
-  const [name, setName] = useState();
+  const { user } = useUser();
+  const { nombre, apellido, fechaNacimiento, correo, numeroTelefonico } = user;
 
-  useEffect(() => {
-    fetchUser(id).then((response) => {
-      setUser({
-        nombre: response.nombre,
-        apellido: response.apellido,
-        correo: response.email,
-      });
-      
-      setName(response.nombre);
-    });
-  }, [id]);
-
-  console.log(name);
+  const { id } = useParams();
 
   return (
     <>
@@ -48,7 +36,7 @@ export default function EditarPerfil() {
                 id="nombre"
                 label="Nombre"
                 // placeholder="Nombre"
-                value={name}
+                value={nombre}
                 margin="normal"
                 onChange={(event) => setName(event.target.value)}
                 InputLabelProps={{ shrink: true }}
@@ -59,7 +47,7 @@ export default function EditarPerfil() {
                 fullWidth
                 id="apellido"
                 label="Apellido"
-                value={user.apellido}
+                value={apellido}
                 onChange={(event) =>
                   setUser({ ...user, apellido: event.target.value })
                 }
@@ -93,7 +81,7 @@ export default function EditarPerfil() {
                 fullWidth
                 id="email"
                 label="Correo"
-                value={user.correo}
+                value={correo}
                 onChange={(event) =>
                   setUser({ ...user, correo: event.target.value })
                 }

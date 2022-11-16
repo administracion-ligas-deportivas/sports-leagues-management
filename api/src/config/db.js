@@ -1,12 +1,11 @@
-const username = process.env.DB_USERNAME || "root";
-const host = process.env.DB_HOST || "localhost";
+const { DB_PASSWORD, DB_DATABASE, DB_HOST, DB_USERNAME } = require("./config");
 
 module.exports = {
   development: {
-    username,
-    password: process.env.DB_PASSWORD,
-    database: "ligas_deportivas",
-    host,
+    host: DB_HOST,
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: DB_DATABASE,
     dialect: "mariadb",
   },
   test: {

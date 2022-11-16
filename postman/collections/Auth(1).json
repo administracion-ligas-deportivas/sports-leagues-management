@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "4cd3dc53-3ae9-42fc-a12e-4d25e7a07fc8",
+		"name": "Auth",
+		"description": "Autenticación de usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-4cd3dc53-3ae9-42fc-a12e-4d25e7a07fc8"
+	},
+	"item": [
+		{
+			"name": "Registro",
+			"id": "266fe4a4-0875-411e-9b63-124452cc6549",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"correo\": \"{{correo}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"nombre\": \"{{nombre}}\",\r\n  \"apellido\": \"{{apellido}}\",\r\n  \"telefono\": \"{{telefono}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Crear nuevo usuario."
+			},
+			"response": [
+				{
+					"id": "612ba369-4395-4f40-8385-d9449b511724",
+					"name": "Registro exitoso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"correo\": \"correo@correo.com\",\r\n  \"password\": \"correo\",\r\n  \"nombre\": \"Agus\",\r\n  \"apellido\": \"Sánchez\",\r\n  \"telefono\": \"0123456789\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-sGoAmVwpUewHYP/pPRAKzRyqcZk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 19:55:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"Usuario registrado exitosamente\""
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53c91199-50df-46b2-af97-ce9fa00058b9",
+						"exec": [
+							"if (pm.response.code === 200) {\r",
+							"    const responseJson = pm.response.json()\r",
+							"    const {token} = responseJson\r",
+							"\r",
+							"    pm.globals.set(\"user_token\", token);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4e446f10-9087-4023-94c0-afde5594ea5b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\": \"{{correo}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "548004d9-f510-475e-b9ba-d7831f358361",
+					"name": "Login fallido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"correo@correo.com\",\r\n    \"password\": \"correo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2c-8cbBUC0UCO2Magx6AFFzR3I3QPY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 19:52:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Correo o contraseña incorrectos\"\n}"
+				},
+				{
+					"id": "8f7333ff-aa41-43a0-9461-f6ca983b4200",
+					"name": "Login exitoso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"{{correo}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "313"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"139-O/Qq2fsdzKSQeT6LPyMGVTr6f0A\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 19:56:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3JyZW8iOiJjb3JyZW9AY29ycmVvLmNvbSIsIm5vbWJyZSI6IkFndXMiLCJhcGVsbGlkbyI6IlPDoW5jaGV6IiwiaWQiOjEsImlhdCI6MTY2ODI4Mjk4NSwiZXhwIjoxNjY4ODg3Nzg1fQ.vlAHx8TdXyj_4K4w3DbBPLVipNSEDjVV2GfDyrAnAyI\",\n    \"correo\": \"correo@correo.com\",\n    \"nombre\": \"Agus\",\n    \"apellido\": \"Sánchez\",\n    \"id\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Verificar sesión",
+			"id": "626f420c-f38a-4552-b03e-1ab6c1d980f0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/verify",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"verify"
+					]
+				},
+				"description": "Valida la sesión que ya haya iniciado el usuario en la aplicación. Es decir, si la última vez el usuario dejó su sesión iniciada, verifica que el token de autenticación aún sea válido.\n\nEsto es útil para iniciar su sesión automáticamente en el front al obtener un código de respuesta 200."
+			},
+			"response": [
+				{
+					"id": "337e1f90-0e20-4b91-9468-026541a3337c",
+					"name": "Sesión validada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/users/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"verify"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"94-wZ7xLKfrcIMhWlMF+fokz6ijvCA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 20:11:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Se ha validado la sesión del usuario correctamente\",\n    \"user\": {\n        \"id\": 1,\n        \"correo\": \"correo@correo.com\",\n        \"nombre\": \"Agus\",\n        \"apellido\": \"Sánchez\"\n    }\n}"
+				},
+				{
+					"id": "561b0b29-b19e-4c5b-98a3-cf3e7888619d",
+					"name": "Token no válido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/verify",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"verify"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "25"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"19-nIoxUTr5+ybmaEhtpQWNIScZDB0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 20:12:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"invalid token\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0305c58c-bea0-44f8-8097-e0b02a720686",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3fb5132f-9c73-429d-9d21-23bb05fb9902",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6315fa19-9398-4459-ac59-0c69550dcd74",
+			"key": "correo",
+			"value": "correo@correo.com",
+			"type": "string"
+		},
+		{
+			"id": "61aa4a93-3c1b-4e28-a56f-39de7327eb62",
+			"key": "password",
+			"value": "correo",
+			"type": "string"
+		},
+		{
+			"id": "93c92924-0c20-43f6-a763-04fcf943c977",
+			"key": "nombre",
+			"value": "Agus",
+			"type": "string"
+		},
+		{
+			"id": "519e802f-a78f-4d97-8590-eba4eeae5ad1",
+			"key": "apellido",
+			"value": "Sánchez",
+			"type": "string"
+		},
+		{
+			"id": "9a86beb3-e323-4a74-95f5-3914c7529eea",
+			"key": "telefono",
+			"value": "0123456789",
+			"type": "string"
+		}
+	]
+}
