@@ -55,17 +55,6 @@ export default function GestionEquipo() {
     },
   ];
 
-  const rows = [
-    { id: 1, lastName: "Rodríguez", firstName: "Ximena" },
-    { id: 2, lastName: "Rodríguez", firstName: "Paola" },
-    { id: 3, lastName: "Rodríguez", firstName: "Patricia" },
-    { id: 4, lastName: "Rodríguez", firstName: "José" },
-    { id: 5, lastName: "Rodríguez", firstName: "Ximena" },
-    { id: 6, lastName: "Rodríguez", firstName: "Paola" },
-    { id: 7, lastName: "Rodríguez", firstName: "Patricia" },
-    { id: 8, lastName: "Rodríguez", firstName: "José" },
-  ];
-
   return (
     <>
       <div className={styles.container}>
