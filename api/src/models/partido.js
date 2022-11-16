@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TIME,
         allowNull: false,
       },
+      efectuado: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       paranoid: true,

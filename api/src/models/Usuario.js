@@ -33,28 +33,12 @@ module.exports = (sequelize, DataTypes) => {
       tiempo_registro: {
         type: DataTypes.DATE,
       },
-
-      municipio_id: {
-        type: DataTypes.INTEGER,
-      },
     },
     {
       paranoid: true,
     }
   );
 
-  /*  Usuario.associate = (models) => {
-    Usuario.hasOne(models.domicilio_usuario, {
-      foreignKey: "usuario_id",
-      as: "domicilio_usuario_usuario_id",
-    });
-    Usuario.belongsTo(models.Municipio, {
-      foreignKey: "municipio_id",
-      as: "usuario_municipio_id",
-    });
-    Usuario.hasMany(models.Likes, { onDelete: "Cascade" });
-  };
-  2; */
   Usuario.associate = (models) => {
     Usuario.hasOne(models.domicilio_usuario, {
       foreignKey: "usuario_id",
@@ -65,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.belongsTo(models.rol, {
       foreignKey: "rol_id",
     });
-    Usuario.hasMany(models.jugador_equipo, {
+    Usuario.hasMany(models.formato_evento_deportivo, {
       foreignKey: "usuario_id",
     });
     Usuario.hasMany(models.pago_evento_deportivo, {
@@ -77,12 +61,18 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.migracion_equipo_evento_deportivo, {
       foreignKey: "organizador_id",
     });
+    Usuario.hasMany(models.equipo, {
+      foreignKey: "encargado_equipo_id",
+    });
     Usuario.hasOne(models.evento_deportivo, {
       foreignKey: "organizador_id",
     });
     Usuario.belongsToMany(models.evento_deportivo, {
       through: "estadistico_evento_deportivo",
       foreignKey: "estadistico_id",
+    });
+    Usuario.belongsToMany(models.equipo, {
+      through: models.jugador_equipo,
     });
     Usuario.hasMany(models.Likes, { onDelete: "cascade" });
   };
