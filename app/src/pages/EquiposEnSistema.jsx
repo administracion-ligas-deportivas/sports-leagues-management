@@ -12,6 +12,8 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useEquipos } from "@/hooks/useEquipos";
 import { useJugadores } from "@/hooks/useJugadores";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+
 
 export default function EquiposEnSistema() {
   const { equipos } = useEquipos();
@@ -34,6 +36,7 @@ export default function EquiposEnSistema() {
                   <Typography> {value.nombre} | {value.deporte} </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
+                  <div className={styles.centrar}>
                   <table>
                     <tr>
                       <th>Nombre</th>
@@ -44,15 +47,23 @@ export default function EquiposEnSistema() {
                   {jugadores.map((player) => {
                     if(player.id_equipo === value.id){
                       return(
-                        <tr>
+                        <tr className={styles.info}>
                             <td>{player.nombre}</td>
                             <td>{player.apellido}</td>
-                            <td><Button onClick={() => deleteJugador(player.id)}>Eliminar</Button></td>
+                            <td className={styles.centrar}><Button
+                              variant="outlined"
+                              startIcon={<DirectionsRunIcon />}
+                              size="small"
+                              color="error"
+                            >
+                              Eliminar
+                            </Button></td>
                         </tr>
                       )
                     }
                   })}
                   </table>
+                  </div>
                 </AccordionDetails>
               </Accordion>
             );
