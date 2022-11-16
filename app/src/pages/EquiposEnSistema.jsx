@@ -33,9 +33,13 @@ export default function EquiposEnSistema() {
                   aria-controls="{value.nombre}-content"
                   id="{value.nombre}-header"
                 >
-                  <Typography> {value.nombre} | {value.deporte} </Typography>
+                  <Typography> <b>{value.nombre}</b> | {value.deporte} </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
+                  <div className={styles.interlineado}>
+                    <h3>Nombre: {value.nombre}</h3>
+                    <h4>Deporte: {value.deporte}</h4>
+                  </div>
                   <div className={styles.centrar}>
                   <table>
                     <tr>
