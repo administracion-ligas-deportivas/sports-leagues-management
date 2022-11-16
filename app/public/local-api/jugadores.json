@@ -4,14 +4,72 @@
     {
       "id": 1,
       "nombre": "Javier",
-      "apellido": "Juárez",
-      "fechaNacimiento": "2000-02-28"
+      "apellido": "Mascherano",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 1
     },
     {
       "id": 2,
       "nombre": "José",
-      "apellido": "Juárez",
-      "fechaNacimiento": "2000-02-28"
+      "apellido": "Pérez",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Juan",
+      "apellido": "Cortes",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 3
+    },
+    {
+      "id": 4,
+      "nombre": "Alejandra",
+      "apellido": "Rodriguez",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 4
+    },
+    {
+      "id": 5,
+      "nombre": "Luis",
+      "apellido": "Gonzalez",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 5
+    },
+    {
+      "id": 6,
+      "nombre": "Hugo",
+      "apellido": "Flores",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 1
+    },
+    {
+      "id": 7,
+      "nombre": "Andrea",
+      "apellido": "Jiménez",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 2
+    },
+    {
+      "id": 8,
+      "nombre": "Javier",
+      "apellido": "Herrera",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 3
+    },
+    {
+      "id": 9,
+      "nombre": "Fernanda",
+      "apellido": "Gomez",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 4
+    },
+    {
+      "id": 10,
+      "nombre": "Pedro Luis",
+      "apellido": "Joao",
+      "fechaNacimiento": "2000-02-28",
+      "id_equipo": 5
     }
   ]
 }
