@@ -11,13 +11,9 @@ export function useEquipos() {
       setEquipos(equipos);
     });
   }, []);
-
-  const deleteEquipo = (id) => {
-    setEquipos(equipos.filter((equipo) => equipo.id !== id));
-  };
+  
 
   return {
     equipos,
-    deleteEquipo,
   };
 }

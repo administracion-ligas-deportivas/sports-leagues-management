@@ -10,45 +10,54 @@ import {
   Button
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useEquipos } from "@/hooks/useEquipos";
+import { useJugadores } from "@/hooks/useJugadores";
 
 export default function EquiposEnSistema() {
+  const { equipos } = useEquipos();
+  const { jugadores, deleteJugador } = useJugadores();
+
   return (
     <>
       <div className={styles.container}>
         <h1>Equipos</h1>
         <Stack direction="column" spacing={2} className={styles.rectangle}>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>Accordion 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Accordion 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+          {equipos.map((value, key) => {
+            console.log(value);
+            return(
+              <Accordion key={key}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="{value.nombre}-content"
+                  id="{value.nombre}-header"
+                >
+                  <Typography> {value.nombre} | {value.deporte} </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <table>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Eliminar</th>
+                    </tr>
+
+                  {jugadores.map((player) => {
+                    if(player.id_equipo === value.id){
+                      return(
+                        <tr>
+                            <td>{player.nombre}</td>
+                            <td>{player.apellido}</td>
+                            <td><Button onClick={() => deleteJugador(player.id)}>Eliminar</Button></td>
+                        </tr>
+                      )
+                    }
+                  })}
+                  </table>
+                </AccordionDetails>
+              </Accordion>
+            );
+          })}
+          
           <div className={styles.buttons}>
             <div>
               <Button variant="contained">Guardar</Button>
