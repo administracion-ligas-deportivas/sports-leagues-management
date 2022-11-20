@@ -1,4 +1,4 @@
-const { Comentario } = require("../models");
+const { Comentario } = require("../db/models");
 
 const getCommentsByPostId = async (req, res) => {
   const { postId } = req.params;

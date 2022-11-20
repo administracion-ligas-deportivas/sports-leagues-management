@@ -1,4 +1,4 @@
-const { Anuncio, Likes } = require("../models");
+const { Anuncio, Likes } = require("../db/models");
 
 const getPosts = async (req, res) => {
   const lista_anuncios = await Anuncio.findAll({ include: [Likes] });

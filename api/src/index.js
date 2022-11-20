@@ -4,7 +4,7 @@ const express = require("express");
 //const mariadb = require('mariadb');
 const app = express();
 const cors = require("cors");
-const db = require("./models");
+const db = require("./db/models");
 const { PORT } = require("./config/config");
 
 const {
@@ -29,7 +29,7 @@ app.use(tokenExtractor);
 
 app.use("/api/posts", postsRouter);
 app.use("/api/comentarios", comentariosRouter);
-app.use("/api/users", usersRouter);
+app.use("/api/usuarios", usersRouter);
 app.use("/api/likes", likesRouter);
 app.use("/api/login", loginRouter);
 

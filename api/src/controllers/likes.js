@@ -1,4 +1,4 @@
-const { Likes } = require("../models");
+const { Likes } = require("../db/models");
 
 const likePost = async (req, res) => {
   const { PostID } = req.body;

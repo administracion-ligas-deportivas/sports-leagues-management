@@ -1,0 +1,26 @@
+const path = require("path");
+
+const { resolve } = path;
+
+const baseConfigPath = "src";
+
+const pathKeys = ["models-path", "seeders-path", "migrations-path"];
+
+const pathsArray = pathKeys.map((pathKey) => {
+  // Obtener el path del que vamos a obtener la dirección. P.ej: models,
+  // seeders, migrations
+  const path = pathKey.split("-")[0];
+  const baseFolder = `${baseConfigPath}/db`;
+
+  // { 'models-path': 'src/models' }
+  return { [pathKey]: `${baseFolder}/${path}` };
+});
+
+const paths = Object.assign({}, ...pathsArray);
+
+console.log({ paths });
+
+module.exports = {
+  config: resolve(baseConfigPath, "config/db.js"),
+  ...paths,
+};

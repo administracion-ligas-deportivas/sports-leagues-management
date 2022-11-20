@@ -1,5 +1,12 @@
 const { DB_PASSWORD, DB_DATABASE, DB_HOST, DB_USERNAME } = require("./config");
 
+const define = {
+  underscored: true,
+  freezeTableName: true,
+  paranoid: true,
+  allowNull: false,
+};
+
 module.exports = {
   development: {
     host: DB_HOST,
@@ -7,6 +14,7 @@ module.exports = {
     password: DB_PASSWORD,
     database: DB_DATABASE,
     dialect: "mariadb",
+    define,
   },
   test: {
     username: "root",
@@ -14,6 +22,7 @@ module.exports = {
     database: "database_test",
     host: "127.0.0.1",
     dialect: "mariadb",
+    define,
   },
   production: {
     username: "root",
@@ -21,5 +30,6 @@ module.exports = {
     database: "database_production",
     host: "127.0.0.1",
     dialect: "mariadb",
+    define,
   },
 };

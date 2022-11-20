@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { Usuario } = require("../models");
+const { Usuario } = require("../db/models");
 
 const getUsers = async (req, res) => {
   const usuarios = await Usuario.findAll();
