@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   estadistica.associate = (models) => {
-    estadistica.hasMany(models.estadistica_jugador_partido, {
+    estadistica.hasMany(models.EstadisticaJugadorPartido, {
       foreignKey: "estadistica_id",
     });
     estadistica.hasMany(models.EstadisticaDeporte, {

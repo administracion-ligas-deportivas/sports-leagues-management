@@ -60,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.pago_evento_deportivo, {
       foreignKey: "usuario_id",
     });
-    Usuario.hasMany(models.estadistica_jugador_partido, {
+    Usuario.hasMany(models.EstadisticaJugadorPartido, {
       foreignKey: "jugador_id",
     });
     Usuario.hasMany(models.migracion_equipo_evento_deportivo, {
