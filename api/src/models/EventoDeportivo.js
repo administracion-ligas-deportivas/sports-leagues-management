@@ -6,19 +6,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      formato_evento_deportivo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      fecha_inicio: {
+      fechaInicio: {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      fecha_finalizacion: {
+      fechaFinalizacion: {
         type: DataTypes.DATE,
         allowNull: true,
       },
