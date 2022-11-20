@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 
   EventoDeportivo.associate = (models) => {
     EventoDeportivo.hasMany(models.EquipoEventoDeportivo);
-    EventoDeportivo.hasMany(models.pago_evento_deportivo);
+    EventoDeportivo.hasMany(models.PagoEventoDeportivo);
     EventoDeportivo.hasMany(models.partido);
     EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
       foreignKey: "evento_deportivo_origen_id",

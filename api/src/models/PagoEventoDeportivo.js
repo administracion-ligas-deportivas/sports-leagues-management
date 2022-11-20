@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const pago_evento_deportivo = sequelize.define(
-    "pago_evento_deportivo",
+  const PagoEventoDeportivo = sequelize.define(
+    "PagoEventoDeportivo",
     {
       usuario_id: {
         type: DataTypes.INTEGER,
@@ -40,18 +40,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  pago_evento_deportivo.associate = (models) => {
-    pago_evento_deportivo.belongsTo(models.Usuario, {
+  PagoEventoDeportivo.associate = (models) => {
+    PagoEventoDeportivo.belongsTo(models.Usuario, {
       foreignKey: "usuario_id",
     });
 
-    pago_evento_deportivo.belongsTo(models.EventoDeportivo, {
+    PagoEventoDeportivo.belongsTo(models.EventoDeportivo, {
       foreignKey: "evento_deportivo_id",
     });
-    pago_evento_deportivo.belongsTo(models.Equipo, {
+    PagoEventoDeportivo.belongsTo(models.Equipo, {
       foreignKey: "equipo_id",
     });
   };
 
-  return pago_evento_deportivo;
+  return PagoEventoDeportivo;
 };
