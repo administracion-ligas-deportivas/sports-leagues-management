@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const equipo_evento_deportivo = sequelize.define(
-    "equipo_evento_deportivo",
+  const EquipoEventoDeportivo = sequelize.define(
+    "EquipoEventoDeportivo",
     {
       evento_deportivo_id: {
         type: DataTypes.INTEGER,
@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   //Las relaciones se generan de esta manera
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  equipo_evento_deportivo.associate = (models) => {
-    equipo_evento_deportivo.belongsTo(models.evento_deportivo, {
+  EquipoEventoDeportivo.associate = (models) => {
+    EquipoEventoDeportivo.belongsTo(models.evento_deportivo, {
       foreignKey: "evento_deportivo_id",
     });
-    equipo_evento_deportivo.belongsTo(models.equipo, {
+    EquipoEventoDeportivo.belongsTo(models.equipo, {
       foreignKey: "equipo_id",
     });
   };
-  return equipo_evento_deportivo;
+  return EquipoEventoDeportivo;
 };

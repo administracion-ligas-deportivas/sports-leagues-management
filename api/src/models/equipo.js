@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     /* equipo.hasMany(models.jugador_equipo, {
       foreignKey: "equipo_id",
     }); */
-    equipo.hasMany(models.equipo_evento_deportivo, {
+    equipo.hasMany(models.EquipoEventoDeportivo, {
       foreignKey: "equipo_id",
     });
     equipo.hasMany(models.equipo_partido, {
