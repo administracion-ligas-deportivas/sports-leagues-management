@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const rol = sequelize.define(
-    "rol",
+  const Rol = sequelize.define(
+    "Rol",
     {
       nombre: {
         type: DataTypes.STRING,
@@ -15,13 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       paranoid: true,
     }
   );
-  rol.associate = (models) => {
-    rol.hasMany(models.PermisoRol, {
+  Rol.associate = (models) => {
+    Rol.hasMany(models.PermisoRol, {
       foreignKey: "rol_id",
     });
-    rol.hasMany(models.Usuario, {
+    Rol.hasMany(models.Usuario, {
       foreignKey: "rol_id",
     });
   };
-  return rol;
+  return Rol;
 };
