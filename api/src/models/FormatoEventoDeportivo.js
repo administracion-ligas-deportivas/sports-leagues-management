@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      maximo_equipos: {
+      maximoEquipos: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
