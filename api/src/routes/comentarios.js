@@ -1,7 +1,7 @@
 const express = require("express");
 const comentariosRouter = express.Router();
 
-const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
+const { userAuthenticator } = require("../middlewares");
 const {
   getCommentsByPostId,
   addPostComment,

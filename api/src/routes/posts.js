@@ -1,6 +1,6 @@
 const express = require("express");
 const postsRouter = express.Router();
-const { userAuthenticator } = require("../middlewares/userAuthenticator.js");
+const { userAuthenticator } = require("../middlewares");
 const {
   getPosts,
   getPostById,
