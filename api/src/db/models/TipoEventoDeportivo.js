@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
+    {
+      tableName: "tipo_evento_deportivo",
+    }
   );
 
   sequelize.associate = (models) => {

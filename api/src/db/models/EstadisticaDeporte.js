@@ -1,8 +1,10 @@
 module.exports = (sequelize /* DataTypes */) => {
   const EstadisticaDeporte = sequelize.define(
-    "EstadisticaDeporte" /* , {
-    
-  } */
+    "EstadisticaDeporte",
+    {},
+    {
+      tableName: "estadistica_deporte",
+    }
   );
 
   EstadisticaDeporte.associate = (models) => {

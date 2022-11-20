@@ -1,8 +1,10 @@
 module.exports = (sequelize /* , DataTypes */) => {
   const EquipoEventoDeportivo = sequelize.define(
-    "EquipoEventoDeportivo" /* , {
-    
-  } */
+    "EquipoEventoDeportivo",
+    {},
+    {
+      tableName: "equipo_evento_deportivo",
+    }
   );
 
   // Las relaciones se generan de esta manera

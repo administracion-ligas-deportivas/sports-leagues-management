@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
+    {
+      tableName: "estadistica_jugador_partido",
+    }
   );
 
   // Las relaciones se generan de esta manera

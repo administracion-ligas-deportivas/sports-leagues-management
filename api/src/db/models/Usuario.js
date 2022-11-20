@@ -32,9 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
-    {
-      underscored: true,
-    }
+    {}
   );
 
   Usuario.associate = (models) => {

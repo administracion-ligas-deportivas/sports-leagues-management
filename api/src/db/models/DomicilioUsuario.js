@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     },
-    {}
+    {
+      tableName: "domicilio_usuario",
+    }
   );
 
   // Las relaciones se generan de esta manera

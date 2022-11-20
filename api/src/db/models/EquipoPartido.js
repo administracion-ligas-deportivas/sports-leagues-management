@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
+    {
+      tableName: "equipo_partido",
+    }
   );
 
   EquipoPartido.associate = (models) => {
