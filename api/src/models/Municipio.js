@@ -17,14 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Municipio.assosiate = function (models) {
-    Municipio.belongsTo(models.Estado, {
-      foreignKey: "municipio_id",
-    });
+    Municipio.belongsTo(models.Estado);
   };
   Municipio.assosiate = function (models) {
-    Municipio.hasMany(models.Deportivo, {
-      foreignKey: "municipio_id",
-    });
+    Municipio.hasMany(models.Deportivo);
   };
   return Municipio;
 };
