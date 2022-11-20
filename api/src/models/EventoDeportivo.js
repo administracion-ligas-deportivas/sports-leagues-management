@@ -37,31 +37,16 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   EventoDeportivo.associate = (models) => {
-    /* EventoDeportivo.belongsTo(models.Deporte, {
-      foreignKey: "organizador_id",
-      as: "evento_deportivo_deporte_id",
-    }); */
-    /* EventoDeportivo.belongsTo(models.formato_evento_deportivo, {
-      foreignKey: "formato_evento_deportivo_id",
-    }); */
-    EventoDeportivo.hasMany(models.EquipoEventoDeportivo, {
-      foreignKey: "evento_deportivo_id",
-    });
-    EventoDeportivo.hasMany(models.pago_evento_deportivo, {
-      foreignKey: "evento_deportivo_id",
-    });
-    EventoDeportivo.hasMany(models.partido, {
-      foreignKey: "evento_deportivo_id",
-    });
+    EventoDeportivo.hasMany(models.EquipoEventoDeportivo);
+    EventoDeportivo.hasMany(models.pago_evento_deportivo);
+    EventoDeportivo.hasMany(models.partido);
     EventoDeportivo.hasMany(models.migracion_equipo_evento_deportivo, {
       foreignKey: "evento_deportivo_origen_id",
     });
     EventoDeportivo.hasMany(models.migracion_equipo_evento_deportivo, {
       foreignKey: "evento_deportivo_destino_id",
     });
-    EventoDeportivo.belongsTo(models.formato_evento_deportivo, {
-      foreignKey: "formato_evento_deportivo_id",
-    });
+    EventoDeportivo.belongsTo(models.formato_evento_deportivo);
     EventoDeportivo.belongsTo(models.Usuario, {
       foreignKey: "organizador_id",
     });
