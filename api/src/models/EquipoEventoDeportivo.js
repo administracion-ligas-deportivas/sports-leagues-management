@@ -1,16 +1,7 @@
-module.exports = (sequelize, DataTypes) => {
-  const EquipoEventoDeportivo = sequelize.define(
-    "EquipoEventoDeportivo",
-    {
-      equipo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-    },
-    {
-      paranoid: true,
-    }
-  );
+module.exports = (sequelize /* DataTypes */) => {
+  const EquipoEventoDeportivo = sequelize.define("EquipoEventoDeportivo", {
+    paranoid: true,
+  });
 
   //Las relaciones se generan de esta manera
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
