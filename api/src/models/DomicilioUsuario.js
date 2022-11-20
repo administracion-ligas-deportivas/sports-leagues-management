@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      codigo_postal: {
+      codigoPostal: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      numero_exterior: {
+      numeroExterior: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      numero_interior: {
+      numeroInterior: {
         type: DataTypes.STRING,
         allowNull: true,
       },
