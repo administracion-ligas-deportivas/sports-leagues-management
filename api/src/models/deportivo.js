@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const deportivo = sequelize.define(
-    "deportivo",
+  const Deportivo = sequelize.define(
+    "Deportivo",
     {
       municipio_id: {
         type: DataTypes.INTEGER,
@@ -36,13 +36,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  deportivo.associate = (models) => {
-    deportivo.belongsTo(models.Municipio, {
+  Deportivo.associate = (models) => {
+    Deportivo.belongsTo(models.Municipio, {
       foreignKey: "municipio_id",
     });
-    deportivo.hasMany(models.Cancha, {
+    Deportivo.hasMany(models.Cancha, {
       foreignKey: "deportivo_id",
     });
   };
-  return deportivo;
+  return Deportivo;
 };

@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   Municipio.assosiate = function (models) {
-    Municipio.hasMany(models.deportivo, {
+    Municipio.hasMany(models.Deportivo, {
       foreignKey: "municipio_id",
     });
   };
