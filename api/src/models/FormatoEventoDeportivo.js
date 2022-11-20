@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     FormatoEventoDeportivo.belongsTo(models.Deporte);
     FormatoEventoDeportivo.hasMany(models.EventoDeportivo);
 
-    FormatoEventoDeportivo.belongsTo(models.tipo_evento_deportivo);
+    FormatoEventoDeportivo.belongsTo(models.TipoEventoDeportivo);
     FormatoEventoDeportivo.belongsTo(models.Usuario);
   };
 
