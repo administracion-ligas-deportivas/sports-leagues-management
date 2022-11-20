@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.migracion_equipo_evento_deportivo, {
       foreignKey: "organizador_id",
     });
-    Usuario.hasMany(models.equipo, {
+    Usuario.hasMany(models.Equipo, {
       foreignKey: "encargado_equipo_id",
     });
     Usuario.hasOne(models.evento_deportivo, {
@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       through: "estadistico_evento_deportivo",
       foreignKey: "estadistico_id",
     });
-    Usuario.belongsToMany(models.equipo, {
+    Usuario.belongsToMany(models.Equipo, {
       through: models.jugador_equipo,
     });
     Usuario.hasMany(models.Likes, { onDelete: "cascade" });

@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     pago_evento_deportivo.belongsTo(models.evento_deportivo, {
       foreignKey: "evento_deportivo_id",
     });
-    pago_evento_deportivo.belongsTo(models.equipo, {
+    pago_evento_deportivo.belongsTo(models.Equipo, {
       foreignKey: "equipo_id",
     });
   };

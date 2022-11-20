@@ -8,7 +8,7 @@ module.exports = (sequelize /* DataTypes */) => {
 
   EquipoEventoDeportivo.associate = (models) => {
     EquipoEventoDeportivo.belongsTo(models.evento_deportivo);
-    EquipoEventoDeportivo.belongsTo(models.equipo);
+    EquipoEventoDeportivo.belongsTo(models.Equipo);
   };
   return EquipoEventoDeportivo;
 };
