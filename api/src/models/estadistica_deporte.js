@@ -2,16 +2,12 @@ module.exports = (sequelize, DataTypes) => {
   const estadistica_deporte = sequelize.define(
     "estadistica_deporte",
     {
-      deporte_id: {
+      estadistica_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      descripcion: {
-        type: DataTypes.STRING,
+      deporte_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
@@ -24,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     estadistica_deporte.belongsTo(models.deporte, {
       foreignKey: "deporte_id",
     });
-    estadistica_deporte.hasMany(models.estadistica_jugador_partido, {
-      foreignKey: "estadistica_deporte_id",
+    estadistica_deporte.belongsTo(models.estadistica, {
+      foreignKey: "estadistica_id",
     });
   };
   return estadistica_deporte;
