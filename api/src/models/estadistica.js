@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     estadistica.hasMany(models.estadistica_jugador_partido, {
       foreignKey: "estadistica_id",
     });
-    estadistica.hasMany(models.estadistica_deporte, {
+    estadistica.hasMany(models.EstadisticaDeporte, {
       foreignKey: "estadistica_id",
     });
   };
