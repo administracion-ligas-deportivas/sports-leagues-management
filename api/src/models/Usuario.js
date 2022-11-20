@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "estadistico_id",
     });
     Usuario.belongsToMany(models.Equipo, {
-      through: models.jugador_equipo,
+      through: models.JugadorEquipo,
     });
     Usuario.hasMany(models.Likes, { onDelete: "cascade" });
   };

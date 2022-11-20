@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
   //Pendiente agregar relacion a tabla partido
   Equipo.associate = (models) => {
-    /* Equipo.hasMany(models.jugador_equipo, {
+    /* Equipo.hasMany(models.JugadorEquipo, {
       foreignKey: "equipo_id",
     }); */
     Equipo.hasMany(models.EquipoEventoDeportivo);
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     Equipo.hasMany(models.pago_evento_deportivo);
     Equipo.hasMany(models.migracion_equipo_evento_deportivo);
     Equipo.belongsToMany(models.Usuario, {
-      through: models.jugador_equipo,
+      through: models.JugadorEquipo,
     });
   };
   return Equipo;
