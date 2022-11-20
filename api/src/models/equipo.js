@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      encargado_equipo_id: {
+      encargadoEquipoId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -21,18 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     /* Equipo.hasMany(models.jugador_equipo, {
       foreignKey: "equipo_id",
     }); */
-    Equipo.hasMany(models.EquipoEventoDeportivo, {
-      foreignKey: "equipo_id",
-    });
-    Equipo.hasMany(models.EquipoPartido, {
-      foreignKey: "equipo_id",
-    });
-    Equipo.hasMany(models.pago_evento_deportivo, {
-      foreignKey: "equipo_id",
-    });
-    Equipo.hasMany(models.migracion_equipo_evento_deportivo, {
-      foreignKey: "equipo_id",
-    });
+    Equipo.hasMany(models.EquipoEventoDeportivo);
+    Equipo.hasMany(models.EquipoPartido);
+    Equipo.hasMany(models.pago_evento_deportivo);
+    Equipo.hasMany(models.migracion_equipo_evento_deportivo);
     Equipo.belongsToMany(models.Usuario, {
       through: models.jugador_equipo,
     });
