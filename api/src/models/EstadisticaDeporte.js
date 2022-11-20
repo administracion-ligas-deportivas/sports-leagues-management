@@ -5,7 +5,7 @@ module.exports = (sequelize /* DataTypes */) => {
 
   EstadisticaDeporte.associate = (models) => {
     EstadisticaDeporte.belongsTo(models.Deporte);
-    EstadisticaDeporte.belongsTo(models.estadistica);
+    EstadisticaDeporte.belongsTo(models.Estadistica);
   };
   return EstadisticaDeporte;
 };
