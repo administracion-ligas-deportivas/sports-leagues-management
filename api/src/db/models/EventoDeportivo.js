@@ -38,18 +38,26 @@ module.exports = (sequelize, DataTypes) => {
     EventoDeportivo.hasMany(models.PagoEventoDeportivo);
     EventoDeportivo.hasMany(models.Partido);
     EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
-      foreignKey: "evento_deportivo_origen_id",
+      foreignKey: { name: "eventoDeportivoOrigenId", allowNull: false },
     });
     EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
-      foreignKey: "evento_deportivo_destino_id",
+      foreignKey: { name: "eventoDeportivoDestinoId", allowNull: false },
     });
-    EventoDeportivo.belongsTo(models.FormatoEventoDeportivo);
+    EventoDeportivo.belongsTo(models.FormatoEventoDeportivo, {
+      foreignKey: {
+        // Los formatos son opcionales.
+        allowNull: true,
+      },
+    });
     EventoDeportivo.belongsTo(models.Usuario, {
-      foreignKey: "organizador_id",
+      foreignKey: {
+        name: "organizadorId",
+        allowNull: false,
+      },
     });
     EventoDeportivo.belongsToMany(models.Usuario, {
-      through: "estadistico_evento_deportivo",
-      foreignKey: "evento_deportivo_id",
+      through: models.EstadisticoEventoDeportivo,
+      foreignKey: { name: "eventoDeportivoId", allowNull: false },
     });
   };
 

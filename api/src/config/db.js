@@ -5,13 +5,13 @@ const {
   DEV_DB_USERNAME,
 } = require("./dev");
 
+const dialect = "mariadb";
 const define = {
   underscored: true,
   freezeTableName: true,
   paranoid: true,
   allowNull: false,
 };
-const dialect = "mariadb";
 
 module.exports = {
   development: {
