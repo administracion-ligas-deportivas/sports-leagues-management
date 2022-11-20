@@ -2,14 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const FormatoEventoDeportivo = sequelize.define(
     "FormatoEventoDeportivo",
     {
-      deporte_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      tipo_evento_deportivo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -29,19 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   FormatoEventoDeportivo.associate = (models) => {
-    FormatoEventoDeportivo.belongsTo(models.Deporte, {
-      foreignKey: "deporte_id",
-    });
-    FormatoEventoDeportivo.hasMany(models.EventoDeportivo, {
-      foreignKey: "formato_evento_deportivo_id",
-    });
+    FormatoEventoDeportivo.belongsTo(models.Deporte);
+    FormatoEventoDeportivo.hasMany(models.EventoDeportivo);
 
-    FormatoEventoDeportivo.belongsTo(models.tipo_evento_deportivo, {
-      foreignKey: "tipo_evento_deportivo_id",
-    });
-    FormatoEventoDeportivo.belongsTo(models.Usuario, {
-      foreignKey: "usuario_id",
-    });
+    FormatoEventoDeportivo.belongsTo(models.tipo_evento_deportivo);
+    FormatoEventoDeportivo.belongsTo(models.Usuario);
   };
 
   return FormatoEventoDeportivo;
