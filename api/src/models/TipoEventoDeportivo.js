@@ -17,9 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   sequelize.associate = (models) => {
-    TipoEventoDeportivo.hasMany(models.FormatoEventoDeportivo, {
-      foreignKey: "tipo_evento_deportivo_id",
-    });
+    TipoEventoDeportivo.hasMany(models.FormatoEventoDeportivo);
   };
   return TipoEventoDeportivo;
 };
