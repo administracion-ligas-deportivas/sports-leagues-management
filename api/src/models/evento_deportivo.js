@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   evento_deportivo.associate = (models) => {
-    /* evento_deportivo.belongsTo(models.deporte, {
+    /* evento_deportivo.belongsTo(models.Deporte, {
       foreignKey: "organizador_id",
       as: "evento_deportivo_deporte_id",
     }); */

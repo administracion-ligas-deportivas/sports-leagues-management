@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   estadistica_deporte.associate = (models) => {
-    estadistica_deporte.belongsTo(models.deporte, {
+    estadistica_deporte.belongsTo(models.Deporte, {
       foreignKey: "deporte_id",
     });
     estadistica_deporte.belongsTo(models.estadistica, {
