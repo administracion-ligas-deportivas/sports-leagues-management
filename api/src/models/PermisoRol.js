@@ -4,7 +4,7 @@ module.exports = (sequelize /* DataTypes */) => {
   });
 
   PermisoRol.associate = (models) => {
-    PermisoRol.belongsTo(models.rol);
+    PermisoRol.belongsTo(models.Rol);
     PermisoRol.belongsTo(models.permiso);
   };
   return PermisoRol;

@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.Partido, {
       foreignKey: "estadistico_id",
     });
-    Usuario.belongsTo(models.rol, {
+    Usuario.belongsTo(models.Rol, {
       foreignKey: "rol_id",
     });
     Usuario.hasMany(models.FormatoEventoDeportivo, {
