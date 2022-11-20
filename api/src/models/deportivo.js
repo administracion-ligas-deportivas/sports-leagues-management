@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      codigo_postal: {
+      codigoPostal: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      numero_exterior: {
+      numeroExterior: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      numero_interior: {
+      numeroInterior: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -33,12 +33,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Deportivo.associate = (models) => {
-    Deportivo.belongsTo(models.Municipio, {
-      foreignKey: "municipio_id",
-    });
-    Deportivo.hasMany(models.Cancha, {
-      foreignKey: "deportivo_id",
-    });
+    Deportivo.belongsTo(models.Municipio);
+    Deportivo.hasMany(models.Cancha);
   };
   return Deportivo;
 };
