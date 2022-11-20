@@ -2,9 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define(
     "Usuario",
     {
-      rolId: {
-        type: DataTypes.INTEGER,
-      },
       genero: {
         type: DataTypes.ENUM("hombre", "mujer"),
       },
@@ -45,21 +42,13 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Usuario.associate = (models) => {
-    Usuario.hasOne(models.DomicilioUsuario, {
-      foreignKey: "usuario_id",
-    });
+    Usuario.hasOne(models.DomicilioUsuario);
     Usuario.hasMany(models.Partido, {
       foreignKey: "estadistico_id",
     });
-    Usuario.belongsTo(models.Rol, {
-      foreignKey: "rol_id",
-    });
-    Usuario.hasMany(models.FormatoEventoDeportivo, {
-      foreignKey: "usuario_id",
-    });
-    Usuario.hasMany(models.PagoEventoDeportivo, {
-      foreignKey: "usuario_id",
-    });
+    Usuario.belongsTo(models.Rol);
+    Usuario.hasMany(models.FormatoEventoDeportivo);
+    Usuario.hasMany(models.PagoEventoDeportivo);
     Usuario.hasMany(models.EstadisticaJugadorPartido, {
       foreignKey: "jugador_id",
     });
