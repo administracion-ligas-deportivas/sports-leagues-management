@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const equipo_partido = sequelize.define(
-    "equipo_partido",
+  const EquipoPartido = sequelize.define(
+    "EquipoPartido",
     {
       partido_id: {
         type: DataTypes.INTEGER,
@@ -24,13 +24,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  equipo_partido.associate = (models) => {
-    equipo_partido.belongsTo(models.partido, {
+  EquipoPartido.associate = (models) => {
+    EquipoPartido.belongsTo(models.partido, {
       foreignKey: "partido_id",
     });
-    equipo_partido.belongsTo(models.equipo, {
+    EquipoPartido.belongsTo(models.equipo, {
       foreignKey: "equipo_id",
     });
   };
-  return equipo_partido;
+  return EquipoPartido;
 };

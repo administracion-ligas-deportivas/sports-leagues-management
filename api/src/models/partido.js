@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     partido.hasMany(models.estadistica_jugador_partido, {
       foreignKey: "partido_id",
     });
-    partido.hasMany(models.equipo_partido, {
+    partido.hasMany(models.EquipoPartido, {
       foreignKey: "partido_id",
     });
     partido.belongsTo(models.Cancha, {
