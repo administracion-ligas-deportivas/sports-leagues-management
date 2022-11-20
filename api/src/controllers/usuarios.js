@@ -13,21 +13,23 @@ const createUser = async (req, res) => {
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
-  const user = await Usuario.create({
-    nombre,
-    apellido,
-    correo,
-    password: passwordHash,
-    telefono,
-  });
+  try {
+    const user = await Usuario.create({
+      nombre,
+      apellido,
+      correo,
+      password: passwordHash,
+      telefono,
+    });
 
-  if (!user) {
+    res.status(201).json(user);
+  } catch (error) {
+    console.log({ error });
+
     return res
       .status(400)
       .json({ error: "No se ha podido registrar el usuario" });
   }
-
-  res.status(201).json(user);
 };
 
 const verifyUser = (req, res) => {
@@ -40,9 +42,9 @@ const verifyUser = (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-  const { userId } = req.params;
+  const { usuarioId } = req.params;
 
-  Usuario.findByPk(userId, {
+  Usuario.findByPk(usuarioId, {
     attributes: {
       exclude: ["password"],
     },

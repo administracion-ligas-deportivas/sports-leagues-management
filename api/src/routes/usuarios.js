@@ -12,6 +12,6 @@ const {
 usersRouter.get("/", getUsers);
 usersRouter.post("/", createUser);
 usersRouter.get("/verify", userAuthenticator, verifyUser);
-usersRouter.get("/:userId", getUserById);
+usersRouter.get("/:usuarioId", getUserById);
 
 module.exports = { usersRouter };
