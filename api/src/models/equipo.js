@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  //Pendiente agregar relacion a tabla partido
+  //Pendiente agregar relacion a tabla Partido
   Equipo.associate = (models) => {
     /* Equipo.hasMany(models.JugadorEquipo, {
       foreignKey: "equipo_id",

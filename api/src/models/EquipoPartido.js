@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   EquipoPartido.associate = (models) => {
-    EquipoPartido.belongsTo(models.partido);
+    EquipoPartido.belongsTo(models.Partido);
     EquipoPartido.belongsTo(models.Equipo);
   };
   return EquipoPartido;

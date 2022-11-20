@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasOne(models.DomicilioUsuario, {
       foreignKey: "usuario_id",
     });
-    Usuario.hasMany(models.partido, {
+    Usuario.hasMany(models.Partido, {
       foreignKey: "estadistico_id",
     });
     Usuario.belongsTo(models.rol, {

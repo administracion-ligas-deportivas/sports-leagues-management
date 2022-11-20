@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   EstadisticaJugadorPartido.associate = (models) => {
-    EstadisticaJugadorPartido.belongsTo(models.partido);
+    EstadisticaJugadorPartido.belongsTo(models.Partido);
     EstadisticaJugadorPartido.belongsTo(models.Estadistica);
     EstadisticaJugadorPartido.belongsTo(models.Usuario, {
       foreignKey: "jugadorId",

@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Cancha.associate = (models) => {
     Cancha.belongsTo(models.deportivo);
-    Cancha.hasMany(models.partido);
+    Cancha.hasMany(models.Partido);
   };
   return Cancha;
 };
