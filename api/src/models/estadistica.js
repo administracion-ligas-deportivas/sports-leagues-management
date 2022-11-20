@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const estadistica = sequelize.define(
-    "estadistica",
+  const Estadistica = sequelize.define(
+    "Estadistica",
     {
       nombre: {
         type: DataTypes.STRING,
@@ -16,13 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  estadistica.associate = (models) => {
-    estadistica.hasMany(models.EstadisticaJugadorPartido, {
-      foreignKey: "estadistica_id",
-    });
-    estadistica.hasMany(models.EstadisticaDeporte, {
-      foreignKey: "estadistica_id",
-    });
+  Estadistica.associate = (models) => {
+    Estadistica.hasMany(models.EstadisticaJugadorPartido);
+    Estadistica.hasMany(models.EstadisticaDeporte);
   };
-  return estadistica;
+  return Estadistica;
 };
