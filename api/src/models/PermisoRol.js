@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const permiso_rol = sequelize.define(
-    "permiso_rol",
+  const PermisoRol = sequelize.define(
+    "PermisoRol",
     {
       rol_id: {
         type: DataTypes.INTEGER,
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  permiso_rol.associate = (models) => {
-    permiso_rol.belongsTo(models.rol, {
+  PermisoRol.associate = (models) => {
+    PermisoRol.belongsTo(models.rol, {
       foreignKey: "rol_id",
     });
-    permiso_rol.belongsTo(models.permiso, {
+    PermisoRol.belongsTo(models.permiso, {
       foreignKey: "permiso_id",
     });
   };
-  return permiso_rol;
+  return PermisoRol;
 };

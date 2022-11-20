@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   rol.associate = (models) => {
-    rol.hasMany(models.permiso_rol, {
+    rol.hasMany(models.PermisoRol, {
       foreignKey: "rol_id",
     });
     rol.hasMany(models.Usuario, {
