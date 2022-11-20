@@ -69,10 +69,10 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.Equipo, {
       foreignKey: "encargado_equipo_id",
     });
-    Usuario.hasOne(models.evento_deportivo, {
+    Usuario.hasOne(models.EventoDeportivo, {
       foreignKey: "organizador_id",
     });
-    Usuario.belongsToMany(models.evento_deportivo, {
+    Usuario.belongsToMany(models.EventoDeportivo, {
       through: "estadistico_evento_deportivo",
       foreignKey: "estadistico_id",
     });

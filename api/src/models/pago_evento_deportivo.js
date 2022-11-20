@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "usuario_id",
     });
 
-    pago_evento_deportivo.belongsTo(models.evento_deportivo, {
+    pago_evento_deportivo.belongsTo(models.EventoDeportivo, {
       foreignKey: "evento_deportivo_id",
     });
     pago_evento_deportivo.belongsTo(models.Equipo, {
