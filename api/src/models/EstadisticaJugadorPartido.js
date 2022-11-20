@@ -2,11 +2,11 @@ module.exports = (sequelize, DataTypes) => {
   const EstadisticaJugadorPartido = sequelize.define(
     "EstadisticaJugadorPartido",
     {
-      jugador_id: {
+      jugadorId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      tiempo_transcurrido: {
+      tiempoTranscurrido: {
         type: DataTypes.TIME,
         allowNull: true,
       },
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     EstadisticaJugadorPartido.belongsTo(models.partido);
     EstadisticaJugadorPartido.belongsTo(models.estadistica);
     EstadisticaJugadorPartido.belongsTo(models.Usuario, {
-      foreignKey: "jugador_id",
+      foreignKey: "jugadorId",
     });
   };
   return EstadisticaJugadorPartido;
