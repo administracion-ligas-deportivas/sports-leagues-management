@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      local_visitante: {
+      localVisitante: {
         type: DataTypes.ENUM("local", "visitante"),
         allowNull: false,
       },
