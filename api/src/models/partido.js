@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      duracion_partido: {
+      duracionPartido: {
         type: DataTypes.TIME,
         allowNull: false,
       },
