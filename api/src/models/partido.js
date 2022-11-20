@@ -2,14 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const Partido = sequelize.define(
     "Partido",
     {
-      evento_deportivo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      cancha_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       fecha: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -36,21 +28,13 @@ module.exports = (sequelize, DataTypes) => {
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   Partido.associate = (models) => {
-    Partido.hasMany(models.EstadisticaJugadorPartido, {
-      foreignKey: "partido_id",
-    });
-    Partido.hasMany(models.EquipoPartido, {
-      foreignKey: "partido_id",
-    });
-    Partido.belongsTo(models.Cancha, {
-      foreignKey: "cancha_id",
-    });
+    Partido.hasMany(models.EstadisticaJugadorPartido);
+    Partido.hasMany(models.EquipoPartido);
+    Partido.belongsTo(models.Cancha);
     Partido.belongsTo(models.Usuario, {
       foreignKey: "estadistico_id",
     });
-    Partido.belongsTo(models.EventoDeportivo, {
-      foreignKey: "evento_deportivo_id",
-    });
+    Partido.belongsTo(models.EventoDeportivo);
   };
   return Partido;
 };
