@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     EventoDeportivo.hasMany(models.migracion_equipo_evento_deportivo, {
       foreignKey: "evento_deportivo_destino_id",
     });
-    EventoDeportivo.belongsTo(models.formato_evento_deportivo);
+    EventoDeportivo.belongsTo(models.FormatoEventoDeportivo);
     EventoDeportivo.belongsTo(models.Usuario, {
       foreignKey: "organizador_id",
     });
