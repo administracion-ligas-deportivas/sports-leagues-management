@@ -11,14 +11,23 @@ const db = {};
 let sequelize;
 if (config.use_env_variable) {
   //Si es True
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  sequelize = new Sequelize(process.env[config.use_env_variable], {
+    ...config,
+    define: {
+      underscored: true,
+      freezeTableName: true,
+      paranoid: true,
+    },
+  });
 } else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+  sequelize = new Sequelize(config.database, config.username, config.password, {
+    ...config,
+    define: {
+      underscored: true,
+      freezeTableName: true,
+      paranoid: true,
+    },
+  });
 }
 
 fs.readdirSync(__dirname)

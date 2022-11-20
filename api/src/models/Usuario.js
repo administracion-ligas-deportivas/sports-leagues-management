@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define(
     "Usuario",
     {
-      rol_id: {
+      rolId: {
         type: DataTypes.INTEGER,
       },
       genero: {
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      fecha_nacimiento: {
+      fechaNacimiento: {
         type: DataTypes.DATEONLY,
       },
       correo: {
@@ -30,12 +30,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
 
-      tiempo_registro: {
+      tiempoRegistro: {
         type: DataTypes.DATE,
+      },
+
+      municipioId: {
+        type: DataTypes.INTEGER,
       },
     },
     {
       paranoid: true,
+      underscored: true,
     }
   );
 
