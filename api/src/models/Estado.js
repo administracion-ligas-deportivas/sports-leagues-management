@@ -13,9 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Estado.associate = function (models) {
-    Estado.hasMany(models.Municipio, {
-      foreignKey: "estado_id",
-    });
+    Estado.hasMany(models.Municipio);
   };
 
   return Estado;
