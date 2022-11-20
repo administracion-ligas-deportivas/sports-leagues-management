@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Usuario.associate = (models) => {
-    Usuario.hasOne(models.domicilio_usuario, {
+    Usuario.hasOne(models.DomicilioUsuario, {
       foreignKey: "usuario_id",
     });
     Usuario.hasMany(models.partido, {
