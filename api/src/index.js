@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db/models");
-const { PORT } = require("./config/config");
+const { PORT } = require("./config");
 
 const {
   errorHandler,
