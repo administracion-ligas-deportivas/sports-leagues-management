@@ -2,14 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const DomicilioUsuario = sequelize.define(
     "DomicilioUsuario",
     {
-      usuario_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      municipio_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       calle: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      modelName: "DomicilioUsuario",
       paranoid: true,
     }
   );
@@ -41,12 +32,8 @@ module.exports = (sequelize, DataTypes) => {
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   DomicilioUsuario.associate = (models) => {
-    DomicilioUsuario.belongsTo(models.Municipio, {
-      foreignKey: "municipio_id",
-    });
-    DomicilioUsuario.belongsTo(models.Usuario, {
-      foreignKey: "usuario_id",
-    });
+    DomicilioUsuario.belongsTo(models.Municipio);
+    DomicilioUsuario.belongsTo(models.Usuario);
   };
   return DomicilioUsuario;
 };
