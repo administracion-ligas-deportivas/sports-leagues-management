@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     deportivo.belongsTo(models.Municipio, {
       foreignKey: "municipio_id",
     });
-    deportivo.hasMany(models.cancha, {
+    deportivo.hasMany(models.Cancha, {
       foreignKey: "deportivo_id",
     });
   };
