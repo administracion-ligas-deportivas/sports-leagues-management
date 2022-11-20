@@ -1,15 +1,15 @@
 const { anuncio, like } = require("../db/models");
 
 const getPosts = async (req, res) => {
-  const lista_anuncios = await anuncio.findAll({ include: [like] });
+  const listaAnuncios = await anuncio.findAll({ include: [like] });
 
-  const anuncios_liked = await like.findAll({
+  const anunciosLiked = await like.findAll({
     where: {
       UsuarioId: req.user.id,
     },
   });
 
-  res.json({ lista_anuncios, liked: anuncios_liked });
+  res.json({ listaAnuncios, liked: anunciosLiked });
 };
 
 const getPostById = async (req, res) => {
@@ -25,8 +25,8 @@ const createPost = async (req, res) => {
 
   const data = { ...body, autor: correo };
 
-  const anuncio = await anuncio.create(data);
-  res.json(anuncio);
+  const newPost = await anuncio.create(data);
+  res.json(newPost);
 };
 
 const deletePostById = async (req, res) => {

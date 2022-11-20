@@ -44,11 +44,12 @@ const verifyUser = (req, res) => {
 const getUserById = async (req, res) => {
   const { usuarioId } = req.params;
 
-  usuario.findByPk(usuarioId, {
-    attributes: {
-      exclude: ["password"],
-    },
-  })
+  usuario
+    .findByPk(usuarioId, {
+      attributes: {
+        exclude: ["password"],
+      },
+    })
     .then((user) => {
       if (user) return res.json(user);
       res.status(404).end();
