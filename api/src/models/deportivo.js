@@ -2,10 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const Deportivo = sequelize.define(
     "Deportivo",
     {
-      municipio_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
