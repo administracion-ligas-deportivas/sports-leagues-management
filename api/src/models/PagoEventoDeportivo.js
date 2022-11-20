@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      forma_pago: {
+      formaPago: {
         type: DataTypes.ENUM("fisico", "digital"),
         allowNull: false,
       },
