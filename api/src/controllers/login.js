@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { usuario } = require("../db/models");
 
-const { Usuario } = require("../db/models");
 
 // 7 días - Que cada 7 días se tenga que volver a loguear.
 const EXPIRE_IN_DAYS = 60 * 60 * 24 * 7;
@@ -10,7 +10,7 @@ const login = async (request, response) => {
   const { body } = request;
   const { correo, password } = body;
 
-  const user = await Usuario.findOne({ where: { correo } });
+  const user = await usuario.findOne({ where: { correo } });
 
   const isPasswordCorrect = async () => {
     return user === null

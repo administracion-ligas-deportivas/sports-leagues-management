@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Usuario = sequelize.define(
-    "Usuario",
+  const usuario = sequelize.define(
+    "usuario",
     {
       genero: {
         type: DataTypes.ENUM("hombre", "mujer"),
@@ -35,35 +35,35 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  Usuario.associate = (models) => {
-    Usuario.hasOne(models.DomicilioUsuario);
-    Usuario.hasMany(models.Partido, {
+  usuario.associate = (models) => {
+    usuario.hasOne(models.domicilioUsuario);
+    usuario.hasMany(models.partido, {
       foreignKey: "estadistico_id",
     });
-    Usuario.belongsTo(models.Rol);
-    Usuario.hasMany(models.FormatoEventoDeportivo);
-    Usuario.hasMany(models.PagoEventoDeportivo);
-    Usuario.hasMany(models.EstadisticaJugadorPartido, {
+    usuario.belongsTo(models.rol);
+    usuario.hasMany(models.formatoEventoDeportivo);
+    usuario.hasMany(models.pagoEventoDeportivo);
+    usuario.hasMany(models.estadisticaJugadorPartido, {
       foreignKey: "jugador_id",
     });
-    Usuario.hasMany(models.MigracionEquipoEventoDeportivo, {
+    usuario.hasMany(models.migracionEquipoEventoDeportivo, {
       foreignKey: "organizador_id",
     });
-    Usuario.hasMany(models.Equipo, {
+    usuario.hasMany(models.equipo, {
       foreignKey: "encargado_equipo_id",
     });
-    Usuario.hasOne(models.EventoDeportivo, {
+    usuario.hasOne(models.eventoDeportivo, {
       foreignKey: "organizador_id",
     });
-    Usuario.belongsToMany(models.EventoDeportivo, {
+    usuario.belongsToMany(models.eventoDeportivo, {
       through: "estadistico_evento_deportivo",
       foreignKey: "estadistico_id",
     });
-    Usuario.belongsToMany(models.Equipo, {
-      through: models.JugadorEquipo,
+    usuario.belongsToMany(models.equipo, {
+      through: models.jugadorEquipo,
     });
-    Usuario.hasMany(models.Likes, { onDelete: "cascade" });
+    usuario.hasMany(models.like, { onDelete: "cascade" });
   };
 
-  return Usuario;
+  return usuario;
 };

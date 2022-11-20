@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Estado = sequelize.define(
-    "Estado",
+  const estado = sequelize.define(
+    "estado",
     {
       nombre: {
         type: DataTypes.STRING,
@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  Estado.associate = function (models) {
-    Estado.hasMany(models.Municipio);
+  estado.associate = function (models) {
+    estado.hasMany(models.municipio);
   };
 
-  return Estado;
+  return estado;
 };

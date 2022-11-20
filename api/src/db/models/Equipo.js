@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Equipo = sequelize.define(
-    "Equipo",
+  const equipo = sequelize.define(
+    "equipo",
     {
       nombre: {
         type: DataTypes.STRING,
@@ -19,18 +19,18 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  // Pendiente agregar relacion a tabla Partido
-  Equipo.associate = (models) => {
-    /* Equipo.hasMany(models.JugadorEquipo, {
+  // Pendiente agregar relacion a tabla partido
+  equipo.associate = (models) => {
+    /* equipo.hasMany(models.jugadorEquipo, {
       foreignKey: "equipo_id",
     }); */
-    Equipo.hasMany(models.EquipoEventoDeportivo);
-    Equipo.hasMany(models.EquipoPartido);
-    Equipo.hasMany(models.PagoEventoDeportivo);
-    Equipo.hasMany(models.MigracionEquipoEventoDeportivo);
-    Equipo.belongsToMany(models.Usuario, {
-      through: models.JugadorEquipo,
+    equipo.hasMany(models.equipoEventoDeportivo);
+    equipo.hasMany(models.equipoPartido);
+    equipo.hasMany(models.pagoEventoDeportivo);
+    equipo.hasMany(models.migracionEquipoEventoDeportivo);
+    equipo.belongsToMany(models.usuario, {
+      through: models.jugadorEquipo,
     });
   };
-  return Equipo;
+  return equipo;
 };

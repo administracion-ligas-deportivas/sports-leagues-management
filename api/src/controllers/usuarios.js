@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
-const { Usuario } = require("../db/models");
+const { usuario } = require("../db/models");
 
 const getUsers = async (req, res) => {
-  const usuarios = await Usuario.findAll();
+  const usuarios = await usuario.findAll();
   res.json(usuarios);
 };
 
@@ -14,7 +14,7 @@ const createUser = async (req, res) => {
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
   try {
-    const user = await Usuario.create({
+    const user = await usuario.create({
       nombre,
       apellido,
       correo,
@@ -44,7 +44,7 @@ const verifyUser = (req, res) => {
 const getUserById = async (req, res) => {
   const { usuarioId } = req.params;
 
-  Usuario.findByPk(usuarioId, {
+  usuario.findByPk(usuarioId, {
     attributes: {
       exclude: ["password"],
     },

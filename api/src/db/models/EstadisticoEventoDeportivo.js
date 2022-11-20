@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const EventoDeportivo = sequelize.define(
+  const eventoDeportivo = sequelize.define(
     "EstadisticoEventoDeportivo",
     {},
     {
@@ -7,5 +7,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return EventoDeportivo;
+  return eventoDeportivo;
 };

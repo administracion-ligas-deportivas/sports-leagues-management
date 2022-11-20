@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const PagoEventoDeportivo = sequelize.define(
-    "PagoEventoDeportivo",
+  const pagoEventoDeportivo = sequelize.define(
+    "pagoEventoDeportivo",
     {
       monto: {
         type: DataTypes.FLOAT,
@@ -28,12 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  PagoEventoDeportivo.associate = (models) => {
-    PagoEventoDeportivo.belongsTo(models.Usuario);
+  pagoEventoDeportivo.associate = (models) => {
+    pagoEventoDeportivo.belongsTo(models.usuario);
 
-    PagoEventoDeportivo.belongsTo(models.EventoDeportivo);
-    PagoEventoDeportivo.belongsTo(models.Equipo);
+    pagoEventoDeportivo.belongsTo(models.eventoDeportivo);
+    pagoEventoDeportivo.belongsTo(models.equipo);
   };
 
-  return PagoEventoDeportivo;
+  return pagoEventoDeportivo;
 };

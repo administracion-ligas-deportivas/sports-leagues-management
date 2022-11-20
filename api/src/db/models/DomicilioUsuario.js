@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const DomicilioUsuario = sequelize.define(
-    "DomicilioUsuario",
+  const domicilioUsuario = sequelize.define(
+    "domicilioUsuario",
     {
       calle: {
         type: DataTypes.STRING,
@@ -31,9 +31,9 @@ module.exports = (sequelize, DataTypes) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  DomicilioUsuario.associate = (models) => {
-    DomicilioUsuario.belongsTo(models.Municipio);
-    DomicilioUsuario.belongsTo(models.Usuario);
+  domicilioUsuario.associate = (models) => {
+    domicilioUsuario.belongsTo(models.municipio);
+    domicilioUsuario.belongsTo(models.usuario);
   };
-  return DomicilioUsuario;
+  return domicilioUsuario;
 };

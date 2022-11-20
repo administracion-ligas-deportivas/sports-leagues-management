@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Cancha = sequelize.define("Cancha", {
+  const cancha = sequelize.define("cancha", {
     numero: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  Cancha.associate = (models) => {
-    Cancha.belongsTo(models.Deportivo);
-    Cancha.hasMany(models.Partido);
+  cancha.associate = (models) => {
+    cancha.belongsTo(models.deportivo);
+    cancha.hasMany(models.partido);
   };
-  return Cancha;
+  return cancha;
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Anuncio = sequelize.define("Anuncio", {
+  const anuncio = sequelize.define("anuncio", {
     prioridad: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Anuncio.associate = (models) => {
+  anuncio.associate = (models) => {
     // Las relaciones se generan de esta manera
     // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
-    Anuncio.hasMany(models.Comentario, { as: "comentarios" });
-    Anuncio.hasMany(models.Likes);
+    anuncio.hasMany(models.comentario, { as: "comentarios" });
+    anuncio.hasMany(models.like);
   };
 
-  return Anuncio;
+  return anuncio;
 };

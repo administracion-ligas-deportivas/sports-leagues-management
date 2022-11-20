@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Deporte = sequelize.define(
-    "Deporte",
+  const deporte = sequelize.define(
+    "deporte",
     {
       nombre: {
         type: DataTypes.STRING,
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   sequelize.associate = (models) => {
-    Deporte.hasMany(models.EstadisticaDeporte);
-    Deporte.hasMany(models.FormatoEventoDeportivo);
+    deporte.hasMany(models.estadisticaDeporte);
+    deporte.hasMany(models.formatoEventoDeportivo);
   };
-  return Deporte;
+  return deporte;
 };

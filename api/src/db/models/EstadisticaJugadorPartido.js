@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const EstadisticaJugadorPartido = sequelize.define(
-    "EstadisticaJugadorPartido",
+  const estadisticaJugadorPartido = sequelize.define(
+    "estadisticaJugadorPartido",
     {
       jugadorId: {
         type: DataTypes.INTEGER,
@@ -23,12 +23,12 @@ module.exports = (sequelize, DataTypes) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  EstadisticaJugadorPartido.associate = (models) => {
-    EstadisticaJugadorPartido.belongsTo(models.Partido);
-    EstadisticaJugadorPartido.belongsTo(models.Estadistica);
-    EstadisticaJugadorPartido.belongsTo(models.Usuario, {
+  estadisticaJugadorPartido.associate = (models) => {
+    estadisticaJugadorPartido.belongsTo(models.partido);
+    estadisticaJugadorPartido.belongsTo(models.estadistica);
+    estadisticaJugadorPartido.belongsTo(models.usuario, {
       foreignKey: "jugadorId",
     });
   };
-  return EstadisticaJugadorPartido;
+  return estadisticaJugadorPartido;
 };

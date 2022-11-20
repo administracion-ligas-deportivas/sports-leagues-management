@@ -1,6 +1,6 @@
 module.exports = (sequelize /* , DataTypes */) => {
-  const EquipoEventoDeportivo = sequelize.define(
-    "EquipoEventoDeportivo",
+  const equipoEventoDeportivo = sequelize.define(
+    "equipoEventoDeportivo",
     {},
     {
       tableName: "equipo_evento_deportivo",
@@ -10,9 +10,9 @@ module.exports = (sequelize /* , DataTypes */) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  EquipoEventoDeportivo.associate = (models) => {
-    EquipoEventoDeportivo.belongsTo(models.EventoDeportivo);
-    EquipoEventoDeportivo.belongsTo(models.Equipo);
+  equipoEventoDeportivo.associate = (models) => {
+    equipoEventoDeportivo.belongsTo(models.eventoDeportivo);
+    equipoEventoDeportivo.belongsTo(models.equipo);
   };
-  return EquipoEventoDeportivo;
+  return equipoEventoDeportivo;
 };

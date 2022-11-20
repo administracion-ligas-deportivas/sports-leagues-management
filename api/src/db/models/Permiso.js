@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Permiso = sequelize.define("Permiso", {
+  const permiso = sequelize.define("permiso", {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Permiso.associate = (models) => {
-    Permiso.hasMany(models.PermisoRol, {
-      foreignKey: "permiso_id",
+  permiso.associate = (models) => {
+    permiso.hasMany(models.permisoRol, {
+      foreignKey: "permisoId",
     });
   };
-  return Permiso;
+  return permiso;
 };

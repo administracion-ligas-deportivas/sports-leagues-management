@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const EventoDeportivo = sequelize.define(
-    "EventoDeportivo",
+  const eventoDeportivo = sequelize.define(
+    "eventoDeportivo",
     {
       organizador_id: {
         type: DataTypes.INTEGER,
@@ -33,33 +33,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  EventoDeportivo.associate = (models) => {
-    EventoDeportivo.hasMany(models.EquipoEventoDeportivo);
-    EventoDeportivo.hasMany(models.PagoEventoDeportivo);
-    EventoDeportivo.hasMany(models.Partido);
-    EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
+  eventoDeportivo.associate = (models) => {
+    eventoDeportivo.hasMany(models.equipoEventoDeportivo);
+    eventoDeportivo.hasMany(models.pagoEventoDeportivo);
+    eventoDeportivo.hasMany(models.partido);
+    eventoDeportivo.hasMany(models.migracionEquipoEventoDeportivo, {
       foreignKey: { name: "eventoDeportivoOrigenId", allowNull: false },
     });
-    EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
+    eventoDeportivo.hasMany(models.migracionEquipoEventoDeportivo, {
       foreignKey: { name: "eventoDeportivoDestinoId", allowNull: false },
     });
-    EventoDeportivo.belongsTo(models.FormatoEventoDeportivo, {
+    eventoDeportivo.belongsTo(models.formatoEventoDeportivo, {
       foreignKey: {
         // Los formatos son opcionales.
         allowNull: true,
       },
     });
-    EventoDeportivo.belongsTo(models.Usuario, {
+    eventoDeportivo.belongsTo(models.usuario, {
       foreignKey: {
         name: "organizadorId",
         allowNull: false,
       },
     });
-    EventoDeportivo.belongsToMany(models.Usuario, {
+    eventoDeportivo.belongsToMany(models.usuario, {
       through: models.EstadisticoEventoDeportivo,
       foreignKey: { name: "eventoDeportivoId", allowNull: false },
     });
   };
 
-  return EventoDeportivo;
+  return eventoDeportivo;
 };

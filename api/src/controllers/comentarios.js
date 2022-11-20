@@ -1,9 +1,9 @@
-const { Comentario } = require("../db/models");
+const { comentario } = require("../db/models");
 
 const getCommentsByPostId = async (req, res) => {
   const { postId } = req.params;
 
-  const comentarios = await Comentario.findAll({
+  const comentarios = await comentario.findAll({
     where: { AnuncioId: postId },
   });
   console.log(
@@ -18,7 +18,7 @@ const addPostComment = async (req, res) => {
   const { nombre } = user;
 
   const comentario = { ...body, usuario: nombre };
-  const newComment = await Comentario.create(comentario);
+  const newComment = await comentario.create(comentario);
 
   res.json(newComment);
 };
@@ -30,7 +30,7 @@ const deleteCommentById = async (req, res) => {
     params,
   });
 
-  await Comentario.destroy({
+  await comentario.destroy({
     where: {
       id: commentId,
     },

@@ -1,15 +1,15 @@
 module.exports = (sequelize /* DataTypes */) => {
-  const EstadisticaDeporte = sequelize.define(
-    "EstadisticaDeporte",
+  const estadisticaDeporte = sequelize.define(
+    "estadisticaDeporte",
     {},
     {
       tableName: "estadistica_deporte",
     }
   );
 
-  EstadisticaDeporte.associate = (models) => {
-    EstadisticaDeporte.belongsTo(models.Deporte);
-    EstadisticaDeporte.belongsTo(models.Estadistica);
+  estadisticaDeporte.associate = (models) => {
+    estadisticaDeporte.belongsTo(models.deporte);
+    estadisticaDeporte.belongsTo(models.estadistica);
   };
-  return EstadisticaDeporte;
+  return estadisticaDeporte;
 };

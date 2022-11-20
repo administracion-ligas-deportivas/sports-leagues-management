@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Partido = sequelize.define(
-    "Partido",
+  const partido = sequelize.define(
+    "partido",
     {
       fecha: {
         type: DataTypes.DATE,
@@ -25,14 +25,14 @@ module.exports = (sequelize, DataTypes) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
-  Partido.associate = (models) => {
-    Partido.hasMany(models.EstadisticaJugadorPartido);
-    Partido.hasMany(models.EquipoPartido);
-    Partido.belongsTo(models.Cancha);
-    Partido.belongsTo(models.Usuario, {
-      foreignKey: "estadistico_id",
+  partido.associate = (models) => {
+    partido.hasMany(models.estadisticaJugadorPartido);
+    partido.hasMany(models.equipoPartido);
+    partido.belongsTo(models.cancha);
+    partido.belongsTo(models.usuario, {
+      foreignKey: "estadisticoId",
     });
-    Partido.belongsTo(models.EventoDeportivo);
+    partido.belongsTo(models.eventoDeportivo);
   };
-  return Partido;
+  return partido;
 };

@@ -1,11 +1,11 @@
 module.exports = (sequelize /* DataTypes */) => {
-  const JugadorEquipo = sequelize.define(
-    "JugadorEquipo",
+  const jugadorEquipo = sequelize.define(
+    "jugadorEquipo",
     {},
     {
       tableName: "jugador_equipo",
     }
   );
 
-  return JugadorEquipo;
+  return jugadorEquipo;
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Rol = sequelize.define("Rol", {
+  const rol = sequelize.define("rol", {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  Rol.associate = (models) => {
-    Rol.hasMany(models.PermisoRol);
-    Rol.hasMany(models.Usuario);
+  rol.associate = (models) => {
+    rol.hasMany(models.permisoRol);
+    rol.hasMany(models.usuario);
   };
-  return Rol;
+  return rol;
 };
