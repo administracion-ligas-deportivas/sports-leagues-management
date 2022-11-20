@@ -6,10 +6,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      estado_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
     },
     {
       paranoid: true,
