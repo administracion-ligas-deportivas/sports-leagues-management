@@ -27,9 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {
-      paranoid: true,
-    }
+    {}
   );
 
   EventoDeportivo.associate = (models) => {

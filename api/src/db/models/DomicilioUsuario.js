@@ -23,13 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     },
-    {
-      paranoid: true,
-    }
+    {}
   );
 
-  //Las relaciones se generan de esta manera
-  //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
+  // Las relaciones se generan de esta manera
+  // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   DomicilioUsuario.associate = (models) => {
     DomicilioUsuario.belongsTo(models.Municipio);

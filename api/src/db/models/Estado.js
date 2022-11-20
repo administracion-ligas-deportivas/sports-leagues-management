@@ -7,9 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {
-      paranoid: true,
-    }
+    {}
   );
 
   Estado.associate = function (models) {

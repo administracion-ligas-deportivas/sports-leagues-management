@@ -19,13 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {
-      paranoid: true,
-    }
+    {}
   );
 
-  //Las relaciones se generan de esta manera
-  //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
+  // Las relaciones se generan de esta manera
+  // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   Partido.associate = (models) => {
     Partido.hasMany(models.EstadisticaJugadorPartido);

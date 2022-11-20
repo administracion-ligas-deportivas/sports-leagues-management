@@ -8,7 +8,7 @@ const {
   deleteCommentById,
 } = require("../controllers/comentarios.js");
 
-//Obtener información
+// Obtener información
 comentariosRouter.get("/:postId", getCommentsByPostId);
 comentariosRouter.post("/", userAuthenticator, addPostComment);
 comentariosRouter.delete("/:commentId", userAuthenticator, deleteCommentById);

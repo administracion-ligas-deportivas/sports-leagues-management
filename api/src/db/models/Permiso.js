@@ -1,25 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const permiso = sequelize.define(
-    "permiso",
-    {
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      descripcion: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
+  const Permiso = sequelize.define("Permiso", {
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-      paranoid: true,
-    }
-  );
+    descripcion: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+  });
 
-  permiso.associate = (models) => {
-    permiso.hasMany(models.PermisoRol, {
+  Permiso.associate = (models) => {
+    Permiso.hasMany(models.PermisoRol, {
       foreignKey: "permiso_id",
     });
   };
-  return permiso;
+  return Permiso;
 };

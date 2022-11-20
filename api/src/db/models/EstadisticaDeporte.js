@@ -1,7 +1,7 @@
 module.exports = (sequelize /* DataTypes */) => {
   const EstadisticaDeporte = sequelize.define(
     "EstadisticaDeporte" /* , {
-    paranoid: true,
+    
   } */
   );
 

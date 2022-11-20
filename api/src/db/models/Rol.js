@@ -1,20 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const Rol = sequelize.define(
-    "Rol",
-    {
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      descripcion: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+  const Rol = sequelize.define("Rol", {
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-      paranoid: true,
-    }
-  );
+    descripcion: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
   Rol.associate = (models) => {
     Rol.hasMany(models.PermisoRol);
     Rol.hasMany(models.Usuario);

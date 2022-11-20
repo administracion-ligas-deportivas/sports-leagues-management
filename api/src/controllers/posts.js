@@ -9,7 +9,7 @@ const getPosts = async (req, res) => {
     },
   });
 
-  res.json({ lista_anuncios: lista_anuncios, liked: anuncios_liked });
+  res.json({ lista_anuncios, liked: anuncios_liked });
 };
 
 const getPostById = async (req, res) => {

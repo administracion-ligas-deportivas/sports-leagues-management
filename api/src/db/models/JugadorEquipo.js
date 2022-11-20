@@ -1,11 +1,5 @@
 module.exports = (sequelize /* DataTypes */) => {
-  const JugadorEquipo = sequelize.define(
-    "JugadorEquipo",
-    {},
-    {
-      paranoid: true,
-    }
-  );
+  const JugadorEquipo = sequelize.define("JugadorEquipo", {}, {});
 
   return JugadorEquipo;
 };

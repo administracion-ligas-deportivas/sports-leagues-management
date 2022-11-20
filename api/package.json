@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "lint": "eslint . --ext .js,.ts, ",
-    "lint:fix": "eslint . --ext .js,.ts, --fix"
+    "format": "prettier --write . --cache",
+    "format:fix": "npm run format && npm run lint:fix",
+    "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix src"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +27,13 @@
     "sequelize-cli": "6.5.2"
   },
   "devDependencies": {
-    "eslint": "8.28.0"
+    "eslint": "8.28.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.5.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-vue": "9.7.0",
+    "prettier": "2.7.1"
   }
 }

@@ -5,7 +5,7 @@ const likePost = async (req, res) => {
   const { id: usuarioId } = req.user;
 
   const found = await Likes.findOne({
-    //Verifica si el usuario actual ya le dio like al post actual
+    // Verifica si el usuario actual ya le dio like al post actual
     where: { AnuncioId: PostID, UsuarioId: usuarioId },
   });
 

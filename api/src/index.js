@@ -1,7 +1,7 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
 const express = require("express");
-//const mariadb = require('mariadb');
+// const mariadb = require('mariadb');
 const app = express();
 const cors = require("cors");
 const db = require("./db/models");
