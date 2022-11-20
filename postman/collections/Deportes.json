@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "57890f3a-2dd6-45d2-a8d7-75ecb09a67c6",
+		"name": "Deportes",
+		"description": "Colección de deportes. Un evento deportivo debe de ser de un deporte en específico.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-57890f3a-2dd6-45d2-a8d7-75ecb09a67c6"
+	},
+	"item": [
+		{
+			"name": "Estadísticas",
+			"item": [
+				{
+					"name": "Asignar tipo de estadísticas a deporte",
+					"id": "b57cfe2e-b0b0-4fd5-a3b9-759500d8255f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticas\": [\r\n    1, 3, 4\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/estadisticas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"estadisticas"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						},
+						"description": "Del catálogo de estadísticas, le añadiremos las indicadas al deporte. Este comportamiento ocurre porque diferentes deportes pueden repetir las mismas estadísticas. \n\nPor ejemplo: \n- puntos\n- lesiones"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar tipo de estadísticas de deporte",
+					"id": "63487b24-a0f7-4966-8b42-cc121596347e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticas\": [\r\n    1, 3\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/estadisticas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"estadisticas"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5499ab2f-99ae-45e6-a6d3-88c9f4eccc4b",
+							"name": "Eliminar estadísticas de deporte",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estadisticas\": [\r\n    1, 3\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/deportes/:deporteId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"deportes",
+										":deporteId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "deporteId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"estadisticas\": [\n      4\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar tipo de estadísticas de un deporte",
+					"id": "1de53e2b-0a14-42f3-9552-214af47b094d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticas\": [\r\n    1, 3, 4, 9, 11\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/estadisticas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"estadisticas"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener tipos de estadísticas de un deporte",
+					"id": "0f8da408-e2eb-4a6e-968f-01d99cdcf300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/estadisticas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"estadisticas"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "6962ab91-0ec0-4da1-bd31-9fcfdb09bc26"
+		},
+		{
+			"name": "Formatos",
+			"item": [
+				{
+					"name": "Obtener formatos de un deporte",
+					"id": "3a7efb0c-3729-45a4-9f2d-0570b49e3d8a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener partidos de un deporte",
+					"id": "93d69500-5b04-4f0d-99fa-9d03be57c780",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"partidos"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener eventos de un deporte",
+					"id": "d2d71929-c551-4e34-9d06-21045eb74b20",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/eventos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"eventos"
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener eventos de un deporte con tipos de evento",
+					"id": "ab6c0a14-ddfa-4c74-9a0b-65cd0599a6a2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportes/:deporteId/eventos?tiposDeEvento=ligas,torneos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportes",
+								":deporteId",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "tiposDeEvento",
+									"value": "ligas,torneos",
+									"description": "Filtro para obtener los eventos que cumplan con los tipos de evento especificados. Ligas o torneos."
+								}
+							],
+							"variable": [
+								{
+									"key": "deporteId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "e683bb84-71ec-4d56-a5de-a3ff2c57bdb9"
+		},
+		{
+			"name": "Crear deporte",
+			"id": "b39864f0-3a8b-4032-ad6d-e013fedbf330",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"baseball\",\r\n  \"descripcion\": \"Deporte de equipo jugado entre dos conjuntos de nueve jugadores cada uno.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener deporte",
+			"id": "187aa9d2-2f76-4e4d-ad69-1c843c9b030a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"baseball\",\r\n  \"descripcion\": \"Deporte de equipo jugado entre dos conjuntos de nueve jugadores cada uno.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar deporte",
+			"id": "fad805f1-637f-4152-a8d0-93c8a0d043cf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"baseball\",\r\n  \"descripcion\": \"Deporte de equipo jugado entre dos conjuntos de nueve jugadores cada uno.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportes/:deporteId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportes",
+						":deporteId"
+					],
+					"variable": [
+						{
+							"key": "deporteId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar deporte",
+			"id": "d326638c-a8d3-4061-b261-3f497b531e02",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"baseball\",\r\n  \"descripcion\": \"Deporte de equipo jugado entre dos conjuntos de nueve jugadores cada uno.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportes/:deporteId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportes",
+						":deporteId"
+					],
+					"variable": [
+						{
+							"key": "deporteId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

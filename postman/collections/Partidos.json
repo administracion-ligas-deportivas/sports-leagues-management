@@ -1,0 +1,878 @@
+{
+	"info": {
+		"_postman_id": "6003d565-6a91-4181-910f-4cdc864d12e8",
+		"name": "Partidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-6003d565-6a91-4181-910f-4cdc864d12e8"
+	},
+	"item": [
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "Obtener equipos de un partido",
+					"id": "e939d1d6-eecc-496c-ac24-992c3c465469",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e60b6192-9ff9-4c6b-bf08-5c2f59540c03",
+							"name": "Obtener equipos de un partido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/equipos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"equipos"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"localId\": 2,\r\n  \"visitanteId\": 7\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Modificar equipos de un partido",
+					"id": "d0d208d8-9962-4ee4-aa9a-4ed42f2bf13b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"localId\": 2,\r\n  \"visitanteId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inscribir equipo en partido",
+					"id": "3e1dccac-4dc6-4daa-b901-f8cf1413d4f4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"local\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inscribir equipos en partido",
+					"id": "de22e636-dffd-4fde-b02a-53a55bc05d1b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"equipos\": {\r\n    \"localId\": 1,\r\n    \"visitanteId\": 2\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "cd8a24a8-3935-47d7-a3bc-2d810f33c3c4"
+		},
+		{
+			"name": "Estadísticas",
+			"item": [
+				{
+					"name": "Jugadores",
+					"item": [
+						{
+							"name": "Registrar estadísticas de jugador en partido",
+							"id": "34c8d157-a254-4079-8454-6a9cd7d6f789",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estadisticas\": [\r\n    {\r\n      \"estadisticaId\": 2,\r\n      \"tiempoTranscurrido\": \"00:35:00\"\r\n    },\r\n    {\r\n      \"estadisticaId\": 1,\r\n      \"tiempoTranscurrido\": \"00:47:00\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/jugadores/:jugadorId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"jugadores",
+										":jugadorId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										},
+										{
+											"key": "jugadorId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar estadísticas de jugador en partido",
+							"id": "448ddca9-f936-4925-bff2-1c68a8136e37",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estadisticas\": [\r\n    {\r\n      \"estadisticaId\": 2,\r\n      \"tiempoTranscurrido\": \"00:35:00\"\r\n    },\r\n    {\r\n      \"estadisticaId\": 1,\r\n      \"tiempoTranscurrido\": \"00:52:00\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/jugadores/:jugadorId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"jugadores",
+										":jugadorId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										},
+										{
+											"key": "jugadorId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar estadísticas de jugador en partido",
+							"id": "6a889ac4-ce10-4ad8-acab-152e8353d0c4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estadisticas\": [\r\n    2, 4\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/jugadores/:jugadorId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"jugadores",
+										":jugadorId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										},
+										{
+											"key": "jugadorId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener estadísticas de jugador en partido",
+							"id": "45b59e7c-328f-4326-9cfe-fd5e4ced99f9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/jugadores/:jugadorId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"jugadores",
+										":jugadorId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										},
+										{
+											"key": "jugadorId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "dad53346-7222-4079-a0ad-d2bde59cdd94",
+									"name": "Obtener estadísticas de jugador en partido",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/partidos/:partidoId/estadisticas/:jugadorId",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"partidos",
+												":partidoId",
+												"estadisticas",
+												":jugadorId"
+											],
+											"variable": [
+												{
+													"key": "partidoId",
+													"value": null
+												},
+												{
+													"key": "jugadorId",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\r\n  \"estadisticas\": [\r\n    {\r\n      \"id\": 2,\r\n      \"tiempoTranscurrido\": \"01:17:32\",\r\n      \"total\": 3\r\n    },\r\n    {\r\n      \"id\": 1,\r\n      \"tiempoTranscurrido\": \"01:19:32\"\r\n    }\r\n  ]\r\n}"
+								}
+							]
+						}
+					],
+					"id": "a7bdfc56-186e-4032-b021-1367e45cbae4"
+				},
+				{
+					"name": "Equipos",
+					"item": [
+						{
+							"name": "Obtener estadísticas de equipo en partido",
+							"id": "9c9a7fc6-acb2-467a-9a50-962619f54c79",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/equipos/:equipoId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"equipos",
+										":equipoId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										},
+										{
+											"key": "equipoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "4cf313b7-a6fa-4e23-bf35-7a54c7af9621",
+									"name": "Obtener estadísticas de equipo en partido",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/partidos/:partidoId/equipos/:equipoId/estadisticas",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"partidos",
+												":partidoId",
+												"equipos",
+												":equipoId",
+												"estadisticas"
+											],
+											"variable": [
+												{
+													"key": "partidoId",
+													"value": "2"
+												},
+												{
+													"key": "equipoId",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\r\n  \"estadisticas\": [\r\n    {\r\n      \"id\": 4,\r\n      \"total\": 6\r\n    },\r\n    {\r\n      \"id\": 1,\r\n      \"total\": 1\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"total\": 1\r\n    }\r\n  ],\r\n  \"jugadores\": [\r\n    { \r\n      \"id\": 1,\r\n      \"estadisticas\": [\r\n        {\r\n          \"id\": 4,\r\n          \"tiempoTranscurrido\": \"01:17:32\",\r\n          \"total\": 3\r\n        },\r\n        {\r\n          \"id\": 1,\r\n          \"tiempoTranscurrido\": \"01:19:32\"\r\n        }\r\n      ]\r\n    },\r\n    { \r\n      \"id\": 2,\r\n      \"estadisticas\": [\r\n        {\r\n          \"id\": 4,\r\n          \"tiempoTranscurrido\": \"01:17:32\",\r\n          \"total\": 3\r\n        },\r\n        {\r\n          \"id\": 2,\r\n          \"tiempoTranscurrido\": \"01:19:32\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+								}
+							]
+						}
+					],
+					"id": "afd6eeb1-588b-4ebb-a1e4-eed19528056a"
+				},
+				{
+					"name": "Obtener estadísticas de partido",
+					"id": "f819bba6-f426-4a9b-937d-280fd1425920",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/estadisticas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"estadisticas"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9009a0e7-fa2a-4f1f-9db8-38dc2ce4aba4",
+							"name": "Obtener estadísticas de partido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"equipos\": {\r\n    \"local\": {\r\n      \"id\": 2,\r\n      \"estadisticas\": [\r\n        {\r\n          \"id\": 2,\r\n          \"total\": 7\r\n        },\r\n        {\r\n          \"id\": 2,\r\n          \"total\": 1\r\n        }\r\n      ]\r\n    },\r\n    \"visitante\": {\r\n      \"id\": 3,\r\n      \"estadisticas\": [\r\n        {\r\n          \"id\": 2,\r\n          \"total\": 1\r\n        },\r\n        {\r\n          \"id\": 5,\r\n          \"total\": 9\r\n        },\r\n        {\r\n          \"id\": 1,\r\n          \"total\": 2\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
+						}
+					]
+				}
+			],
+			"id": "4b2114ef-223b-451c-8a5b-9cecd4d36b7d"
+		},
+		{
+			"name": "Estadísticos",
+			"item": [
+				{
+					"name": "Modificar estadístico de partido",
+					"id": "aa6e41b3-4119-426b-a67b-39bff51d4c52",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticoId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estadístico de partido",
+					"id": "81c1219e-18df-47bd-8fa5-2fd3afe6bfe5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticoId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/partidos/:partidoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos",
+								":partidoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "partidoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e1afdb99-b4a0-4d39-8506-2ec23b914bef",
+							"name": "Obtener estadístico de partido",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"estadisticoId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/partidos/:partidoId/estadisticos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partidos",
+										":partidoId",
+										"estadisticos"
+									],
+									"variable": [
+										{
+											"key": "partidoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"estadisticoId\": 3\r\n}"
+						}
+					]
+				}
+			],
+			"id": "ca26a12f-611a-4163-9d9c-9479e308d03b"
+		},
+		{
+			"name": "Eliminar partido",
+			"id": "79ec23a7-4a22-461f-a25a-fe75d2d1fadb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/partidos/:partidoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"partidos",
+						":partidoId"
+					],
+					"variable": [
+						{
+							"key": "partidoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar partido",
+			"id": "0bc74668-6beb-40df-b01f-ab874621466b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"canchaId\": 2,\r\n  \"fecha\": \"2022-02-29\",\r\n  \"notas\": \"\",\r\n  \"duracionPartido\": \"00:94:00\",\r\n  \"efectuado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/partidos/:partidoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"partidos",
+						":partidoId"
+					],
+					"variable": [
+						{
+							"key": "partidoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los partidos",
+			"id": "099cdd9d-d634-4ab5-8261-091b38594aec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/partidos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"partidos"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "ff7fa83e-fd05-4c82-a127-af941856cc56",
+					"name": "Obtener partidos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"total\": 2,\n  \"partidos\": [\n    {\n        \"id\": 1,\n        \"eventoDeportivoId\": 1,\n        \"canchaId\": 2,\n        \"estadisticoId\": 5,\n        \"fecha\": \"2022-02-29\",\n        \"notas\": \"Hubo una lesión fuerte\",\n        \"duracionPartido\": \"00:90:00\",\n        \"efectuado\": true,\n        \"equipos\": {\n          \"localId\": 2,\n          \"visitanteId\": 4\n        }\n    },\n    {\n        \"id\": 3,\n        \"eventoDeportivoId\": 2,\n        \"canchaId\": 2,\n        \"estadisticoId\": 3,\n        \"fecha\": \"2022-03-29\",\n        \"notas\": \"\",\n        \"duracionPartido\": \"\",\n        \"efectuado\": false,\n        \"equipos\": {\n          \"localId\": 3,\n          \"visitanteId\": 4\n        }\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un partido",
+			"id": "7688591e-e65d-4821-a3ce-97b54102dbaa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/partidos/:partidoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"partidos",
+						":partidoId"
+					],
+					"variable": [
+						{
+							"key": "partidoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "5b6c3ae8-a8e4-4a7e-b10e-b43ccad95f17",
+					"name": "Obtener un partido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partidos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 1,\n  \"eventoDeportivoId\": 1,\n  \"canchaId\": 2,\n  \"estadisticoId\": 5,\n  \"fecha\": \"2022-02-29\",\n  \"notas\": \"Hubo una lesión fuerte\",\n  \"duracionPartido\": \"00:90:00\",\n  \"efectuado\": true\n}"
+				}
+			]
+		}
+	]
+}

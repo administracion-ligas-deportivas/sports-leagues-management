@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "649cd8e7-e210-4be5-bf38-be2264af9ee8",
+		"name": "Formatos de evento",
+		"description": "Formatos disponibles para los eventos deportivos. Es la forma en que se llevará a cabo un evento.\n\nSon creados por un **organizador de evento** y están ligados a un deporte. Esto permite reutilizar los formats de un organizador en cualquier evento.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-649cd8e7-e210-4be5-bf38-be2264af9ee8"
+	},
+	"item": [
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "Obtener eventos en que se ha utilizado un formato",
+					"id": "74c8353a-f569-4589-a210-bcbb9b7b3b44",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/formatos/:formatoId/eventos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"formatos",
+								":formatoId",
+								"eventos"
+							],
+							"variable": [
+								{
+									"key": "formatoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "ee139571-16ed-4cef-a345-03c2bb4f0e0b"
+		},
+		{
+			"name": "Crear formato de evento",
+			"id": "9841817e-bc57-4838-9b7f-d7fcfe30bfe3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deporteId\": 1,\r\n  \"tipoEventoDeportivoId\": 2,\r\n  \"nombre\": \"Torneo continental\",\r\n  \"descripcion\": \"Torneo celebrado en dos días con premio económico para los ganadores\",\r\n  \"maximoEquipos\": 32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/formatos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"formatos"
+					]
+				},
+				"description": "En los headers se mandará el token de autenticación (JWT) de donde se extraerá el ID del usuario que creó el evento para guardarlo en el registro."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener formatos",
+			"id": "77f89693-129b-4900-a616-d9599fc03ce8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/formatos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"formatos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar formato",
+			"id": "4df52d3d-cfb1-4a6f-b6a1-44eb79f97bfb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"maximoEquipos\": 16\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/formatos/:formatoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"formatos",
+						":formatoId"
+					],
+					"variable": [
+						{
+							"key": "formatoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar formato",
+			"id": "3d28905b-dc3c-4db9-a46e-56e23dbbf2ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/formatos/:formatoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"formatos",
+						":formatoId"
+					],
+					"variable": [
+						{
+							"key": "formatoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

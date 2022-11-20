@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "21dbe436-83bd-4ec6-8154-a9c9a852bc15",
+		"name": "Roles",
+		"description": "Roles que regirán los permisos que tendrá un usuario en el sistema. Solo un administrador puede crear roles.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-21dbe436-83bd-4ec6-8154-a9c9a852bc15"
+	},
+	"item": [
+		{
+			"name": "Permisos",
+			"item": [
+				{
+					"name": "Obtener permisos de rol",
+					"id": "d6cc61fe-6b31-4167-97b2-6fb2c8aece85",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/roles/:rolId/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								":rolId",
+								"permisos"
+							],
+							"variable": [
+								{
+									"key": "rolId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c678e16a-da69-4325-9699-a1a378ee8b04",
+							"name": "Obtener permisos de rol",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/roles/:rolId/permisos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"roles",
+										":rolId",
+										"permisos"
+									],
+									"variable": [
+										{
+											"key": "rolId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"permisoIds\": [\r\n    1, 3, 8\r\n  ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Asignar permisos a rol",
+					"id": "aa52cff0-2fe4-4005-b5f2-ec18c28bffe0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"permisos\": [\r\n    1, 4, 6, 9\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/:rolId/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								":rolId",
+								"permisos"
+							],
+							"variable": [
+								{
+									"key": "rolId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar permisos de rol",
+					"id": "4fdbd502-b6b2-4d2d-8f75-ee1939e8152b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"permisos\": [\r\n    1, 4, 9\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/:rolId/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								":rolId",
+								"permisos"
+							],
+							"variable": [
+								{
+									"key": "rolId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar permisos de rol",
+					"id": "5991fbd4-d464-446d-bdf8-0c54d7952fa5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"permisos\": [\r\n    1, 9\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/:rolId/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								":rolId",
+								"permisos"
+							],
+							"variable": [
+								{
+									"key": "rolId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "c5f1ab9d-0383-4d8a-99b1-90a7be9edec6"
+		},
+		{
+			"name": "Obtener todos los roles",
+			"id": "4c54c57d-cb12-4cdb-82f4-27c0e0e6b469",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/roles",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener rol",
+			"id": "5efc4ace-984b-478f-b4d9-de00ed4b08b6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/roles/:rolId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"roles",
+						":rolId"
+					],
+					"variable": [
+						{
+							"key": "rolId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear rol",
+			"id": "6bd3e980-d2d1-4281-bf05-c298e8f32358",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"ADMIN\",\r\n  \"descripcion\": \"Administrador de todo el sistema. No puede crear eventos deportivos.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/roles",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar rol",
+			"id": "ae4f0d0c-d416-4f59-84d7-4ae1facb88b8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"ADMIN\",\r\n  \"descripcion\": \"Administrador de todo el sistema.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/roles/:rolId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"roles",
+						":rolId"
+					],
+					"variable": [
+						{
+							"key": "rolId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar rol",
+			"id": "349e83b2-9935-45a4-af0c-7a093d9e90b0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/roles/:rolId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"roles",
+						":rolId"
+					],
+					"variable": [
+						{
+							"key": "rolId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,1126 @@
+{
+	"info": {
+		"_postman_id": "c9cee4ee-35c7-46e7-aa3b-668a6c848473",
+		"name": "Usuarios",
+		"description": "Usuarios del sistema. Cada usuario tendrá un rol.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-c9cee4ee-35c7-46e7-aa3b-668a6c848473"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registrar",
+					"id": "945a709b-9367-4921-99fb-715a2bda7311",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"correo\": \"correo@correo.com\",\r\n  \"password\": \"correo\",\r\n  \"nombre\": \"Agus\",\r\n  \"apellido\": \"Sánchez\",\r\n  \"telefono\": \"0123456789\",\r\n  \"domicilio\": {\r\n    \"municipioId\": 2,\r\n    \"calle\": \"República de Ecuador\",\r\n    \"colonia\": \"Satélite\",\r\n    \"codigoPostal\": \"78380\",\r\n    \"numeroExterior\": \"789\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Crear nuevo usuario."
+					},
+					"response": [
+						{
+							"id": "3774893a-02be-4bed-8f9c-459689b37e85",
+							"name": "Registro exitoso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"correo\": \"correo@correo.com\",\r\n  \"password\": \"correo\",\r\n  \"nombre\": \"Agus\",\r\n  \"apellido\": \"Sánchez\",\r\n  \"telefono\": \"0123456789\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-sGoAmVwpUewHYP/pPRAKzRyqcZk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Nov 2022 19:55:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "\"Usuario registrado exitosamente\""
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4458601f-264f-4d22-bba8-a3da6d204bdd",
+								"exec": [
+									"if (pm.response.code === 200) {\r",
+									"    const responseJson = pm.response.json()\r",
+									"    const {token} = responseJson\r",
+									"\r",
+									"    pm.globals.set(\"user_token\", token);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d8c74ced-a5dc-4fe6-8f88-9a497b15ea30",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"{{correo}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Inicio de sesión."
+					},
+					"response": [
+						{
+							"id": "f3429bdc-aa7e-4a94-92c1-f4cee501d0f3",
+							"name": "Login fallido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"correo\": \"correo@correo.com\",\r\n    \"password\": \"correo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-8cbBUC0UCO2Magx6AFFzR3I3QPY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Nov 2022 19:52:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Correo o contraseña incorrectos\"\n}"
+						},
+						{
+							"id": "11cbe568-e787-4ff2-ae02-82878a1a15a2",
+							"name": "Login exitoso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"correo\": \"{{correo}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "313"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"139-O/Qq2fsdzKSQeT6LPyMGVTr6f0A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Nov 2022 19:56:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3JyZW8iOiJjb3JyZW9AY29ycmVvLmNvbSIsIm5vbWJyZSI6IkFndXMiLCJhcGVsbGlkbyI6IlPDoW5jaGV6IiwiaWQiOjEsImlhdCI6MTY2ODI4Mjk4NSwiZXhwIjoxNjY4ODg3Nzg1fQ.vlAHx8TdXyj_4K4w3DbBPLVipNSEDjVV2GfDyrAnAyI\",\n    \"correo\": \"correo@correo.com\",\n    \"nombre\": \"Agus\",\n    \"apellido\": \"Sánchez\",\n    \"id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Verificar sesión con accessToken",
+					"id": "fb2082bb-441d-4b6a-b455-7c73108987ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/verify",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"verify"
+							]
+						},
+						"description": "Valida la sesión que ya haya iniciado el usuario en la aplicación. Es decir, si la última vez el usuario dejó su sesión iniciada, verifica que el token de autenticación aún sea válido.\n\nEsto es útil para iniciar su sesión automáticamente en el front al obtener un código de respuesta 200."
+					},
+					"response": [
+						{
+							"id": "4e7d3488-39ca-46e1-a236-b26e4bb00b72",
+							"name": "Sesión validada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/users/verify",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users",
+										"verify"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-wZ7xLKfrcIMhWlMF+fokz6ijvCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Nov 2022 20:11:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Se ha validado la sesión del usuario correctamente\",\n    \"user\": {\n        \"id\": 1,\n        \"correo\": \"correo@correo.com\",\n        \"nombre\": \"Agus\",\n        \"apellido\": \"Sánchez\"\n    }\n}"
+						},
+						{
+							"id": "297c3c28-a18b-4868-8b10-96a1f8fdf008",
+							"name": "Token no válido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/verify",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"verify"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19-nIoxUTr5+ybmaEhtpQWNIScZDB0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 12 Nov 2022 20:12:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid token\"\n}"
+						}
+					]
+				}
+			],
+			"id": "04a62d7c-dad5-495a-bf2f-562adb839873",
+			"description": "Autenticación (auth) del usuario."
+		},
+		{
+			"name": "Me",
+			"item": [
+				{
+					"name": "Obtener perfil de usuario actual",
+					"id": "386e2097-6350-4772-b20a-4f7d409ceac4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Obtener información del usuario que tiene sesión iniciada.\n\nReferencia: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-current-users-profile"
+					},
+					"response": [
+						{
+							"id": "90f123c8-6a29-418b-8bec-1582aa3c1517",
+							"name": "Obtener perfil de usuario actual",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"nombre\": \"string\",\r\n  \"apellidos\": \"string\",\r\n  \"fechaNacimiento\": \"2000-05\",\r\n  \"correo\": \"correo@correo.com\",\r\n  \"password\": \"fdklsajfldas\",\r\n  \"numero_telefonico\": \"0123456789\",\r\n  \"createdAt\": \"timestamp\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Editar mi perfil",
+					"id": "1df57e08-dc01-44c8-a15b-fdb4caafd963",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"telefono\": \"7463622\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar mi usuario",
+					"id": "69b9b77c-761d-4696-b9d3-2b2b97e58b2f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "fb90a0b5-1486-4b7b-bc42-a42e4dcca3b8"
+		},
+		{
+			"name": "Domicilios",
+			"item": [
+				{
+					"name": "Actualizar domicilio de usuario",
+					"id": "f335b673-59ca-4ba6-b077-d40bed6ef323",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"calle\": \"República de Perú\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios/:usuarioId/domicilios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":usuarioId",
+								"domicilios"
+							],
+							"variable": [
+								{
+									"key": "usuarioId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener domicilio de usuario",
+					"id": "a93086c5-ec6a-49be-9923-40f0cc003573",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:usuarioId/domicilios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":usuarioId",
+								"domicilios"
+							],
+							"variable": [
+								{
+									"key": "usuarioId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "7318ab53-fe36-4717-8d41-f79ccd4e2b10"
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "Obtener eventos en que el usuario ha participado",
+					"id": "f9920493-21ce-4619-aee0-b59645eb07f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId/eventos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId",
+								"eventos"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						},
+						"description": "Un usuario puede ser uno de los siguientes roles dentro de un evento deportivo:\n\n- Organizador de evento\n- Encargado de equipo\n- Jugador\n- Estadístico"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener eventos en que el usuario tiene un rol",
+					"id": "2c38af4e-fd62-4e42-a681-fbda3843bc48",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId/eventos?roles=organizador,jugador",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "roles",
+									"value": "organizador,jugador",
+									"description": "Filtro para seleccionar eventos en donde el usuario cuente con los roles especificados."
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						},
+						"description": "Un usuario puede ser uno de los siguientes roles dentro de un evento deportivo:\n\n- Organizador de evento\n- Encargado de equipo\n- Jugador\n- Estadístico\n    \n\nEl parámetro de query \"**rol\"** sirve como filtro para mostrar los eventos en que el usuario tiene ciertos roles. Los roles se envían separados por comas."
+					},
+					"response": []
+				}
+			],
+			"id": "cafaef4d-fc5a-4436-966f-524d7b0ced39"
+		},
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "Obtener equipos en que el usuario participa",
+					"id": "6c80d22f-bd75-40ce-8f99-52f033125434",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener equipos en que el usuario participa de acuerdo con rol",
+					"id": "fead53be-f61e-48a6-a7b7-777e03f257a6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId/equipos?roles=jugador,encargado",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId",
+								"equipos"
+							],
+							"query": [
+								{
+									"key": "roles",
+									"value": "jugador,encargado",
+									"description": "Filtro para obtener los equuipos en donde el usuario tenga los roles especificados."
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						},
+						"description": "Un usuario puede ser **Encargado de equipo** o **Jugador** dentro de un equipo."
+					},
+					"response": []
+				}
+			],
+			"id": "f33c5999-1364-4d3b-b841-c5e8301d028e"
+		},
+		{
+			"name": "Formatos",
+			"item": [
+				{
+					"name": "Obtener formatos creados por usuario",
+					"id": "1126e2fb-8285-470b-a07b-3024440cdb21",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:usuarioId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":usuarioId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "usuarioId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "925ad019-cca4-472a-8fe1-909aa4d3b128"
+		},
+		{
+			"name": "Pagos",
+			"item": [
+				{
+					"name": "Obtener pagos realizados por usuario",
+					"id": "2ccc4e8a-7515-4c70-9353-d6163f9f14ca",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:usuarioId/pagos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":usuarioId",
+								"pagos"
+							],
+							"variable": [
+								{
+									"key": "usuarioId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "07c6152a-989b-4a69-bf18-4134e6aa893f"
+		},
+		{
+			"name": "Obtener usuarios",
+			"id": "5675d1be-d5ce-4e10-958e-3a6e1221adb3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/usuarios",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "5f3199d7-2a8d-4360-a912-394e4a1ca932",
+					"name": "Obtener usuarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "362"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"16a-Cmyq2mdJoxmyAJbETJzrTiBmB+k\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 20:53:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"rol_id\": null,\n        \"genero\": null,\n        \"nombre\": \"Agus\",\n        \"apellido\": \"Sánchez\",\n        \"fecha_nacimiento\": null,\n        \"correo\": \"correo@correo.com\",\n        \"password\": \"$2b$10$AdkngcCGiN3TfKP1JXWPbuKVwYFLy1c/A3xCZrK2N08GXw16O9toy\",\n        \"telefono\": 123456789,\n        \"tiempo_registro\": null,\n        \"municipio_id\": null,\n        \"createdAt\": \"2022-11-12T20:13:58.000Z\",\n        \"updatedAt\": \"2022-11-12T20:13:58.000Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"{{$randomFullName}}\",\n        \"userName\": \"{{$randomUserName}}\",\n        \"location\": \"{{$randomCity}}\",\n        \"company\": \"{{$randomCompanyName}}\",\n        \"jobTitle\": \"{{$randomJobTitle}}\",\n        \"updatedAt\": \"{{$timestamp}}\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db4e9d27-0851-4234-999a-2f1cde6da3fd",
+						"exec": [
+							"console.log(pm.globals.get('base_url'))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "08bae132-7cf4-425a-95ff-93e290667d8c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/usuarios/:userId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"usuarios",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "d0e894c0-30d5-4545-86e3-c77cb7b1256c",
+					"name": "Obtener usuario",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "286"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11e-3r6+S69Dj+BoDSKy7zV39yLg0FA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 21:07:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"rol_id\": null,\n    \"genero\": null,\n    \"nombre\": \"Agus\",\n    \"apellido\": \"Sánchez\",\n    \"fecha_nacimiento\": null,\n    \"correo\": \"correo@correo.com\",\n    \"telefono\": 123456789,\n    \"tiempo_registro\": null,\n    \"municipio_id\": null,\n    \"createdAt\": \"2022-11-12T20:13:58.000Z\",\n    \"updatedAt\": \"2022-11-12T20:13:58.000Z\",\n    \"deletedAt\": null\n}"
+				},
+				{
+					"id": "9999829a-d880-4703-84e5-654827d20cff",
+					"name": "Usuario no encontrado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 12 Nov 2022 21:08:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{user_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "bee8aa00-a7b1-4505-acc3-2b8a3d25ebc3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5aa50ce5-677d-4ce2-beb7-6cbc5e606122",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e9a4a612-7a04-479e-b886-69c5c007d2e6",
+			"key": "url",
+			"value": "{{base_url}}/users",
+			"type": "string"
+		}
+	]
+}

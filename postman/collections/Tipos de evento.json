@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "a9a8db8a-4d04-4354-a048-e8643709bdc0",
+		"name": "Tipos de evento",
+		"description": "Habrá 2 tipos de evento deportivo:\n- Ligas\n- Torneos\n**Solo un administrador del sistema podrá gestionar esta información.**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-a9a8db8a-4d04-4354-a048-e8643709bdc0"
+	},
+	"item": [
+		{
+			"name": "Formatos y eventos",
+			"item": [
+				{
+					"name": "Obtener eventos de un tipo de evento",
+					"id": "c8dc2c54-3440-4853-91c6-dfac723ad990",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tiposDeEvento/:tipoDeEventoId/eventos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tiposDeEvento",
+								":tipoDeEventoId",
+								"eventos"
+							],
+							"variable": [
+								{
+									"key": "tipoDeEventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener formatos de un tipo de evento",
+					"id": "2d9e407b-7b1e-454f-965f-10e80281cdc3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tiposDeEvento/:tipoDeEventoId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tiposDeEvento",
+								":tipoDeEventoId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "tipoDeEventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "1c9a2184-8874-4091-9440-d84a2c7435cb"
+		},
+		{
+			"name": "Obtener tipos de evento",
+			"id": "349d2ebf-74c6-4555-a1eb-8c96a35eea54",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tiposDeEvento",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tiposDeEvento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener tipo de evento",
+			"id": "a8574650-332b-4865-89fe-6ac72317942a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tiposDeEvento/:tipoDeEventoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tiposDeEvento",
+						":tipoDeEventoId"
+					],
+					"variable": [
+						{
+							"key": "tipoDeEventoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar tipo de evento",
+			"id": "34983c41-f1d5-47a1-9db7-15e75cf86fac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tiposDeEvento/:tipoDeEventoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tiposDeEvento",
+						":tipoDeEventoId"
+					],
+					"variable": [
+						{
+							"key": "tipoDeEventoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar tipo de evento",
+			"id": "4a699de3-396b-4e89-99cf-fd5f89aac351",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/tiposDeEvento/:tipoDeEventoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tiposDeEvento",
+						":tipoDeEventoId"
+					],
+					"variable": [
+						{
+							"key": "tipoDeEventoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear tipo de evento",
+			"id": "0f2b2226-1b6f-40f9-8999-211de92fbaf6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Liga\",\r\n  \"descripcion\": \"...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/tiposDeEvento",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tiposDeEvento"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

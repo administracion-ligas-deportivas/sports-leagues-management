@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "565ac431-79c8-498b-bcc3-1326777bf4dc",
+		"name": "Pagos",
+		"description": "Pagos realizados en eventos deportivos. Estos dependen de un evento deportivo para existir y son realizados por el encargado de equipo.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-565ac431-79c8-498b-bcc3-1326777bf4dc"
+	},
+	"item": [
+		{
+			"name": "Obtener pago",
+			"id": "15eab5f7-52e4-45a5-8fc2-169ac530a9f6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pagos/:pagoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pagos",
+						":pagoId"
+					],
+					"variable": [
+						{
+							"key": "pagoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar detalles de pago",
+			"id": "48691982-f58b-4b97-83e3-1ec0c92bf072",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pagos/:pagoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pagos",
+						":pagoId"
+					],
+					"variable": [
+						{
+							"key": "pagoId",
+							"value": null
+						}
+					]
+				},
+				"description": "No se podrá modificar toda la información. Solo el **concepto** y las **notas.**\n\n**Nota:** _**En los pagos realizados en físico se podrá modificar su fecha.**_"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los pagos",
+			"id": "8f602733-c479-43d0-abe6-901f20214f6b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pagos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pagos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los pagos de acuerdo con filtros",
+			"id": "26479ec8-5ced-43b5-aea6-bcb66750ac58",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pagos?formaPago=fisico",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pagos"
+					],
+					"query": [
+						{
+							"key": "formaPago",
+							"value": "fisico",
+							"description": "Indicador de si el pago se realizó en físico o digital.",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

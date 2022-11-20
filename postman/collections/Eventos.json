@@ -1,0 +1,1327 @@
+{
+	"info": {
+		"_postman_id": "3fdc035c-a602-4f1f-b716-cb71faee3218",
+		"name": "Eventos",
+		"description": "Eventos deportivos de un deporte.\n\nUn evento tiene diferentes partidos, equipos, migraciones, pagos, estadísticas y estadísticos (quienes registran resultados de los partidos y estadísticas de jugador).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-3fdc035c-a602-4f1f-b716-cb71faee3218"
+	},
+	"item": [
+		{
+			"name": "Partidos",
+			"item": [
+				{
+					"name": "Obtener todos los partidos en evento",
+					"id": "3028e5b0-b10a-4ccd-aead-6f7b773f9f44",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eventos_url}}/:eventoId/partidos",
+							"host": [
+								"{{eventos_url}}"
+							],
+							"path": [
+								":eventoId",
+								"partidos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "21b5dd4e-9bc3-4836-99a2-e031c09da4fa",
+							"name": "Get all partidos en evento",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{eventos_url}}/:eventoId/partidos",
+									"host": [
+										"{{eventos_url}}"
+									],
+									"path": [
+										":eventoId",
+										"partidos"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"total\": 2,\r\n  \"partidos\": [\r\n    {\r\n      \"id\": 1,\r\n      \"canchaId\": 2,\r\n      \"estadisticoId\": 5,\r\n      \"fecha\": \"2022-02-29\",\r\n      \"notas\": \"Hubo una lesión fuerte\",\r\n      \"duracionPartido\": \"00:90:00\",\r\n      \"efectuado\": true\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"canchaId\": 2,\r\n      \"estadisticoId\": 3,\r\n      \"fecha\": \"2022-03-29\",\r\n      \"notas\": \"\",\r\n      \"duracionPartido\": \"\",\r\n      \"efectuado\": false\r\n    }\r\n  ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los partidos de evento que cumplen con los filtros",
+					"id": "15db1b1f-b801-4cc3-bbad-61e29df2ea3b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/partidos?equipos=1,2,5&realizados=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"partidos"
+							],
+							"query": [
+								{
+									"key": "equipos",
+									"value": "1,2,5",
+									"description": "Filtro para obtener los partidos de ciertos equipos en un evento."
+								},
+								{
+									"key": "realizados",
+									"value": "true",
+									"description": "Obtener equipos que ya se hayan realizado o no."
+								}
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						},
+						"description": "Obtener partidos de acuerdo con los filtros.  \nMediante el parámetro de **equipos** podemos indicar de cuáles equipos queremos obtener los partidos."
+					},
+					"response": [
+						{
+							"id": "f148876e-18e2-497f-9e2d-3ac47c1e7dad",
+							"name": "Get all partidos en evento",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{eventos_url}}/:eventoId/partidos",
+									"host": [
+										"{{eventos_url}}"
+									],
+									"path": [
+										":eventoId",
+										"partidos"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"total\": 2,\r\n  \"partidos\": [\r\n    {\r\n      \"id\": 1,\r\n      \"canchaId\": 2,\r\n      \"estadisticoId\": 5,\r\n      \"fecha\": \"2022-02-29\",\r\n      \"notas\": \"Hubo una lesión fuerte\",\r\n      \"duracionPartido\": \"00:90:00\",\r\n      \"efectuado\": true\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"canchaId\": 2,\r\n      \"estadisticoId\": 3,\r\n      \"fecha\": \"2022-03-29\",\r\n      \"notas\": \"\",\r\n      \"duracionPartido\": \"\",\r\n      \"efectuado\": false\r\n    }\r\n  ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear partido",
+					"id": "9ceeb8bd-b9ad-4924-8a1d-e2f4c9cf3644",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"canchaId\": 2,\r\n  \"estadisticoId\": 5,\r\n  \"fecha\": \"2022-02-29\",\r\n  \"notas\": \"Hubo una lesión fuerte\",\r\n  \"duracionPartido\": \"00:90:00\",\r\n  \"efectuado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"partidos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "05c2c384-b020-441d-a7bc-dd965491e4b2"
+		},
+		{
+			"name": "Formatos de evento",
+			"item": [
+				{
+					"name": "Actualizar formato de evento",
+					"id": "566beb94-59e5-422d-bc35-3672039925d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"formatoEventoId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar formato de evento",
+					"id": "3c7fc4a5-b8a9-47bd-b6bb-71290fd45e9d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"formatoEventoId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener formato de evento",
+					"id": "fc01ba77-ccfa-4492-aa89-7a3c7679f395",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/formatos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"formatos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "4aa5b249-509b-4a32-a2dd-e8611bcda88b",
+			"description": "Un evento puede tener un formato opcionalmente. No es necesario, pero puede brindar información sobre cómo se llevará a cabo."
+		},
+		{
+			"name": "Migraciones",
+			"item": [
+				{
+					"name": "Crear migración de equipo a otro evento",
+					"id": "173ed370-604a-4dbd-a991-8fd49b1c3373",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"eventoDeportivoDestinoId\": 2,\r\n  \"equipoId\": 2,\r\n  \"fechaPeticion\": \"2022-10-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/migraciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"migraciones"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener migraciones de evento",
+					"id": "5e1af881-a7fb-4578-b8d3-f4de3e294886",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/migraciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"migraciones"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener migraciones de equipo en evento",
+					"id": "ee42f4f5-2a73-415c-b010-7834a975bae7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos/:equipoId/migraciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos",
+								":equipoId",
+								"migraciones"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								},
+								{
+									"key": "equipoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "11dc16b9-27b0-4aa0-89de-326023dca146"
+		},
+		{
+			"name": "Pagos",
+			"item": [
+				{
+					"name": "Obtener pagos de evento",
+					"id": "157dd567-4389-4c86-8bb2-ee8d876e2e61",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eventos_url}}/:eventoId/pagos",
+							"host": [
+								"{{eventos_url}}"
+							],
+							"path": [
+								":eventoId",
+								"pagos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						},
+						"description": "Solo el organizador del evento puede obtener todos los pagos."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener pagos de equipo en evento",
+					"id": "11809570-84de-407d-9d3e-92017defb91e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos/:equipoId/pagos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos",
+								":equipoId",
+								"pagos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								},
+								{
+									"key": "equipoId",
+									"value": null
+								}
+							]
+						},
+						"description": "Solo el organizador del evento puede obtener todos los pagos."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un pago de un evento",
+					"id": "c24e46d0-f42b-4513-a232-67f2043c307f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eventos_url}}/:eventoId/pagos/:pagoId",
+							"host": [
+								"{{eventos_url}}"
+							],
+							"path": [
+								":eventoId",
+								"pagos",
+								":pagoId"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								},
+								{
+									"key": "pagoId",
+									"value": null
+								}
+							]
+						},
+						"description": "**Podemos obtener un pago directamente desde la ruta /pagos.** _**Puede que esta ruta no sea necesaria. Está pendiente de revisión.**_"
+					},
+					"response": []
+				},
+				{
+					"name": "Realizar pago en evento",
+					"id": "1ea1e74f-40d5-4c07-ac95-b82c101550d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"equipo\": {\r\n    \"id\": 1,\r\n    \"encargadoEquipoId\": 2\r\n  },\r\n  \"monto\": 50,\r\n  \"concepto\": \"Arbitraje\",\r\n  \"formaPago\": \"digital\",\r\n  \"notas\": \"Acordamos el pago de dos partidos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eventos_url}}/:eventoId/pagos",
+							"host": [
+								"{{eventos_url}}"
+							],
+							"path": [
+								":eventoId",
+								"pagos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						},
+						"description": "Pago de un equipo para un método deportivo. Los pagos solo pueden ser realizados por el encargado del equipo."
+					},
+					"response": []
+				}
+			],
+			"id": "d2083a35-df64-40fd-818b-c00a14f78834",
+			"description": "Pagos de un evento. Son realizados por el encargado de un equipo y es importante saber qué equipo pagó."
+		},
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "Crear equipo",
+					"id": "3c6662bf-ca0e-4e8a-9a03-f67cbd07abf8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Jaguares\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						},
+						"description": "Solo un organizador de evento puede crear el equipo. Debe de compartir el **UUID** con el encargado para que al ingresarlo se añada como encargado."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener equipos de un evento",
+					"id": "721cc337-116a-4eaf-83fc-0ddaec059f83",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "eb719360-1e93-4489-840e-5d5779de1976",
+							"name": "Obtener equipos de un evento",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/equipos",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"equipos"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"total\": 2,\r\n  \"equipos\": [\r\n    \r\n  ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Inscribir equipos",
+					"id": "a5c1f50c-2b9e-4649-b663-c85d6f6cb10e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"equipos\": [\r\n    2, 5, 9\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar equipos",
+					"id": "961cc41f-f273-4649-bad0-d1a12b48cc81",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"equipos\": [\r\n    2, 5, 9\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/equipos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"equipos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "1d9ba5a1-c58f-4592-929c-97da13239e03"
+		},
+		{
+			"name": "Estadísticos",
+			"item": [
+				{
+					"name": "Inscribir estadísticos a evento",
+					"id": "ab10cbb3-7eab-48f4-8380-dee920a3bd9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticos\": [\r\n    1, 2, 5\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estadísticos de evento",
+					"id": "d9f50b92-94dc-4c57-930b-dccd487f72f7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticos\": [\r\n    1, 2, 5\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar estadísticos de evento",
+					"id": "3ceb4a8f-040b-4ab9-8ad1-b910e3a01579",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticos\": [\r\n    1, 2, 8, 12\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar estadísticos de evento",
+					"id": "60d50436-0275-4669-8358-312c2d5d65a2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estadisticos\": [\r\n    1, 5\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/eventos/:eventoId/estadisticos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"eventos",
+								":eventoId",
+								"estadisticos"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "59f594b9-5919-464e-a4c8-ceb1d5cd4d66"
+		},
+		{
+			"name": "Estadísticas",
+			"item": [
+				{
+					"name": "Jugadores",
+					"item": [
+						{
+							"name": "Obtener estadísticas de jugador en evento",
+							"id": "6880c31e-d2e3-4389-9b6e-5e0d9dbc382d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/jugadores/:jugadorId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"jugadores",
+										":jugadorId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										},
+										{
+											"key": "jugadorId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "432c19ba-e8a8-4289-a637-d16de6203fd2",
+									"name": "Obtener estadísticas de jugador en evento",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/eventos/:eventoId/jugadores/:jugadorId/estadisticas",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"eventos",
+												":eventoId",
+												"jugadores",
+												":jugadorId",
+												"estadisticas"
+											],
+											"variable": [
+												{
+													"key": "eventoId",
+													"value": null
+												},
+												{
+													"key": "jugadorId",
+													"value": null
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"estadisticas\": [\n    {\n      \"id\": 4,\n      \"total\": 3\n    },\n    {\n      \"id\": 1,\n      \"total\": 7\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Obtener estadísticas de jugadores en evento",
+							"id": "8f73c05e-3eee-48a8-b3b3-777000b6b21a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/jugadores/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"jugadores",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "1566b7db-c2c6-4685-b0fc-635439dc08b5",
+									"name": "Obtener estadísticas de jugador en evento",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/eventos/:eventoId/jugadores/:jugadorId/estadisticas",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"eventos",
+												":eventoId",
+												"jugadores",
+												":jugadorId",
+												"estadisticas"
+											],
+											"variable": [
+												{
+													"key": "eventoId",
+													"value": null
+												},
+												{
+													"key": "jugadorId",
+													"value": null
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"estadisticas\": [\n    {\n      \"id\": 4,\n      \"total\": 3\n    },\n    {\n      \"id\": 1,\n      \"total\": 7\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Obtener estadísticas de jugadores de equipo en evento",
+							"id": "f6388488-51ff-4c19-9157-d37eec061db6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/equipos/:equipoId/jugadores/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"equipos",
+										":equipoId",
+										"jugadores",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										},
+										{
+											"key": "equipoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "97638e4e-0a59-4474-acb7-a538d9548d12",
+									"name": "Obtener estadísticas de jugador en evento",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/eventos/:eventoId/jugadores/:jugadorId/estadisticas",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"eventos",
+												":eventoId",
+												"jugadores",
+												":jugadorId",
+												"estadisticas"
+											],
+											"variable": [
+												{
+													"key": "eventoId",
+													"value": null
+												},
+												{
+													"key": "jugadorId",
+													"value": null
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"name": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"estadisticas\": [\n    {\n      \"id\": 4,\n      \"total\": 3\n    },\n    {\n      \"id\": 1,\n      \"total\": 7\n    }\n  ]\n}"
+								}
+							]
+						}
+					],
+					"id": "e3176086-00e3-4cde-a7c0-0d2966d2c53e"
+				},
+				{
+					"name": "Equipos",
+					"item": [
+						{
+							"name": "Obtener estadísticas de equipo en evento",
+							"id": "813867e8-4d8f-419c-aed3-f3e2c92d2965",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/equipos/:equipoId/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"equipos",
+										":equipoId",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										},
+										{
+											"key": "equipoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener estadísticas de todos los equipos en evento",
+							"id": "e122b7cd-1b5c-4cc0-adc3-28d099eadaee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/eventos/:eventoId/equipos/estadisticas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"eventos",
+										":eventoId",
+										"equipos",
+										"estadisticas"
+									],
+									"variable": [
+										{
+											"key": "eventoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "c95bd285-319a-4cef-a601-0c21958d8434"
+				}
+			],
+			"id": "a0381b08-d049-4977-8ae2-963989ffc69f"
+		},
+		{
+			"name": "Obtener todos los eventos",
+			"id": "8886c824-6fa2-46d8-96eb-75c376c51acb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/eventos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"eventos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un evento",
+			"id": "f9812105-ff0c-4722-9ce1-762601f37f4b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{eventos_url}}/:eventoId",
+					"host": [
+						"{{eventos_url}}"
+					],
+					"path": [
+						":eventoId"
+					],
+					"variable": [
+						{
+							"key": "eventoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "65f80396-0276-4e2e-a541-2d0220aaed7e",
+					"name": "Obtener un evento",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eventos_url}}/:eventoId",
+							"host": [
+								"{{eventos_url}}"
+							],
+							"path": [
+								":eventoId"
+							],
+							"variable": [
+								{
+									"key": "eventoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"uuid\": \"66c841b9-eeff-4d9e-88af-c7a29d53f94a\",\r\n  \"totalEquipos\": 4,\r\n  \"totalPartidos\": 6\r\n}"
+				}
+			]
+		}
+	]
+}

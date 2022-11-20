@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "7aebec18-ad6e-46ea-9d16-e26ad52a6e9b",
+		"name": "Canchas",
+		"description": "Canchas de un deportivo. Es en donde se llevan a cabo los partidos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-7aebec18-ad6e-46ea-9d16-e26ad52a6e9b"
+	},
+	"item": [
+		{
+			"name": "Partidos",
+			"item": [
+				{
+					"name": "Obtener partidos jugados en cancha",
+					"id": "b852bf7f-a203-4e80-a442-82012e87833b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/canchas/:canchaId/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"canchas",
+								":canchaId",
+								"partidos"
+							],
+							"variable": [
+								{
+									"key": "canchaId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "fb34d8c3-395d-425f-a688-14285564c57b"
+		},
+		{
+			"name": "Obtener canchas",
+			"id": "1d59cd37-64b1-4dda-ab8d-0c4dd0e9059c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/canchas",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"canchas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cancha",
+			"id": "da8707a6-ffe5-43c4-92f4-6d141c7130f0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/canchas/:canchaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"canchas",
+						":canchaId"
+					],
+					"variable": [
+						{
+							"key": "canchaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar cancha",
+			"id": "d6879592-70a9-4a35-a224-6f370cf2053e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/canchas/:canchaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"canchas",
+						":canchaId"
+					],
+					"variable": [
+						{
+							"key": "canchaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar cancha",
+			"id": "74d3b541-fda0-49c0-9ce7-7b98e6e69fdd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Tierra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/canchas/:canchaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"canchas",
+						":canchaId"
+					],
+					"variable": [
+						{
+							"key": "canchaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

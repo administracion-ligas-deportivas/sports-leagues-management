@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "70f70181-128c-4fb9-b7e8-88de8063f68c",
+		"name": "Permisos",
+		"description": "Permisos que serán asignados a diferentes roles.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-70f70181-128c-4fb9-b7e8-88de8063f68c"
+	},
+	"item": [
+		{
+			"name": "Obtener permisos",
+			"id": "21171b12-b952-4d99-9aef-24d8146cf87d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/permisos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"permisos"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "9bba8132-f7c1-4433-831f-5ead71d09de2",
+					"name": "Obtener permisos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permisos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"permisos\": [\r\n    {\r\n      \"id\": 1,\r\n      \"nombre\": \"Ver todos los eventos\",\r\n      \"descripcion\": \"Ver la lista y detalles de todos los eventos del sistema.\",\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"nombre\": \"Crear eventos deportivos\",\r\n      \"descripcion\": \"Crear cualquier tipo de evento deportivo\"\r\n    }\r\n  ]\r\n  \r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener permiso",
+			"id": "d3470d50-1646-492d-9dcc-6d5ef10122a1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/permisos/:permisoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"permisos",
+						":permisoId"
+					],
+					"variable": [
+						{
+							"key": "permisoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "74e664cb-9fbb-4b46-9f96-1de537787db8",
+					"name": "Obtener permiso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/permisos/:permisoId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permisos",
+								":permisoId"
+							],
+							"variable": [
+								{
+									"key": "permisoId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"id\": 2,\r\n  \"nombre\": \"Crear eventos deportivos\",\r\n  \"descripcion\": \"Crear cualquier tipo de evento deportivo\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar permiso",
+			"id": "c36cb0c1-f797-495e-9da3-7db6d2e0e9f8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/permisos/:permisoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"permisos",
+						":permisoId"
+					],
+					"variable": [
+						{
+							"key": "permisoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear permiso",
+			"id": "e50b95c7-0237-4479-a0ba-1fd6b221714a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Ver detalles de partido\",\r\n  \"descripcion\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/permisos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"permisos"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "116a1e00-be66-4a5d-90f5-94213a08cf0b",
+					"name": "Crear permiso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Ver detalles de partido\",\r\n  \"descripcion\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/permisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"permisos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"name": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n  \"id\": 2\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar permiso",
+			"id": "414eb08b-2d39-4f41-8238-e39eed0e2a9d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Crear eventos deportivos\",\r\n  \"descripcion\": \"Crear cualquier evento deportivo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/permisos/:permisoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"permisos",
+						":permisoId"
+					],
+					"variable": [
+						{
+							"key": "permisoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

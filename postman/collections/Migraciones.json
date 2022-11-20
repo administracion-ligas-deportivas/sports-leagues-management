@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "426a63f2-9311-40c7-babb-63d04924e0a1",
+		"name": "Migraciones",
+		"description": "Migraciones de equipo para cambiar de un evento a otro.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-426a63f2-9311-40c7-babb-63d04924e0a1"
+	},
+	"item": [
+		{
+			"name": "Autorizar migración de evento a otro",
+			"id": "ae89dcec-f959-4281-b8d1-0b25b5c95dbb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaVeredicto\": \"2022-11-12\",\r\n  \"autorizado\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/migraciones/:migracionId/aceptar",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"migraciones",
+						":migracionId",
+						"aceptar"
+					],
+					"variable": [
+						{
+							"key": "migracionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denegar migración de evento a otro",
+			"id": "3265b5c4-0934-4849-ac3f-efe8f6296803",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaVeredicto\": \"2022-11-12\",\r\n  \"autorizado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/migraciones/:migracionId/denegar",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"migraciones",
+						":migracionId",
+						"denegar"
+					],
+					"variable": [
+						{
+							"key": "migracionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar solicitud de migración",
+			"id": "acdd29fc-b811-4d8b-8b0a-5aa149cde5f1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaVeredicto\": \"2022-11-12\",\r\n  \"autorizado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/migraciones/:migracionId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"migraciones",
+						":migracionId"
+					],
+					"variable": [
+						{
+							"key": "migracionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener migraciones",
+			"id": "6e9c5d1e-d99d-4340-8751-a930740ea7d7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaVeredicto\": \"2022-11-12\",\r\n  \"autorizado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/migraciones",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"migraciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener migraciones con filtros",
+			"id": "e4267277-d01c-40be-bdd8-b0e4e4284b95",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaVeredicto\": \"2022-11-12\",\r\n  \"autorizado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/migraciones?estado=aceptadas",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"migraciones"
+					],
+					"query": [
+						{
+							"key": "estado",
+							"value": "aceptadas",
+							"description": "Indicador de si queremos obtener las aceptadas o rechazadas. Puede ser que aún no hay veredicto si es que aún no tiene fecha de veredicto.\n\n- aceptadas\n- rechazadas\n- espera"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

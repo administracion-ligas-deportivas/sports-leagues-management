@@ -5,6 +5,22 @@ id = dab309f6-574f-4c52-ac7c-ff3db0a097d8
 
 [relations.collections]
 rootDirectory = postman/collections
+files[] = {"id":"24392898-7aebec18-ad6e-46ea-9d16-e26ad52a6e9b","path":"Canchas.json","metaData":{}}
+files[] = {"id":"24392898-57890f3a-2dd6-45d2-a8d7-75ecb09a67c6","path":"Deportes.json","metaData":{}}
+files[] = {"id":"24392898-50702c06-14e1-4629-88c1-899b0bbceb18","path":"Deportivos.json","metaData":{}}
+files[] = {"id":"24392898-bc7672bf-51c4-469d-bd5b-557c45572c7e","path":"Equipos.json","metaData":{}}
+files[] = {"id":"24392898-bbd82714-9de6-4386-81dd-23465553faaf","path":"Estados.json","metaData":{}}
+files[] = {"id":"24392898-3fdc035c-a602-4f1f-b716-cb71faee3218","path":"Eventos.json","metaData":{}}
+files[] = {"id":"24392898-649cd8e7-e210-4be5-bf38-be2264af9ee8","path":"Formatos de evento.json","metaData":{}}
+files[] = {"id":"24392898-426a63f2-9311-40c7-babb-63d04924e0a1","path":"Migraciones.json","metaData":{}}
+files[] = {"id":"24392898-72026316-d079-4002-aa1f-52b7c1741423","path":"Municipios.json","metaData":{}}
+files[] = {"id":"24392898-565ac431-79c8-498b-bcc3-1326777bf4dc","path":"Pagos.json","metaData":{}}
+files[] = {"id":"24392898-6003d565-6a91-4181-910f-4cdc864d12e8","path":"Partidos.json","metaData":{}}
+files[] = {"id":"24392898-70f70181-128c-4fb9-b7e8-88de8063f68c","path":"Permisos.json","metaData":{}}
+files[] = {"id":"24392898-21dbe436-83bd-4ec6-8154-a9c9a852bc15","path":"Roles.json","metaData":{}}
+files[] = {"id":"24392898-d005d18b-73db-47de-8863-f7007c56889b","path":"Tipo de estadísticas.json","metaData":{}}
+files[] = {"id":"24392898-a9a8db8a-4d04-4354-a048-e8643709bdc0","path":"Tipos de evento.json","metaData":{}}
+files[] = {"id":"24392898-c9cee4ee-35c7-46e7-aa3b-668a6c848473","path":"Usuarios.json","metaData":{}}
 
 [relations.collections.metaData]
 

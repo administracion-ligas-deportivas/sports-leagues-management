@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "50702c06-14e1-4629-88c1-899b0bbceb18",
+		"name": "Deportivos",
+		"description": "Un deportivo tiene canchas, que es en donde se lleva a cabo un partido.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-50702c06-14e1-4629-88c1-899b0bbceb18"
+	},
+	"item": [
+		{
+			"name": "Canchas",
+			"item": [
+				{
+					"name": "Crear cancha",
+					"id": "9d3c69f8-201e-4218-ac99-3e296aeacf2d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numero\": 1,\r\n  \"nombre\": \"Campo de tierra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/deportivos/:deportivoId/canchas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportivos",
+								":deportivoId",
+								"canchas"
+							],
+							"variable": [
+								{
+									"key": "deportivoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener canchas de deportivo",
+					"id": "a38e6399-fa8a-480b-a13e-806954da1df1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportivos/:deportivoId/canchas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportivos",
+								":deportivoId",
+								"canchas"
+							],
+							"variable": [
+								{
+									"key": "deportivoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "19f00698-5348-4995-8ed2-4839ca393e6e",
+							"name": "Obtener canchas de deportivo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/deportivos/:deportivoId/canchas",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"deportivos",
+										":deportivoId",
+										"canchas"
+									],
+									"variable": [
+										{
+											"key": "deportivoId",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"total\": 2,\r\n  \"canchas\": [\r\n    {\r\n      \"id\": 1,\r\n      \"nombre\": \"Campo de tierra\"\r\n    },\r\n    {\r\n      \"id\": 4,\r\n      \"numero\": 117\r\n    }\r\n  ]\r\n}"
+						}
+					]
+				}
+			],
+			"id": "877808d7-3549-45e4-bd19-21aa2dc2800c"
+		},
+		{
+			"name": "Partidos",
+			"item": [
+				{
+					"name": "Obtener partidos jugados en deportivo",
+					"id": "e0858f9e-5295-4eac-b0c0-dfc1ae357120",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/deportivos/:deportivoId/partidos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"deportivos",
+								":deportivoId",
+								"partidos"
+							],
+							"variable": [
+								{
+									"key": "deportivoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "5ef4bf8a-b7ee-4b0a-9ed0-52a5a9c41799"
+		},
+		{
+			"name": "Crear deportivo",
+			"id": "b3261cd0-76a2-4c01-99be-a5746028bb2a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"municipioId\": 1,\r\n  \"nombre\": \"Unidad Deportiva Satélite\",\r\n  \"calle\": \"Avenida de la Constitución\",\r\n  \"colonia\": \"Satélite\",\r\n  \"codigoPostal\": \"78380\",\r\n  \"numeroExterior\": \"S/N\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportivos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportivos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener deportivos",
+			"id": "0773017d-79d4-4dfe-a748-b10395130ac9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/deportivos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportivos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un deportivo",
+			"id": "46c049ce-964f-47f3-b2c8-763d62913a72",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/deportivos/:deportivoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportivos",
+						":deportivoId"
+					],
+					"variable": [
+						{
+							"key": "deportivoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar deportivo",
+			"id": "4e622848-a297-40ea-829f-1b5aea6ec645",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Deportivo Satélite\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/deportivos/:deportivoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportivos",
+						":deportivoId"
+					],
+					"variable": [
+						{
+							"key": "deportivoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar deportivo",
+			"id": "9ed52733-1efd-46de-a5cb-42a2c33cdae2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/deportivos/:deportivoId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"deportivos",
+						":deportivoId"
+					],
+					"variable": [
+						{
+							"key": "deportivoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "bbd82714-9de6-4386-81dd-23465553faaf",
+		"name": "Estados",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-bbd82714-9de6-4386-81dd-23465553faaf"
+	},
+	"item": [
+		{
+			"name": "Municipios",
+			"item": [
+				{
+					"name": "Registrar municipio de estado",
+					"id": "3c6fe156-5c20-4c2c-bcde-df7dd51103ca",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estados/:estadoId/municipios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estados",
+								":estadoId",
+								"municipios"
+							],
+							"variable": [
+								{
+									"key": "estadoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener municipios de estado",
+					"id": "0145c527-6c0c-4f92-b4d9-45615e3aaaf8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/estados/:estadoId/municipios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"estados",
+								":estadoId",
+								"municipios"
+							],
+							"variable": [
+								{
+									"key": "estadoId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "903031c1-3be5-4b35-b5f9-c249db2a2292"
+		},
+		{
+			"name": "Registrar estado",
+			"id": "a930a2c5-c1cb-4ab6-87b5-79e00be58c64",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estados",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener deportivos de un estado",
+			"id": "10a42bd1-35ed-49fe-9044-61e6528b86fc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estados/:estadoId/deportivos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estados",
+						":estadoId",
+						"deportivos"
+					],
+					"variable": [
+						{
+							"key": "estadoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener canchas de un estado",
+			"id": "f4cb1a19-addd-42e1-88ff-5104b0dd36e7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estados/:estadoId/canchas",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estados",
+						":estadoId",
+						"canchas"
+					],
+					"variable": [
+						{
+							"key": "estadoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener eventos deportivos de un estado",
+			"id": "1e1985f2-ae6b-488b-867a-993dd674f025",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estados/:estadoId/eventos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estados",
+						":estadoId",
+						"eventos"
+					],
+					"variable": [
+						{
+							"key": "estadoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener partidos de un estado",
+			"id": "eba6efc0-ca43-45c3-9ad1-f4921474ce07",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estados/:estadoId/partidos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estados",
+						":estadoId",
+						"partidos"
+					],
+					"variable": [
+						{
+							"key": "estadoId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

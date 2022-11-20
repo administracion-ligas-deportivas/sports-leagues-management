@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "d005d18b-73db-47de-8863-f7007c56889b",
+		"name": "Tipo de estadísticas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-d005d18b-73db-47de-8863-f7007c56889b"
+	},
+	"item": [
+		{
+			"name": "Obtener tipo de estadísitca",
+			"id": "b219421b-3aa9-4fe6-b6e6-5e4d564e06c5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/estadisticas/:estadisticaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estadisticas",
+						":estadisticaId"
+					],
+					"variable": [
+						{
+							"key": "estadisticaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear tipo de estadística",
+			"id": "a5f68a21-3958-4c2d-9b99-eee1073fbd27",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"puntos\",\r\n  \"descripcion\": \"Anotaciones en un partido de Fútbol.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/estadisticas",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estadisticas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar tipo de estadística",
+			"id": "4df35a16-34f1-4b23-9e3b-b2728c403278",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/estadisticas/:estadisticaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estadisticas",
+						":estadisticaId"
+					],
+					"variable": [
+						{
+							"key": "estadisticaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar tipo de estadística",
+			"id": "78d1072f-86db-43e0-bd70-ee49bd2ceb7c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"puntos\",\r\n  \"descripcion\": \"Anotaciones en un partido\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/estadisticas/:estadisticaId",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"estadisticas",
+						":estadisticaId"
+					],
+					"variable": [
+						{
+							"key": "estadisticaId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

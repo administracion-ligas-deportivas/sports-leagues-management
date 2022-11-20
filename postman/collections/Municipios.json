@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "72026316-d079-4002-aa1f-52b7c1741423",
+		"name": "Municipios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "24392898-72026316-d079-4002-aa1f-52b7c1741423"
+	},
+	"item": [
+		{
+			"name": "Obtener deportivos de un municipio",
+			"id": "e34258d5-97a9-4362-8cb4-2761e4b464a5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/municipios/:municipioId/deportivos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"municipios",
+						":municipioId",
+						"deportivos"
+					],
+					"variable": [
+						{
+							"key": "municipioId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener canchas de un municipio",
+			"id": "ed674c4e-c81e-4f3b-906c-f3159e59ad56",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/municipios/:municipioId/canchas",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"municipios",
+						":municipioId",
+						"canchas"
+					],
+					"variable": [
+						{
+							"key": "municipioId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener eventos deportivos de un municipio",
+			"id": "5f9d8a7a-0f16-497f-8fa9-d1cec23ba0fc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/municipios/:municipioId/eventos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"municipios",
+						":municipioId",
+						"eventos"
+					],
+					"variable": [
+						{
+							"key": "municipioId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener partidos de un municipio",
+			"id": "94697c77-0a2c-43bf-8cbe-316c99db1315",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/municipios/:municipioId/partidos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"municipios",
+						":municipioId",
+						"partidos"
+					],
+					"variable": [
+						{
+							"key": "municipioId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
