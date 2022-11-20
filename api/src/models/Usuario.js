@@ -30,10 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       tiempoRegistro: {
         type: DataTypes.DATE,
       },
-
-      municipioId: {
-        type: DataTypes.INTEGER,
-      },
     },
     {
       paranoid: true,
