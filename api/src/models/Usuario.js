@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
     Usuario.hasMany(models.EstadisticaJugadorPartido, {
       foreignKey: "jugador_id",
     });
-    Usuario.hasMany(models.migracion_equipo_evento_deportivo, {
+    Usuario.hasMany(models.MigracionEquipoEventoDeportivo, {
       foreignKey: "organizador_id",
     });
     Usuario.hasMany(models.Equipo, {

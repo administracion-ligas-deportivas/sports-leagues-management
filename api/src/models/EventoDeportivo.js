@@ -36,10 +36,10 @@ module.exports = (sequelize, DataTypes) => {
     EventoDeportivo.hasMany(models.EquipoEventoDeportivo);
     EventoDeportivo.hasMany(models.pago_evento_deportivo);
     EventoDeportivo.hasMany(models.partido);
-    EventoDeportivo.hasMany(models.migracion_equipo_evento_deportivo, {
+    EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
       foreignKey: "evento_deportivo_origen_id",
     });
-    EventoDeportivo.hasMany(models.migracion_equipo_evento_deportivo, {
+    EventoDeportivo.hasMany(models.MigracionEquipoEventoDeportivo, {
       foreignKey: "evento_deportivo_destino_id",
     });
     EventoDeportivo.belongsTo(models.FormatoEventoDeportivo);

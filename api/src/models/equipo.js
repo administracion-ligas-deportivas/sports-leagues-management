@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     Equipo.hasMany(models.EquipoEventoDeportivo);
     Equipo.hasMany(models.EquipoPartido);
     Equipo.hasMany(models.pago_evento_deportivo);
-    Equipo.hasMany(models.migracion_equipo_evento_deportivo);
+    Equipo.hasMany(models.MigracionEquipoEventoDeportivo);
     Equipo.belongsToMany(models.Usuario, {
       through: models.JugadorEquipo,
     });
