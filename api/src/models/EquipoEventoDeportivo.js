@@ -1,7 +1,9 @@
-module.exports = (sequelize /* DataTypes */) => {
-  const EquipoEventoDeportivo = sequelize.define("EquipoEventoDeportivo", {
+module.exports = (sequelize /* , DataTypes */) => {
+  const EquipoEventoDeportivo = sequelize.define(
+    "EquipoEventoDeportivo" /* , {
     paranoid: true,
-  });
+  } */
+  );
 
   //Las relaciones se generan de esta manera
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});

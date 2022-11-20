@@ -1,7 +1,9 @@
 module.exports = (sequelize /* DataTypes */) => {
-  const EstadisticaDeporte = sequelize.define("EstadisticaDeporte", {
+  const EstadisticaDeporte = sequelize.define(
+    "EstadisticaDeporte" /* , {
     paranoid: true,
-  });
+  } */
+  );
 
   EstadisticaDeporte.associate = (models) => {
     EstadisticaDeporte.belongsTo(models.Deporte);

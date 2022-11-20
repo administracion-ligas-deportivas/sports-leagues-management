@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   //Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   Cancha.associate = (models) => {
-    Cancha.belongsTo(models.deportivo);
+    Cancha.belongsTo(models.Deportivo);
     Cancha.hasMany(models.Partido);
   };
   return Cancha;
