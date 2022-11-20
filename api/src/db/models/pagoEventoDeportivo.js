@@ -1,3 +1,5 @@
+const { formaPago } = require("../../constants/pagos");
+
 module.exports = (sequelize, DataTypes) => {
   const pagoEventoDeportivo = sequelize.define(
     "pagoEventoDeportivo",
@@ -15,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       formaPago: {
-        type: DataTypes.ENUM("fisico", "digital"),
+        type: DataTypes.ENUM(formaPago.fisico, formaPago.digital),
         allowNull: false,
       },
       notas: {
