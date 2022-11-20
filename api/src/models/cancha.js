@@ -2,10 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const Cancha = sequelize.define(
     "Cancha",
     {
-      deportivoId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       numero: {
         type: DataTypes.INTEGER,
         allowNull: false,
