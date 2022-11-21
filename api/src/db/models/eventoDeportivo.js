@@ -48,8 +48,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     eventoDeportivo.belongsToMany(models.usuario, {
-      through: models.EstadisticoEventoDeportivo,
-      foreignKey: { name: "eventoDeportivoId", allowNull: false },
+      through: models.estadisticoEventoDeportivo,
+      foreignKey: { allowNull: false },
     });
     eventoDeportivo.belongsToMany(models.equipo, {
       through: models.equipoEventoDeportivo,

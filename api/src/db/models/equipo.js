@@ -15,14 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  // Pendiente agregar relacion a tabla partido
   equipo.associate = (models) => {
-    /* equipo.hasMany(models.jugadorEquipo, {
-      foreignKey: "equipo_id",
-    }); */
     equipo.belongsTo(models.usuario, {
       foreignKey: {
-        name: "encargado_equipo_id",
+        name: "encargadoEquipoId",
         allowNull: false,
       },
     });

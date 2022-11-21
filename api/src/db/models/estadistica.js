@@ -15,8 +15,11 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   estadistica.associate = (models) => {
+    estadistica.belongsToMany(models.deporte, {
+      through: models.estadisticaDeporte,
+    });
+
     estadistica.hasMany(models.estadisticaJugadorPartido);
-    estadistica.hasMany(models.estadisticaDeporte);
   };
   return estadistica;
 };

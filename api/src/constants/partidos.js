@@ -1,6 +1,6 @@
 const LOCAL_VISITANTE = {
-  LOCAL: "LOCAL",
-  VISITANTE: "VISITANTE",
+  LOCAL: "local",
+  VISITANTE: "visitante",
 };
 
 module.exports = {

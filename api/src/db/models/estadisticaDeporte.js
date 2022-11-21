@@ -7,17 +7,5 @@ module.exports = (sequelize /* DataTypes */) => {
     }
   );
 
-  estadisticaDeporte.associate = (models) => {
-    estadisticaDeporte.belongsTo(models.deporte, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-    estadisticaDeporte.belongsTo(models.estadistica, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
   return estadisticaDeporte;
 };

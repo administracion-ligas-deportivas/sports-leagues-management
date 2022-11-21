@@ -39,20 +39,23 @@ module.exports = (sequelize, DataTypes) => {
     usuario.belongsTo(models.rol);
 
     usuario.belongsToMany(models.eventoDeportivo, {
-      through: "estadistico_evento_deportivo",
-      foreignKey: "estadistico_id",
+      through: models.estadisticoEventoDeportivo,
+      foreignKey: {
+        name: "estadisticoId",
+        foreignKey: {
+          allowNull: false,
+        },
+      },
     });
     usuario.belongsToMany(models.equipo, {
       through: models.jugadorEquipo,
     });
 
     usuario.hasOne(models.domicilioUsuario);
-    usuario.hasOne(models.eventoDeportivo, {
-      foreignKey: "organizador_id",
-    });
 
+    usuario.hasMany(models.eventoDeportivo);
     usuario.hasMany(models.partido, {
-      foreignKey: "estadistico_id",
+      foreignKey: "estadisticoId",
     });
     usuario.hasMany(models.formatoEventoDeportivo);
     usuario.hasMany(models.pagoEventoDeportivo);
