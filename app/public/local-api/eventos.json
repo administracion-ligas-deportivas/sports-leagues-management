@@ -1,0 +1,41 @@
+{
+  "total": 3,
+  "eventos": [
+    {
+      "id": 1,
+      "organizador_id": 3,
+      "formato_evento_deportivo_id": 2,
+      "nombre": "Copa de España",
+      "fecha_inicio": "2019-01-01",
+      "fecha_finalización": "2019-01-01",
+      "descripcion_pagos": "Pago de inscripción",
+      "createdAt": "2019-01-01T00:00:00.000Z",
+      "updatedAt": "2019-01-01T00:00:00.000Z",
+      "deletedAt": null
+    },
+    {
+      "id": 2,
+      "organizador_id": 1,
+      "formato_evento_deportivo_id": 3,
+      "nombre": "UEFA Champions League",
+      "fecha_inicio": "2019-01-01",
+      "fecha_finalización": "2019-01-01",
+      "descripcion_pagos": "Pago de inscripción",
+      "createdAt": "2019-01-01T00:00:00.000Z",
+      "updatedAt": "2019-01-01T00:00:00.000Z",
+      "deletedAt": null
+    },
+    {
+      "id": 3,
+      "organizador_id": 2,
+      "formato_evento_deportivo_id": 1,
+      "nombre": "Tour de Francia",
+      "fecha_inicio": "2019-01-01",
+      "fecha_finalización": "2019-01-01",
+      "descripcion_pagos": "Pago de inscripción",
+      "createdAt": "2019-01-01T00:00:00.000Z",
+      "updatedAt": "2019-01-01T00:00:00.000Z",
+      "deletedAt": null
+    }
+  ]
+}

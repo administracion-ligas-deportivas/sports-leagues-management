@@ -1,11 +1,11 @@
-import { authService } from "@/services/auth";
+import { authService, VERIFY_URL } from "@/services/auth";
 import useSWR from "swr";
 
 // https://swr.vercel.app/docs/getting-started#make-it-reusable
 export function useUser() {
   // https://swr.vercel.app/docs/conditional-fetching#conditional
   const { data, error, mutate } = useSWR(
-    "/api/users/verify",
+    VERIFY_URL,
     authService.authenticateLoggedUser
   );
 

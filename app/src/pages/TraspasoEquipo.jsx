@@ -6,48 +6,13 @@ import {
   Autocomplete,
   TextField,
 } from "@mui/material";
-//import {AuthContext} from '../helpers/AuthContext';
 import style from "@/styles/TraspasoEquipo.module.css";
+import { useEquipos } from "@/hooks/useEquipos";
+import { useEventos } from "@/hooks/useEventos";
 
 export default function TraspasoEquipo() {
-  const equipos = [
-    { label: "Equipo A", id: 1 },
-    { label: "Equipo B", id: 2 },
-    { label: "Equipo C", id: 3 },
-    { label: "Equipo D", id: 4 },
-    { label: "Equipo E", id: 5 },
-    { label: "Equipo F", id: 6 },
-    { label: "Equipo G", id: 7 },
-    { label: "Equipo H", id: 8 },
-    { label: "Equipo I", id: 9 },
-    { label: "Equipo J", id: 10 },
-  ];
-
-  const eventoActual = [
-    { label: "Evento A", id: 1 },
-    { label: "Evento B", id: 2 },
-    { label: "Evento C", id: 3 },
-    { label: "Evento D", id: 4 },
-    { label: "Evento E", id: 5 },
-    { label: "Evento F", id: 6 },
-    { label: "Evento G", id: 7 },
-    { label: "Evento H", id: 8 },
-    { label: "Evento I", id: 9 },
-    { label: "Evento J", id: 10 },
-  ];
-
-  const eventoNuevo = [
-    { label: "Evento A", id: 1 },
-    { label: "Evento B", id: 2 },
-    { label: "Evento C", id: 3 },
-    { label: "Evento D", id: 4 },
-    { label: "Evento E", id: 5 },
-    { label: "Evento F", id: 6 },
-    { label: "Evento G", id: 7 },
-    { label: "Evento H", id: 8 },
-    { label: "Evento I", id: 9 },
-    { label: "Evento J", id: 10 },
-  ];
+  const { equipos } = useEquipos();
+  const { eventos } = useEventos();
 
   return (
     <>
@@ -64,9 +29,7 @@ export default function TraspasoEquipo() {
               <Autocomplete
                 fullWidth
                 id="buscar-equipo"
-                //sx={{ width: 1000 }}
-                // options={usuarios.map((option) => option.title)}
-                options={equipos}
+                options={equipos.map((option) => option.nombre)}
                 renderInput={(params) => (
                   <TextField {...params} label="Buscar equipo" />
                 )}
@@ -78,9 +41,7 @@ export default function TraspasoEquipo() {
               <Autocomplete
                 fullWidth
                 id="evento-actual"
-                //sx={{ width: 1000 }}
-                // options={usuarios.map((option) => option.title)}
-                options={eventoActual}
+                options={eventos.map((option) => option.nombre)}
                 renderInput={(params) => (
                   <TextField {...params} label="Evento actual" />
                 )}
@@ -90,9 +51,7 @@ export default function TraspasoEquipo() {
               <Autocomplete
                 fullWidth
                 id="nuevo-evento"
-                //sx={{ width: 1000 }}
-                // options={usuarios.map((option) => option.title)}
-                options={eventoNuevo}
+                options={eventos.map((option) => option.nombre)}
                 renderInput={(params) => (
                   <TextField {...params} label="Nuevo evento" />
                 )}

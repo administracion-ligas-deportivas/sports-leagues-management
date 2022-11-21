@@ -6,30 +6,22 @@ import { TextField } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 /* ----------------------------------- MUI ---------------------------------- */
+import { useJugadores } from "@/hooks/useJugadores";
 
 export default function GestionEquipoJugador() {
+  const { jugadores, deleteJugador } = useJugadores();
+
   const columns = [
     {
-      field: "firstName",
+      field: "nombre",
       width: 325,
       headerName: "Nombre(s)",
     },
     {
-      field: "lastName",
+      field: "apellido",
       width: 325,
       headerName: "Apellidos",
     },
-  ];
-
-  const rows = [
-    { id: 1, lastName: "Rodríguez", firstName: "Ximena" },
-    { id: 2, lastName: "Rodríguez", firstName: "Paola" },
-    { id: 3, lastName: "Rodríguez", firstName: "Patricia" },
-    { id: 4, lastName: "Rodríguez", firstName: "José" },
-    { id: 5, lastName: "Rodríguez", firstName: "Ximena" },
-    { id: 6, lastName: "Rodríguez", firstName: "Paola" },
-    { id: 7, lastName: "Rodríguez", firstName: "Patricia" },
-    { id: 8, lastName: "Rodríguez", firstName: "José" },
   ];
 
   return (
@@ -89,7 +81,7 @@ export default function GestionEquipoJugador() {
               Miembros del equipo:
             </Typography>
             <DataGrid
-              rows={rows}
+              rows={jugadores}
               columns={columns}
               pageSize={4}
               rowsPerPageOptions={[4]}

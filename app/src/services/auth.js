@@ -1,8 +1,9 @@
 import { ACCESS_TOKEN_STRING } from "@/constants/auth";
+import { usuariosService } from "./usuarios";
 
 const baseUrl = "/api";
 const LOGIN_URL = `${baseUrl}/login`;
-const VERIFY_URL = `${baseUrl}/users/verify`;
+export const VERIFY_URL = `${usuariosService.baseUrl}/verify`;
 
 const getUserFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem(ACCESS_TOKEN_STRING));

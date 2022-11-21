@@ -20,5 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     equipoPartido.belongsTo(models.partido);
     equipoPartido.belongsTo(models.equipo);
   };
+  
   return equipoPartido;
 };

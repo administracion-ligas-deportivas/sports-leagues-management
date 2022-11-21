@@ -14,9 +14,13 @@ export const fetchPosts = async () => {
 };
 
 export const fetchPostById = async (id) => {
-  const response = await fetch(`${baseUrl}/${id}`);
-  const data = await response.json();
+  const response = await fetch(`${baseUrl}/${id}`, {
+    headers: {
+      Authorization: authService.getBearerToken(),
+    },
+  });
 
+  const data = await response.json();
   return data;
 };
 

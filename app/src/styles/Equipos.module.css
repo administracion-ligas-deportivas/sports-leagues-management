@@ -1,7 +1,30 @@
+.interlineado {
+    line-height: 1%;
+    margin-bottom: 3%;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centrar table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.centrar th, .centrar td{
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+.centrar tr:nth-child(even){background-color: #f2f2f2;}
+.centrar .info:hover {background-color: #ddd;}
+.centrar td .centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width: 1025px) {
-    .container{
-        /* padding: 20px; */
-    }
 
     .container h1 {
         font-size: 3em;

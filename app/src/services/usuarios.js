@@ -1,4 +1,4 @@
-const baseUrl = "/api/users";
+const baseUrl = "/api/usuarios";
 
 export const fetchUser = async (id) => {
   const response = await fetch(`${baseUrl}/${id}`);
@@ -18,4 +18,8 @@ export const createUser = async (user) => {
 
   const data = await response.json();
   return data;
+};
+
+export const usuariosService = {
+  baseUrl,
 };
