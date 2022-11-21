@@ -52,7 +52,7 @@ middleware devolverá un mensaje de error en formato JSON.
 app.use(unknownEndpoint);
 app.use(errorHandler);
 
-const server = db.sequelize.sync({ force: true }).then(() => {
+const server = db.sequelize.sync({ alter: true }).then(() => {
   return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
