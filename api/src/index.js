@@ -20,6 +20,7 @@ const {
   usersRouter,
   likesRouter,
   loginRouter,
+  estadosRouter,
 } = require("./routes");
 
 faker.setLocale("es_MX");
@@ -35,6 +36,7 @@ app.use("/api/comentarios", comentariosRouter);
 app.use("/api/usuarios", usersRouter);
 app.use("/api/likes", likesRouter);
 app.use("/api/login", loginRouter);
+app.use("/api/estados", estadosRouter);
 
 /* 
 https://fullstackopen.com/es/part3/node_js_y_express#middleware
@@ -52,7 +54,7 @@ middleware devolverá un mensaje de error en formato JSON.
 app.use(unknownEndpoint);
 app.use(errorHandler);
 
-const server = db.sequelize.sync({ alter: true }).then(() => {
+const server = db.sequelize.sync().then(() => {
   return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });

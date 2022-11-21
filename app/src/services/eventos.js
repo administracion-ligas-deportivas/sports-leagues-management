@@ -1,4 +1,4 @@
-const baseUrl = '/local-api';
+const baseUrl = "/local-api";
 
 const fetchEventos = async () => {
   const response = await fetch(`${baseUrl}/eventos.json`);
