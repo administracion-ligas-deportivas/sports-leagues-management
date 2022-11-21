@@ -34,10 +34,10 @@ function Signup() {
       });
       return;
     }
-    console.log(
-      "🚀 ~ file: Register.jsx ~ line 44 ~ registerUser ~ userData",
-      userData
-    );
+    // console.log(
+    //   "🚀 ~ file: Register.jsx ~ line 44 ~ registerUser ~ userData",
+    //   userData
+    // );
 
     createUser(userData)
       .then(() => {

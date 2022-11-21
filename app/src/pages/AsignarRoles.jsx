@@ -11,22 +11,11 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-//import {AuthContext} from '../helpers/AuthContext';
 import styles from "@/styles/AsignarRoles.module.css";
+import { useJugadores } from "@/hooks/useJugadores";
 
 export default function AsignarRoles() {
-  const usuarios = [
-    { label: "Jesús Jiménez", id: 1 },
-    { label: "Juan Pérez", id: 2 },
-    { label: "Pedro García", id: 3 },
-    { label: "Luisa López", id: 4 },
-    { label: "María Martínez", id: 5 },
-    { label: "Ana Sánchez", id: 6 },
-    { label: "Javier Rodríguez", id: 7 },
-    { label: "Sara Fernández", id: 8 },
-    { label: "Miguel Hernández", id: 9 },
-    { label: "Laura Gómez", id: 10 },
-  ];
+  const { jugadores, deleteJugador } = useJugadores();
 
   return (
     <>
@@ -43,38 +32,32 @@ export default function AsignarRoles() {
             <Autocomplete
               id="buscar-usuario"
               sx={{ width: 700 }}
-              // options={usuarios.map((option) => option.title)}
-              options={usuarios}
+              options={jugadores.map((option) => option.nombre +' '+ option.apellido)}
               renderInput={(params) => (
                 <TextField {...params} label="Buscar Usuario" />
               )}
             />
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+              <FormLabel id="demo-radio-buttons-group-label">Rol</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="female"
                 name="radio-buttons-group"
               >
                 <FormControlLabel
-                  value="jugador"
+                  // value="jugador"
                   control={<Radio />}
-                  label="Jugador"
+                  label="Administrador"
                 />
                 <FormControlLabel
-                  value="organizador"
+                  // value="organizador"
                   control={<Radio />}
                   label="Organizador de Evento"
                 />
                 <FormControlLabel
-                  value="capitan"
+                  // value="capitan"
                   control={<Radio />}
-                  label="Capitán"
-                />
-                <FormControlLabel
-                  value="estadistico"
-                  control={<Radio />}
-                  label="Estadístico"
+                  label="Jugador"
                 />
               </RadioGroup>
             </FormControl>

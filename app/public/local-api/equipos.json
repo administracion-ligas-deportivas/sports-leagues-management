@@ -1,0 +1,50 @@
+{
+  "total": 5,
+  "equipos": [
+    {
+      "id": 1,
+      "partido_id": 11,
+      "nombre": "Equipo A",
+      "deporte": "Futbol",
+      "created_at": "2019-10-10 00:00:00",
+      "updated_at": "2019-10-10 00:00:00",
+      "deleted_at": null
+    },
+    {
+      "id": 2,
+      "partido_id": 22,
+      "nombre": "Equipo B",
+      "deporte": "Futbol",
+      "created_at": "2019-10-10 00:00:00",
+      "updated_at": "2019-10-10 00:00:00",
+      "deleted_at": null
+    },
+    {
+      "id": 3,
+      "partido_id": 33,
+      "nombre": "Equipo C",
+      "deporte": "Futbol",
+      "created_at": "2019-10-10 00:00:00",
+      "updated_at": "2019-10-10 00:00:00",
+      "deleted_at": null
+    },
+    {
+      "id": 4,
+      "partido_id": 44,
+      "nombre": "Equipo D",
+      "deporte": "Futbol",
+      "created_at": "2019-10-10 00:00:00",
+      "updated_at": "2019-10-10 00:00:00",
+      "deleted_at": null
+    },
+    {
+      "id": 5,
+      "partido_id": 55,
+      "nombre": "Equipo E",
+      "deporte": "Futbol",
+      "created_at": "2019-10-10 00:00:00",
+      "updated_at": "2019-10-10 00:00:00",
+      "deleted_at": null
+    }
+  ]
+}

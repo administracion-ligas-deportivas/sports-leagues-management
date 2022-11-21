@@ -31,10 +31,10 @@ const navElements = [
     to: "/eventos-deportivos",
     text: "Eventos deportivos",
   },
-  {
-    to: "/calendario",
-    text: "Calendario",
-  },
+  // {
+  //   to: "/calendario",
+  //   text: "Calendario",
+  // },
   {
     to: "/estadisticas-personales",
     text: "Mis estadísticas",
