@@ -53,14 +53,28 @@ module.exports = (sequelize, DataTypes) => {
 
     usuario.hasOne(models.domicilioUsuario);
 
-    usuario.hasMany(models.eventoDeportivo);
-    usuario.hasMany(models.partido);
+    usuario.hasMany(models.eventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.partido, {
+      foreignKey: "estadisticoId",
+    });
 
-    usuario.hasMany(models.formatoEventoDeportivo);
-    usuario.hasMany(models.pagoEventoDeportivo);
-    usuario.hasMany(models.estadisticaJugadorPartido);
-    usuario.hasMany(models.migracionEquipoEventoDeportivo);
-    usuario.hasMany(models.equipo);
+    usuario.hasMany(models.formatoEventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.pagoEventoDeportivo, {
+      foreignKey: "encargadoEquipoId",
+    });
+    usuario.hasMany(models.estadisticaJugadorPartido, {
+      foreignKey: "jugadorId",
+    });
+    usuario.hasMany(models.migracionEquipoEventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.equipo, {
+      foreignKey: "encargadoEquipoId",
+    });
     usuario.hasMany(models.like, { onDelete: "cascade" });
   };
 
