@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     "pagoEventoDeportivo",
     {
       monto: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
       },
       concepto: {

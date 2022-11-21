@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       notas: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       duracionPartido: {
@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       efectuado: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      cancelado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
         allowNull: false,
       },
     },

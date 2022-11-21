@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       descripcion: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {}
@@ -22,5 +22,6 @@ module.exports = (sequelize, DataTypes) => {
     deporte.hasMany(models.formatoEventoDeportivo);
     deporte.hasMany(models.equipo);
   };
+
   return deporte;
 };
