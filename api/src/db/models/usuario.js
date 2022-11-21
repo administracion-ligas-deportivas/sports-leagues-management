@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       fechaNacimiento: {
         type: DataTypes.DATEONLY,
         allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
       correo: {
         type: DataTypes.STRING,

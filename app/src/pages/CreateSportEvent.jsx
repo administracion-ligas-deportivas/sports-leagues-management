@@ -35,12 +35,12 @@ export default function CrearEventoDeportivo() {
 
   const sports = [
     {
-      value: "beisbol",
-      label: "Béisbol",
+      value: "basketball",
+      label: "Basketball",
     },
     {
-      value: "futbol",
-      label: "Fútbol",
+      value: "beisbol",
+      label: "Béisbol",
     },
     {
       value: "softball",
@@ -65,8 +65,8 @@ export default function CrearEventoDeportivo() {
   }
 
   const rows = [
-    createData("Equipo alfa buena maravilla", "djkdhjdsjk"),
-    createData("Onda dinamita escuadron lobo", "kshjshks"),
+    createData("Equipo alfa buena maravilla", "correo-1@correo.com"),
+    createData("Onda dinamita escuadron lobo", "capitan@correo.com"),
   ];
   /*--------------Información para llenar la tabla----------------*/
 

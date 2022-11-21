@@ -94,7 +94,7 @@ export default function Home() {
           <h2> Eventos deportivos </h2>
           <Button
             variant="contained"
-            onClick={() => navigate("/gestion-evento-deportivo")}
+            onClick={() => navigate("/crear-evento-deportivo")}
             sx={{ height: 30, marginTop: 2 }}
           >
             Crear evento
