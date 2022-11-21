@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
     "migracionEquipoEventoDeportivo",
     {
       fechaPeticion: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       fechaVeredicto: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: true,
       },
       autorizado: {
