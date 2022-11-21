@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const municipio = sequelize.define("municipio", {
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
   });

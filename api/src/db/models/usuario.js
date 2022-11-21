@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       fechaNacimiento: {
         type: DataTypes.DATEONLY,
+        allowNull: false,
       },
       correo: {
         type: DataTypes.STRING,
@@ -23,13 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       telefono: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
 
       tiempoRegistro: {
         type: DataTypes.DATE,
+        allowNull: false,
       },
     },
     {}

@@ -15,5 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       through: models.permisoRol,
     });
   };
+
   return permiso;
 };
