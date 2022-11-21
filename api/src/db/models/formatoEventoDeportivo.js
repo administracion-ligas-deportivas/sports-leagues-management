@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       maximoEquipos: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
@@ -21,11 +21,24 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   formatoEventoDeportivo.associate = (models) => {
-    formatoEventoDeportivo.belongsTo(models.deporte);
-    formatoEventoDeportivo.hasMany(models.eventoDeportivo);
+    formatoEventoDeportivo.belongsTo(models.deporte, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    formatoEventoDeportivo.belongsTo(models.tipoEventoDeportivo, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+    formatoEventoDeportivo.belongsTo(models.usuario, {
+      foreignKey: {
+        name: "organizadorId",
+        allowNull: false,
+      },
+    });
 
-    formatoEventoDeportivo.belongsTo(models.tipoEventoDeportivo);
-    formatoEventoDeportivo.belongsTo(models.usuario);
+    formatoEventoDeportivo.hasMany(models.eventoDeportivo);
   };
 
   return formatoEventoDeportivo;

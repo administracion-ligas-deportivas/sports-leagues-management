@@ -1,6 +1,6 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   const eventoDeportivo = sequelize.define(
-    "EstadisticoEventoDeportivo",
+    "estadisticoEventoDeportivo",
     {},
     {
       tableName: "estadistico_evento_deportivo",

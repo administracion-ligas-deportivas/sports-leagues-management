@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       codigoPostal: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(5),
         allowNull: false,
       },
       numeroExterior: {
@@ -24,14 +24,17 @@ module.exports = (sequelize, DataTypes) => {
       },
       numeroInterior: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {}
   );
 
   deportivo.associate = (models) => {
-    deportivo.belongsTo(models.municipio);
+    deportivo.belongsTo(models.municipio, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
     deportivo.hasMany(models.cancha);
   };
   return deportivo;

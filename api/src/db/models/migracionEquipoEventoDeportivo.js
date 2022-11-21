@@ -2,29 +2,18 @@ module.exports = (sequelize, DataTypes) => {
   const migracionEquipoEventoDeportivo = sequelize.define(
     "migracionEquipoEventoDeportivo",
     {
-      eventoDeportivoOrigenId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      eventoDeportivoDestinoId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      organizadorId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       fechaPeticion: {
         type: DataTypes.DATE,
-        allowNull: true,
+        allowNull: false,
       },
       fechaVeredicto: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       autorizado: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.BOOLEAN,
+        // Si el valor es NULL, aún no ha sido autorizado ni denegado.
+        allowNull: true,
       },
     },
     {
@@ -33,15 +22,21 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   migracionEquipoEventoDeportivo.associate = (models) => {
-    migracionEquipoEventoDeportivo.belongsTo(models.equipo);
+    migracionEquipoEventoDeportivo.belongsTo(models.equipo, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+
     migracionEquipoEventoDeportivo.belongsTo(models.eventoDeportivo, {
-      foreignKey: "eventoDeportivoOrigenId",
+      foreignKey: { name: "eventoDeportivoOrigenId", allowNull: false },
     });
     migracionEquipoEventoDeportivo.belongsTo(models.eventoDeportivo, {
-      foreignKey: "eventoDeportivoDestinoId",
+      foreignKey: { name: "eventoDeportivoDestinoId", allowNull: false },
     });
+
     migracionEquipoEventoDeportivo.belongsTo(models.usuario, {
-      foreignKey: "organizadorId",
+      foreignKey: { name: "organizadorId", allowNull: false },
     });
   };
 

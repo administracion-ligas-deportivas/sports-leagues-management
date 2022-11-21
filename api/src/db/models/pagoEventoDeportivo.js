@@ -1,3 +1,5 @@
+const { FORMA_PAGO } = require("../../constants/pagos");
+
 module.exports = (sequelize, DataTypes) => {
   const pagoEventoDeportivo = sequelize.define(
     "pagoEventoDeportivo",
@@ -15,12 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       formaPago: {
-        type: DataTypes.ENUM("fisico", "digital"),
+        type: DataTypes.ENUM(FORMA_PAGO.FISICO, FORMA_PAGO.DIGITAL),
         allowNull: false,
       },
       notas: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.TEXT,
       },
     },
     {
@@ -29,10 +30,24 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   pagoEventoDeportivo.associate = (models) => {
-    pagoEventoDeportivo.belongsTo(models.usuario);
+    pagoEventoDeportivo.belongsTo(models.usuario, {
+      foreignKey: {
+        name: "encargadoEquipoId",
+        allowNull: false,
+      },
+    });
 
-    pagoEventoDeportivo.belongsTo(models.eventoDeportivo);
-    pagoEventoDeportivo.belongsTo(models.equipo);
+    pagoEventoDeportivo.belongsTo(models.eventoDeportivo, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+
+    pagoEventoDeportivo.belongsTo(models.equipo, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
   };
 
   return pagoEventoDeportivo;

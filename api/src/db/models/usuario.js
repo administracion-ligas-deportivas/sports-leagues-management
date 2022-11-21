@@ -36,31 +36,44 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   usuario.associate = (models) => {
-    usuario.hasOne(models.domicilioUsuario);
-    usuario.hasMany(models.partido, {
-      foreignKey: "estadistico_id",
-    });
     usuario.belongsTo(models.rol);
-    usuario.hasMany(models.formatoEventoDeportivo);
-    usuario.hasMany(models.pagoEventoDeportivo);
-    usuario.hasMany(models.estadisticaJugadorPartido, {
-      foreignKey: "jugador_id",
-    });
-    usuario.hasMany(models.migracionEquipoEventoDeportivo, {
-      foreignKey: "organizador_id",
-    });
-    usuario.hasMany(models.equipo, {
-      foreignKey: "encargado_equipo_id",
-    });
-    usuario.hasOne(models.eventoDeportivo, {
-      foreignKey: "organizador_id",
-    });
+
     usuario.belongsToMany(models.eventoDeportivo, {
-      through: "estadistico_evento_deportivo",
-      foreignKey: "estadistico_id",
+      through: models.estadisticoEventoDeportivo,
+      foreignKey: {
+        name: "estadisticoId",
+        foreignKey: {
+          allowNull: false,
+        },
+      },
     });
     usuario.belongsToMany(models.equipo, {
       through: models.jugadorEquipo,
+    });
+
+    usuario.hasOne(models.domicilioUsuario);
+
+    usuario.hasMany(models.eventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.partido, {
+      foreignKey: "estadisticoId",
+    });
+
+    usuario.hasMany(models.formatoEventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.pagoEventoDeportivo, {
+      foreignKey: "encargadoEquipoId",
+    });
+    usuario.hasMany(models.estadisticaJugadorPartido, {
+      foreignKey: "jugadorId",
+    });
+    usuario.hasMany(models.migracionEquipoEventoDeportivo, {
+      foreignKey: "organizadorId",
+    });
+    usuario.hasMany(models.equipo, {
+      foreignKey: "encargadoEquipoId",
     });
     usuario.hasMany(models.like, { onDelete: "cascade" });
   };
