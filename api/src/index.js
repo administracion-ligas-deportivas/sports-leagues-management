@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db/models");
+const { faker } = require("@faker-js/faker");
 const { PORT } = require("./config");
 
 const {
@@ -20,6 +21,8 @@ const {
   likesRouter,
   loginRouter,
 } = require("./routes");
+
+faker.setLocale("es_MX");
 
 app.use(cors());
 app.use(express.json());

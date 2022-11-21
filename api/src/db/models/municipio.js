@@ -1,10 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-  const municipio = sequelize.define("municipio", {
-    nombre: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
+  const municipio = sequelize.define(
+    "municipio",
+    {
+      nombre: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        unique: true,
+      },
     },
-  });
+    {
+      timestamps: false,
+    }
+  );
 
   municipio.associate = function (models) {
     municipio.belongsTo(models.estado, {

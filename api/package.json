@@ -10,7 +10,10 @@
     "format": "prettier --write . --cache",
     "format:fix": "npm run format && npm run lint:fix",
     "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore",
-    "lint:fix": "npm run lint -- --fix src"
+    "lint:fix": "npm run lint -- --fix src",
+    "seed:generate": "sequelize-cli seed:generate --name",
+    "seed:run": "sequelize-cli db:seed",
+    "seed:all": "sequelize-cli db:seed:all"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +30,7 @@
     "sequelize-cli": "6.5.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "7.6.0",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard": "17.0.0",

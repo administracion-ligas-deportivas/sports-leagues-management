@@ -1,9 +1,11 @@
+const { GENEROS } = require("../../constants/usuarios");
+
 module.exports = (sequelize, DataTypes) => {
   const usuario = sequelize.define(
     "usuario",
     {
       genero: {
-        type: DataTypes.ENUM("hombre", "mujer"),
+        type: DataTypes.ENUM(GENEROS.HOMBRE, GENEROS.MUJER),
       },
       nombre: {
         type: DataTypes.STRING,
@@ -36,13 +38,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          len: 10,
+          min: 10,
         },
-      },
-
-      tiempoRegistro: {
-        type: DataTypes.DATE,
-        allowNull: false,
       },
     },
     {}

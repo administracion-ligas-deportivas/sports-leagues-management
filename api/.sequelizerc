@@ -1,9 +1,7 @@
-const path = require("path");
-
-const { resolve } = path;
+require("dotenv").config();
+const { resolve } = require("path");
 
 const baseConfigPath = "src";
-
 const pathKeys = ["models-path", "seeders-path", "migrations-path"];
 
 const pathsArray = pathKeys.map((pathKey) => {
