@@ -4,7 +4,7 @@ const getCommentsByPostId = async (req, res) => {
   const { postId } = req.params;
 
   const comentarios = await comentario.findAll({
-    where: { AnuncioId: postId },
+    where: { anuncioId: postId },
   });
   console.log(
     "🚀 ~ file: comentarios.js ~ line 13 ~ router.get ~ comentarios",
@@ -17,8 +17,7 @@ const addPostComment = async (req, res) => {
   const { body, user } = req;
   const { nombre } = user;
 
-  const comentario = { ...body, usuario: nombre };
-  const newComment = await comentario.create(comentario);
+  const newComment = await comentario.create({ ...body, usuario: nombre });
 
   res.json(newComment);
 };

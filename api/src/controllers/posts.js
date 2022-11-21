@@ -5,7 +5,7 @@ const getPosts = async (req, res) => {
 
   const anunciosLiked = await like.findAll({
     where: {
-      UsuarioId: req.user.id,
+      usuarioId: req.user.id,
     },
   });
 

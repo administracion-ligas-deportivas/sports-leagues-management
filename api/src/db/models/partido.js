@@ -28,11 +28,19 @@ module.exports = (sequelize, DataTypes) => {
   partido.associate = (models) => {
     partido.hasMany(models.estadisticaJugadorPartido);
     partido.hasMany(models.equipoPartido);
-    partido.belongsTo(models.cancha);
+    partido.belongsTo(models.cancha, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
     partido.belongsTo(models.usuario, {
       foreignKey: "estadisticoId",
     });
-    partido.belongsTo(models.eventoDeportivo);
+    partido.belongsTo(models.eventoDeportivo, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
   };
   return partido;
 };

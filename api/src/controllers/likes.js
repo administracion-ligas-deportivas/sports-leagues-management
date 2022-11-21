@@ -6,17 +6,17 @@ const likePost = async (req, res) => {
 
   const found = await like.findOne({
     // Verifica si el usuario actual ya le dio like al post actual
-    where: { AnuncioId: PostID, UsuarioId: usuarioId },
+    where: { anuncioId: PostID, usuarioId },
   });
 
   if (!found) {
-    await like.create({ AnuncioId: PostID, UsuarioId: usuarioId });
+    await like.create({ anuncioId: PostID, usuarioId });
     res.json({ liked: true });
   } else {
     await like.destroy({
       where: {
-        AnuncioId: PostID,
-        UsuarioId: usuarioId,
+        anuncioId: PostID,
+        usuarioId,
       },
     });
     res.json({ liked: false });

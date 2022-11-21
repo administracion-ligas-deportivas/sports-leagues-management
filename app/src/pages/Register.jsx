@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { createUser } from "@/services/users";
+import { createUser } from "@/services/usuarios";
 
 import { TextField, Button, Alert } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";

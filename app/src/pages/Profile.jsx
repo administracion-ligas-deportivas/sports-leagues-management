@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchUser } from "@/services/users";
+import { fetchUser } from "@/services/usuarios";
 import { useUser } from "@/hooks/useUser";
 
 export default function EditarPerfil() {

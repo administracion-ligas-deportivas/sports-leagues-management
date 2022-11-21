@@ -20,7 +20,7 @@ export const createComentario = async (anuncioId, comentario) => {
   const response = fetch(baseUrl, {
     method: "POST",
     headers,
-    body: JSON.stringify({ comentario, AnuncioId: anuncioId }),
+    body: JSON.stringify({ comentario, anuncioId }),
   });
 
   return response.then((res) => res.json());

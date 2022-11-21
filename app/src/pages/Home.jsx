@@ -25,10 +25,10 @@ export default function Home() {
 
   useEffect(() => {
     fetchPosts().then((response) => {
-      setPosts(response.lista_anuncios);
+      setPosts(response.listaAnuncios);
       setLikedPost(
         response.liked.map((like) => {
-          return like.AnuncioId;
+          return like.anuncioId;
         })
       );
     });
@@ -39,11 +39,11 @@ export default function Home() {
       console.log({ response });
       const newPosts = posts.map((post) => {
         if (post.id === avisoID)
-          if (response.liked) return { ...post, Likes: [...post.Likes, 0] };
+          if (response.liked) return { ...post, likes: [...post.likes, 0] };
           else {
-            const auxArray = post.Likes;
+            const auxArray = post.likes;
             auxArray.pop();
-            return { ...post, Likes: auxArray };
+            return { ...post, likes: auxArray };
           }
         else return post;
       });
@@ -86,52 +86,60 @@ export default function Home() {
 
         <div className={style.flex}>
           <h2> Anuncios </h2>
-          <Button variant="contained" onClick={() => navigate("/create-advise")} sx={{height: 30, marginTop: 2,}}> Crear aviso </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate("/create-advise")}
+            sx={{ height: 30, marginTop: 2 }}
+          >
+            {" "}
+            Crear aviso{" "}
+          </Button>
         </div>
         <div className={style.containerAnuncio}>
-          {posts.map((value, key) => {
-            return (
-              <div className={style.anuncio} key={key}>
-                {value.nombre === "" ? (
-                  <h3> ANONIMO publico </h3>
-                ) : (
-                  <h3> {value.nombre} publico </h3>
-                )}
-                <div
-                  className={style.anuncioBody}
-                  onClick={() => {
-                    navigate(`/Advise/${value.id}`);
-                  }}
-                >
-                  <div className={style.anuncioText}>
-                    <p>{value.descripcion}</p>
-                  </div>
-                  <div className={style.anuncioInfo}>
-                    <p>
-                      {" "}
-                      <b> Prioridad: </b> {value.prioridad}{" "}
-                    </p>
-                    <p>
-                      {" "}
-                      <b> Autor: </b> {value.autor}{" "}
-                    </p>
-                  </div>
-                </div>
-                <div className={style.anuncioFooter}>
-                  <ThumbUpAltIcon
+          {posts &&
+            posts.map((value, key) => {
+              return (
+                <div className={style.anuncio} key={key}>
+                  {value.nombre === "" ? (
+                    <h3> ANONIMO publico </h3>
+                  ) : (
+                    <h3> {value.nombre} publico </h3>
+                  )}
+                  <div
+                    className={style.anuncioBody}
                     onClick={() => {
-                      meGusta(value.id);
+                      navigate(`/Advise/${value.id}`);
                     }}
-                    className={
-                      //Verifica si se dio like o no
-                      likedPost.includes(value.id) ? "azul" : "rojo"
-                    }
-                  />
-                  <label> {value.Likes.length}</label>
+                  >
+                    <div className={style.anuncioText}>
+                      <p>{value.descripcion}</p>
+                    </div>
+                    <div className={style.anuncioInfo}>
+                      <p>
+                        {" "}
+                        <b> Prioridad: </b> {value.prioridad}{" "}
+                      </p>
+                      <p>
+                        {" "}
+                        <b> Autor: </b> {value.autor}{" "}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={style.anuncioFooter}>
+                    <ThumbUpAltIcon
+                      onClick={() => {
+                        meGusta(value.id);
+                      }}
+                      className={
+                        //Verifica si se dio like o no
+                        likedPost.includes(value.id) ? "azul" : "rojo"
+                      }
+                    />
+                    <label> {value.likes.length}</label>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     </>
