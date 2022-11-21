@@ -13,9 +13,11 @@ import football from "/football.jpg";
 import baseball from "/baseball.jpg";
 import softball from "/softball.jpg";
 import Button from "@mui/material/Button";
+import { fetchEventosReales } from "@/services/eventos";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [eventos, setEventos] = useState([]);
   const [likedPost, setLikedPost] = useState([]);
   const navigate = useNavigate();
 
@@ -31,6 +33,10 @@ export default function Home() {
           return like.anuncioId;
         })
       );
+    });
+
+    fetchEventosReales().then((eventos) => {
+      setEventos(eventos);
     });
   }, []);
 
@@ -85,6 +91,48 @@ export default function Home() {
         </Carousel>
 
         <div className={style.flex}>
+          <h2> Eventos deportivos </h2>
+          <Button
+            variant="contained"
+            onClick={() => navigate("/gestion-evento-deportivo")}
+            sx={{ height: 30, marginTop: 2 }}
+          >
+            Crear evento
+          </Button>
+        </div>
+        <div className={style.containerAnuncio}>
+          {eventos &&
+            eventos.map((evento, key) => {
+              return (
+                <div className={style.anuncio} key={key}>
+                  <h3> {evento.nombre} </h3>
+
+                  <div
+                    className={style.anuncioBody}
+                    onClick={() => {
+                      navigate(`/eventos/${evento.id}`);
+                    }}
+                  >
+                    {/* <div className={style.anuncioText}>
+                      <p>Fecha de inicio: {new Date(evento.fechaInicio)}</p>
+                      {evento?.fechaFinalizacion && (
+                        <p>
+                          {new Date(evento.fechaFinalizacion).toLocaleString()}
+                        </p>
+                      )}
+                    </div> */}
+                    <div className={style.anuncioInfo}>
+                      <p>
+                        <b> Detalles de pagos: </b> {evento.descripcionPagos}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+
+        {/* <div className={style.flex}>
           <h2> Anuncios </h2>
           <Button
             variant="contained"
@@ -94,8 +142,8 @@ export default function Home() {
             {" "}
             Crear aviso{" "}
           </Button>
-        </div>
-        <div className={style.containerAnuncio}>
+        </div> */}
+        {/* <div className={style.containerAnuncio}>
           {posts &&
             posts.map((value, key) => {
               return (
@@ -140,7 +188,7 @@ export default function Home() {
                 </div>
               );
             })}
-        </div>
+        </div> */}
       </div>
     </>
   );
