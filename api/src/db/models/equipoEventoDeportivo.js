@@ -11,8 +11,18 @@ module.exports = (sequelize /* , DataTypes */) => {
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   equipoEventoDeportivo.associate = (models) => {
-    equipoEventoDeportivo.belongsTo(models.eventoDeportivo);
-    equipoEventoDeportivo.belongsTo(models.equipo);
+    equipoEventoDeportivo.belongsTo(models.eventoDeportivo, {
+      foreignKey: {
+        name: "eventoDeportivoId",
+        allowNull: false,
+      },
+    });
+    equipoEventoDeportivo.belongsTo(models.equipo, {
+      foreignKey: {
+        name: "equipoId",
+        allowNull: false,
+      },
+    });
   };
   return equipoEventoDeportivo;
 };

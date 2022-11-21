@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       cantidad: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
@@ -24,10 +24,21 @@ module.exports = (sequelize, DataTypes) => {
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   estadisticaJugadorPartido.associate = (models) => {
-    estadisticaJugadorPartido.belongsTo(models.partido);
-    estadisticaJugadorPartido.belongsTo(models.estadistica);
+    estadisticaJugadorPartido.belongsTo(models.partido, {
+      foreignKey: {
+        name: "partidoId",
+        allowNull: false,
+      },
+    });
+    estadisticaJugadorPartido.belongsTo(models.estadistica, {
+      foreignKey: {
+        name: "estadisticaId",
+        allowNull: false,
+      },
+    });
     estadisticaJugadorPartido.belongsTo(models.usuario, {
       foreignKey: "jugadorId",
+      allowNull: false,
     });
   };
   return estadisticaJugadorPartido;

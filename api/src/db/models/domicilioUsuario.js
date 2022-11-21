@@ -32,8 +32,18 @@ module.exports = (sequelize, DataTypes) => {
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   domicilioUsuario.associate = (models) => {
-    domicilioUsuario.belongsTo(models.municipio);
-    domicilioUsuario.belongsTo(models.usuario);
+    domicilioUsuario.belongsTo(models.municipio, {
+      foreignKey: {
+        name: "municipioId",
+        allowNull: false,
+      },
+    });
+    domicilioUsuario.belongsTo(models.usuario, {
+      foreignKey: {
+        name: "usuarioId",
+        allowNull: false,
+      },
+    });
   };
   return domicilioUsuario;
 };

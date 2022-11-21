@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       duracionPartido: {
         type: DataTypes.TIME,
-        allowNull: false,
+        allowNull: true,
       },
       efectuado: {
         type: DataTypes.INTEGER,
@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     partido.hasMany(models.equipoPartido);
     partido.belongsTo(models.cancha, {
       foreignKey: {
+        name: "canchaId",
         allowNull: false,
       },
     });
@@ -38,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     partido.belongsTo(models.eventoDeportivo, {
       foreignKey: {
+        name: "eventoDeportivoId",
         allowNull: false,
       },
     });

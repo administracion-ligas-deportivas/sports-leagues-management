@@ -31,7 +31,12 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   deportivo.associate = (models) => {
-    deportivo.belongsTo(models.municipio);
+    deportivo.belongsTo(models.municipio, {
+      foreignKey: {
+        name: "municipioId",
+        allowNull: false,
+      },
+    });
     deportivo.hasMany(models.cancha);
   };
   return deportivo;

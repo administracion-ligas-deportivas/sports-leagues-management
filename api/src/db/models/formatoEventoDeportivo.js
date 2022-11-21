@@ -21,11 +21,26 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   formatoEventoDeportivo.associate = (models) => {
-    formatoEventoDeportivo.belongsTo(models.deporte);
+    formatoEventoDeportivo.belongsTo(models.deporte, {
+      foreignKey: {
+        name: "deporteId",
+        allowNull: false,
+      },
+    });
     formatoEventoDeportivo.hasMany(models.eventoDeportivo);
 
-    formatoEventoDeportivo.belongsTo(models.tipoEventoDeportivo);
-    formatoEventoDeportivo.belongsTo(models.usuario);
+    formatoEventoDeportivo.belongsTo(models.tipoEventoDeportivo, {
+      foreignKey: {
+        name: "tipoEventoDeportivoId",
+        allowNull: false,
+      },
+    });
+    formatoEventoDeportivo.belongsTo(models.usuario, {
+      foreignKey: {
+        name: "usuarioId",
+        allowNull: false,
+      },
+    });
   };
 
   return formatoEventoDeportivo;
