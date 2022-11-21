@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       numeroExterior: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       numeroInterior: {
         type: DataTypes.STRING,

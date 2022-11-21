@@ -22,6 +22,7 @@ const {
   loginRouter,
   estadosRouter,
   deportesRouter,
+  deportivosRouter,
 } = require("./routes");
 
 faker.setLocale("es_MX");
@@ -39,6 +40,7 @@ app.use("/api/likes", likesRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/estados", estadosRouter);
 app.use("/api/deportes", deportesRouter);
+app.use("/api/deportivos", deportivosRouter);
 
 /* 
 https://fullstackopen.com/es/part3/node_js_y_express#middleware

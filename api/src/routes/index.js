@@ -5,6 +5,7 @@ const { postsRouter } = require("./posts");
 const { usersRouter } = require("./usuarios");
 const { estadosRouter } = require("./estados");
 const { deportesRouter } = require("./deportes");
+const { deportivosRouter } = require("./deportivos");
 
 module.exports = {
   comentariosRouter,
@@ -14,4 +15,5 @@ module.exports = {
   usersRouter,
   estadosRouter,
   deportesRouter,
+  deportivosRouter,
 };

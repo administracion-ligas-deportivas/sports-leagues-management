@@ -46,11 +46,6 @@ const registrarEstados = async (req, res) => {
             nombre: municipio,
           }));
 
-          console.log(
-            "🚀 ~ file: estados.js ~ line 22 ~ municipiosToObj ~ municipiosToObj",
-            { estadoActual, municipiosToObj }
-          );
-
           return estado.create(
             {
               nombre: estadoActual,
