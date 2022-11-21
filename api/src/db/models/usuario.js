@@ -54,15 +54,12 @@ module.exports = (sequelize, DataTypes) => {
     usuario.hasOne(models.domicilioUsuario);
 
     usuario.hasMany(models.eventoDeportivo);
-    usuario.hasMany(models.partido, {
-      foreignKey: "estadisticoId",
-    });
+    usuario.hasMany(models.partido);
+
     usuario.hasMany(models.formatoEventoDeportivo);
     usuario.hasMany(models.pagoEventoDeportivo);
     usuario.hasMany(models.estadisticaJugadorPartido);
-    usuario.hasMany(models.migracionEquipoEventoDeportivo, {
-      foreignKey: { name: "organizadorId", allowNull: false },
-    });
+    usuario.hasMany(models.migracionEquipoEventoDeportivo);
     usuario.hasMany(models.equipo);
     usuario.hasMany(models.like, { onDelete: "cascade" });
   };

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       maximoEquipos: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

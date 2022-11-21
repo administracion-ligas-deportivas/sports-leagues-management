@@ -27,12 +27,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
     migracionEquipoEventoDeportivo.belongsTo(models.eventoDeportivo, {
       foreignKey: { name: "eventoDeportivoOrigenId", allowNull: false },
     });
     migracionEquipoEventoDeportivo.belongsTo(models.eventoDeportivo, {
       foreignKey: { name: "eventoDeportivoDestinoId", allowNull: false },
     });
+
     migracionEquipoEventoDeportivo.belongsTo(models.usuario, {
       foreignKey: { name: "organizadorId", allowNull: false },
     });

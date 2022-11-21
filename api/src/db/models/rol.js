@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   rol.associate = (models) => {
-    rol.hasMany(models.permisoRol);
+    rol.belongsToMany(models.permiso, {
+      through: models.permisoRol,
+    });
     rol.hasMany(models.usuario);
   };
   return rol;

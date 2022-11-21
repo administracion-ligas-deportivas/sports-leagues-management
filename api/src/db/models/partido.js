@@ -28,16 +28,14 @@ module.exports = (sequelize, DataTypes) => {
   partido.associate = (models) => {
     partido.belongsTo(models.cancha, {
       foreignKey: {
-        name: "canchaId",
         allowNull: false,
       },
     });
     partido.belongsTo(models.usuario, {
-      foreignKey: "estadisticoId",
+      foreignKey: { name: "estadisticoId", allowNull: false },
     });
     partido.belongsTo(models.eventoDeportivo, {
       foreignKey: {
-        name: "eventoDeportivoId",
         allowNull: false,
       },
     });

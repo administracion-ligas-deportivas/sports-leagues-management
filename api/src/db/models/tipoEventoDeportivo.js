@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       descripcion: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
     },
@@ -19,5 +19,6 @@ module.exports = (sequelize, DataTypes) => {
   sequelize.associate = (models) => {
     tipoEventoDeportivo.hasMany(models.formatoEventoDeportivo);
   };
+
   return tipoEventoDeportivo;
 };
