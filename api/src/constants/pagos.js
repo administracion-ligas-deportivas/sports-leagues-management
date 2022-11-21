@@ -1,6 +1,6 @@
-const formaPago = {
-  fisico: "fisico",
-  digital: "digital",
+const FORMA_PAGO = {
+  FISICO: "FISICO",
+  DIGITAL: "DIGITAL",
 };
 
-module.exports = { formaPago };
+module.exports = { FORMA_PAGO };

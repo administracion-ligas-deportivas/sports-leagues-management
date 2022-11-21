@@ -1,3 +1,5 @@
+const { LOCAL_VISITANTE } = require("../../constants/partidos");
+
 module.exports = (sequelize, DataTypes) => {
   const equipoPartido = sequelize.define(
     "equipoPartido",
@@ -7,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       localVisitante: {
-        type: DataTypes.ENUM("local", "visitante"),
+        type: DataTypes.ENUM(LOCAL_VISITANTE.LOCAL, LOCAL_VISITANTE.VISITANTE),
         allowNull: false,
       },
     },
@@ -16,15 +18,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  equipoPartido.associate = (models) => {
-    equipoPartido.belongsTo(models.partido);
-    equipoPartido.belongsTo(models.equipo, {
-      foreignKey: {
-        name: "equipoId",
-        allowNull: false,
-      },
-    });
-  };
-  
   return equipoPartido;
 };

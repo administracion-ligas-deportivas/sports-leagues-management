@@ -1,4 +1,4 @@
-const roles = {
+const ROLES = {
   ADMIN: {
     nombre: "admin",
     id: 1,
@@ -8,3 +8,5 @@ const roles = {
     id: 2,
   },
 };
+
+module.exports = { ROLES };

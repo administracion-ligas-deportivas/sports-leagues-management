@@ -1,25 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const municipio = sequelize.define(
-    "municipio",
-    {
-      nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+  const municipio = sequelize.define("municipio", {
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {}
-  );
+  });
 
-  municipio.assosiate = function (models) {
+  municipio.associate = function (models) {
     municipio.belongsTo(models.estado, {
-      foreignKey: {
-        name: "estadoId",
+      foreignkey: {
         allowNull: false,
       },
     });
-  };
-  municipio.assosiate = function (models) {
     municipio.hasMany(models.deportivo);
+    municipio.hasMany(models.domicilioUsuario);
   };
   return municipio;
 };

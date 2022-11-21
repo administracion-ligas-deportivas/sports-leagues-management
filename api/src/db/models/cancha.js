@@ -1,10 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
   const cancha = sequelize.define("cancha", {
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     numero: {
       type: DataTypes.INTEGER,
     },
-    nombre: {
-      type: DataTypes.STRING,
+    descripcion: {
+      type: DataTypes.TEXT,
     },
   });
 

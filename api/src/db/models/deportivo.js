@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       codigoPostal: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(5),
         allowNull: false,
       },
       numeroExterior: {
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       numeroInterior: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     {}
@@ -33,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
   deportivo.associate = (models) => {
     deportivo.belongsTo(models.municipio, {
       foreignKey: {
-        name: "municipioId",
         allowNull: false,
       },
     });

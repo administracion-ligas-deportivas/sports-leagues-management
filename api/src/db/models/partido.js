@@ -26,8 +26,6 @@ module.exports = (sequelize, DataTypes) => {
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
 
   partido.associate = (models) => {
-    partido.hasMany(models.estadisticaJugadorPartido);
-    partido.hasMany(models.equipoPartido);
     partido.belongsTo(models.cancha, {
       foreignKey: {
         name: "canchaId",
@@ -43,6 +41,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
+    partido.belongsToMany(models.equipo, {
+      through: models.equipoPartido,
+    });
+
+    partido.hasMany(models.estadisticaJugadorPartido);
   };
   return partido;
 };

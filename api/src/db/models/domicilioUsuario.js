@@ -34,13 +34,11 @@ module.exports = (sequelize, DataTypes) => {
   domicilioUsuario.associate = (models) => {
     domicilioUsuario.belongsTo(models.municipio, {
       foreignKey: {
-        name: "municipioId",
         allowNull: false,
       },
     });
     domicilioUsuario.belongsTo(models.usuario, {
       foreignKey: {
-        name: "usuarioId",
         allowNull: false,
       },
     });

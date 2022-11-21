@@ -6,10 +6,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      encargadoEquipoId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       uuid: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -24,13 +20,30 @@ module.exports = (sequelize, DataTypes) => {
     /* equipo.hasMany(models.jugadorEquipo, {
       foreignKey: "equipo_id",
     }); */
-    equipo.hasMany(models.equipoEventoDeportivo);
-    equipo.hasMany(models.equipoPartido);
-    equipo.hasMany(models.pagoEventoDeportivo);
-    equipo.hasMany(models.migracionEquipoEventoDeportivo);
+    equipo.belongsTo(models.usuario, {
+      foreignKey: {
+        name: "encargado_equipo_id",
+        allowNull: false,
+      },
+    });
+    equipo.belongsTo(models.deporte, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+
     equipo.belongsToMany(models.usuario, {
       through: models.jugadorEquipo,
     });
+    equipo.belongsToMany(models.eventoDeportivo, {
+      through: models.equipoEventoDeportivo,
+    });
+    equipo.belongsToMany(models.partido, {
+      through: models.equipoPartido,
+    });
+
+    equipo.hasMany(models.pagoEventoDeportivo);
+    equipo.hasMany(models.migracionEquipoEventoDeportivo);
   };
   return equipo;
 };

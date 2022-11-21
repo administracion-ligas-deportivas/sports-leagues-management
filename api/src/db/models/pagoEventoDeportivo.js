@@ -1,4 +1,4 @@
-const { formaPago } = require("../../constants/pagos");
+const { FORMA_PAGO } = require("../../constants/pagos");
 
 module.exports = (sequelize, DataTypes) => {
   const pagoEventoDeportivo = sequelize.define(
@@ -13,16 +13,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       fecha: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATETIME,
         allowNull: false,
       },
       formaPago: {
-        type: DataTypes.ENUM(formaPago.fisico, formaPago.digital),
+        type: DataTypes.ENUM(FORMA_PAGO.FISICO, FORMA_PAGO.DIGITAL),
         allowNull: false,
       },
       notas: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.TEXT,
       },
     },
     {
@@ -40,13 +39,12 @@ module.exports = (sequelize, DataTypes) => {
 
     pagoEventoDeportivo.belongsTo(models.eventoDeportivo, {
       foreignKey: {
-        name: "eventoDeportivoId",
         allowNull: false,
       },
     });
+
     pagoEventoDeportivo.belongsTo(models.equipo, {
       foreignKey: {
-        name: "equipoId",
         allowNull: false,
       },
     });
