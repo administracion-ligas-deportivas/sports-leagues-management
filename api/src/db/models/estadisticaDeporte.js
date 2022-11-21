@@ -10,13 +10,11 @@ module.exports = (sequelize /* DataTypes */) => {
   estadisticaDeporte.associate = (models) => {
     estadisticaDeporte.belongsTo(models.deporte, {
       foreignKey: {
-        name: "deporteId",
         allowNull: false,
       },
     });
     estadisticaDeporte.belongsTo(models.estadistica, {
       foreignKey: {
-        name: "estadisticaId",
         allowNull: false,
       },
     });
