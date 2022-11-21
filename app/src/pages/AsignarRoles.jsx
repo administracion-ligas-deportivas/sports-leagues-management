@@ -38,31 +38,26 @@ export default function AsignarRoles() {
               )}
             />
             <FormControl>
-              <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+              <FormLabel id="demo-radio-buttons-group-label">Rol</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="female"
                 name="radio-buttons-group"
               >
                 <FormControlLabel
-                  value="jugador"
+                  // value="jugador"
                   control={<Radio />}
-                  label="Jugador"
+                  label="Administrador"
                 />
                 <FormControlLabel
-                  value="organizador"
+                  // value="organizador"
                   control={<Radio />}
                   label="Organizador de Evento"
                 />
                 <FormControlLabel
-                  value="capitan"
+                  // value="capitan"
                   control={<Radio />}
-                  label="Capitán"
-                />
-                <FormControlLabel
-                  value="estadistico"
-                  control={<Radio />}
-                  label="Estadístico"
+                  label="Jugador"
                 />
               </RadioGroup>
             </FormControl>
