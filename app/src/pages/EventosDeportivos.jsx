@@ -17,15 +17,15 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, evento: "Snow", deporte: "Jon" },
-  { id: 2, evento: "Lannister", deporte: "Cersei" },
-  { id: 3, evento: "Lannister", deporte: "Jaime" },
-  { id: 4, evento: "Stark", deporte: "Arya" },
-  { id: 5, evento: "Targaryen", deporte: "Daenerys" },
-  { id: 6, evento: "Melisandre", deporte: null },
-  { id: 7, evento: "Clifford", deporte: "Ferrara"  },
-  { id: 8, evento: "Frances", deporte: "Rossini" },
-  { id: 9, evento: "Roxie", deporte: "Harvey" },
+  { id: 1, evento: "Snow", deporte: "Basketball" },
+  { id: 2, evento: "Lannister", deporte: "Basketball" },
+  { id: 3, evento: "Lannister", deporte: "Béisbol" },
+  { id: 4, evento: "Stark", deporte: "Béisbol" },
+  { id: 5, evento: "Targaryen", deporte: "Basketball" },
+  { id: 6, evento: "Melisandre", deporte: "Softball" },
+  { id: 7, evento: "Clifford", deporte: "Softball"  },
+  { id: 8, evento: "Frances", deporte: "Basketball" },
+  { id: 9, evento: "Roxie", deporte: "Basketball" },
 ];
 
 export default function EventosDeportivos(){  

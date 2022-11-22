@@ -2,10 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const eventoDeportivo = sequelize.define(
     "eventoDeportivo",
     {
-      organizador_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -18,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: true,
       },
-      descripcion_pagos: {
+      descripcionPagos: {
         type: DataTypes.STRING,
         allowNull: false,
       },

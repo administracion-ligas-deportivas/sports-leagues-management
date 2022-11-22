@@ -89,7 +89,7 @@ export default function GestionEquipoJugador() {
               experimentalFeatures={{ newEditingApi: true }}
             />
           </div>
-          <div className={styles.contenedorAbandonar}>
+          {/* <div className={styles.contenedorAbandonar}>
             <Typography variant="h6" gutterBottom>
               Abandonar equipo.
             </Typography>
@@ -107,7 +107,7 @@ export default function GestionEquipoJugador() {
             >
               Abandonar
             </Button>
-          </div>
+          </div> */}
           <div className={styles.buttons}>
             <div>
               <Button variant="contained">Guardar</Button>

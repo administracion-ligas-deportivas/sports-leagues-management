@@ -39,6 +39,10 @@ const navElements = [
     to: "/estadisticas-personales",
     text: "Mis estadísticas",
   },
+  {
+    to: "/home",
+    text: "Admin"
+  }
 ];
 
 function Navbar() {
@@ -92,6 +96,11 @@ function Navbar() {
           </Tooltip>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            {/* <Link to="/home" className={styles.linkLogo}>
+              <Typography>
+              Admin
+              </Typography>
+            </Link> */}
             <IconButton
               size="large"
               aria-label="account of current user"

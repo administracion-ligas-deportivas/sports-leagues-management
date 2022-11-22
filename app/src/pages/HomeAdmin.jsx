@@ -44,7 +44,7 @@ function HomeAdmin() {
             );
           })}
         </div>
-        <div>{pages.length} pantallas</div>
+        {/* <div>{pages.length} pantallas</div> */}
       </div>
     </>
   );

@@ -1,5 +1,8 @@
 const bcrypt = require("bcrypt");
-const { usuario } = require("../db/models");
+const {
+  usuario,
+  domicilioUsuario: domicilioUsuarioModel,
+} = require("../db/models");
 
 const getUsers = async (req, res) => {
   const usuarios = await usuario.findAll();
@@ -8,19 +11,22 @@ const getUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   const { body } = req;
-  const { nombre, apellido, correo, password, telefono } = body;
+  const { domicilio, password, ...rest } = body;
 
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
   try {
-    const user = await usuario.create({
-      nombre,
-      apellido,
-      correo,
-      password: passwordHash,
-      telefono,
-    });
+    const user = await usuario.create(
+      {
+        ...rest,
+        password: passwordHash,
+        domicilioUsuario: domicilio,
+      },
+      {
+        include: [{ model: domicilioUsuarioModel }],
+      }
+    );
 
     res.status(201).json(user);
   } catch (error) {
