@@ -28,7 +28,8 @@ import { useEffect } from "react";
 
 function Signup() {
   const navigate = useNavigate();
-  const { estados, currentEstado, findMunicipiosEstado } = useEstados();
+  const { estados, currentEstado, findMunicipiosEstado, resetCurrentEstado } =
+    useEstados();
   const [serverError, setServerError] = useState("");
   const {
     register: registerProp,
@@ -46,10 +47,12 @@ function Signup() {
 
   useEffect(() => {
     console.log({ watchEstadoId });
-    if (watchEstadoId) {
-      findMunicipiosEstado(watchEstadoId);
-      setValue("municipioId", null);
+    if (!watchEstadoId) {
+      resetCurrentEstado();
+      return;
     }
+    findMunicipiosEstado(watchEstadoId);
+    setValue("municipioId", null);
   }, [watchEstadoId]);
 
   const registerUser = async (userData) => {
@@ -83,10 +86,6 @@ function Signup() {
   const register = (prop) => {
     return { ...registerProp(prop), ...setFieldErrors(prop) };
   };
-
-  useEffect(() => {
-    console.log({ values: getValues("estado") });
-  }, [getValues("estado")]);
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 
@@ -202,7 +201,7 @@ function Signup() {
                 <Autocomplete
                   {...register("estadoId")}
                   fullWidth
-                  id="buscar-estado"
+                  id="buscar-estadoId"
                   options={estados}
                   getOptionLabel={(option) => option.nombre}
                   onChange={(event, newValue) => {
@@ -210,7 +209,7 @@ function Signup() {
                     setValue("estadoId", newValue?.id);
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Selecciona un estado" />
+                    <TextField {...params} label="Selecciona un estadoId" />
                   )}
                 />
 
@@ -222,7 +221,13 @@ function Signup() {
                   }}
                   fullWidth
                   id="buscar-municipio"
-                  options={currentEstado?.municipios}
+                  // onInputChange={(event, newInputValue) => {}}
+                  // isOptionEqualToValue={(option, value) => {
+                  //   const municipioId = getValues("municipioId");
+                  //   console.log({ municipioId, option });
+                  //   return option.id === getValues("municipioId");
+                  // }}
+                  options={currentEstado?.municipios ?? []}
                   getOptionLabel={(option) => option.nombre}
                   renderInput={(params) => (
                     <TextField {...params} label="Selecciona un municipio" />

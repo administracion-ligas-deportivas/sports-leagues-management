@@ -43,9 +43,14 @@ export function useEstados() {
     });
   };
 
+  const resetCurrentEstado = () => {
+    setCurrentEstado(null);
+  };
+
   return {
     estados,
     currentEstado,
     findMunicipiosEstado,
+    resetCurrentEstado,
   };
 }
