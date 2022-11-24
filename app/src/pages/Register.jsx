@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "@/services/usuarios";
 
-import { TextField, Button, Alert } from "@mui/material";
+import { TextField, Button, Alert, Accordion, AccordionSummary, AccordionDetails, Typography, Stack, Autocomplete} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTime } from "luxon";
@@ -12,14 +13,16 @@ import myimg from "/img-login.png";
 import styles from "@/styles/LoginSignup.module.css";
 import { registerSchema } from "@/validations/registerSchema";
 import { useState } from "react";
+import { useEstados } from "@/hooks/useEstados";
 
 function Signup() {
   const navigate = useNavigate();
+  const { estados } = useEstados();
   const [serverError, setServerError] = useState("");
   const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
     setError,
   } = useForm({
@@ -65,10 +68,6 @@ function Signup() {
         >
           <Link to="/login">Inicia sesión</Link>
           <h1 className={styles.titlePage}>Registro</h1>
-
-          {/*<Label htmlFor="user-label-pass" content="Nombre(s)" >
-              <Input id="user-input-pass" name="nombre" placeholder="Nombre(s)" onChange={handleChange} />
-            </Label>*/}
 
           {/*TextField para los nombres*/}
           <TextField
@@ -165,11 +164,87 @@ function Signup() {
             })}
           />
 
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="direccion"
+              id="direccion"
+            >
+              <Typography> Dirección </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <TextField
+                fullWidth
+                // error={errors.confirmPassword}
+                // helperText={errors.confirmPassword?.message}
+                id="user-input-calle"
+                type="text"
+                name="calle"
+                label="Calle"
+                // {...register("confirmPassword", {
+                //   // validate: (value) => value === watch("password"),
+                // })}
+              />
+              <Stack direction="row" spacing={2}>
+                <TextField
+                  fullWidth
+                  id="user-input-numero-exterior"
+                  type="text"
+                  name="numeroExterior"
+                  label="Número Exterior"
+                />
+                <TextField
+                  fullWidth
+                  id="user-input-numero-interior"
+                  type="text"
+                  name="numeroInterior"
+                  label="Número Interior"
+                />
+              </Stack>
+              <Stack direction="row" spacing={2}>
+                <TextField
+                  fullWidth
+                  id="user-input-colonia"
+                  type="text"
+                  name="colonia"
+                  label="Colonia"
+                />
+                <TextField
+                  fullWidth
+                  id="user-input-codigo-postal"
+                  type="text"
+                  name="codigoPostal"
+                  label="Código Postal"
+                />
+              </Stack>
+              <Stack direction="row" spacing={2}>
+                <Autocomplete
+                  fullWidth
+                  id="buscar-estado"
+                  // options={estados.map((option) => option.nombre)}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Buscar Estado" />
+                  )}
+                />
+
+                <Autocomplete
+                  fullWidth
+                  id="buscar-municipio"
+                  // options={municipio.map((option) => option.nombre)}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Buscar Municipio" />
+                  )}
+                />
+              </Stack>
+            </AccordionDetails>
+          </Accordion>
+
           {serverError && <Alert severity="error">{serverError}</Alert>}
 
           <Button variant="contained" type="submit">
             Registrar
           </Button>
+
         </form>
       </section>
     </div>

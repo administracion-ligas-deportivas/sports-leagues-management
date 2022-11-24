@@ -15,7 +15,7 @@ import styles from "@/styles/AsignarRoles.module.css";
 import { useJugadores } from "@/hooks/useJugadores";
 
 export default function AsignarRoles() {
-  const { jugadores, deleteJugador } = useJugadores();
+  const { jugadores } = useJugadores();
 
   return (
     <>
