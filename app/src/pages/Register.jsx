@@ -12,6 +12,11 @@ import {
   Typography,
   Stack,
   Autocomplete,
+  Select,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  FormHelperText,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -25,6 +30,8 @@ import { registerSchema } from "@/validations/registerSchema";
 import { useState } from "react";
 import { useEstados } from "@/hooks/useEstados";
 import { useEffect } from "react";
+import { GENEROS } from "@/constants/usuario";
+import { capitalizeFirstLetter } from "@/utils/capitalize";
 
 function Signup() {
   const {
@@ -165,13 +172,30 @@ function Signup() {
             />*/}
 
             {/*TextField para el género*/}
-            <TextField
-              disabled
-              id="user-input-pass"
-              name="genero"
-              label="Género"
-              {...register("genero")}
-            />
+
+            <FormControl>
+              <InputLabel id="select-genero">Género</InputLabel>
+              <Select
+                labelId="select-genero"
+                name="genero"
+                label="Género"
+                {...register("genero")}
+              >
+                {GENEROS.map((genero) => {
+                  const capitalized = capitalizeFirstLetter(genero);
+                  return (
+                    <MenuItem value={genero} key={genero}>
+                      {capitalized}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+              {errors?.genero && (
+                <FormHelperText {...setFieldErrors("genero")}>
+                  {errors?.genero?.message}
+                </FormHelperText>
+              )}
+            </FormControl>
 
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
@@ -225,7 +249,11 @@ function Signup() {
                     setValue("estadoId", newValue?.id);
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Selecciona un estadoId" />
+                    <TextField
+                      {...params}
+                      label="Selecciona un estado"
+                      {...setFieldErrors("estadoId")}
+                    />
                   )}
                 />
 
@@ -247,22 +275,25 @@ function Signup() {
                   options={currentEstado?.municipios || []}
                   getOptionLabel={(option) => option?.nombre}
                   renderInput={(params) => (
-                    <TextField {...params} label="Selecciona un municipio" />
+                    <TextField
+                      {...params}
+                      label="Selecciona un municipio"
+                      {...setFieldErrors("municipioId")}
+                    />
                   )}
                 />
               </Stack>
               <TextField
+                {...register("calle")}
                 fullWidth
                 id="user-input-calle"
                 type="text"
                 name="calle"
                 label="Calle"
-                // {...register("confirmPassword", {
-                //   // validate: (value) => value === watch("password"),
-                // })}
               />
               <Stack direction="row" spacing={2}>
                 <TextField
+                  {...register("numeroExterior")}
                   fullWidth
                   id="user-input-numero-exterior"
                   type="text"
@@ -270,6 +301,7 @@ function Signup() {
                   label="Número Exterior"
                 />
                 <TextField
+                  {...register("numeroInterior")}
                   fullWidth
                   id="user-input-numero-interior"
                   type="text"
@@ -279,6 +311,7 @@ function Signup() {
               </Stack>
               <Stack direction="row" spacing={2}>
                 <TextField
+                  {...register("colonia")}
                   fullWidth
                   id="user-input-colonia"
                   type="text"
@@ -286,6 +319,7 @@ function Signup() {
                   label="Colonia"
                 />
                 <TextField
+                  {...register("codigoPostal")}
                   fullWidth
                   id="user-input-codigo-postal"
                   type="text"

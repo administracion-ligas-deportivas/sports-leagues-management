@@ -1,6 +1,8 @@
-import { object, string } from "yup";
+import { GENEROS } from "@/constants/usuario";
+import { date, mixed, object, string } from "yup";
 import { domicilioUsuarioSchema } from "./domicilioUsuarioSchema";
 
+// https://stackoverflow.com/a/60726477/13562806
 export const registerSchema = object({
   nombre: string().required("Nombre requerido"),
   apellido: string().required("Apellido requerido"),
@@ -12,6 +14,10 @@ export const registerSchema = object({
     .min(8, "Ingresa al menos 8 caracteres")
     .required("Contraseña requerida"),
   confirmPassword: string().required("Confirma tu contraseña"),
+  genero: mixed()
+    .oneOf(GENEROS, "Selecciona entre los valores disponibles")
+    .required("Género requerido"),
+  fechaNacimiento: date().required("Fecha de nacimiento requerida"),
   // No es buena idea esa validación porque no muestra error cuando las
   // contraseñas coinciden, indicando que es así.
   // confirmPassword:
