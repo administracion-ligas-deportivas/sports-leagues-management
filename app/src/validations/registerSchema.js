@@ -1,4 +1,5 @@
 import { object, string } from "yup";
+import { domicilioUsuarioSchema } from "./domicilioUsuarioSchema";
 
 export const registerSchema = object({
   nombre: string().required("Nombre requerido"),
@@ -18,4 +19,6 @@ export const registerSchema = object({
   // context) => { return value === context.parent.password;
   //   }
   // ),
-});
+
+  // https://github.com/jquense/yup/issues/232#issuecomment-515003121
+}).shape(domicilioUsuarioSchema.fields);

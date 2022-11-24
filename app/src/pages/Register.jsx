@@ -2,7 +2,17 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "@/services/usuarios";
 
-import { TextField, Button, Alert, Accordion, AccordionSummary, AccordionDetails, Typography, Stack, Autocomplete} from "@mui/material";
+import {
+  TextField,
+  Button,
+  Alert,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Stack,
+  Autocomplete,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -14,22 +24,27 @@ import styles from "@/styles/LoginSignup.module.css";
 import { registerSchema } from "@/validations/registerSchema";
 import { useState } from "react";
 import { useEstados } from "@/hooks/useEstados";
+import { useEffect } from "react";
 
 function Signup() {
   const navigate = useNavigate();
-  const { estados } = useEstados();
+  const { estados, currentEstado, findMunicipiosEstado } = useEstados();
   const [serverError, setServerError] = useState("");
   const {
-    register,
+    register: registerProp,
     handleSubmit,
     // watch,
     formState: { errors },
+    getValues,
     setError,
+    // https://react-hook-form.com/api/useform/setvalue
+    setValue,
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
 
   const registerUser = async (userData) => {
+    console.log({ userData });
     if (userData.password !== userData.confirmPassword) {
       setError("confirmPassword", {
         type: "focus",
@@ -37,10 +52,6 @@ function Signup() {
       });
       return;
     }
-    // console.log(
-    //   "🚀 ~ file: Register.jsx ~ line 44 ~ registerUser ~ userData",
-    //   userData
-    // );
 
     createUser(userData)
       .then(() => {
@@ -50,6 +61,23 @@ function Signup() {
         setServerError(error);
       });
   };
+
+  const setFieldErrors = (prop) => {
+    if (!errors[prop]) return null;
+
+    return {
+      error: errors?.[prop],
+      helperText: errors?.[prop]?.message,
+    };
+  };
+
+  const register = (prop) => {
+    return { ...registerProp(prop), ...setFieldErrors(prop) };
+  };
+
+  useEffect(() => {
+    console.log({ values: getValues("estado") });
+  }, [getValues("estado")]);
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 
@@ -71,8 +99,6 @@ function Signup() {
 
           {/*TextField para los nombres*/}
           <TextField
-            error={errors.nombre}
-            helperText={errors.nombre?.message}
             id="user-input-pass"
             name="nombre"
             label="Nombre(s)"
@@ -81,8 +107,6 @@ function Signup() {
 
           {/*TextField para los apellidos*/}
           <TextField
-            error={errors.apellido}
-            helperText={errors.apellido?.message}
             id="user-input-pass"
             name="apellido"
             label="Apellido(s)"
@@ -91,8 +115,6 @@ function Signup() {
 
           {/*TextField para el correo*/}
           <TextField
-            error={errors.correo}
-            helperText={errors.correo?.message}
             id="user-input-pass"
             name="correo"
             label="Correo"
@@ -101,8 +123,6 @@ function Signup() {
 
           {/*TextField para el teléfono*/}
           <TextField
-            error={errors.telefono}
-            helperText={errors.telefono?.message}
             id="user-input"
             type="tel"
             name="telefono"
@@ -142,8 +162,6 @@ function Signup() {
 
           {/*TextField para contraseña*/}
           <TextField
-            error={errors.password}
-            helperText={errors.password?.message}
             id="user-input-pass"
             type="password"
             name="password"
@@ -153,8 +171,6 @@ function Signup() {
 
           {/*TextField para confirmar contraseña */}
           <TextField
-            error={errors.confirmPassword}
-            helperText={errors.confirmPassword?.message}
             id="user-input-pass"
             type="password"
             name="password"
@@ -173,10 +189,41 @@ function Signup() {
               <Typography> Dirección </Typography>
             </AccordionSummary>
             <AccordionDetails>
+              <Stack direction="row" spacing={2}>
+                <Autocomplete
+                  {...register("estadoId")}
+                  fullWidth
+                  id="buscar-estado"
+                  options={estados}
+                  getOptionLabel={(option) => option.nombre}
+                  onChange={(event, newValue) => {
+                    console.log({ newValue });
+                    setValue("estadoId", newValue?.id);
+                    setValue("municipioId", null);
+                    findMunicipiosEstado(newValue.id);
+                  }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Selecciona un estado" />
+                  )}
+                />
+
+                <Autocomplete
+                  {...register("municipioId")}
+                  onChange={(event, newValue) => {
+                    console.log({ municipio: newValue });
+                    setValue("municipioId", newValue?.id);
+                  }}
+                  fullWidth
+                  id="buscar-municipio"
+                  options={currentEstado?.municipios}
+                  getOptionLabel={(option) => option.nombre}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Selecciona un municipio" />
+                  )}
+                />
+              </Stack>
               <TextField
                 fullWidth
-                // error={errors.confirmPassword}
-                // helperText={errors.confirmPassword?.message}
                 id="user-input-calle"
                 type="text"
                 name="calle"
@@ -217,25 +264,6 @@ function Signup() {
                   label="Código Postal"
                 />
               </Stack>
-              <Stack direction="row" spacing={2}>
-                <Autocomplete
-                  fullWidth
-                  id="buscar-estado"
-                  // options={estados.map((option) => option.nombre)}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Buscar Estado" />
-                  )}
-                />
-
-                <Autocomplete
-                  fullWidth
-                  id="buscar-municipio"
-                  // options={municipio.map((option) => option.nombre)}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Buscar Municipio" />
-                  )}
-                />
-              </Stack>
             </AccordionDetails>
           </Accordion>
 
@@ -244,7 +272,6 @@ function Signup() {
           <Button variant="contained" type="submit">
             Registrar
           </Button>
-
         </form>
       </section>
     </div>

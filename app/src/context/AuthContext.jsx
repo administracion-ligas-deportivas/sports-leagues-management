@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     setNextPath(() => state?.location?.pathname ?? "/");
-    console.log({ nextPath });
+    // console.log({ nextPath });
   }, [state]);
 
   const login = async ({ correo, password } = {}) => {

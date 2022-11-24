@@ -1,18 +1,43 @@
-import { fetchEstados } from "@/services/estados";
+import { fetchEstados, fetchMunicipiosEstado } from "@/services/estados";
 import { useEffect, useState } from "react";
 
 export function useEstados() {
   const [estados, setEstados] = useState([]);
+  const [currentEstado, setCurrentEstado] = useState({
+    nombre: "",
+    id: null,
+    municipios: [],
+  });
 
   useEffect(() => {
-    fetchEstados().then((data) => {
-      const { estados } = data;
-
+    fetchEstados().then((estados) => {
       setEstados(estados);
     });
   }, []);
 
+  const findMunicipiosEstado = (estadoId) => {
+    const foundEstado = estados.find((estado) => estado.id === estadoId);
+
+    console.log({ foundEstado });
+
+    // No volver a hacer petición al servidor si el estado ya tiene municipios.
+    if (!foundEstado || foundEstado?.municipios?.length) return;
+    console.log("El estado no tiene municipios");
+
+    fetchMunicipiosEstado(estadoId).then((municipios) => {
+      const newEstado = { ...foundEstado, municipios };
+
+      const newEstados = estados.filter((estado) => estado !== foundEstado);
+      setEstados([...newEstados, newEstado]);
+      console.log({ newEstado, newEstados, estados });
+
+      setCurrentEstado(newEstado);
+    });
+  };
+
   return {
     estados,
+    currentEstado,
+    findMunicipiosEstado,
   };
 }
