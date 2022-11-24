@@ -54,6 +54,50 @@ function Signup() {
   const [selectedMunicipio, setSelectedMunicipio] = useState(null);
   const [serverError, setServerError] = useState("");
 
+  const textFields = [
+    {
+      id: "user-input-pass",
+      name: "nombre",
+      label: "Nombre(s)",
+    },
+    { id: "user-input-pass", name: "apellido", label: "Apellido(s)" },
+    {
+      id: "user-input-pass",
+      name: "correo",
+      label: "Correo",
+    },
+    {
+      id: "user-input",
+      type: "tel",
+      name: "telefono",
+      label: "Teléfono",
+    },
+  ];
+
+  const passwordFields = [
+    {
+      id: "user-input-pass",
+      type: "password",
+      name: "password",
+      label: "Contraseña",
+    },
+    {
+      id: "user-input-pass",
+      type: "password",
+      name: "confirmPassword",
+      label: "Confirmar contraseña",
+    },
+  ];
+
+  const domicilioFields = {
+    calle: {
+      id: "user-input-calle",
+      type: "text",
+      name: "calle",
+      label: "Calle",
+    },
+  };
+
   useEffect(() => {
     if (!watchEstadoId) {
       resetCurrentEstado();
@@ -97,17 +141,30 @@ function Signup() {
       });
   };
 
-  const setFieldErrors = (prop) => {
+  const setFieldErrors = (prop, { setHelperText = true } = {}) => {
     if (!errors[prop]) return null;
 
-    return {
-      error: errors?.[prop],
-      helperText: errors?.[prop]?.message,
+    const hasProp = Object.hasOwn(errors, prop);
+
+    if (!hasProp) return null;
+
+    const props = {
+      error: hasProp,
     };
+
+    if (setHelperText) {
+      props.helperText = errors?.[prop]?.message ?? null;
+    }
+
+    return props;
   };
 
-  const register = (prop) => {
-    return { ...registerProp(prop), ...setFieldErrors(prop) };
+  const register = (prop, { setErrors = true, setHelperText = true } = {}) => {
+    const fieldErrors = setErrors
+      ? { ...setFieldErrors(prop, { setHelperText }) }
+      : null;
+
+    return { ...registerProp(prop), ...fieldErrors };
   };
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
@@ -128,38 +185,15 @@ function Signup() {
           <Link to="/login">Iniciar sesión</Link>
           <h1 className={styles.titlePage}>Regístrate</h1>
 
-          {/*TextField para los nombres*/}
-          <TextField
-            id="user-input-pass"
-            name="nombre"
-            label="Nombre(s)"
-            {...register("nombre")}
-          />
-
-          {/*TextField para los apellidos*/}
-          <TextField
-            id="user-input-pass"
-            name="apellido"
-            label="Apellido(s)"
-            {...register("apellido")}
-          />
-
-          {/*TextField para el correo*/}
-          <TextField
-            id="user-input-pass"
-            name="correo"
-            label="Correo"
-            {...register("correo")}
-          />
-
-          {/*TextField para el teléfono*/}
-          <TextField
-            id="user-input"
-            type="tel"
-            name="telefono"
-            label="Teléfono"
-            {...register("telefono")}
-          />
+          {textFields.map((textField) => {
+            return (
+              <TextField
+                {...textField}
+                key={textField?.name}
+                {...register(textField.name)}
+              />
+            );
+          })}
 
           <div className={styles.genderDataContainer}>
             {/*TextField para el fecha de nacimiento*/}
@@ -179,7 +213,7 @@ function Signup() {
                 labelId="select-genero"
                 name="genero"
                 label="Género"
-                {...register("genero")}
+                {...register("genero", { setHelperText: false })}
               >
                 {GENEROS.map((genero) => {
                   const capitalized = capitalizeFirstLetter(genero);
@@ -191,7 +225,9 @@ function Signup() {
                 })}
               </Select>
               {errors?.genero && (
-                <FormHelperText {...setFieldErrors("genero")}>
+                <FormHelperText
+                  {...setFieldErrors("genero", { setHelperText: false })}
+                >
                   {errors?.genero?.message}
                 </FormHelperText>
               )}
@@ -208,25 +244,15 @@ function Signup() {
             </LocalizationProvider>
           </div>
 
-          {/*TextField para contraseña*/}
-          <TextField
-            id="user-input-pass"
-            type="password"
-            name="password"
-            label="Contraseña"
-            {...register("password")}
-          />
-
-          {/*TextField para confirmar contraseña */}
-          <TextField
-            id="user-input-pass"
-            type="password"
-            name="password"
-            label="Confirmar contraseña"
-            {...register("confirmPassword", {
-              // validate: (value) => value === watch("password"),
-            })}
-          />
+          {passwordFields.map((textField) => {
+            return (
+              <TextField
+                {...textField}
+                key={textField?.name}
+                {...register(textField.name)}
+              />
+            );
+          })}
 
           <Accordion>
             <AccordionSummary
@@ -239,7 +265,7 @@ function Signup() {
             <AccordionDetails>
               <Stack direction="row" spacing={2}>
                 <Autocomplete
-                  {...register("estadoId")}
+                  {...register("estadoId", { setErrors: false })}
                   fullWidth
                   id="buscar-estadoId"
                   options={estados}
@@ -258,19 +284,13 @@ function Signup() {
                 />
 
                 <Autocomplete
-                  {...register("municipioId")}
+                  {...register("municipioId", { setErrors: false })}
                   onChange={(event, newValue) => {
                     console.log({ municipio: newValue });
                     setValue("municipioId", newValue?.id);
                   }}
                   fullWidth
                   id="buscar-municipio"
-                  // onInputChange={(event, newInputValue) => {}}
-                  // isOptionEqualToValue={(option, value) => {
-                  //   const municipioId = getValues("municipioId");
-                  //   console.log({ municipioId, option });
-                  //   return option.id === getValues("municipioId");
-                  // }}
                   value={selectedMunicipio}
                   options={currentEstado?.municipios || []}
                   getOptionLabel={(option) => option?.nombre}
@@ -284,12 +304,9 @@ function Signup() {
                 />
               </Stack>
               <TextField
+                {...domicilioFields.calle}
                 {...register("calle")}
                 fullWidth
-                id="user-input-calle"
-                type="text"
-                name="calle"
-                label="Calle"
               />
               <Stack direction="row" spacing={2}>
                 <TextField
