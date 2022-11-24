@@ -45,6 +45,7 @@ function Signup() {
   const watchEstadoId = watch("estadoId");
 
   useEffect(() => {
+    console.log({ watchEstadoId });
     if (watchEstadoId) {
       findMunicipiosEstado(watchEstadoId);
       setValue("municipioId", null);
