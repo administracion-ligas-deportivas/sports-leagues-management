@@ -125,8 +125,8 @@ function Signup() {
           onSubmit={handleSubmit(registerUser)}
           className={[styles.container, styles.loginContainer].join(" ")}
         >
-          <Link to="/login">Inicia sesión</Link>
-          <h1 className={styles.titlePage}>Registro</h1>
+          <Link to="/login">Iniciar sesión</Link>
+          <h1 className={styles.titlePage}>Regístrate</h1>
 
           {/*TextField para los nombres*/}
           <TextField
