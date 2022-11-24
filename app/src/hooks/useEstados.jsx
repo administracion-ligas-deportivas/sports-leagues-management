@@ -23,7 +23,7 @@ export function useEstados() {
     setEstados(sortedEstados);
   }, [estados]);
 
-  const findMunicipiosEstado = (estadoId) => {
+  const findMunicipiosEstado = async (estadoId) => {
     const foundEstado = estados.find((estado) => estado.id === estadoId);
 
     console.log({ foundEstado });

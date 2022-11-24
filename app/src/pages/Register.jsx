@@ -27,10 +27,6 @@ import { useEstados } from "@/hooks/useEstados";
 import { useEffect } from "react";
 
 function Signup() {
-  const navigate = useNavigate();
-  const { estados, currentEstado, findMunicipiosEstado, resetCurrentEstado } =
-    useEstados();
-  const [serverError, setServerError] = useState("");
   const {
     register: registerProp,
     handleSubmit,
@@ -43,17 +39,37 @@ function Signup() {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
+  const navigate = useNavigate();
   const watchEstadoId = watch("estadoId");
+  const watchMunicipioId = watch("municipioId");
+  const { estados, currentEstado, findMunicipiosEstado, resetCurrentEstado } =
+    useEstados();
+  const [selectedMunicipio, setSelectedMunicipio] = useState(null);
+  const [serverError, setServerError] = useState("");
 
   useEffect(() => {
-    console.log({ watchEstadoId });
     if (!watchEstadoId) {
       resetCurrentEstado();
+      setSelectedMunicipio(null);
       return;
     }
+
     findMunicipiosEstado(watchEstadoId);
     setValue("municipioId", null);
   }, [watchEstadoId]);
+
+  useEffect(() => {
+    if (!watchMunicipioId && !currentEstado?.municipios) {
+      setSelectedMunicipio(null);
+      return;
+    }
+
+    const newSelectedMunicipio = currentEstado?.municipios.find(
+      (municipio) => municipio.id === watchMunicipioId
+    );
+
+    setSelectedMunicipio(newSelectedMunicipio ?? null);
+  }, [watchMunicipioId]);
 
   const registerUser = async (userData) => {
     console.log({ userData });
@@ -227,8 +243,9 @@ function Signup() {
                   //   console.log({ municipioId, option });
                   //   return option.id === getValues("municipioId");
                   // }}
-                  options={currentEstado?.municipios ?? []}
-                  getOptionLabel={(option) => option.nombre}
+                  value={selectedMunicipio}
+                  options={currentEstado?.municipios || []}
+                  getOptionLabel={(option) => option?.nombre}
                   renderInput={(params) => (
                     <TextField {...params} label="Selecciona un municipio" />
                   )}
