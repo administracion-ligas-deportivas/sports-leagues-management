@@ -15,6 +15,14 @@ export function useEstados() {
     });
   }, []);
 
+  useEffect(() => {
+    const sortedEstados = estados.sort((a, b) =>
+      a.nombre.localeCompare(b.nombre)
+    );
+
+    setEstados(sortedEstados);
+  }, [estados]);
+
   const findMunicipiosEstado = (estadoId) => {
     const foundEstado = estados.find((estado) => estado.id === estadoId);
 

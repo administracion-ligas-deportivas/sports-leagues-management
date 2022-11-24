@@ -33,7 +33,7 @@ function Signup() {
   const {
     register: registerProp,
     handleSubmit,
-    // watch,
+    watch,
     formState: { errors },
     getValues,
     setError,
@@ -42,6 +42,14 @@ function Signup() {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
+  const watchEstadoId = watch("estadoId");
+
+  useEffect(() => {
+    if (watchEstadoId) {
+      findMunicipiosEstado(watchEstadoId);
+      setValue("municipioId", null);
+    }
+  }, [watchEstadoId]);
 
   const registerUser = async (userData) => {
     console.log({ userData });
@@ -199,8 +207,6 @@ function Signup() {
                   onChange={(event, newValue) => {
                     console.log({ newValue });
                     setValue("estadoId", newValue?.id);
-                    setValue("municipioId", null);
-                    findMunicipiosEstado(newValue.id);
                   }}
                   renderInput={(params) => (
                     <TextField {...params} label="Selecciona un estado" />
