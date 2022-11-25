@@ -6,7 +6,9 @@ import { domicilioUsuarioSchema } from "./domicilioUsuarioSchema";
 export const registerSchema = object({
   nombre: string().required("Nombre requerido"),
   apellido: string().required("Apellido requerido"),
-  correo: string().email().required("Correo requerido"),
+  correo: string()
+    .email("Ingresa un correo válido")
+    .required("Correo requerido"),
   telefono: string()
     .length(10, "Ingresa teléfono de 10 dígitos")
     .required("Teléfono requerido"),

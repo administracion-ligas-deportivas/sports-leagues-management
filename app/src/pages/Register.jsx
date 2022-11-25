@@ -32,6 +32,7 @@ import { useEstados } from "@/hooks/useEstados";
 import { useEffect } from "react";
 import { GENEROS } from "@/constants/usuario";
 import { capitalizeFirstLetter } from "@/utils/capitalize";
+import { getOnlyDate } from "@/utils/date";
 
 function Signup() {
   const {
@@ -132,7 +133,35 @@ function Signup() {
       return;
     }
 
-    createUser(userData)
+    const {
+      calle,
+      colonia,
+      codigoPostal,
+      numeroExterior,
+      numeroInterior,
+      municipioId,
+      fechaNacimiento,
+      ...rest
+    } = userData;
+
+    const formattedFechaNacimiento = getOnlyDate(fechaNacimiento);
+
+    const user = {
+      ...rest,
+      fechaNacimiento: formattedFechaNacimiento,
+      domicilio: {
+        calle,
+        colonia,
+        codigoPostal,
+        numeroExterior,
+        numeroInterior,
+        municipioId,
+      },
+    };
+
+    console.log({ user });
+
+    createUser(user)
       .then(() => {
         navigate("/");
       })
@@ -239,6 +268,10 @@ function Signup() {
                 inputFormat="DD/MM/YYYY"
                 defaultValue={DateTime.now()}
                 {...register("fechaNacimiento")}
+                value={watch("fechaNacimiento")}
+                onChange={(newValue) => {
+                  setValue("fechaNacimiento", newValue);
+                }}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>

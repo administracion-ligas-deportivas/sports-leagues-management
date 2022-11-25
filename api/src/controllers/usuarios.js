@@ -28,6 +28,14 @@ const createUser = async (req, res) => {
       }
     );
 
+    if (!user?.domicilioUsuario) {
+      usuario.destroy({ where: { id: user.id } });
+
+      return res.status(500).json({
+        error: "No se pudo crear el usuario",
+      });
+    }
+
     res.status(201).json(user);
   } catch (error) {
     console.log({ error });
@@ -49,12 +57,17 @@ const verifyUser = (req, res) => {
 
 const getUserById = async (req, res) => {
   const { usuarioId } = req.params;
+  const { domicilio } = req.query;
+
+  console.log({ domicilio });
+  const include = domicilio ? [{ model: domicilioUsuarioModel }] : [];
 
   usuario
     .findByPk(usuarioId, {
       attributes: {
         exclude: ["password"],
       },
+      include,
     })
     .then((user) => {
       if (user) return res.json(user);
