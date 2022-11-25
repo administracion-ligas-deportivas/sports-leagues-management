@@ -7,6 +7,7 @@ const { estadosRouter } = require("./estados");
 const { deportesRouter } = require("./deportes");
 const { deportivosRouter } = require("./deportivos");
 const { eventosRouter } = require("./eventos");
+const { canchasRouter } = require("./canchas");
 
 module.exports = {
   comentariosRouter,
@@ -18,4 +19,5 @@ module.exports = {
   deportesRouter,
   deportivosRouter,
   eventosRouter,
+  canchasRouter,
 };

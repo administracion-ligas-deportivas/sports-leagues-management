@@ -24,6 +24,7 @@ const {
   deportesRouter,
   deportivosRouter,
   eventosRouter,
+  canchasRouter,
 } = require("./routes");
 
 faker.setLocale("es_MX");
@@ -43,6 +44,7 @@ app.use("/api/estados", estadosRouter);
 app.use("/api/deportes", deportesRouter);
 app.use("/api/deportivos", deportivosRouter);
 app.use("/api/eventos", eventosRouter);
+app.use("/api/canchas", canchasRouter);
 
 /* 
 https://fullstackopen.com/es/part3/node_js_y_express#middleware
