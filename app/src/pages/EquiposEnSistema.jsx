@@ -1,5 +1,4 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
 import styles from "@/styles/Equipos.module.css";
 import {
   Typography,
