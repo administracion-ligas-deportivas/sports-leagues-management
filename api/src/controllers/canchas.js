@@ -6,9 +6,8 @@ const getCanchas = async (req, res) => {
 };
 
 const getCanchasById = async (req, res) => {
-  const { canchaId } = req.params;
-  const canchas = await cancha.findByPk(canchaId);
-
+  const { canchasId } = req.params;
+  const canchas = await cancha.findByPk(canchasId);
   return res.json(canchas);
 };
 
