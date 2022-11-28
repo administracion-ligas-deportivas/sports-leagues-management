@@ -53,3 +53,4 @@ Tal como se comenta en la documentación, [Model Querying - Basics](https://sequ
 - https://sequelize.org/docs/v6/core-concepts/assocs/#special-methodsmixins-added-to-instances
 - https://learn.microsoft.com/en-us/sql/t-sql/language-elements/rollback-transaction-transact-sql?view=sql-server-ver16
 - https://sequelize.org/docs/v6/other-topics/migrations/#the-sequelizerc-file
+- https://stackoverflow.com/questions/48732223/sequelize-seed-with-associations
