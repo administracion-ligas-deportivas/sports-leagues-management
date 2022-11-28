@@ -8,14 +8,6 @@ const DEV_DB_DATABASE = process.env.DEV_DB_DATABASE || "ligas_deportivas";
 const DEV_DB_PORT = process.env.DEV_DB_PORT || 3306;
 const DEV_DB_PASSWORD = process.env.DEV_DB_PASSWORD;
 
-console.log({
-  DEV_DB_USERNAME,
-  DEV_DB_HOST,
-  DEV_DB_DATABASE,
-  DEV_DB_PORT,
-  DEV_DB_PASSWORD,
-});
-
 module.exports = {
   PORT,
   DEV_DB_USERNAME,

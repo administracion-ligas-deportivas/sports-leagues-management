@@ -40,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     domicilioUsuario.belongsTo(models.usuario, {
       foreignKey: {
         allowNull: false,
+        unique: true,
       },
     });
   };

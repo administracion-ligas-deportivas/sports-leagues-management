@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { SALT_ROUNDS } = require("../constants/auth");
 const {
   usuario,
   domicilioUsuario: domicilioUsuarioModel,
@@ -13,8 +14,7 @@ const createUser = async (req, res) => {
   const { body } = req;
   const { domicilio, password, ...rest } = body;
 
-  const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(password, saltRounds);
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
 
   try {
     const user = await usuario.create(
