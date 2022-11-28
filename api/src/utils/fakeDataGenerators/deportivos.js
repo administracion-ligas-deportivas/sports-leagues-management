@@ -36,7 +36,7 @@ const createRandomDeportivo = async () => {
     : null;
 
   const deportivo = {
-    nombre: faker.company.name(),
+    nombre: faker.name.fullName(),
     calle: faker.address.street(),
     colonia: faker.address.streetAddress(),
     codigo_postal: faker.address.zipCode("#####"),
@@ -58,7 +58,7 @@ const createRandomCancha = async (deportivoId) => {
   console.log({ deportivoIdsInCancha: deportivoIds });
 
   const cancha = {
-    nombre: faker.company.name(),
+    nombre: faker.name.fullName(),
     numero: faker.random.numeric(3),
     descripcion: faker.lorem.paragraph(),
     deportivo_id: deportivoId ?? faker.helpers.arrayElement(deportivoIds),
