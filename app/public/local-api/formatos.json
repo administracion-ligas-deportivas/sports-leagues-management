@@ -1,0 +1,60 @@
+{
+    "total": 5,
+    "formatos": [
+      {
+        "id": 1,
+        "nombre": "Formato A",
+        "descripcion": "Descripción del formato A- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "maximo_equipos": 2,
+        "deporte_id": 2,
+        "tipo_evento_deportivo": 1,
+        "organizador_id": 11,
+        "deporte": "Fútbol",
+        "tipoEventoDeportivo": "Liga"
+      },
+      {
+        "id": 2,
+        "nombre": "Formato B",
+        "descripcion": "Descripción del formato",
+        "maximo_equipos": 2,
+        "deporte_id": 2,
+        "tipo_evento_deportivo": 1,
+        "organizador_id": 11,
+        "deporte": "Béisbol",
+        "tipoEventoDeportivo": "Liga"
+      },
+      {
+        "id": 3,
+        "nombre": "Formato C",
+        "descripcion": "Descripción del formato",
+        "maximo_equipos": 2,
+        "deporte_id": 2,
+        "tipo_evento_deportivo": 1,
+        "organizador_id": 11,
+        "deporte": "Béisbol",
+        "tipoEventoDeportivo": "Liga"
+      },
+      {
+        "id": 4,
+        "nombre": "Formato D",
+        "descripcion": "Descripción del formato",
+        "maximo_equipos": 2,
+        "deporte_id": 2,
+        "tipo_evento_deportivo": 1,
+        "organizador_id": 11,
+        "deporte": "Softball",
+        "tipoEventoDeportivo": "Liga"
+      },
+      {
+        "id": 5,
+        "nombre": "Formato E",
+        "descripcion": "Descripción del formato",
+        "maximo_equipos": 2,
+        "deporte_id": 2,
+        "tipo_evento_deportivo": 1,
+        "organizador_id": 11,
+        "deporte": "Fútbol",
+        "tipoEventoDeportivo": "Liga"
+      }
+    ]
+  }
