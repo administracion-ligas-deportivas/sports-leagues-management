@@ -1,0 +1,19 @@
+{
+  "permisos": [
+    {
+      "nombre": "Gestionar usuarios",
+      "descripcion": "Gestionar todos los usuarios del sistema."
+    },
+    {
+      "nombre": "Gestionar eventos deportivos"
+    },
+    {
+      "nombre": "Registrar estadísticas de jugador",
+      "descripcion": "Registrar estadísticas de jugador en un partido."
+    },
+    {
+      "nombre": "Registrar estadísticas de jugador",
+      "descripcion": "Registrar estadísticas de jugador en un partido."
+    }
+  ]
+}

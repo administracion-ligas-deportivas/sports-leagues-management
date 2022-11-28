@@ -30,7 +30,6 @@ module.exports = {
           const hasDomicilioUsuario = Boolean(
             await usuario.getDomicilioUsuario({ transaction })
           );
-          console.log({ hasDomicilioUsuario, id });
 
           if (hasDomicilioUsuario) return;
 
