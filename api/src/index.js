@@ -28,6 +28,7 @@ const {
   formatosRouter,
   tipoEventoRouter,
   rolRouter,
+  equiposRouter,
 } = require("./routes");
 
 faker.setLocale("es_MX");
@@ -51,6 +52,7 @@ app.use("/api/canchas", canchasRouter);
 app.use("/api/formatos", formatosRouter);
 app.use("/api/tiposDeEvento", tipoEventoRouter);
 app.use("/api/roles", rolRouter);
+app.use("/api/equipos", equiposRouter);
 
 /* 
 https://fullstackopen.com/es/part3/node_js_y_express#middleware
