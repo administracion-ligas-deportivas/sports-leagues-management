@@ -1,0 +1,24 @@
+{
+  "permisos": [
+    {
+      "nombre": "Gestionar usuarios",
+      "descripcion": "Gestionar todos los usuarios del sistema."
+    },
+    {
+      "nombre": "Crear eventos deportivos",
+      "descripcion": "Crear eventos deportivos."
+    },
+    {
+      "nombre": "Gestionar eventos deportivos",
+      "descripcion": "Editar, modificar y eliminar todos los eventos deportivos que haya creado."
+    },
+    {
+      "nombre": "Registrar estadísticas de jugador",
+      "descripcion": "Registrar estadísticas de jugador en un partido."
+    },
+    {
+      "nombre": "Registrar estadísticas de jugador",
+      "descripcion": "Registrar estadísticas de jugador en un partido."
+    }
+  ]
+}

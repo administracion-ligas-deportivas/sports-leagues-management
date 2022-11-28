@@ -23,8 +23,16 @@ import EquiposEnSistema from "@/pages/EquiposEnSistema";
 import GestionEquipo from "@/pages/GestionEquipo";
 import RegistroPagoFisico from "@/pages/RegistroPagoFísico";
 import Loading from "@/components/Loading/loading";
+import PanelAdmin from "@/pages/panel-admin";
+import CrearFormato from "@/pages/crear-formato";
+import Formatos from "@/pages/visualizar-formatos";
+import PartidosEnSistema from "@/pages/PartidosEnSistema";
 
 export {
+  Formatos,
+  CrearFormato,
+  PanelAdmin,
+  PartidosEnSistema,
   Loading,
   Register,
   NuevaChancha,

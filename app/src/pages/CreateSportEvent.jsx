@@ -35,8 +35,8 @@ export default function CrearEventoDeportivo() {
 
   const sports = [
     {
-      value: "basketball",
-      label: "Basketball",
+      value: "futbol",
+      label: "Fútbol",
     },
     {
       value: "beisbol",

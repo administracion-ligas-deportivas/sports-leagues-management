@@ -29,6 +29,10 @@ import {
   EquiposEnSistema,
   GestionEquipo,
   RegistroPagoFisico,
+  PanelAdmin,
+  PartidosEnSistema,
+  CrearFormato,
+  Formatos,
 } from "@/pages";
 
 // https://reactrouter.com/en/main/route/route
@@ -138,6 +142,22 @@ export const routes = [
         path: "/registro-pago-fisico",
         element: <RegistroPagoFisico />,
       },
+      {
+        path: "/panel-admin",
+        element: <PanelAdmin />,
+      },
+      {
+        path: "/crear-formato",
+        element: <CrearFormato />,
+      },
+      {
+        path: "/visualizar-formatos",
+        element: <Formatos />,
+      },
+      {
+        path: "/partidos-en-sistema",
+        element: <PartidosEnSistema />,
+      }
     ],
   },
   {

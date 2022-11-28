@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { SALT_ROUNDS } = require("../constants/auth");
 const {
   usuario,
   domicilioUsuario: domicilioUsuarioModel,
@@ -13,8 +14,7 @@ const createUser = async (req, res) => {
   const { body } = req;
   const { domicilio, password, ...rest } = body;
 
-  const saltRounds = 10;
-  const passwordHash = await bcrypt.hash(password, saltRounds);
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
 
   try {
     const user = await usuario.create(
@@ -27,6 +27,14 @@ const createUser = async (req, res) => {
         include: [{ model: domicilioUsuarioModel }],
       }
     );
+
+    if (!user?.domicilioUsuario) {
+      usuario.destroy({ where: { id: user.id } });
+
+      return res.status(500).json({
+        error: "No se pudo crear el usuario",
+      });
+    }
 
     res.status(201).json(user);
   } catch (error) {
@@ -49,12 +57,17 @@ const verifyUser = (req, res) => {
 
 const getUserById = async (req, res) => {
   const { usuarioId } = req.params;
+  const { domicilio } = req.query;
+
+  console.log({ domicilio });
+  const include = domicilio ? [{ model: domicilioUsuarioModel }] : [];
 
   usuario
     .findByPk(usuarioId, {
       attributes: {
         exclude: ["password"],
       },
+      include,
     })
     .then((user) => {
       if (user) return res.json(user);

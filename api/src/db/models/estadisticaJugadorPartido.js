@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
-    estadisticaJugadorPartido.belongsTo(models.estadistica, {
+    estadisticaJugadorPartido.belongsTo(models.tipoEstadistica, {
       foreignKey: {
         allowNull: false,
       },

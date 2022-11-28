@@ -7,6 +7,7 @@ const {
 const getEstados = async (req, res) => {
   const estados = await estado.findAll({
     include: estado.municipio,
+    order: [["nombre", "ASC"]],
   });
 
   res.json(estados);
@@ -21,6 +22,8 @@ const getMunicipiosDeEstado = async (req, res) => {
         where: {
           estadoId,
         },
+        order: [["nombre", "ASC"]],
+        attributes: { exclude: ["estadoId"] },
         transaction: t,
       });
 

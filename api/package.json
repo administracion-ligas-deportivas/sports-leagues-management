@@ -12,8 +12,10 @@
     "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix src",
     "seed:generate": "sequelize-cli seed:generate --name",
-    "seed:run": "sequelize-cli db:seed",
-    "seed:all": "sequelize-cli db:seed:all"
+    "seed:run": "sequelize-cli db:seed --seed",
+    "seed:undo": "sequelize-cli db:seed:undo --seed",
+    "seed:all": "sequelize-cli db:seed:all",
+    "seed:undo:all": "sequelize-cli db:seed:undo:all"
   },
   "author": "",
   "license": "ISC",
