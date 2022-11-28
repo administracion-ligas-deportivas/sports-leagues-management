@@ -6,12 +6,25 @@ const getCanchas = async (req, res) => {
 };
 
 const getCanchasById = async (req, res) => {
-  const { canchasId } = req.params;
-  const canchas = await cancha.findByPk(canchasId);
+  const { canchaId } = req.params;
+  const canchas = await cancha.findByPk(canchaId);
   return res.json(canchas);
+};
+
+const deleteCancha = async (req, res) => {
+  const { canchaId } = req.params;
+
+  await cancha.destroy({
+    where: {
+      id: canchaId,
+    },
+  });
+
+  res.status(204).end();
 };
 
 module.exports = {
   getCanchas,
   getCanchasById,
+  deleteCancha,
 };
