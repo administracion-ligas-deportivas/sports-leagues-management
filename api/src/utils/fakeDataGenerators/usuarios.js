@@ -1,27 +1,34 @@
+const bcrypt = require("bcrypt");
 const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
 const { getOnlyDate } = require("../date");
+const { SALT_ROUNDS } = require("../../constants/auth");
 
 const createRandomAddress = (usuarioId) => {
-  const numeroInterior = faker.datatype.boolean() && faker.random.numeric(5);
+  const numeroInterior = faker.datatype.boolean()
+    ? faker.random.numeric(5)
+    : null;
 
   const address = {
     calle: faker.address.street(),
     colonia: faker.address.streetAddress(),
-    codigo_postal: faker.address.zipCode("#####"),
-    numero_exterior: faker.random.numeric(5),
-    numero_interior: numeroInterior,
-    municipio_id: faker.datatype.number({ min: 1, max: 32 }),
-    usuario_id: usuarioId,
-    created_at: faker.date.past(),
-    updated_at: new Date(Date.now()),
+    codigoPostal: faker.address.zipCode("#####"),
+    numeroExterior: faker.random.numeric(5),
+    numeroInterior,
+    municipioId: faker.datatype.number({ min: 1, max: 32 }),
+    usuarioId,
+    createdAt: faker.date.past(),
+    updatedAt: new Date(Date.now()),
   };
 
   return address;
 };
 
-const createRandomUser = () => {
+const createRandomUser = async () => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
+
+  const password = "holahola";
+  const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
   // const domicilioUsuario = createRandomAddress();
 
   const user = {
@@ -30,7 +37,9 @@ const createRandomUser = () => {
     correo: faker.internet.email(),
     fecha_nacimiento: getOnlyDate(faker.date.birthdate()),
     genero,
-    password: faker.internet.password(),
+    // Generamos una contraseña que sepamos para iniciar sesión.
+    password: passwordHash,
+    // password: faker.internet.password(),
     telefono: faker.phone.number("##########"),
     created_at: faker.date.past(),
     updated_at: new Date(Date.now()),
@@ -40,10 +49,12 @@ const createRandomUser = () => {
   return user;
 };
 
-const createRandomUsers = (usersNumber) => {
-  return Array.from({ length: usersNumber }).map(() => {
-    return createRandomUser();
-  });
+const createRandomUsers = async (usersNumber) => {
+  return Promise.all(
+    Array.from({ length: usersNumber }).map(async () => {
+      return await createRandomUser();
+    })
+  );
 };
 
 module.exports = {

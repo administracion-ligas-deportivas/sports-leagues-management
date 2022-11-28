@@ -16,7 +16,7 @@ const pathsArray = pathKeys.map((pathKey) => {
 
 const paths = Object.assign({}, ...pathsArray);
 
-console.log({ paths });
+// console.log({ paths });
 
 module.exports = {
   config: resolve(baseConfigPath, "config/db.js"),
