@@ -30,6 +30,7 @@ import {
   GestionEquipo,
   RegistroPagoFisico,
   PanelAdmin,
+  PartidosEnSistema,
   CrearFormato,
   Formatos,
 } from "@/pages";
@@ -153,6 +154,10 @@ export const routes = [
         path: "/visualizar-formatos",
         element: <Formatos />,
       },
+      {
+        path: "/partidos-en-sistema",
+        element: <PartidosEnSistema />,
+      }
     ],
   },
   {
