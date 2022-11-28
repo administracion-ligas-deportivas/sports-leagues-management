@@ -8,6 +8,9 @@ const { deportesRouter } = require("./deportes");
 const { deportivosRouter } = require("./deportivos");
 const { eventosRouter } = require("./eventos");
 const { canchasRouter } = require("./canchas");
+const { formatosRouter } = require("./formatoEventoDeportivo");
+const { tipoEventoRouter } = require("./tipoEventoDeportivo");
+const { rolRouter } = require("./roles");
 
 module.exports = {
   comentariosRouter,
@@ -20,4 +23,7 @@ module.exports = {
   deportivosRouter,
   eventosRouter,
   canchasRouter,
+  formatosRouter,
+  tipoEventoRouter,
+  rolRouter,
 };
