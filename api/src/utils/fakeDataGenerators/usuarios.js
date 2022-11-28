@@ -1,19 +1,17 @@
 const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
+const { getOnlyDate } = require("../date");
 
-const createRandomAddress = (usuarioId) => {
-  const numeroInterior = faker.datatype.boolean() || faker.random.number();
+const createRandomAddress = () => {
+  const numeroInterior = faker.datatype.boolean() && faker.random.numeric(5);
 
   const address = {
-    calle: faker.address.streetName(),
+    calle: faker.address.street(),
     colonia: faker.address.streetAddress(),
-    street: faker.address.streetName(),
-    municipioId: faker.random.number({ min: 1, max: 32 }),
-    state: faker.address.state(),
     codigoPostal: faker.address.zipCode(),
-    numeroExterior: faker.random.number({ min: 1, max: 1000 }),
+    numeroExterior: faker.random.numeric(5),
     numeroInterior,
-    usuarioId,
+    municipioId: faker.datatype.number({ min: 1, max: 32 }),
   };
 
   return address;
@@ -21,16 +19,19 @@ const createRandomAddress = (usuarioId) => {
 
 const createRandomUser = () => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
+  // const domicilioUsuario = createRandomAddress();
 
   const user = {
     nombre: faker.name.firstName(),
     apellido: faker.name.lastName(),
     correo: faker.internet.email(),
-    fechaNacimiento: faker.date.birthdate(),
+    fecha_nacimiento: getOnlyDate(faker.date.birthdate()),
     genero,
     password: faker.internet.password(),
     telefono: faker.phone.number("##########"),
-    createdAt: faker.date.past(),
+    created_at: faker.date.past(),
+    updated_at: new Date(Date.now()),
+    // domicilioUsuario,
   };
 
   return user;
