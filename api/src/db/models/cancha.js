@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       numero: {
-        type: DataTypes.INTEGER,
+        // Un número de cancha puede contener letras o dígitos.
+        type: DataTypes.STRING,
       },
       descripcion: {
         type: DataTypes.TEXT,

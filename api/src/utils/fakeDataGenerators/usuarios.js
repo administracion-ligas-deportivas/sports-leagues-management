@@ -3,20 +3,23 @@ const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
 const { getOnlyDate } = require("../date");
 const { SALT_ROUNDS } = require("../../constants/auth");
-const { municipio } = require("../../db/models");
+const { municipio, rol } = require("../../db/models");
 
 let numberOfMunicipios = null;
+let rolIds = null;
 
 const initDbData = async () => {
-  numberOfMunicipios ??= await municipio.count();
+  numberOfMunicipios = await municipio.count();
+  rolIds = await rol.findAll({ attributes: ["id"] }).then((rol) => {
+    return rol.map((rol) => rol.id);
+  });
 
-  console.log({ numberOfMunicipios });
+  console.log({ numberOfMunicipios, rolIds });
 
   return { numberOfMunicipios };
 };
 
 const createRandomAddress = async (usuarioId) => {
-  await initDbData();
   const numeroInterior = faker.datatype.boolean()
     ? faker.random.numeric(5)
     : null;
@@ -41,6 +44,7 @@ const createRandomUser = async () => {
 
   const password = "holahola";
   const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
+  const rolId = faker.helpers.arrayElement(rolIds);
   // const domicilioUsuario = createRandomAddress();
 
   const user = {
@@ -55,6 +59,7 @@ const createRandomUser = async () => {
     telefono: faker.phone.number("##########"),
     created_at: faker.date.past(),
     updated_at: new Date(Date.now()),
+    rol_id: rolId,
     // domicilio_usuario: domicilioUsuario,
   };
 
@@ -73,4 +78,5 @@ module.exports = {
   createRandomUser,
   createRandomUsers,
   createRandomAddress,
+  initDbData,
 };

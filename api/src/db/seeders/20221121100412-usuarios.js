@@ -4,6 +4,7 @@ const { usuario: usuarioModel, domicilioUsuario } = require("../models");
 const {
   createRandomUsers,
   createRandomAddress,
+  initDbData,
 } = require("../../utils/fakeDataGenerators/usuarios");
 
 /** @type {import('sequelize-cli').Migration} */
@@ -11,12 +12,14 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     // https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
     await queryInterface.sequelize.transaction(async (transaction) => {
+      await initDbData();
       const randomUsuarios = await createRandomUsers(50);
       return await queryInterface.bulkInsert("usuario", randomUsuarios, {
         transaction,
       });
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
+      await initDbData();
       const usuarios = await usuarioModel.findAll(
         {
           include: [{ model: domicilioUsuario }],

@@ -12,7 +12,7 @@ module.exports = {
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();
       const randomDeportivos = await createRandomElements("deportivos", 50);
-      console.log({ randomDeportivos });
+      // console.log({ randomDeportivos });
       return await queryInterface.bulkInsert("deportivo", randomDeportivos, {
         transaction,
       });
@@ -20,7 +20,7 @@ module.exports = {
     await queryInterface.sequelize.transaction(async (transaction) => {
       await resetData();
       const randomCanchas = await createRandomElements("canchas", 50);
-      console.log({ randomCanchas });
+      // console.log({ randomCanchas });
       return await queryInterface.bulkInsert("cancha", randomCanchas, {
         transaction,
       });
