@@ -1,16 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-  const cancha = sequelize.define("cancha", {
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  const cancha = sequelize.define(
+    "cancha",
+    {
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      numero: {
+        type: DataTypes.INTEGER,
+      },
+      descripcion: {
+        type: DataTypes.TEXT,
+      },
     },
-    numero: {
-      type: DataTypes.INTEGER,
-    },
-    descripcion: {
-      type: DataTypes.TEXT,
-    },
-  });
+    {
+      indexes: [
+        {
+          unique: true,
+          fields: ["nombre", "numero", "deportivo_id"],
+        },
+      ],
+    }
+  );
 
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
