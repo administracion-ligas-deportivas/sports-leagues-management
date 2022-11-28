@@ -22,6 +22,9 @@ const pages = [
   { to: "/", text: "Home" },
   { to: "/gestion-evento-deportivo", text: "Gestión evento deportivo" },
   { to: "/gestion-equipo-jugador", text: "Gestión equipo jugador" },
+  { to: "/panel-admin", text: "Panel administrador" },
+  { to: "/crear-formato", text: "Crear formato" },
+  { to: "/visualizar-formatos", text: "Formatos" },
 ];
 
 function HomeAdmin() {
