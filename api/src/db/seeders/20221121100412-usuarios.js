@@ -11,7 +11,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     // https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const randomUsuarios = await createRandomUsers(100);
+      const randomUsuarios = await createRandomUsers(50);
       return await queryInterface.bulkInsert("usuario", randomUsuarios, {
         transaction,
       });
@@ -30,11 +30,11 @@ module.exports = {
           const hasDomicilioUsuario = Boolean(
             await usuario.getDomicilioUsuario({ transaction })
           );
-          console.log({ hasDomicilioUsuario, id });
 
           if (hasDomicilioUsuario) return;
 
-          const domicilioUsuario = createRandomAddress(id);
+          const domicilioUsuario = await createRandomAddress(id);
+          console.log({ domicilioUsuario });
           return await usuario.createDomicilioUsuario(domicilioUsuario, {
             transaction,
           });

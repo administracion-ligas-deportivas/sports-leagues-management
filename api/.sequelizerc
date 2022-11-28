@@ -1,5 +1,8 @@
 require("dotenv").config();
 const { resolve } = require("path");
+const { faker } = require("@faker-js/faker");
+
+faker.setLocale("es_MX");
 
 const baseConfigPath = "src";
 const pathKeys = ["models-path", "seeders-path", "migrations-path"];

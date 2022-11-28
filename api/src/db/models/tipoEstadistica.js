@@ -1,10 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const estadistica = sequelize.define(
-    "estadistica",
+  const tipoEstadistica = sequelize.define(
+    "tipoEstadistica",
     {
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       descripcion: {
         type: DataTypes.STRING,
@@ -14,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
-  estadistica.associate = (models) => {
-    estadistica.belongsToMany(models.deporte, {
+  tipoEstadistica.associate = (models) => {
+    tipoEstadistica.belongsToMany(models.deporte, {
       through: models.estadisticaDeporte,
     });
 
-    estadistica.hasMany(models.estadisticaJugadorPartido);
+    tipoEstadistica.hasMany(models.estadisticaJugadorPartido);
   };
-  return estadistica;
+  return tipoEstadistica;
 };

@@ -1,4 +1,5 @@
 "use strict";
+const { roles } = require("../../data/roles.json");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,6 +13,20 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
+
+    const rolesToInsert = roles.map((rol) => {
+      return {
+        ...rol,
+        created_at: new Date(),
+        updated_at: new Date(),
+      };
+    });
+
+    await queryInterface.sequelize.transaction(async (transaction) => {
+      await queryInterface.bulkInsert("rol", rolesToInsert, {
+        transaction,
+      });
+    });
   },
 
   async down(queryInterface, Sequelize) {
@@ -21,5 +36,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete("rol", null, {});
   },
 };

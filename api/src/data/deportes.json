@@ -1,0 +1,16 @@
+{
+  "deportes": [
+    {
+      "nombre": "Fútbol",
+      "descripcion": "Deporte que se practica entre dos equipos de once jugadores que tratan de introducir un balón en la portería del contrario impulsándolo con los pies, la cabeza o cualquier parte del cuerpo excepto las manos y los brazos; en cada equipo hay un portero, que puede tocar el balón con las manos, aunque solamente dentro del área; vence el equipo que logra más goles durante los 90 minutos que dura el encuentro."
+    },
+    {
+      "nombre": "Béisbol",
+      "descripcion": "Deporte de equipo jugado por dos equipos de nueve jugadores cada uno. El objetivo del juego es golpear una pelota con un bate (batear), desplazando la pelota a través del campo y correr por el campo interno de tierra (infield) buscando alcanzar la mayor cantidad de bases posibles hasta dar la vuelta a la base desde donde se bateó (home) para lograr anotar el tanto conocido como carrera. Los jugadores defensivos, mientras tanto, buscan la pelota bateada para eliminar al jugador que bateó la pelota o a otros corredores, antes que estos lleguen primero a alguna de las bases o consigan anotar la carrera."
+    },
+    {
+      "nombre": "Sóftbol",
+      "descripcion": "Deporte de equipo en el que una pelota es golpeada con un bate, muy parecido al béisbol, en general, una derivación del béisbol donde la pelota es más grande y su lanzamiento se efectúa por debajo del hombro."
+    }
+  ]
+}

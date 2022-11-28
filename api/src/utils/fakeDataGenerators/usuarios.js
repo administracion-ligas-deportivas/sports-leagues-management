@@ -3,8 +3,20 @@ const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
 const { getOnlyDate } = require("../date");
 const { SALT_ROUNDS } = require("../../constants/auth");
+const { municipio } = require("../../db/models");
 
-const createRandomAddress = (usuarioId) => {
+let numberOfMunicipios = null;
+
+const initDbData = async () => {
+  numberOfMunicipios ??= await municipio.count();
+
+  console.log({ numberOfMunicipios });
+
+  return { numberOfMunicipios };
+};
+
+const createRandomAddress = async (usuarioId) => {
+  await initDbData();
   const numeroInterior = faker.datatype.boolean()
     ? faker.random.numeric(5)
     : null;
@@ -15,7 +27,7 @@ const createRandomAddress = (usuarioId) => {
     codigoPostal: faker.address.zipCode("#####"),
     numeroExterior: faker.random.numeric(5),
     numeroInterior,
-    municipioId: faker.datatype.number({ min: 1, max: 32 }),
+    municipioId: faker.datatype.number({ min: 0, max: numberOfMunicipios - 1 }),
     usuarioId,
     createdAt: faker.date.past(),
     updatedAt: new Date(Date.now()),

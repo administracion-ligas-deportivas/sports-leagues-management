@@ -1,0 +1,16 @@
+{
+  "roles": [
+    {
+      "nombre": "ADMIN",
+      "descripcion": "Usuario administrador de todo el sistema. Tiene todos los permisos, pero no puede participar en eventos deportivos."
+    },
+    {
+      "nombre": "ORGANIZADOR DE EVENTOS",
+      "descripcion": "Usuario que puede crear eventos deportivos y gestionarlos."
+    },
+    {
+      "nombre": "USUARIO",
+      "descripcion": "Usuario que puede participar en eventos deportivos como encargado de equipos, jugador, estadístico, etc. Depende de la forma en la que entre a los eventos."
+    }
+  ]
+}

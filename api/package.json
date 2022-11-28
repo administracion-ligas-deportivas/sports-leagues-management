@@ -14,7 +14,8 @@
     "seed:generate": "sequelize-cli seed:generate --name",
     "seed:run": "sequelize-cli db:seed --seed",
     "seed:undo": "sequelize-cli db:seed:undo --seed",
-    "seed:all": "sequelize-cli db:seed:all"
+    "seed:all": "sequelize-cli db:seed:all",
+    "seed:undo:all": "sequelize-cli db:seed:undo:all"
   },
   "author": "",
   "license": "ISC",

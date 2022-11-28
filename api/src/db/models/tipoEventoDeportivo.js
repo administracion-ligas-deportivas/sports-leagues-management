@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       nombre: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       descripcion: {
         type: DataTypes.TEXT,
