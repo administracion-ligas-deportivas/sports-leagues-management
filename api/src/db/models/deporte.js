@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   sequelize.associate = (models) => {
-    deporte.belongsToMany(models.estadistica, {
+    deporte.belongsToMany(models.tipoEstadistica, {
       through: models.estadisticaDeporte,
     });
 

@@ -1,0 +1,11 @@
+{
+  "formatos": [
+    {
+      "nombre": "Liga juvenil",
+      "descripcion": "Liga con jugadores de edades comprendidas entre 16 y 18 años",
+      "maximoEquipos": 16,
+      "organizadorId": 1,
+      "deporteId": 1
+    }
+  ]
+}
