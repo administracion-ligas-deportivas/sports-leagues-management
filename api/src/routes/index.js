@@ -12,6 +12,7 @@ const { formatosRouter } = require("./formatoEventoDeportivo");
 const { tipoEventoRouter } = require("./tipoEventoDeportivo");
 const { rolRouter } = require("./roles");
 const { equiposRouter } = require("./equipos");
+const { partidosRouter } = require("./partidos");
 
 module.exports = {
   comentariosRouter,
@@ -28,4 +29,5 @@ module.exports = {
   tipoEventoRouter,
   rolRouter,
   equiposRouter,
+  partidosRouter,
 };
