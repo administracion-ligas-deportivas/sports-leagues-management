@@ -5,7 +5,7 @@
       "descripcion": "Usuario administrador de todo el sistema. Tiene todos los permisos, pero no puede participar en eventos deportivos."
     },
     {
-      "nombre": "ORGANIZADOR DE EVENTOS",
+      "nombre": "ORGANIZADOR",
       "descripcion": "Usuario que puede crear eventos deportivos y gestionarlos."
     },
     {

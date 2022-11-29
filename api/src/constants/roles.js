@@ -1,11 +1,12 @@
 const ROLES = {
   ADMIN: {
-    nombre: "admin",
-    id: 1,
+    nombre: "ADMIN",
   },
-  USER: {
-    nombre: "user",
-    id: 2,
+  ORGANIZADOR: {
+    nombre: "ORGANIZADOR",
+  },
+  USUARIO: {
+    nombre: "USUARIO",
   },
 };
 
