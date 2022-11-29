@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
+    {
+      tableName: "tipo_estadistica",
+    }
   );
 
   tipoEstadistica.associate = (models) => {

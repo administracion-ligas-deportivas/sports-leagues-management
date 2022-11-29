@@ -44,7 +44,7 @@ const createRandomUser = async () => {
 
   const password = "holahola";
   const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
-  const rolId = faker.helpers.arrayElement(rolIds);
+  const rolId = faker.helpers.arrayElement([...rolIds]);
   // const domicilioUsuario = createRandomAddress();
 
   const user = {

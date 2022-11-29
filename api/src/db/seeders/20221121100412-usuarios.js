@@ -13,19 +13,25 @@ module.exports = {
     // https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();
-      const randomUsuarios = await createRandomUsers(50);
+      const randomUsuarios = await createRandomUsers(50).then((usuarios) => {
+        return usuarios.map((usuario) => {
+          const { rol_id, ...restUsuario } = usuario;
+          return restUsuario;
+        });
+      });
+
+      console.log({ randomUsuarios });
+
       return await queryInterface.bulkInsert("usuario", randomUsuarios, {
         transaction,
       });
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();
-      const usuarios = await usuarioModel.findAll(
-        {
-          include: [{ model: domicilioUsuario }],
-        },
-        { transaction }
-      );
+      const usuarios = await usuarioModel.findAll({
+        include: [{ model: domicilioUsuario }],
+        transaction,
+      });
 
       await Promise.all(
         await usuarios.map(async (usuario) => {
