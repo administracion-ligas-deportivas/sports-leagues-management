@@ -161,6 +161,11 @@
   margin-left: 0.5rem;
 }
 
+.rectangle {
+  padding: 40px;
+  background-color: rgb(243, 246, 250);
+}
+
 /* stylelint-disable-next-line no-descending-specificity */
 
 /* .menu a { */
