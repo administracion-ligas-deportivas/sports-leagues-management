@@ -9,7 +9,7 @@
     "dev": "nodemon src/index.js",
     "format": "prettier --write . --cache",
     "format:fix": "npm run format && npm run lint:fix",
-    "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore",
+    "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore --cache",
     "lint:fix": "npm run lint -- --fix src",
     "seed:generate": "sequelize-cli seed:generate --name",
     "seed:run": "sequelize-cli db:seed --seed",

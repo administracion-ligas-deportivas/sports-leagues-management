@@ -2,30 +2,37 @@
 
 const { usuario: usuarioModel, domicilioUsuario } = require("../models");
 const {
-  createRandomUsers,
-  createRandomAddress,
+  createRandomDomicilioUsuario,
   initDbData,
 } = require("../../utils/fakeDataGenerators/usuarios");
+const { createRandomElements } = require("../../utils/fakeDataGenerators");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     // https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();
-      const randomUsuarios = await createRandomUsers(50);
+      const randomUsuarios = await createRandomElements("usuarios", 50).then(
+        (usuarios) => {
+          return usuarios.map((usuario) => {
+            const { rol_id, ...restUsuario } = usuario;
+            return restUsuario;
+          });
+        }
+      );
+
+      // console.log({ randomUsuarios });
       return await queryInterface.bulkInsert("usuario", randomUsuarios, {
         transaction,
       });
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();
-      const usuarios = await usuarioModel.findAll(
-        {
-          include: [{ model: domicilioUsuario }],
-        },
-        { transaction }
-      );
+      const usuarios = await usuarioModel.findAll({
+        include: [{ model: domicilioUsuario }],
+        transaction,
+      });
 
       await Promise.all(
         await usuarios.map(async (usuario) => {
@@ -36,8 +43,9 @@ module.exports = {
 
           if (hasDomicilioUsuario) return;
 
-          const domicilioUsuario = await createRandomAddress(id);
-          console.log({ domicilioUsuario });
+          const domicilioUsuario = await createRandomDomicilioUsuario(id);
+
+          // console.log({ domicilioUsuario });
           return await usuario.createDomicilioUsuario(domicilioUsuario, {
             transaction,
           });
@@ -46,14 +54,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-    
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+  async down(queryInterface) {
     await queryInterface.bulkDelete("domicilio_usuario", null, {});
     await queryInterface.bulkDelete("usuario", null, {});
   },

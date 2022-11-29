@@ -1,20 +1,20 @@
 "use strict";
-const { roles } = require("../../data/roles.json");
+const { tipoEstadisticas } = require("../../data/tipoEstadisticas.json");
 const { getElementsWithTimestamps } = require("../../utils/seeders");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const rolesWithTimestamps = getElementsWithTimestamps(roles);
+      const estadisticas = getElementsWithTimestamps(tipoEstadisticas);
 
-      await queryInterface.bulkInsert("rol", rolesWithTimestamps, {
+      return await queryInterface.bulkInsert("tipo_estadistica", estadisticas, {
         transaction,
       });
     });
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete("rol", null, {});
+    await queryInterface.bulkDelete("tipo_estadistica", null, {});
   },
 };

@@ -8,11 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       descripcion: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
     },
-    {}
+    {
+      tableName: "tipo_estadistica",
+    }
   );
 
   tipoEstadistica.associate = (models) => {
