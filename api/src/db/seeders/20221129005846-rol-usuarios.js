@@ -40,6 +40,15 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    // await queryInterface.bulkDelete("People", {}, {});
+    // Delete user role
+    await queryInterface.sequelize.transaction(async (transaction) => {
+      const usuarios = await usuario.findAll({ transaction });
+
+      await Promise.all(
+        usuarios.map(async (usuario) => {
+          return await usuario.setRol(null, { transaction });
+        })
+      );
+    });
   },
 };
