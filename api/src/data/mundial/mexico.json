@@ -1,0 +1,61 @@
+﻿{
+  "nombre": "México",
+  "encargadoEquipo": {
+    "nombre": "Gerardo",
+    "apellido": "Martino"
+  },
+  "jugadores": [
+    {
+      "nombre": "Guillermo",
+      "apellido": "Ochoa"
+    },
+    {
+      "nombre": "Jesús",
+      "apellido": "Gallardo"
+    },
+    {
+      "nombre": "Héctor",
+      "apellido": "Moreno"
+    },
+    {
+      "nombre": "César",
+      "apellido": "Montes"
+    },
+    {
+      "nombre": "Kevin",
+      "apellido": "Álvarez"
+    },
+    {
+      "nombre": "Edson",
+      "apellido": "Álvarez"
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Rodríguez"
+    },
+    {
+      "nombre": "Luis",
+      "apellido": "Chávez"
+    },
+    {
+      "nombre": "Hirving",
+      "apellido": "Lozano"
+    },
+    {
+      "nombre": "Alexis",
+      "apellido": "Vega"
+    },
+    {
+      "nombre": "Rogelio",
+      "apellido": "Funes Mori"
+    },
+    {
+      "nombre": "Javier",
+      "apellido": "Hernandez"
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Vela"
+    }
+  ]
+}

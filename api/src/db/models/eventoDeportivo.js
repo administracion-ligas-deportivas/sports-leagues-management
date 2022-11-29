@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       descripcionPagos: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       uuid: {
         type: DataTypes.UUID,

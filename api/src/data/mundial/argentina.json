@@ -1,0 +1,53 @@
+﻿{
+  "nombre": "Argentina",
+  "encargadoEquipo": {
+    "nombre": "Lionel",
+    "apellido": "Scaloni"
+  },
+  "jugadores": [
+    {
+      "nombre": "Emiliano",
+      "apellido": "Martínez"
+    },
+    {
+      "nombre": "Gonzalo",
+      "apellido": "Montiel"
+    },
+    {
+      "nombre": "Nicolás",
+      "apellido": "Otamendi"
+    },
+    {
+      "nombre": "Lisandro",
+      "apellido": "Martínez"
+    },
+    {
+      "nombre": "Marcos",
+      "apellido": "Acuña"
+    },
+    {
+      "nombre": "Rodrigue",
+      "apellido": " DePaul"
+    },
+    {
+      "nombre": "Guido",
+      "apellido": "Rodríguez"
+    },
+    {
+      "nombre": "Alexis",
+      "apellido": "Mac Allister"
+    },
+    {
+      "nombre": "Lionel",
+      "apellido": "Messi"
+    },
+    {
+      "nombre": "Lautaro",
+      "apellido": "Martínez"
+    },
+    {
+      "nombre": "Ángel",
+      "apellido": "Di María"
+    }
+  ]
+}
