@@ -1,18 +1,14 @@
 "use strict";
 
 const { faker } = require("@faker-js/faker");
-const { rol, usuario } = require("../models");
+const { getRolIds } = require("../../utils/db/rol");
+const { usuario } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const rolIds = await rol
-        .findAll({ attributes: ["id"], transaction })
-        .then((roles) => {
-          return roles.map((rol) => rol.id);
-        });
-
+      const rolIds = await getRolIds(transaction);
       const usuarios = await usuario.findAll({ transaction });
 
       await Promise.all(
@@ -22,25 +18,9 @@ module.exports = {
         })
       );
     });
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
   },
 
-  async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-    // Delete user role
+  async down(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const usuarios = await usuario.findAll({ transaction });
 
