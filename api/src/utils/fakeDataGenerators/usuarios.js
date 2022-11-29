@@ -1,51 +1,48 @@
-const bcrypt = require("bcrypt");
 const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
 const { getOnlyDate } = require("../date");
+const { getRolIds } = require("../../services/rol");
+const { getTimeStamps } = require("./timestamps");
+const { municipio } = require("../../db/models");
 const { SALT_ROUNDS } = require("../../constants/auth");
-const { municipio, rol } = require("../../db/models");
+const bcrypt = require("bcrypt");
+const { getRandomDireccion } = require("./direccion");
+
+const FIXED_PASSWORD = "holahola";
 
 let numberOfMunicipios = null;
 let rolIds = null;
 
 const initDbData = async () => {
   numberOfMunicipios = await municipio.count();
-  rolIds = await rol.findAll({ attributes: ["id"] }).then((rol) => {
-    return rol.map((rol) => rol.id);
-  });
+  rolIds = await getRolIds();
 
   console.log({ numberOfMunicipios, rolIds });
 
   return { numberOfMunicipios };
 };
 
-const createRandomAddress = async (usuarioId) => {
-  const numeroInterior = faker.datatype.boolean()
-    ? faker.random.numeric(5)
-    : null;
+const createRandomDomicilioUsuario = async (usuarioId) => {
+  const direccion = await getRandomDireccion();
 
-  const address = {
-    calle: faker.address.street(),
-    colonia: faker.address.streetAddress(),
-    codigoPostal: faker.address.zipCode("#####"),
-    numeroExterior: faker.random.numeric(5),
-    numeroInterior,
-    municipioId: faker.datatype.number({ min: 0, max: numberOfMunicipios - 1 }),
+  const domicilioUsuario = {
+    ...direccion,
     usuarioId,
-    createdAt: faker.date.past(),
-    updatedAt: new Date(Date.now()),
   };
 
-  return address;
+  return domicilioUsuario;
 };
 
-const createRandomUser = async () => {
+const createRandomUser = async (generateRandomPassword = false) => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
+  const rolId = faker.helpers.arrayElement(rolIds);
+  const timestamps = getTimeStamps(false);
 
-  const password = "holahola";
+  const password = generateRandomPassword
+    ? faker.internet.password()
+    : FIXED_PASSWORD;
+
   const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
-  const rolId = faker.helpers.arrayElement([...rolIds]);
-  // const domicilioUsuario = createRandomAddress();
 
   const user = {
     nombre: faker.name.firstName(),
@@ -55,28 +52,16 @@ const createRandomUser = async () => {
     genero,
     // Generamos una contraseña que sepamos para iniciar sesión.
     password: passwordHash,
-    // password: faker.internet.password(),
     telefono: faker.phone.number("##########"),
-    created_at: faker.date.past(),
-    updated_at: new Date(Date.now()),
     rol_id: rolId,
-    // domicilio_usuario: domicilioUsuario,
+    ...timestamps,
   };
 
   return user;
 };
 
-const createRandomUsers = async (usersNumber) => {
-  return Promise.all(
-    Array.from({ length: usersNumber }).map(async () => {
-      return await createRandomUser();
-    })
-  );
-};
-
 module.exports = {
   createRandomUser,
-  createRandomUsers,
-  createRandomAddress,
+  createRandomDomicilioUsuario,
   initDbData,
 };

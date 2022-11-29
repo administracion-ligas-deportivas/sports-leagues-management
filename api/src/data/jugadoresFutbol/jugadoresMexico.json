@@ -1,0 +1,47 @@
+﻿{
+  "jugadores": [
+    {
+      "nombre": "Guillermo Ochoa"
+    },
+    {
+      "nombre": "Jesús Gallardo"
+    },
+    {
+      "nombre": " Héctor Moreno"
+    },
+    {
+      "nombre": "César Montes"
+    },
+    {
+      "nombre": "Kevin Álvarez"
+    },
+    {
+      "nombre": "Edson Álvarez"
+    },
+    {
+      "nombre": "Carlos Rodríguez"
+    },
+    {
+      "nombre": "Luis Chávez"
+    },
+    {
+      "nombre": "Chuky Lozano"
+    },
+    {
+      "nombre": "Alexis Vega"
+    },
+    {
+      "nombre": "Rogelio Funes Mori"
+    },
+    {
+      "nombre": "Chicharito Hernandez"
+    },
+    {
+      "nombre": "Carlos Vela"
+    },
+    {
+      "rol": "Encargado de equipo",
+      "nombre": "El Tata Martino"
+    }
+  ]
+}
