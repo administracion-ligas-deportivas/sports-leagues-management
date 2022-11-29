@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       descripcion: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
     },

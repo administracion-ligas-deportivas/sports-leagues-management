@@ -15,7 +15,6 @@ module.exports = {
 
       const usuarios = await usuario.findAll({ transaction });
 
-      console.log({ rolIds });
       await Promise.all(
         await usuarios.map(async (usuario) => {
           const randomRolId = faker.helpers.arrayElement(rolIds);
