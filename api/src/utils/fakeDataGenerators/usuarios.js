@@ -1,7 +1,7 @@
 const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("../../constants/usuarios");
 const { getOnlyDate } = require("../date");
-const { getRolIds } = require("../db/rol");
+const { getRolIds } = require("../../services/rol");
 const { getTimeStamps } = require("./timestamps");
 const { municipio } = require("../../db/models");
 const { SALT_ROUNDS } = require("../../constants/auth");

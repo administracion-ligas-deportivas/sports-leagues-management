@@ -15,10 +15,7 @@ const {
 } = require("./middlewares");
 
 const {
-  postsRouter,
-  comentariosRouter,
   usersRouter,
-  likesRouter,
   loginRouter,
   estadosRouter,
   deportesRouter,
@@ -34,10 +31,7 @@ app.use(express.json());
 // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
 app.use(tokenExtractor);
 
-app.use("/api/posts", postsRouter);
-app.use("/api/comentarios", comentariosRouter);
 app.use("/api/usuarios", usersRouter);
-app.use("/api/likes", likesRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/estados", estadosRouter);
 app.use("/api/deportes", deportesRouter);

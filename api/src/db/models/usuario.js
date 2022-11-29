@@ -86,7 +86,6 @@ module.exports = (sequelize, DataTypes) => {
     usuario.hasMany(models.equipo, {
       foreignKey: "encargadoEquipoId",
     });
-    usuario.hasMany(models.like, { onDelete: "cascade" });
   };
 
   return usuario;
