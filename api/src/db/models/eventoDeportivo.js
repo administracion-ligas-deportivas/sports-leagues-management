@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
 
     eventoDeportivo.belongsToMany(models.usuario, {
       through: models.estadisticoEventoDeportivo,
+      as: "estadistico",
       foreignKey: { name: "evento_deportivo_id", allowNull: false },
     });
     eventoDeportivo.belongsToMany(models.equipo, {

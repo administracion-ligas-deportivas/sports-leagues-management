@@ -4,15 +4,21 @@
   "estadisticos": [
     {
       "nombre": "César Arturo",
-      "apellido": "Ramos"
+      "apellido": "Ramos",
+      "fechaNacimiento": "1983-12-15",
+      "genero": "hombre"
     },
     {
       "nombre": "Fernando",
-      "apellido": "Rapallini"
+      "apellido": "Rapallini",
+      "fechaNacimiento": "1978-04-28",
+      "genero": "hombre"
     },
     {
       "nombre": "Mario",
-      "apellido": "Escobar"
+      "apellido": "Escobar",
+      "fechaNacimiento": "1986-09-19",
+      "genero": "hombre"
     }
   ]
 }

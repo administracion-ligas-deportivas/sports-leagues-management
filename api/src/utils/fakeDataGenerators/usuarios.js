@@ -33,9 +33,9 @@ const createRandomDomicilioUsuario = async (usuarioId) => {
   return domicilioUsuario;
 };
 
-const createRandomUser = async (generateRandomPassword = false) => {
+const createRandomUser = async (generateRandomPassword = false, props = {}) => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
-  const rolId = faker.helpers.arrayElement(rolIds);
+  const rolId = faker.helpers.arrayElement(rolIds || []);
   const timestamps = getTimeStamps(false);
 
   const password = generateRandomPassword
@@ -55,7 +55,10 @@ const createRandomUser = async (generateRandomPassword = false) => {
     telefono: faker.phone.number("##########"),
     rol_id: rolId,
     ...timestamps,
+    ...props,
   };
+
+  console.log({ user });
 
   return user;
 };

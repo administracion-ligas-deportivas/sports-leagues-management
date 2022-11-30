@@ -2,6 +2,15 @@ const { ROLES } = require("../constants/roles");
 const { faker } = require("@faker-js/faker");
 const { rol, usuario } = require("../db/models");
 
+const getRolByNombre = async (nombre, transaction) => {
+  return await rol.findOne({
+    where: {
+      nombre,
+    },
+    transaction,
+  });
+};
+
 const getRolIds = async (transaction) => {
   return await rol
     .findAll({ attributes: ["id"], transaction })
@@ -39,4 +48,5 @@ module.exports = {
   getRolIds,
   getOrganizadoresIds,
   getRandomOrganizadorId,
+  getRolByNombre,
 };
