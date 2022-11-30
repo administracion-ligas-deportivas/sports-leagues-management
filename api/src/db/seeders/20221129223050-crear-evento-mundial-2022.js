@@ -4,6 +4,7 @@ const {
   formatoEventoDeportivo,
   eventoDeportivo,
   usuario,
+  equipo,
 } = require("../models");
 
 const {
@@ -59,11 +60,14 @@ const getEstadisticosMundial = async (transaction) => {
 
   const estadisticosWithTimestamps = await Promise.all(
     estadisticos.map(async (estadistico) => {
-      const { fecha_nacimiento, rol_id, ...restUsuario } =
-        await createRandomUser(false, estadistico);
+      const estadisticoWithRandomProps = await createRandomUser(
+        false,
+        estadistico,
+        { isCamelCase: true }
+      );
 
       return {
-        ...restUsuario,
+        ...estadisticoWithRandomProps,
         rolId,
       };
     })
@@ -71,6 +75,70 @@ const getEstadisticosMundial = async (transaction) => {
 
   console.log({ estadisticosWithTimestamps });
   return estadisticosWithTimestamps;
+};
+
+const addEstadisticosToEvento = async (estadisticos, evento, transaction) => {
+  await Promise.all(
+    estadisticos.map(async (estadistico) => {
+      await evento.createEstadistico(estadistico, { transaction });
+    })
+  );
+
+  // await evento.reload({ paranoid: false });
+  // const estadisticosEvento = await evento.getEstadistico();
+  // console.log({ estadisticosEvento });
+};
+
+const createEquipo = async (equipoData, deporteId, transaction) => {
+  const { nombre, encargadoEquipo, jugadores } = equipoData;
+  const { id: rolId } = await getRolByNombre(ROLES.USUARIO, transaction);
+
+  const encargadoWithRandomProps = await createRandomUser(
+    false,
+    encargadoEquipo,
+    { isCamelCase: true }
+  );
+
+  const encargado = {
+    ...encargadoWithRandomProps,
+    rolId,
+  };
+  const createdEncargado = await usuario.create(encargado, { transaction });
+
+  const equipoWithTimestamps = {
+    nombre,
+    deporteId,
+    encargadoEquipoId: createdEncargado.id,
+    ...getTimeStamps(),
+  };
+
+  const createdEquipo = await equipo.create(equipoWithTimestamps, {
+    transaction,
+  });
+
+  const newJugadores = await Promise.all(
+    jugadores.map(async (jugador) => {
+      const jugadorWithRandomProps = await createRandomUser(false, jugador, {
+        isCamelCase: true,
+      });
+
+      return {
+        ...jugadorWithRandomProps,
+        rolId,
+      };
+    })
+  );
+
+  await Promise.all(
+    newJugadores.map(async (jugador) => {
+      await createdEquipo.createJugador(jugador, { transaction });
+    })
+  );
+
+  // await createdEquipo.reload({ paranoid: false });
+  // console.log({ equipo: createdEquipo.toJSON() });
+
+  return createdEquipo;
 };
 
 const createEventoMundial = async (organizadorId, transaction) => {
@@ -107,14 +175,29 @@ module.exports = {
 
       const estadisticos = await getEstadisticosMundial();
 
-      await Promise.all(
-        estadisticos.map(async (estadistico) => {
-          await mundial.createEstadistico(estadistico, { transaction });
-        })
+      await addEstadisticosToEvento(estadisticos, mundial, transaction);
+
+      const { id: deporteId } = await getDeporteByNombre(DEPORTES.FUTBOL);
+
+      const createdArgentina = await createEquipo(
+        argentina,
+        deporteId,
+        transaction
       );
 
-      const estadisticosMundial = await mundial.getEstadistico();
-      console.log({ estadisticosMundial });
+      const createdMexico = await createEquipo(mexico, deporteId, transaction);
+
+      console.log({
+        createdArgentina: createdArgentina.toJSON(),
+        createdMexico: createdMexico.toJSON(),
+      });
+
+      await mundial.addEquipos([createdArgentina, createdMexico], {
+        transaction,
+      });
+
+      const equipos = await mundial.getEquipos();
+      console.log({ equipos: equipos.map((equipo) => equipo.toJSON()) });
     });
   },
 
