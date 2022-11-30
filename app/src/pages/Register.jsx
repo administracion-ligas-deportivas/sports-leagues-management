@@ -63,11 +63,6 @@ function Signup() {
     },
     { id: "user-input-pass", name: "apellido", label: "Apellido(s)" },
     {
-      id: "user-input-pass",
-      name: "correo",
-      label: "Correo",
-    },
-    {
       id: "user-input",
       type: "tel",
       name: "telefono",
@@ -76,6 +71,11 @@ function Signup() {
   ];
 
   const passwordFields = [
+    {
+      id: "user-input-pass",
+      name: "correo",
+      label: "Correo",
+    },
     {
       id: "user-input-pass",
       type: "password",
@@ -198,6 +198,8 @@ function Signup() {
 
   const imageClasses = [styles.container, "hidden", "sm:flex"].join(" ");
 
+  // stepper
+  // stepper
   return (
     <div className="flex flex-col justify-between h-full">
       <section className={[styles.mainContainerRegister]}>
@@ -209,73 +211,10 @@ function Signup() {
         </section>
         <form
           onSubmit={handleSubmit(registerUser)}
-          className={[styles.container, styles.loginContainer].join(" ")}
+          className={[styles.container, styles.signupContainer].join(" ")}
         >
           <Link to="/login">Iniciar sesión</Link>
-          <h1 className={styles.titlePage}>Regístrate</h1>
-
-          {textFields.map((textField) => {
-            return (
-              <TextField
-                {...textField}
-                key={textField?.name}
-                {...register(textField.name)}
-              />
-            );
-          })}
-
-          <div className={styles.genderDataContainer}>
-            {/*TextField para el fecha de nacimiento*/}
-            {/*<DesktopDatePicker
-            disabled
-            label="Date desktop"
-            inputFormat="MM/DD/YYYY"
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-            />*/}
-
-            {/*TextField para el género*/}
-
-            <FormControl>
-              <InputLabel id="select-genero">Género</InputLabel>
-              <Select
-                labelId="select-genero"
-                name="genero"
-                label="Género"
-                {...register("genero", { setHelperText: false })}
-              >
-                {GENEROS.map((genero) => {
-                  const capitalized = capitalizeFirstLetter(genero);
-                  return (
-                    <MenuItem value={genero} key={genero}>
-                      {capitalized}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-              {errors?.genero && (
-                <FormHelperText
-                  {...setFieldErrors("genero", { setHelperText: false })}
-                >
-                  {errors?.genero?.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Date desktop"
-                inputFormat="DD/MM/YYYY"
-                defaultValue={DateTime.now()}
-                {...register("fechaNacimiento")}
-                value={watch("fechaNacimiento")}
-                onChange={(newValue) => {
-                  setValue("fechaNacimiento", newValue);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </div>
+          <h1 className={styles.titlePageSignUp}>Regístrate</h1>
 
           {passwordFields.map((textField) => {
             return (
@@ -283,6 +222,7 @@ function Signup() {
                 {...textField}
                 key={textField?.name}
                 {...register(textField.name)}
+                fullWidth
               />
             );
           })}
@@ -290,10 +230,77 @@ function Signup() {
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
+              aria-controls="datos-personales"
+              id="datos-personales"
+            >
+              <Typography
+                sx = {{fontWeight: "500"}}> Datos personales </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {/* Primer step */}
+              {textFields.map((textFields) => {
+                return (
+                  <TextField
+                    {...textFields}
+                    key={textFields?.name}
+                    {...register(textFields.name)}
+                    fullWidth
+                    sx={{ marginTop: "1.5em" }}
+                  />
+                );
+              })}
+              <div className={styles.genderDataContainer}>
+                <FormControl>
+                  <InputLabel id="select-genero">Género</InputLabel>
+                  <Select
+                    labelId="select-genero"
+                    name="genero"
+                    label="Género"
+                    {...register("genero", { setHelperText: false })}
+                  >
+                    {GENEROS.map((genero) => {
+                      const capitalized = capitalizeFirstLetter(genero);
+                      return (
+                        <MenuItem value={genero} key={genero}>
+                          {capitalized}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                  {errors?.genero && (
+                    <FormHelperText
+                      {...setFieldErrors("genero", { setHelperText: false })}
+                    >
+                      {errors?.genero?.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
+
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    label="Fecha de nacimiento"
+                    inputFormat="DD/MM/YYYY"
+                    defaultValue={DateTime.now()}
+                    {...register("fechaNacimiento")}
+                    value={watch("fechaNacimiento")}
+                    onChange={(newValue) => {
+                      setValue("fechaNacimiento", newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
               aria-controls="direccion"
               id="direccion"
             >
-              <Typography> Dirección </Typography>
+              <Typography
+                sx = {{fontWeight: "500"}}> Datos de dirección </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Stack direction="row" spacing={2}>
@@ -340,8 +347,9 @@ function Signup() {
                 {...domicilioFields.calle}
                 {...register("calle")}
                 fullWidth
+                sx={{ marginTop: "1.5em" }}
               />
-              <Stack direction="row" spacing={2}>
+              <Stack direction="row" spacing={2} sx={{ marginTop: "1.5em" }}>
                 <TextField
                   {...register("numeroExterior")}
                   fullWidth
@@ -359,7 +367,7 @@ function Signup() {
                   label="Número Interior"
                 />
               </Stack>
-              <Stack direction="row" spacing={2}>
+              <Stack direction="row" spacing={2} sx={{ marginTop: "1.5em" }}>
                 <TextField
                   {...register("colonia")}
                   fullWidth

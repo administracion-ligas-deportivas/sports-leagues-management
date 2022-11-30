@@ -42,6 +42,10 @@ export default function GestionEventoDep() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [openPago, setOpenPago] = React.useState(false);
+  const handleOpenPago = () => setOpenPago(true);
+  const handleClosePago = () => setOpenPago(false);
   //const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
 
   const style = {
@@ -155,9 +159,86 @@ export default function GestionEventoDep() {
               </div>
             </div>
             <div className={styles.divButtonA}>
-              <Button variant="contained" onClick={handleOpen}>
-                Crear partido
-              </Button>
+              <Stack direction="row" spacing={2}>
+                <Button variant="contained" onClick={handleOpenPago}>
+                  Registrar pago
+                </Button>
+                <Button variant="contained" onClick={handleOpen}>
+                  Crear partido
+                </Button>
+              </Stack>
+              <Modal
+                open={openPago}
+                onClose={handleClosePago}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                  <Typography id="modal-modal-title" variant="h4" component="h2">
+                    Registrar pago del evento
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Aqui se ingresan los datos del pago del evento
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <div className={styles.flexContainer}>
+                      <TextField
+                        fullWidth
+                        id="sports-event-pay"
+                        label="Monto a pagar"
+                        margin="normal"
+                        type='number'
+                        // InputLabelProps={{ shrink: true }}
+                      />
+                      
+                      <TextField
+                        fullWidth
+                        id="sports-event-pay"
+                        label="Concepto del pago"
+                        margin="normal"
+                        // InputLabelProps={{ shrink: true }}
+                      />
+                    </div>
+                    <div className={styles.flexContainer}>
+                      <TextField
+                        fullWidth
+                        id="sports-event-pay"
+                        label="Fecha de pago"
+                        margin="normal"
+                        type="date"
+                        InputLabelProps={{ shrink: true }}
+                      />
+                      
+                      <TextField
+                        fullWidth
+                        id="sports-event-pay"
+                        label="Forma de pago"
+                        margin="normal"
+                        // InputLabelProps={{ shrink: true }}
+                      />
+                    </div>
+                    <TextField
+                      fullWidth
+                      id="sports-event-pay"
+                      label="Notas"
+                      margin="normal"
+                      multiline
+                      rows={4}
+                      // InputLabelProps={{ shrink: true }}
+                    />
+                    <div className={styles.buttons}>
+                      <div>
+                        <Button variant="contained">Ingresar</Button>
+                      </div>
+                      <div>
+                        <Button variant="contained" color="error" onClick={handleClosePago}>
+                          Cancelar
+                        </Button>
+                      </div>
+                    </div>
+                  </Typography>
+                </Box>
+              </Modal>
               <Modal
                 open={open}
                 onClose={handleClose}
@@ -300,7 +381,7 @@ export default function GestionEventoDep() {
                 <Button variant="contained">Ingresar</Button>
               </div>
               <div>
-                <Button variant="contained" color="error">
+                <Button variant="contained" color="error" onclick={handleClose}>
                   Cancelar
                 </Button>
               </div>
