@@ -9,13 +9,16 @@ const createEstadisticaJugadorPartido = async (
 ) => {
   const { tiempoTranscurrido, cantidad } = campos;
 
-  return await estadisticaJugadorPartido.create({
-    tiempoTranscurrido,
-    cantidad,
-    partidoId,
-    tipoEstadisticaId,
-    jugadorId,
-  });
+  return await estadisticaJugadorPartido.create(
+    {
+      tiempoTranscurrido,
+      cantidad,
+      partidoId,
+      tipoEstadisticaId,
+      jugadorId,
+    },
+    { transaction }
+  );
 };
 
 module.exports = {
