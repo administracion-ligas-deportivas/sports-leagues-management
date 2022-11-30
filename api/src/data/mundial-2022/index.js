@@ -3,9 +3,10 @@ const eventoMundial = require("./eventoMundial.json");
 const argentina = require("./argentina.json");
 const mexico = require("./mexico.json");
 
+const equipos = [argentina, mexico];
+
 module.exports = {
   formatoMundial,
   eventoMundial,
-  argentina,
-  mexico,
+  equipos,
 };

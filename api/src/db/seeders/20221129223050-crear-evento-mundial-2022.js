@@ -10,12 +10,10 @@ const {
 const {
   formatoMundial,
   eventoMundial,
-  argentina,
-  mexico,
+  equipos,
 } = require("../../data/mundial-2022");
 
 const { getTimeStamps } = require("../../utils/fakeDataGenerators/timestamps");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
 const {
   getRandomOrganizadorId,
   getRolByNombre,
@@ -24,10 +22,7 @@ const { getDeporteByNombre } = require("../../services/deporte");
 const { getTipoEventoByNombre } = require("../../services/tipoEvento");
 const { TIPO_EVENTOS } = require("../../constants/eventos");
 const { DEPORTES } = require("../../constants/deportes");
-const {
-  createRandomUser,
-  initDbData,
-} = require("../../utils/fakeDataGenerators/usuarios");
+const { createRandomUser } = require("../../utils/fakeDataGenerators/usuarios");
 const { ROLES } = require("../../constants/roles");
 
 const createFormatoMundial = async (organizadorId, transaction) => {
@@ -165,7 +160,7 @@ const createEventoMundial = async (organizadorId, transaction) => {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const randomOrganizadorId = await getRandomOrganizadorId();
       const mundial = await createEventoMundial(
@@ -179,29 +174,17 @@ module.exports = {
 
       const { id: deporteId } = await getDeporteByNombre(DEPORTES.FUTBOL);
 
-      const createdArgentina = await createEquipo(
-        argentina,
-        deporteId,
-        transaction
+      const createdEquiposMundial = await Promise.all(
+        equipos.map(async (equipo) => {
+          return await createEquipo(equipo, deporteId, transaction);
+        })
       );
 
-      const createdMexico = await createEquipo(mexico, deporteId, transaction);
-
-      console.log({
-        createdArgentina: createdArgentina.toJSON(),
-        createdMexico: createdMexico.toJSON(),
-      });
-
-      await mundial.addEquipos([createdArgentina, createdMexico], {
-        transaction,
-      });
-
-      const equipos = await mundial.getEquipos();
-      console.log({ equipos: equipos.map((equipo) => equipo.toJSON()) });
+      await mundial.addEquipos(createdEquiposMundial, { transaction });
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       await formatoEventoDeportivo.destroy({
         where: {

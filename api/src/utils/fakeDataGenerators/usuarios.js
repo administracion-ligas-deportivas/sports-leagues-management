@@ -63,15 +63,13 @@ const createRandomUser = async (
 
   const caseProps = isCamelCase
     ? {
-        fechaNacimiento,
-        rolId,
-      }
+      fechaNacimiento,
+      rolId,
+    }
     : {
-        fecha_nacimiento: fechaNacimiento,
-        rol_id: rolId,
-      };
-
-  console.log({ user });
+      fecha_nacimiento: fechaNacimiento,
+      rol_id: rolId,
+    };
 
   return { ...user, ...caseProps };
 };
