@@ -16,56 +16,13 @@ import Button from "@mui/material/Button";
 import { fetchEventosReales } from "@/services/eventos";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
   const [eventos, setEventos] = useState([]);
-  const [likedPost, setLikedPost] = useState([]);
   const navigate = useNavigate();
-
   useEffect(() => {
-    console.log({ posts });
-  }, [posts]);
-
-  useEffect(() => {
-    fetchPosts().then((response) => {
-      setPosts(response.listaAnuncios);
-      setLikedPost(
-        response.liked.map((like) => {
-          return like.anuncioId;
-        })
-      );
-    });
-
     fetchEventosReales().then((eventos) => {
       setEventos(eventos);
     });
   }, []);
-
-  const meGusta = (avisoID) => {
-    likePost(avisoID).then((response) => {
-      console.log({ response });
-      const newPosts = posts.map((post) => {
-        if (post.id === avisoID)
-          if (response.liked) return { ...post, likes: [...post.likes, 0] };
-          else {
-            const auxArray = post.likes;
-            auxArray.pop();
-            return { ...post, likes: auxArray };
-          }
-        else return post;
-      });
-
-      setPosts(newPosts);
-
-      if (!likedPost.includes(avisoID)) {
-        setLikedPost([...likedPost, avisoID]);
-        return;
-      }
-      const liked = likedPost.filter((id) => {
-        return id !== avisoID;
-      });
-      setLikedPost(liked);
-    });
-  };
 
   return (
     <>
@@ -110,21 +67,30 @@ export default function Home() {
                   <div
                     className={style.anuncioBody}
                     onClick={() => {
-                      navigate(`/eventos/${evento.id}`);
+                      navigate(`/gestion-evento-deportivo/${evento.id}`);
                     }}
                   >
-                    {/* <div className={style.anuncioText}>
-                      <p>Fecha de inicio: {new Date(evento.fechaInicio)}</p>
+                    <div className={style.anuncioText}>
+                      <p>
+                        <b>Formato de evento:</b>{" "}
+                        {evento.formatoEventoDeportivo.nombre}
+                      </p>
+                      <p>
+                        Fecha de inicio:{" "}
+                        {new Date(evento.fechaInicio).toLocaleDateString()}
+                      </p>
                       {evento?.fechaFinalizacion && (
                         <p>
                           {new Date(evento.fechaFinalizacion).toLocaleString()}
                         </p>
                       )}
-                    </div> */}
+                    </div>
                     <div className={style.anuncioInfo}>
-                      <p>
-                        <b> Detalles de pagos: </b> {evento.descripcionPagos}
-                      </p>
+                      {evento.descripcionPagos && (
+                        <p>
+                          <b> Detalles de pagos: </b> {evento.descripcionPagos}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

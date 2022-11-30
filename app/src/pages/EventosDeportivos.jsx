@@ -1,7 +1,7 @@
 import React from "react";
-import { 
+import {
   Button,
-  Typography, 
+  Typography,
   Stack,
   FormGroup,
   FormControlLabel,
@@ -9,39 +9,49 @@ import {
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import style from "@/styles/EventosDeportivos.module.css";
+import { useEventos } from "@/hooks/useEventos";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "evento", headerName: "Evento", width: 130 },
-  { field: "deporte", headerName: "Deporte", width: 130 },
+  { field: "formatoEventoDeportivo", headerName: "Formato", width: 130 },
 ];
 
-const rows = [
-  { id: 1, evento: "Snow", deporte: "Basketball" },
-  { id: 2, evento: "Lannister", deporte: "Basketball" },
-  { id: 3, evento: "Lannister", deporte: "Béisbol" },
-  { id: 4, evento: "Stark", deporte: "Béisbol" },
-  { id: 5, evento: "Targaryen", deporte: "Basketball" },
-  { id: 6, evento: "Melisandre", deporte: "Softball" },
-  { id: 7, evento: "Clifford", deporte: "Softball"  },
-  { id: 8, evento: "Frances", deporte: "Basketball" },
-  { id: 9, evento: "Roxie", deporte: "Basketball" },
-];
+export default function EventosDeportivos() {
+  const { eventos } = useEventos();
 
-export default function EventosDeportivos(){  
+  const rows = eventos.map((evento) => {
+    console.log({ evento });
+    return {
+      id: evento.id,
+      evento: evento.nombre,
+      formatoEventoDeportivo: evento.formatoEventoDeportivo.nombre,
+    };
+  });
 
-  return(
+  console.log({ rows });
+
+  return (
     <>
       <div className={style.container}>
         <h1>Eventos deportivos</h1>
-        <div className={style.rectangle}>    
+        <div className={style.rectangle}>
           <Stack spacing={2} direction="row">
-            <div style={{ width: "20%" }}></div>
-            <FormGroup sx={{width: "70%"}}>
+            <div style={{ width: "10%" }}></div>
+            <FormGroup>
               <Typography variant="h6">Filtrar por:</Typography>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Futbol" />
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Softball" />
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Baseball" />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Futbol"
+              />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Softball"
+              />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Baseball"
+              />
             </FormGroup>
             <div style={{ height: 400, width: "100%" }}>
               <DataGrid

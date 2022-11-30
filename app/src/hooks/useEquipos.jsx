@@ -5,13 +5,11 @@ export function useEquipos() {
   const [equipos, setEquipos] = useState([]);
 
   useEffect(() => {
-    fetchEquipos().then((data) => {
-      const { equipos } = data;
-
+    fetchEquipos().then(({ equipos }) => {
+      console.log({ equipos });
       setEquipos(equipos);
     });
   }, []);
-  
 
   return {
     equipos,

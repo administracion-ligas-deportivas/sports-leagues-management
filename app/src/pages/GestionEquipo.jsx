@@ -3,15 +3,12 @@ import styles from "../styles/GestionEquipo.module.css";
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, Stack, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 
-import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
 import { useJugadores } from "@/hooks/useJugadores";
+import { JugadoresEquipo } from "@/components/JugadoresEquipo";
 /* ----------------------------------- MUI ---------------------------------- */
 
 export default function GestionEquipo() {
-  const { jugadores, deleteJugador } = useJugadores();
 
   //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   function randomString(length, chars) {
@@ -28,32 +25,6 @@ export default function GestionEquipo() {
   }
 
   const codigoAcceso = randomString(16, "#aA!");
-
-  const columns = [
-    {
-      field: "Eliminar",
-      width: 90,
-      renderCell: () => {
-        return (
-          <IconButton onClick={(e) => deleteJugador(e.target.value.id)}>
-            <DeleteIcon />
-          </IconButton>
-        );
-      },
-    },
-    {
-      field: "nombre",
-      headerName: "Nombre(s)",
-    },
-    {
-      field: "apellido",
-      headerName: "Apellidos",
-    },
-    {
-      field: "fechaNacimiento",
-      headerName: "Fecha de nacimiento",
-    },
-  ];
 
   return (
     <>
@@ -111,15 +82,7 @@ export default function GestionEquipo() {
             <Typography variant="h6" gutterBottom>
               Miembros del equipo:
             </Typography>
-            <DataGrid
-              rows={jugadores}
-              columns={columns}
-              pageSize={4}
-              rowsPerPageOptions={[4]}
-              checkboxSelection
-              disableSelectionOnClick
-              experimentalFeatures={{ newEditingApi: true }}
-            />
+            <JugadoresEquipo />
           </div>
           <div className={styles.buttons}>
             <div>

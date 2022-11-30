@@ -5,13 +5,10 @@ export function useFormatos() {
   const [formatos, setFormatos] = useState([]);
 
   useEffect(() => {
-    fetchFormatos().then((data) => {
-      const { formatos } = data;
-
+    fetchFormatos().then((formatos) => {
       setFormatos(formatos);
     });
   }, []);
-  
 
   return {
     formatos,

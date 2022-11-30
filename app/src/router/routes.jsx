@@ -70,7 +70,7 @@ export const routes = [
         element: <Profile />,
       },
       {
-        path: "/gestion-evento-deportivo",
+        path: "/gestion-evento-deportivo/:eventoId",
         element: <GestionEventoDep />,
       },
       {

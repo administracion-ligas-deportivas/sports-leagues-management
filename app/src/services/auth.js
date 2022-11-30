@@ -43,7 +43,6 @@ const authenticateLoggedUser = async () => {
   const data = await fetch(VERIFY_URL, {
     headers: { Authorization: bearerToken },
   }).then((res) => {
-    console.log(res);
     return res.json();
   });
 

@@ -19,28 +19,32 @@ export default function Formatos() {
       <div className={styles.container}>
         <h1>Formatos</h1>
         <Stack direction="column" spacing={2} className={styles.rectangle}>
-          {formatos.map((value, key) => {
-            console.log(value);
+          {formatos.map((formato, key) => {
+            console.log(formato);
             return (
               <Accordion key={key}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
-                  aria-controls="{value.nombre}-content"
-                  id="{value.nombre}-header"
+                  aria-controls="{formato.nombre}-content"
+                  id="{formato.nombre}-header"
                 >
                   <Typography>
                     {" "}
-                    <b>{value.nombre}</b> | {value.deporte}{" "}
+                    <b>{formato.nombre}</b> | {formato.deporte.nombre}{" "}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <div className={styles.interlineado}>
-                    <h3>Nombre: {value.nombre}</h3>
-                    {/* <h3>Crado por: {value.nombre}</h3> */}
-                    <h4>Deporte: {value.deporte}</h4>
-                    <h4>Tipo de evento deportivo: {value.tipoEventoDeportivo}</h4>
-                    <p>Máximo de equipos: {value.maximo_equipos}</p>
-                    <p className={styles.interlineadoDescrip}>Descripción: {value.descripcion}</p>
+                    <h3>Nombre: {formato.nombre}</h3>
+                    {/* <h3>Crado por: {formato.nombre}</h3> */}
+                    <h4>Deporte: {formato.deporte.nombre}</h4>
+                    <h4>
+                      Tipo de evento deportivo: {formato.tipoEventoDeportivo}
+                    </h4>
+                    <p>Máximo de equipos: {formato.maximoEquipos}</p>
+                    <p className={styles.interlineadoDescrip}>
+                      Descripción: {formato.descripcion}
+                    </p>
                   </div>
                 </AccordionDetails>
               </Accordion>

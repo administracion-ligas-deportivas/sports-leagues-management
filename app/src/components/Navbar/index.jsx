@@ -32,23 +32,31 @@ const navtexts = [
     text: "Eventos deportivos",
   },
   {
-    to: "/estadisticas-personales",
-    text: "Mis estadísticas",
+    to: "/visualizar-formatos",
+    text: "Visualizar formatos",
+  },
+  {
+    to: "/partidos-en-sistema",
+    text: "Partidos en sistema",
   },
   {
     to: "/home",
-    text: "Admin"
-  }
+    text: "Admin",
+  },
 ];
 
 const allNavtexts = [
-  { 
-    to: "/", 
-    text: "Home" 
+  {
+    to: "/",
+    text: "Home",
   },
-  { 
-    to: "/home", 
-    text: "Home Admin" 
+  {
+    to: "/crear-formato",
+    text: "Crear formato",
+  },
+  {
+    to: "/home",
+    text: "Home Admin",
   },
   {
     to: "/gestion-evento-deportivo",
@@ -61,6 +69,11 @@ const allNavtexts = [
   {
     to: "/crear-evento-deportivo",
     text: "Crear Evento Deportivo",
+  },
+
+  {
+    to: "/estadisticas-personales",
+    text: "Mis estadísticas",
   },
   {
     to: "/enter-sports-event",
@@ -83,7 +96,6 @@ const allNavtexts = [
     text: "Eventos deportivos",
   },
   {
-
     to: "/gestion-equipo-jugador",
     text: "Gestion equipo jugador",
   },
@@ -115,18 +127,6 @@ const allNavtexts = [
     to: "/panel-admin",
     text: "Panel admin",
   },
-  {
-    to: "/crear-formato",
-    text: "Crear formato",
-  },
-  {
-    to: "/visualizar-formatos",
-    text: "Visualizar formatos",
-  },
-  {
-    to: "/partidos-en-sistema",
-    text: "Partidos en sistema",
-  }
 ];
 
 function Navbar() {
@@ -222,11 +222,7 @@ function Navbar() {
             >
               {navtexts.map((text) => {
                 return (
-                  <Link
-                    to={text.to}
-                    key={text.to}
-                    className={styles.link}
-                  >
+                  <Link to={text.to} key={text.to} className={styles.link}>
                     <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{text.text}</Typography>
                     </MenuItem>
@@ -260,7 +256,7 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navtexts.map((text) => {
-              if(text.text === "Admin"){
+              if (text.text === "Admin") {
                 return (
                   <>
                     <Button
@@ -274,17 +270,17 @@ function Navbar() {
                       anchorEl={anchorElAdmin}
                       anchorOrigin={{
                         vertical: "bottom",
-                        horizontal: "left"
+                        horizontal: "left",
                       }}
                       keepMounted
                       transformOrigin={{
                         vertical: "top",
-                        horizontal: "left"
+                        horizontal: "left",
                       }}
                       open={Boolean(anchorElAdmin)}
                       onClose={handleCloseAdminMenu}
                       sx={{
-                        display: { xs: "block", md: "block" }
+                        display: { xs: "block", md: "block" },
                       }}
                     >
                       {allNavtexts.map((text) => {
@@ -295,20 +291,21 @@ function Navbar() {
                             className={styles.link}
                           >
                             <MenuItem onClick={handleCloseAdminMenu}>
-                              <Typography textAlign="center">{text.text}</Typography>
+                              <Typography textAlign="center">
+                                {text.text}
+                              </Typography>
                             </MenuItem>
                           </Link>
                         );
                       })}
-                    </Menu></>
+                    </Menu>
+                  </>
                 );
               } else {
                 return (
                   <Link key={text.to} to={text.to} className={styles.link}>
-                    <Button
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      {text.text} 
+                    <Button sx={{ my: 2, color: "white", display: "block" }}>
+                      {text.text}
                     </Button>
                   </Link>
                 );
@@ -321,10 +318,13 @@ function Navbar() {
               <span>Cargando...</span>
             ) : (
               <Tooltip title="Perfil">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1, color: "white" }}>
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 1, color: "white" }}
+                >
                   <FontAwesomeIcon
                     icon={faCircleUser}
-                    styles={{ color: "white" , fontSize: "2.5rem"}}
+                    styles={{ color: "white", fontSize: "2.5rem" }}
                   />
                 </IconButton>
               </Tooltip>

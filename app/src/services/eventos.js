@@ -7,11 +7,18 @@ const fetchEventos = async () => {
 };
 
 const fetchEventosReales = async () => {
-  const response = await fetch(`/api/eventos`);
+  const response = await fetch("/api/eventos");
   const data = await response.json();
+  return data;
+};
+
+const fetchEventoById = async (id) => {
+  const response = await fetch(`/api/eventos/${id}`);
+  const data = await response.json();
+  console.log({ data });
   return data;
 };
 
 const deleteEvento = async (id) => {};
 
-export { fetchEventos, deleteEvento, fetchEventosReales };
+export { fetchEventos, deleteEvento, fetchEventosReales, fetchEventoById };

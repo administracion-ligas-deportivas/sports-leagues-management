@@ -7,14 +7,7 @@ import Loading from "../Loading/loading";
 // MainLayout en este caso.
 export function ProtectedRoute({ children }) {
   const { user, isLoading, isError } = useUser();
-  console.log(
-    "🚀 ~ file: ProtectedRoute.jsx ~ line 9 ~ ProtectedRoute ~ user",
-    user
-  );
-  console.log(
-    "🚀 ~ file: ProtectedRoute.jsx ~ line 9 ~ ProtectedRoute ~ isError",
-    isError
-  );
+ 
   const location = useLocation();
   const navigate = useNavigate();
 

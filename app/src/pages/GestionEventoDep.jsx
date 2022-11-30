@@ -1,5 +1,5 @@
 import styles from "../styles/GestionTorneo.module.css";
-import * as React from "react";
+import { useEffect } from "react";
 /* ----------------------------------- MUI ---------------------------------- */
 import {
   Button,
@@ -19,10 +19,40 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { useEquipos } from "@/hooks/useEquipos";
+import { AcordionEquipo } from "@/components/AcordionEquipo";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchEventoById } from "@/services/eventos";
 /* ----------------------------------- MUI ---------------------------------- */
 // import { DateTime } from "luxon";
 
 export default function GestionEventoDep() {
+  const { equipos } = useEquipos();
+  const { eventoId } = useParams();
+  const [evento, setEvento] = useState({});
+  const [equiposBD, setEquiposBD] = useState([]);
+  console.log({ eventoId });
+
+  useEffect(() => {
+    fetchEventoById(eventoId)
+      .then((evento) => {
+        console.log({ evento });
+        setEvento(evento);
+        setEquiposBD(
+          evento.equipos.map((equipo) => {
+            return {
+              id: equipo.id,
+              label: equipo.nombre,
+            };
+          })
+        );
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+  }, []);
+
   //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   function randomString(length, chars) {
     //Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
@@ -39,11 +69,11 @@ export default function GestionEventoDep() {
 
   const codigoAcceso = randomString(16, "#aA!");
   //console.log(randomString(16, "#aA!"));
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [openPago, setOpenPago] = React.useState(false);
+  const [openPago, setOpenPago] = useState(false);
   const handleOpenPago = () => setOpenPago(true);
   const handleClosePago = () => setOpenPago(false);
   //const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
@@ -58,19 +88,6 @@ export default function GestionEventoDep() {
     boxShadow: 24,
     p: 5,
   };
-
-  const equiposBD = [
-    { label: "Equipo A", id: 1 },
-    { label: "Equipo B", id: 2 },
-    { label: "Equipo C", id: 3 },
-    { label: "Equipo D", id: 4 },
-    { label: "Equipo E", id: 5 },
-    { label: "Equipo F", id: 6 },
-    { label: "Equipo G", id: 7 },
-    { label: "Equipo H", id: 8 },
-    { label: "Equipo I", id: 9 },
-    { label: "Equipo J", id: 10 },
-  ];
 
   const canchas = [
     { label: "Cancha A", id: 1 },
@@ -95,11 +112,9 @@ export default function GestionEventoDep() {
               <div className={styles.input}>
                 <TextField
                   fullWidth
-                  disabled
                   id="sports-event-name"
                   label="Nombre"
                   margin="normal"
-                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
               <div className={styles.input}>
@@ -153,7 +168,7 @@ export default function GestionEventoDep() {
                   id="sports-event-format"
                   label="Código de acceso"
                   margin="normal"
-                  value={codigoAcceso}
+                  defaultValue={evento.uuid}
                   // InputLabelProps={{ shrink: true }}
                 />
               </div>
@@ -174,7 +189,11 @@ export default function GestionEventoDep() {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style}>
-                  <Typography id="modal-modal-title" variant="h4" component="h2">
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h4"
+                    component="h2"
+                  >
                     Registrar pago del evento
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -187,10 +206,10 @@ export default function GestionEventoDep() {
                         id="sports-event-pay"
                         label="Monto a pagar"
                         margin="normal"
-                        type='number'
+                        type="number"
                         // InputLabelProps={{ shrink: true }}
                       />
-                      
+
                       <TextField
                         fullWidth
                         id="sports-event-pay"
@@ -208,7 +227,7 @@ export default function GestionEventoDep() {
                         type="date"
                         InputLabelProps={{ shrink: true }}
                       />
-                      
+
                       <TextField
                         fullWidth
                         id="sports-event-pay"
@@ -231,7 +250,11 @@ export default function GestionEventoDep() {
                         <Button variant="contained">Ingresar</Button>
                       </div>
                       <div>
-                        <Button variant="contained" color="error" onClick={handleClosePago}>
+                        <Button
+                          variant="contained"
+                          color="error"
+                          onClick={handleClosePago}
+                        >
                           Cancelar
                         </Button>
                       </div>
@@ -270,7 +293,7 @@ export default function GestionEventoDep() {
                           renderInput={(params) => (
                             <TextField
                               {...params}
-                              label="Equipo A participante" 
+                              label="Equipo A participante"
                             />
                           )}
                         />
@@ -301,7 +324,9 @@ export default function GestionEventoDep() {
                           sx={{ width: 505 }}
                           // value={fechaNacimiento}
                           // onChange={(newValue) => setFechaNacimiento(newValue)}
-                          renderInput={(params) => <TextField {...params} sx={{width: "100%"}}/>} 
+                          renderInput={(params) => (
+                            <TextField {...params} sx={{ width: "100%" }} />
+                          )}
                         />
                       </LocalizationProvider>
                       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -310,7 +335,9 @@ export default function GestionEventoDep() {
                           sx={{ width: 505 }}
                           // value={value}
                           // onChange={handleChange}
-                          renderInput={(params) => <TextField {...params} sx={{width: "100%"}}/>}
+                          renderInput={(params) => (
+                            <TextField {...params} sx={{ width: "100%" }} />
+                          )}
                         />
                       </LocalizationProvider>
                     </div>
@@ -343,38 +370,7 @@ export default function GestionEventoDep() {
               </Modal>
             </div>
             <Stack direction="column" spacing={2} className={styles.equipos}>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography>Equipo A</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2a-content"
-                  id="panel2a-header"
-                >
-                  <Typography>Equipo B</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
+              <AcordionEquipo />
             </Stack>
             <div className={styles.buttons}>
               <div>
