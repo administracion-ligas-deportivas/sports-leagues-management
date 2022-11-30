@@ -5,7 +5,6 @@ const {
   eventoDeportivo,
   usuario,
   equipo,
-  partido,
 } = require("../models");
 
 const {
@@ -25,7 +24,7 @@ const { TIPO_EVENTOS } = require("../../constants/eventos");
 const { DEPORTES } = require("../../constants/deportes");
 const { createRandomUser } = require("../../utils/fakeDataGenerators/usuarios");
 const { ROLES } = require("../../constants/roles");
-const { getRandomCancha } = require("../../services/cancha");
+const { createMexicoVsArgentina } = require("../../utils/seeders/partidos");
 
 const createFormatoMundial = async (organizadorId, transaction) => {
   const { id: deporteId } = await getDeporteByNombre(DEPORTES.FUTBOL);
@@ -161,97 +160,6 @@ const createEventoMundial = async (organizadorId, transaction) => {
 
   console.log({ mundial });
   return mundial;
-};
-
-const createPartido = async (
-  equipos = { local: {}, visitante: {} },
-  datosPartido = {},
-  eventoDeportivoId,
-  transaction
-) => {
-  // const { local, visitante } = equipos;
-  const {
-    fecha,
-    notas,
-    duracionPartido,
-    efectuado,
-    cancelado,
-    canchaId,
-    estadisticoId,
-  } = datosPartido;
-
-  const partidoData = {
-    fecha,
-    notas,
-    duracionPartido,
-    efectuado,
-    cancelado,
-    canchaId,
-    estadisticoId,
-    eventoDeportivoId,
-  };
-
-  const createdPartido = await partido.create(partidoData, { transaction });
-  console.log({ createdPartido });
-
-  const equiposPartido = await Promise.all(
-    Object.entries(equipos).map(
-      async ([localVisitante, { equipo, puntos }]) => {
-        console.log({ localVisitante, puntos, equipo });
-        // https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/
-        return await createdPartido.addEquipo(equipo, {
-          through: { puntos, localVisitante },
-          transaction,
-        });
-      }
-    )
-  );
-
-  console.log({ equiposPartido });
-  return createdPartido;
-};
-
-const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
-  const estadistico = await usuario.findOne({
-    where: { nombre: "Daniele", apellido: "Orsato" },
-    transaction,
-  });
-
-  const equipoLocal = await equipo.findOne({
-    where: { nombre: "México" },
-    transaction,
-  });
-
-  const equipoVisitante = await equipo.findOne({
-    where: { nombre: "Argentina" },
-    transaction,
-  });
-
-  const equipos = {
-    local: { equipo: equipoLocal, puntos: 0 },
-    visitante: { equipo: equipoVisitante, puntos: 3 },
-  };
-
-  const randomCancha = await getRandomCancha();
-
-  const datosPartido = {
-    fecha: "2022-11-26",
-    notas:
-      "Con los resultados de este partido, México está en riesgo de eliminación",
-    duracionPartido: "01:35:00",
-    efectuado: true,
-    cancelado: false,
-    canchaId: randomCancha.id,
-    estadisticoId: estadistico.id,
-    eventoDeportivoId,
-  };
-
-  return await createPartido(
-    equipos,
-    datosPartido,
-    eventoDeportivoId,
-    transaction
-  );
 };
 
 /** @type {import('sequelize-cli').Migration} */

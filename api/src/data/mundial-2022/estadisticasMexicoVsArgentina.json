@@ -1,0 +1,58 @@
+{
+  "equipos": [
+    {
+      "nombre": "Argentina",
+      "jugadores": [
+        {
+          "nombre": "Lionel",
+          "apellido": "Messi",
+          "estadisticas": [
+            {
+              "nombre": "Goles",
+              "cantidad": 1,
+              "tiempoTranscurrido": "01:04:00"
+            }
+          ]
+        },
+        {
+          "nombre": "Enzo",
+          "apellido": "Fernández",
+          "estadisticas": [
+            {
+              "nombre": "Goles",
+              "cantidad": 1,
+              "tiempoTranscurrido": "01:27:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "México",
+      "jugadores": [
+        {
+          "nombre": "Roberto",
+          "apellido": "Alvarado",
+          "estadisticas": [
+            {
+              "nombre": "Tarjetas amarillas",
+              "cantidad": 1,
+              "tiempoTranscurrido": "01:29:00"
+            }
+          ]
+        },
+        {
+          "nombre": "Hirving",
+          "apellido": "Lozano",
+          "estadisticas": [
+            {
+              "nombre": "Cambios",
+              "cantidad": 1,
+              "tiempoTranscurrido": "01:13:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,13 @@ const { getElementsWithTimestamps } = require("../../utils/seeders");
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const estadisticas = getElementsWithTimestamps(tipoEstadisticas);
+      // Return without property 'deportes'
+      const estadisticas = getElementsWithTimestamps(tipoEstadisticas).map(
+        (estadistica) => {
+          const { deportes, ...estadisticaWithoutDeportes } = estadistica;
+          return estadisticaWithoutDeportes;
+        }
+      );
 
       return await queryInterface.bulkInsert("tipo_estadistica", estadisticas, {
         transaction,

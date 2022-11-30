@@ -1,4 +1,4 @@
-const { getTimeStamps } = require("./fakeDataGenerators/timestamps");
+const { getTimeStamps } = require("../fakeDataGenerators/timestamps");
 
 const getElementsWithTimestamps = (elements, isCamelCase = false) => {
   const timestamps = getTimeStamps(isCamelCase);

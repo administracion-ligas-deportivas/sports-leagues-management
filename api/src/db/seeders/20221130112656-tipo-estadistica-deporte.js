@@ -5,7 +5,7 @@ const { tipoEstadistica, deporte } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const deportesObjArray = await deporte
         .findAll({ transaction })
@@ -25,16 +25,15 @@ module.exports = {
           const { deportes: notUsedDeportes, ...tipoEstadisticaData } =
             estadistica;
 
-          const [foundTipoEstadistica, created] =
-            await tipoEstadistica.findOrCreate({
-              where: {
-                nombre: estadistica.nombre,
-              },
-              defaults: {
-                ...tipoEstadisticaData,
-              },
-              transaction,
-            });
+          const [foundTipoEstadistica] = await tipoEstadistica.findOrCreate({
+            where: {
+              nombre: estadistica.nombre,
+            },
+            defaults: {
+              ...tipoEstadisticaData,
+            },
+            transaction,
+          });
 
           console.log({ foundTipoEstadistica });
 
@@ -54,7 +53,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     /**
      * Add commands to revert seed here.
      *

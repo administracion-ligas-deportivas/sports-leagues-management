@@ -6,6 +6,11 @@
       "deportes": ["Fútbol"]
     },
     {
+      "nombre": "Cambios",
+      "descripcion": "Cambios de jugador en el partido",
+      "deportes": ["Fútbol"]
+    },
+    {
       "nombre": "Asistencias",
       "descripcion": "Pase que hace un jugador a otro de su equipo para que puntúe",
       "deportes": ["Fútbol", "Béisbol", "Sóftbol"]
