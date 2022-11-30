@@ -21,6 +21,12 @@ const {
   deportesRouter,
   deportivosRouter,
   eventosRouter,
+  canchasRouter,
+  formatosRouter,
+  tipoEventoRouter,
+  rolRouter,
+  equiposRouter,
+  partidosRouter,
 } = require("./routes");
 
 faker.setLocale("es_MX");
@@ -37,6 +43,12 @@ app.use("/api/estados", estadosRouter);
 app.use("/api/deportes", deportesRouter);
 app.use("/api/deportivos", deportivosRouter);
 app.use("/api/eventos", eventosRouter);
+app.use("/api/canchas", canchasRouter);
+app.use("/api/formatos", formatosRouter);
+app.use("/api/tiposDeEvento", tipoEventoRouter);
+app.use("/api/roles", rolRouter);
+app.use("/api/equipos", equiposRouter);
+app.use("/api/partidos", partidosRouter);
 
 /* 
 https://fullstackopen.com/es/part3/node_js_y_express#middleware
