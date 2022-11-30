@@ -22,7 +22,7 @@ import {
   Button,
 } from "@mui/material";
 
-const navElements = [
+const navtexts = [
   {
     to: "/equipos-en-sistema",
     text: "Equipos",
@@ -31,10 +31,6 @@ const navElements = [
     to: "/eventos-deportivos",
     text: "Eventos deportivos",
   },
-  // {
-  //   to: "/calendario",
-  //   text: "Calendario",
-  // },
   {
     to: "/estadisticas-personales",
     text: "Mis estadísticas",
@@ -45,18 +41,113 @@ const navElements = [
   }
 ];
 
+const allNavtexts = [
+  { 
+    to: "/", 
+    text: "Home" 
+  },
+  { 
+    to: "/home", 
+    text: "Home Admin" 
+  },
+  {
+    to: "/gestion-evento-deportivo",
+    text: "Gestion Evento Dep",
+  },
+  {
+    to: "/nuevo-arbitro",
+    text: "Nuevo Arbitro",
+  },
+  {
+    to: "/crear-evento-deportivo",
+    text: "Crear Evento Deportivo",
+  },
+  {
+    to: "/enter-sports-event",
+    text: "Entrar a evento deportivo",
+  },
+  {
+    to: "/estadisticas-personales",
+    text: "Estadisticas personales",
+  },
+  {
+    to: "/asignar-roles",
+    text: "Asignar roles",
+  },
+  {
+    to: "/nueva-cancha",
+    text: "Nueva cancha",
+  },
+  {
+    to: "/eventos-deportivos",
+    text: "Eventos deportivos",
+  },
+  {
+
+    to: "/gestion-equipo-jugador",
+    text: "Gestion equipo jugador",
+  },
+  {
+    to: "/registro-deportivo",
+    text: "Registro deportivo",
+  },
+  {
+    to: "/traspaso-equipo",
+    text: "Traspaso equipo",
+  },
+  {
+    to: "/registro-estadistico",
+    text: "Registro estadistico",
+  },
+  {
+    to: "/equipos-en-sistema",
+    text: "Equipos en sistema",
+  },
+  {
+    to: "/gestion-equipo",
+    text: "Gestion equipo",
+  },
+  {
+    to: "/registro-pago-fisico",
+    text: "Registro pago fisico",
+  },
+  {
+    to: "/panel-admin",
+    text: "Panel admin",
+  },
+  {
+    to: "/crear-formato",
+    text: "Crear formato",
+  },
+  {
+    to: "/visualizar-formatos",
+    text: "Visualizar formatos",
+  },
+  {
+    to: "/partidos-en-sistema",
+    text: "Partidos en sistema",
+  }
+];
+
 function Navbar() {
   const { logout } = useAuthProvider();
   const { user, isLoading } = useUser();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElAdmin, setAnchorElAdmin] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+  const handleOpenAdminMenu = (event) => {
+    setAnchorElAdmin(event.currentTarget);
+  };
+  const handleCloseAdminMenu = () => {
+    setAnchorElAdmin(null);
   };
 
   const handleCloseNavMenu = () => {
@@ -129,15 +220,15 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {navElements.map((element) => {
+              {navtexts.map((text) => {
                 return (
                   <Link
-                    to={element.to}
-                    key={element.to}
+                    to={text.to}
+                    key={text.to}
                     className={styles.link}
                   >
                     <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{element.text}</Typography>
+                      <Typography textAlign="center">{text.text}</Typography>
                     </MenuItem>
                   </Link>
                 );
@@ -148,7 +239,6 @@ function Navbar() {
           <Link to="/" className={styles.linkLogo}>
             <Typography
               variant="h5"
-              // noWrap
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -169,17 +259,60 @@ function Navbar() {
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {navElements.map((element) => {
-              return (
-                <Link key={element.to} to={element.to} className={styles.link}>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
-                  >
-                    {element.text}
-                  </Button>
-                </Link>
-              );
+            {navtexts.map((text) => {
+              if(text.text === "Admin"){
+                return (
+                  <>
+                    <Button
+                      onClick={handleOpenAdminMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      {text.text}
+                    </Button>
+                    <Menu
+                      id="menu-appbar-admin"
+                      anchorEl={anchorElAdmin}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left"
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left"
+                      }}
+                      open={Boolean(anchorElAdmin)}
+                      onClose={handleCloseAdminMenu}
+                      sx={{
+                        display: { xs: "block", md: "block" }
+                      }}
+                    >
+                      {allNavtexts.map((text) => {
+                        return (
+                          <Link
+                            to={text.to}
+                            key={text.to}
+                            className={styles.link}
+                          >
+                            <MenuItem onClick={handleCloseAdminMenu}>
+                              <Typography textAlign="center">{text.text}</Typography>
+                            </MenuItem>
+                          </Link>
+                        );
+                      })}
+                    </Menu></>
+                );
+              } else {
+                return (
+                  <Link key={text.to} to={text.to} className={styles.link}>
+                    <Button
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      {text.text} 
+                    </Button>
+                  </Link>
+                );
+              }
             })}
           </Box>
 
