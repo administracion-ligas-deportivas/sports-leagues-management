@@ -2,83 +2,103 @@
   "tipoEstadisticas": [
     {
       "nombre": "Goles",
-      "descripcion": "Anotaciones de gol"
+      "descripcion": "Anotaciones de gol",
+      "deportes": ["Fútbol"]
     },
     {
       "nombre": "Asistencias",
-      "descripcion": "Pase que hace un jugador a otro de su equipo para que puntúe"
+      "descripcion": "Pase que hace un jugador a otro de su equipo para que puntúe",
+      "deportes": ["Fútbol", "Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Tarjetas amarillas",
-      "descripcion": "Se utiliza para comunicar una amonestación"
+      "descripcion": "Se utiliza para comunicar una amonestación",
+      "deportes": ["Fútbol"]
     },
     {
       "nombre": "Tarjetas rojas",
-      "descripcion": "Se utiliza para comunicar una expulsión"
+      "descripcion": "Se utiliza para comunicar una expulsión",
+      "deportes": ["Fútbol"]
     },
     {
       "nombre": "Faltas",
-      "descripcion": "Acción que se realiza cuando un jugador comete una infracción de las reglas del juego"
+      "descripcion": "Acción que se realiza cuando un jugador comete una infracción de las reglas del juego",
+      "deportes": ["Fútbol", "Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Penaltis",
-      "descripcion": "Máxima sanción que se aplica a ciertas faltas del juego cometidas por un equipo dentro de su área"
+      "descripcion": "Máxima sanción que se aplica a ciertas faltas del juego cometidas por un equipo dentro de su área",
+      "deportes": ["Fútbol"]
     },
     {
       "nombre": "Puntos",
-      "descripcion": "Puntuación por alcanzar algún tipo de logro"
+      "descripcion": "Puntuación por alcanzar algún tipo de logro",
+      "deportes": ["Fútbol", "Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Home runs (jonrones)",
-      "descripcion": "se da cuando el bateador hace contacto con la pelota de una manera que le permita recorrer las bases y anotar una carrera (junto con todos los corredores en base) en la misma jugada, sin que se registre ningún out ni error de la defensa."
+      "descripcion": "se da cuando el bateador hace contacto con la pelota de una manera que le permita recorrer las bases y anotar una carrera (junto con todos los corredores en base) en la misma jugada, sin que se registre ningún out ni error de la defensa.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Carreras",
-      "descripcion": "Una 'carrera' puede solo ser anotada por el Equipo Ofensivo y esto ocurre cuando un 'corredor' después de batear una bola lanzada, avanza corriendo salvado alrededor de las tres bases y finalmente toca el plato de home."
+      "descripcion": "Una 'carrera' puede solo ser anotada por el Equipo Ofensivo y esto ocurre cuando un 'corredor' después de batear una bola lanzada, avanza corriendo salvado alrededor de las tres bases y finalmente toca el plato de home.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Hits (golpes)",
-      "descripcion": "Un 'hit' es un bateo que permite al bateador llegar a la primera base sin que se registre ningún out ni error de la defensa."
+      "descripcion": "Un 'hit' es un bateo que permite al bateador llegar a la primera base sin que se registre ningún out ni error de la defensa.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Strike out",
-      "descripcion": "Un strikeout (o strike-out), conocido comúnmente en el idioma español como 'ponche', se produce cuando un bateador acumula tres strikes durante su turno al bate. Por lo general, significa que el bateador es eliminado (out). Se considera como una estadística registrada tanto para lanzadores como bateadores, y se denota con la letra K."
+      "descripcion": "Un strikeout (o strike-out), conocido comúnmente en el idioma español como 'ponche', se produce cuando un bateador acumula tres strikes durante su turno al bate. Por lo general, significa que el bateador es eliminado (out). Se considera como una estadística registrada tanto para lanzadores como bateadores, y se denota con la letra K.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Walk",
-      "descripcion": "Se da cuando el lanzador lanza cuatro bolas consecutivas al bateador."
+      "descripcion": "Se da cuando el lanzador lanza cuatro bolas consecutivas al bateador.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Error",
-      "descripcion": "Se da cuando un jugador de la defensa no logra atrapar la pelota lanzada por el lanzador."
+      "descripcion": "Se da cuando un jugador de la defensa no logra atrapar la pelota lanzada por el lanzador.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Out",
-      "descripcion": "Se da cuando un jugador de la defensa logra atrapar la pelota lanzada por el lanzador."
+      "descripcion": "Se da cuando un jugador de la defensa logra atrapar la pelota lanzada por el lanzador.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Turno al bate",
-      "descripcion": "Apariciones en el plato, excluyendo caminatas y golpes por lanzamientos, donde la habilidad del bateador no se prueba por completo, y sacrificios, donde el bateador hace un intento intencional para avanzar a uno o más corredores en base."
+      "descripcion": "Apariciones en el plato, excluyendo caminatas y golpes por lanzamientos, donde la habilidad del bateador no se prueba por completo, y sacrificios, donde el bateador hace un intento intencional para avanzar a uno o más corredores en base.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Bases robadas",
-      "descripcion": "Veces que avanzan a la siguiente base por completo debido a los propios esfuerzos del corredor, generalmente mientras el lanzador se prepara para entregar o lanzar la pelota."
+      "descripcion": "Veces que avanzan a la siguiente base por completo debido a los propios esfuerzos del corredor, generalmente mientras el lanzador se prepara para entregar o lanzar la pelota.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Atrapado robando",
-      "descripcion": "Veces infructuosas al intentar robar una base."
+      "descripcion": "Veces infructuosas al intentar robar una base.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Strike",
-      "descripcion": "Un strike (anotación oficial S) es, en béisbol, el conteo negativo para el turno de un bateador en la ofensiva, resulta de no golpear hacia el diamante, en zona válida de juego o fair, una pelota lanzada por el pitcher. Un conteo de tres strikes termina el turno del bateador. Dos fouls en un turno son contados como strikes si se hacen antes de haber recibido ningún otro strike."
+      "descripcion": "Un strike (anotación oficial S) es, en béisbol, el conteo negativo para el turno de un bateador en la ofensiva, resulta de no golpear hacia el diamante, en zona válida de juego o fair, una pelota lanzada por el pitcher. Un conteo de tres strikes termina el turno del bateador. Dos fouls en un turno son contados como strikes si se hacen antes de haber recibido ningún otro strike.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Fouls",
-      "descripcion": "El Foul es un término que representa un batazo fuera de la zona legal del juego (como por ejemplo cuando un bateador batea una bola que cae fuera de los límites del campo de béisbol). En un juego de béisbol un foul también es un strike, pero el foul nada más puede contar como strike hasta que el jugador adquiera dos strikes, luego la cantidad de fouls es ilimitada razón por la cual no se da out a un jugador por fouls."
+      "descripcion": "El Foul es un término que representa un batazo fuera de la zona legal del juego (como por ejemplo cuando un bateador batea una bola que cae fuera de los límites del campo de béisbol). En un juego de béisbol un foul también es un strike, pero el foul nada más puede contar como strike hasta que el jugador adquiera dos strikes, luego la cantidad de fouls es ilimitada razón por la cual no se da out a un jugador por fouls.",
+      "deportes": ["Béisbol", "Sóftbol"]
     },
     {
       "nombre": "Putouts",
-      "descripcion": "A putout (denoted by PO or fly out when appropriate) is awarded to a defensive player who (generally while in secure possession of the ball) records an out by one of the following methods"
+      "descripcion": "A putout (denoted by PO or fly out when appropriate) is awarded to a defensive player who (generally while in secure possession of the ball) records an out by one of the following methods",
+      "deportes": ["Béisbol", "Sóftbol"]
     }
   ]
 }
