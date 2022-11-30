@@ -22,7 +22,7 @@ const getOrganizadoresIds = async (transaction) => {
     .then((rol) => rol.usuarios);
 
   return organizadores.map((organizador) => {
-    console.log({ organizador: organizador.toJSON() });
+    // console.log({ organizador: organizador.toJSON() });
     return organizador.id;
   });
 };
