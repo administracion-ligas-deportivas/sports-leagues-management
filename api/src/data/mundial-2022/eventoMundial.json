@@ -1,0 +1,30 @@
+{
+  "nombre": "Mundial de futbol 2022",
+  "fechaInicio": "2022-11-20",
+  "estadisticos": [
+    {
+      "nombre": "Daniele",
+      "apellido": "Orsato",
+      "fechaNacimiento": "1975-11-23",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "César Arturo",
+      "apellido": "Ramos",
+      "fechaNacimiento": "1983-12-15",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Fernando",
+      "apellido": "Rapallini",
+      "fechaNacimiento": "1978-04-28",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Mario",
+      "apellido": "Escobar",
+      "fechaNacimiento": "1986-09-19",
+      "genero": "hombre"
+    }
+  ]
+}

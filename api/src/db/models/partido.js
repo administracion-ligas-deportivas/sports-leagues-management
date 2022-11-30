@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 
     partido.belongsToMany(models.equipo, {
       through: models.equipoPartido,
+      as: "equipo",
     });
 
     partido.hasMany(models.estadisticaJugadorPartido);

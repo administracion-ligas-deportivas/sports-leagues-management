@@ -1,0 +1,79 @@
+﻿{
+  "nombre": "México",
+  "encargadoEquipo": {
+    "nombre": "Gerardo",
+    "apellido": "Martino",
+    "genero": "hombre"
+  },
+  "jugadores": [
+    {
+      "nombre": "Guillermo",
+      "apellido": "Ochoa",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Jesús",
+      "apellido": "Gallardo",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Héctor",
+      "apellido": "Moreno",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "César",
+      "apellido": "Montes",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Kevin",
+      "apellido": "Álvarez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Edson",
+      "apellido": "Álvarez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Rodríguez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Luis",
+      "apellido": "Chávez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Hirving",
+      "apellido": "Lozano",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Alexis",
+      "apellido": "Vega",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Rogelio",
+      "apellido": "Funes Mori",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Javier",
+      "apellido": "Hernandez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Vela",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Roberto",
+      "apellido": "Alvarado"
+    }
+  ]
+}

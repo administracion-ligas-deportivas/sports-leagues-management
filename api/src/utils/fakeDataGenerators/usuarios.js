@@ -33,10 +33,15 @@ const createRandomDomicilioUsuario = async (usuarioId) => {
   return domicilioUsuario;
 };
 
-const createRandomUser = async (generateRandomPassword = false) => {
+const createRandomUser = async (
+  generateRandomPassword = false,
+  props = {},
+  { isCamelCase = false } = {}
+) => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
-  const rolId = faker.helpers.arrayElement(rolIds);
+  const rolId = faker.helpers.arrayElement(rolIds || []);
   const timestamps = getTimeStamps(false);
+  const fechaNacimiento = getOnlyDate(faker.date.birthdate());
 
   const password = generateRandomPassword
     ? faker.internet.password()
@@ -48,16 +53,25 @@ const createRandomUser = async (generateRandomPassword = false) => {
     nombre: faker.name.firstName(),
     apellido: faker.name.lastName(),
     correo: faker.internet.email(),
-    fecha_nacimiento: getOnlyDate(faker.date.birthdate()),
     genero,
     // Generamos una contraseña que sepamos para iniciar sesión.
     password: passwordHash,
     telefono: faker.phone.number("##########"),
-    rol_id: rolId,
     ...timestamps,
+    ...props,
   };
 
-  return user;
+  const caseProps = isCamelCase
+    ? {
+      fechaNacimiento,
+      rolId,
+    }
+    : {
+      fecha_nacimiento: fechaNacimiento,
+      rol_id: rolId,
+    };
+
+  return { ...user, ...caseProps };
 };
 
 module.exports = {

@@ -1,0 +1,70 @@
+﻿{
+  "nombre": "Argentina",
+  "encargadoEquipo": {
+    "nombre": "Lionel",
+    "apellido": "Scaloni",
+    "genero": "hombre"
+  },
+  "jugadores": [
+    {
+      "nombre": "Emiliano",
+      "apellido": "Martínez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Enzo",
+      "apellido": "Fernández",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Gonzalo",
+      "apellido": "Montiel",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Nicolás",
+      "apellido": "Otamendi",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Lisandro",
+      "apellido": "Martínez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Marcos",
+      "apellido": "Acuña",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Rodrigue",
+      "apellido": " DePaul",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Guido",
+      "apellido": "Rodríguez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Alexis",
+      "apellido": "Mac Allister",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Lionel",
+      "apellido": "Messi",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Lautaro",
+      "apellido": "Martínez",
+      "genero": "hombre"
+    },
+    {
+      "nombre": "Ángel",
+      "apellido": "Di María",
+      "genero": "hombre"
+    }
+  ]
+}

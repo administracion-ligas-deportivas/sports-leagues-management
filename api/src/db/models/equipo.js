@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         name: "encargadoEquipoId",
         allowNull: false,
       },
+      as: "encargado",
     });
     equipo.belongsTo(models.deporte, {
       foreignKey: {
@@ -30,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 
     equipo.belongsToMany(models.usuario, {
       through: models.jugadorEquipo,
+      as: "jugador",
     });
     equipo.belongsToMany(models.eventoDeportivo, {
       through: models.equipoEventoDeportivo,
