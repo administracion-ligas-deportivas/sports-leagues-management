@@ -96,43 +96,43 @@ const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
     transaction
   );
 
-  const [argentinaStats, mexicoStats] = equiposEstadisticas;
-
-  await Promise.all(
-    argentinaStats.jugadores.map(async (currentJugador) => {
-      const { estadisticas } = currentJugador;
-      const foundJugador = await usuario.findOne({
-        where: {
-          nombre: currentJugador.nombre,
-          apellido: currentJugador.apellido,
-        },
-        transaction,
-      });
-
-      console.log({ foundJugador });
-
-      return await Promise.all(
-        estadisticas.map(async (currentEstadistica) => {
-          const { nombre, tiempoTranscurrido, cantidad } = currentEstadistica;
-
-          const foundTipoEstadistica = await tipoEstadistica.findOne({
-            where: { nombre },
-            transaction,
-          });
-
-          console.log({ foundTipoEstadistica });
-
-          return await estadisticaJugadorPartido.create({
-            tiempoTranscurrido,
-            cantidad,
-            partidoId: createdPartido.id,
-            tipoEstadisticaId: foundTipoEstadistica.id,
-            jugadorId: foundJugador.id,
-          });
-        })
-      );
-    })
-  );
+  //   const [argentinaStats, mexicoStats] = equiposEstadisticas;
+  //
+  //   await Promise.all(
+  //     argentinaStats.jugadores.map(async (currentJugador) => {
+  //       const { estadisticas } = currentJugador;
+  //       const foundJugador = await usuario.findOne({
+  //         where: {
+  //           nombre: currentJugador.nombre,
+  //           apellido: currentJugador.apellido,
+  //         },
+  //         transaction,
+  //       });
+  //
+  //       console.log({ foundJugador });
+  //
+  //       return await Promise.all(
+  //         estadisticas.map(async (currentEstadistica) => {
+  //           const { nombre, tiempoTranscurrido, cantidad } = currentEstadistica;
+  //
+  //           const foundTipoEstadistica = await tipoEstadistica.findOne({
+  //             where: { nombre },
+  //             transaction,
+  //           });
+  //
+  //           console.log({ foundTipoEstadistica });
+  //
+  //           return await estadisticaJugadorPartido.create({
+  //             tiempoTranscurrido,
+  //             cantidad,
+  //             partidoId: createdPartido.id,
+  //             tipoEstadisticaId: foundTipoEstadistica.id,
+  //             jugadorId: foundJugador.id,
+  //           });
+  //         })
+  //       );
+  //     })
+  //   );
 
   return createdPartido;
 };
