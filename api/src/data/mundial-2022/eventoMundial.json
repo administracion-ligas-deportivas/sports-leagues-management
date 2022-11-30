@@ -3,6 +3,12 @@
   "fechaInicio": "2022-11-20",
   "estadisticos": [
     {
+      "nombre": "Daniele",
+      "apellido": "Orsato",
+      "fechaNacimiento": "1975-11-23",
+      "genero": "hombre"
+    },
+    {
       "nombre": "César Arturo",
       "apellido": "Ramos",
       "fechaNacimiento": "1983-12-15",
