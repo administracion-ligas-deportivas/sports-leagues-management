@@ -321,10 +321,10 @@ function Navbar() {
               <span>Cargando...</span>
             ) : (
               <Tooltip title="Perfil">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 1, color: "white" }}>
                   <FontAwesomeIcon
                     icon={faCircleUser}
-                    styles={{ fontSize: "2.5rem", color: "white" }}
+                    styles={{ color: "white" , fontSize: "2.5rem"}}
                   />
                 </IconButton>
               </Tooltip>
