@@ -1,13 +1,7 @@
 const ROLES = {
-  ADMIN: {
-    nombre: "ADMIN",
-  },
-  ORGANIZADOR: {
-    nombre: "ORGANIZADOR",
-  },
-  USUARIO: {
-    nombre: "USUARIO",
-  },
+  ADMIN: "ADMIN",
+  ORGANIZADOR: "ORGANIZADOR",
+  USUARIO: "USUARIO",
 };
 
 module.exports = { ROLES };
