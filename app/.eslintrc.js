@@ -5,7 +5,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: ["eslint:recommended", "plugin:react/recommended", "react-refresh"],
   overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
@@ -20,6 +20,8 @@ module.exports = {
     "react/prop-types": "off",
     "no-var": "error",
     "eol-last": ["error", "always"],
+    // https://github.com/ArnaudBarre/eslint-plugin-react-refresh
+    "react-refresh/only-export-components": "warn",
   },
   settings: {
     react: {

@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+// https://github.com/vitejs/vite-plugin-react-swc
+import react from "@vitejs/plugin-react-swc";
 import { fileURLToPath, URL } from "url";
 
 // https://vitejs.dev/config/
