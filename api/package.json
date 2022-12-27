@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "@administracion-ligas-deportivas/api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para Administración de Ligas Deportivas",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,23 @@
     "seed:all": "sequelize-cli db:seed:all",
     "seed:undo:all": "sequelize-cli db:seed:undo:all"
   },
-  "author": "",
+  "contributors": [
+    {
+      "name": "Adán Sánchez"
+    },
+    {
+      "name": "Agustín Sánchez"
+    },
+    {
+      "name": "Jacob Flores",
+      "email": "jacobrdz34@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/administracion-ligas-deportivas/sitio-web-mern.git",
+    "directory": "api"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt": "5.1.0",
