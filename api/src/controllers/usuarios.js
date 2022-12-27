@@ -70,8 +70,7 @@ const getUserById = async (req, res) => {
       include,
     })
     .then((user) => {
-      if (user) return res.json(user);
-      res.status(404).end();
+      return user ? res.json(user) : res.status(404).end();
     })
     .catch((err) => res.status(500).json({ error: err.message }));
 };

@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     });
+
     eventoDeportivo.belongsTo(models.usuario, {
       foreignKey: {
         name: "organizadorId",
@@ -43,11 +44,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
 
+    eventoDeportivo.belongsTo(models.deporte, {
+      allowNull: true,
+    });
+
     eventoDeportivo.belongsToMany(models.usuario, {
       through: models.estadisticoEventoDeportivo,
       as: "estadistico",
       foreignKey: { name: "evento_deportivo_id", allowNull: false },
     });
+
     eventoDeportivo.belongsToMany(models.equipo, {
       through: models.equipoEventoDeportivo,
     });
@@ -58,6 +64,7 @@ module.exports = (sequelize, DataTypes) => {
     eventoDeportivo.hasMany(models.migracionEquipoEventoDeportivo, {
       foreignKey: "eventoDeportivoOrigenId",
     });
+
     eventoDeportivo.hasMany(models.migracionEquipoEventoDeportivo, {
       foreignKey: "eventoDeportivoDestinoId",
     });
