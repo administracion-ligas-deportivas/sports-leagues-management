@@ -13,8 +13,8 @@ import { useEventos } from "@/hooks/useEventos";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "evento", headerName: "Evento", width: 130 },
-  { field: "formatoEventoDeportivo", headerName: "Formato", width: 130 },
+  { field: "evento", headerName: "Evento", width: 230 },
+  { field: "formatoEventoDeportivo", headerName: "Formato", width: 230 },
 ];
 
 export default function EventosDeportivos() {

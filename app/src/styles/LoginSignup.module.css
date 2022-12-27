@@ -111,7 +111,7 @@ manera */
   align-items: stretch;
   background-color: white;
   display: flex;
-  row-gap: 1.9em;
+  row-gap: 2em;
   column-gap: 2em;
 }
 

@@ -39,6 +39,21 @@ const navtexts = [
     to: "/partidos-en-sistema",
     text: "Partidos en sistema",
   },
+
+  {
+    to: "/crear-evento-deportivo",
+    text: "Crear Evento Deportivo",
+  },
+
+  {
+    to: "/asignar-roles",
+    text: "Asignar roles",
+  },
+
+  // {
+  //   to: "/gestion-equipo",
+  //   text: "Gestion equipo",
+  // },
   {
     to: "/home",
     text: "Admin",
@@ -66,10 +81,6 @@ const allNavtexts = [
     to: "/nuevo-arbitro",
     text: "Nuevo Arbitro",
   },
-  {
-    to: "/crear-evento-deportivo",
-    text: "Crear Evento Deportivo",
-  },
 
   {
     to: "/estadisticas-personales",
@@ -82,10 +93,6 @@ const allNavtexts = [
   {
     to: "/estadisticas-personales",
     text: "Estadisticas personales",
-  },
-  {
-    to: "/asignar-roles",
-    text: "Asignar roles",
   },
   {
     to: "/nueva-cancha",
@@ -114,10 +121,6 @@ const allNavtexts = [
   {
     to: "/equipos-en-sistema",
     text: "Equipos en sistema",
-  },
-  {
-    to: "/gestion-equipo",
-    text: "Gestion equipo",
   },
   {
     to: "/registro-pago-fisico",
