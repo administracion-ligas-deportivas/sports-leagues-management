@@ -8,11 +8,10 @@ const { eventoService } = require("../services/evento");
 
 // Solo un usuario con el rol de organizador lo puede crear.
 const createEvento = async (req, res, next) => {
-  const { eventoId } = req.params;
   const { body } = req;
 
   try {
-    const evento = await eventoService.createEvento(eventoId, body);
+    const evento = await eventoService.createEvento(body);
 
     if (evento?.error) {
       return res.status(evento.status).json({

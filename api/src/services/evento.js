@@ -5,7 +5,7 @@ const {
   deporte,
 } = require("../db/models");
 
-const createEvento = async (eventoId, data) => {
+const createEvento = async (data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
 
   if (!formatoEventoDeportivoId && !deporteId) {
@@ -23,11 +23,7 @@ const createEvento = async (eventoId, data) => {
     deporteId: formatoEventoDeportivoId ? null : deporteId,
   };
 
-  return await eventoDeportivo.create(evento, {
-    where: {
-      id: eventoId,
-    },
-  });
+  return await eventoDeportivo.create(evento);
 };
 
 const getPartidosFromEvento = async (eventoId) => {
