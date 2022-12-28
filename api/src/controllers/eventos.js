@@ -65,9 +65,53 @@ const deleteEvento = async (req, res) => {
   res.status(204).end();
 };
 
+const getPartidosFromEvento = async (req, res) => {
+  const { eventoId } = req.params;
+
+  const partidos = await eventoService.getPartidosFromEvento(eventoId);
+
+  if (!partidos?.length) {
+    return res.status(404).end();
+  }
+
+  res.json({
+    eventoDeportivoId: eventoId,
+    total: partidos.length,
+    partidos,
+  });
+};
+
+const getFormatoEvento = async (req, res) => {
+  const { eventoId } = req.params;
+
+  const { evento, formatoEvento } = await eventoService.getFormatoEvento(
+    eventoId
+  );
+
+  if (!evento) {
+    return res.status(404).json({
+      error: "No se ha encontrado el evento",
+    });
+  }
+
+  if (!formatoEvento) {
+    return res.status(404).json({
+      error:
+        "No se ha encontrado un formato para el evento. En este caso, el evento tiene un deporte.",
+    });
+  }
+
+  return res.json({
+    eventoDeportivoId: eventoId,
+    formatoEvento,
+  });
+};
+
 module.exports = {
   createEvento,
   getEventos,
   getEventoById,
   deleteEvento,
+  getPartidosFromEvento,
+  getFormatoEvento,
 };

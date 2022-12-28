@@ -1,4 +1,9 @@
-const { eventoDeportivo } = require("../db/models");
+const {
+  eventoDeportivo,
+  partido,
+  formatoEventoDeportivo,
+  deporte,
+} = require("../db/models");
 
 const createEvento = async (eventoId, data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
@@ -25,8 +30,34 @@ const createEvento = async (eventoId, data) => {
   });
 };
 
+const getPartidosFromEvento = async (eventoId) => {
+  return await partido.findAll({
+    where: {
+      eventoDeportivoId: eventoId,
+    },
+  });
+};
+
+const getFormatoEvento = async (eventoId) => {
+  const evento = await eventoDeportivo.findByPk(eventoId, {
+    include: [
+      {
+        model: formatoEventoDeportivo,
+        include: ["deporte", "tipoEventoDeportivo"],
+        attributes: {
+          exclude: ["deporteId", "tipoEventoDeportivoId"],
+        },
+      },
+    ],
+  });
+
+  return { evento, formatoEvento: evento?.formatoEventoDeportivo };
+};
+
 const eventoService = {
   createEvento,
+  getPartidosFromEvento,
+  getFormatoEvento,
 };
 
 module.exports = {
