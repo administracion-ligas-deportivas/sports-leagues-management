@@ -1,17 +1,15 @@
-const { JWT_ERRORS } = require("../constants/errors/jwt");
+const { JWT_ERROR_HANDLERS } = require("../constants/errors/jwt");
 const { SEQUELIZE_ERROR_HANDLERS } = require("../constants/errors/sequelize");
 
 // https://www.youtube.com/watch?v=btW1SefZf9M&t=473s
 const ERROR_HANDLERS = {
-  ...JWT_ERRORS,
+  ...JWT_ERROR_HANDLERS,
   ...SEQUELIZE_ERROR_HANDLERS,
 
   defaultError: (res) => res.status(500).end(),
 };
 
 const errorHandler = (error, req, res, next) => {
-  console.log("ERROR HANDLER");
-  console.log({ errorName: error.name, error });
   const handler = ERROR_HANDLERS?.[error.name] || ERROR_HANDLERS.defaultError;
 
   handler(res, error);

@@ -1,58 +1,28 @@
 const {
-  SEQUELIZE_ERROR_NAMES,
-  SEQUELIZE_ERROR_HANDLERS,
-} = require("../constants/errors/sequelize");
-const {
   eventoDeportivo,
   formatoEventoDeportivo,
-  deporte,
   equipo,
 } = require("../db/models");
 
+const { eventoService } = require("../services/evento");
+
 // Solo un usuario con el rol de organizador lo puede crear.
-const createEvento = async (req, res) => {
+const createEvento = async (req, res, next) => {
   const { eventoId } = req.params;
   const { body } = req;
-  const { formatoEventoDeportivoId, deporteId, ...rest } = body;
-
-  console.log("🚀 ~ file: eventos.js:12 ~ createEvento ~ body", body);
-
-  if (!formatoEventoDeportivoId && !deporteId) {
-    return res.status(400).json({
-      error: "No se ha especificado el formato del evento o el deporte",
-    });
-  }
-
-  // Add formatoEventoDeportivoId and not deporteId if formatoEventoDeportivoId
-  // was specified. Otherwise, add deporteId.
-  const evento = {
-    ...rest,
-    formatoEventoDeportivoId,
-    deporteId: formatoEventoDeportivoId ? null : deporteId,
-  };
-
-  console.log({ evento });
 
   try {
-    const newEvento = await eventoDeportivo.create(evento, {
-      where: {
-        id: eventoId,
-      },
-    });
+    const evento = await eventoService.createEvento(eventoId, body);
 
-    if (!newEvento) {
-      return res.status(500).json({
-        error: "No se pudo crear el evento",
+    if (evento?.error) {
+      return res.status(evento.status).json({
+        error: evento.error,
       });
     }
 
-    res.json(newEvento);
+    res.status(201).json(evento);
   } catch (error) {
-    const errorHandler =
-      SEQUELIZE_ERROR_HANDLERS?.[error.name] ||
-      SEQUELIZE_ERROR_HANDLERS.default;
-
-    return errorHandler(res, error);
+    next(error);
   }
 };
 

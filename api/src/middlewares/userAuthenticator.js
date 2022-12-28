@@ -2,16 +2,8 @@ const jwt = require("jsonwebtoken");
 
 const userAuthenticator = (req, res, next) => {
   const { token } = req;
-  console.log(
-    "🚀 ~ file: userAuthenticator.js ~ line 5 ~ userAuthenticator ~ token",
-    token
-  );
 
   const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(
-    "🚀 ~ file: userAuthenticator.js ~ line 8 ~ userAuthenticator ~ decodedToken",
-    decodedToken
-  );
 
   if (!token || !decodedToken.id) {
     return res
@@ -20,7 +12,6 @@ const userAuthenticator = (req, res, next) => {
   }
 
   const { iat, exp, ...userProps } = decodedToken;
-  console.log({ userProps });
 
   // Con Express podemos mutar el objeto request.
   req.user = { ...userProps };

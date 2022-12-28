@@ -3,11 +3,19 @@ const SEQUELIZE_ERROR_NAMES = {
 };
 
 const SEQUELIZE_ERROR_HANDLERS = {
+  // Add Sequelize validation error handler
+  SequelizeValidationError: (res, { errors }) => {
+    console.log("ValidationError");
+    const errorMessages = errors.map(({ message }) => message);
+
+    res.status(400).json({ error: errorMessages });
+  },
+
   // No funciona.
   SequelizeForeignKeyConstraintError: (res, error) => {
     const { fields } = error;
 
-    const foreignKeysString = fields.join(", ");
+    const foreignKeysString = fields.map((string) => `'${string}'`).join(", ");
 
     const singularSentence = "la siguiente llave foránea";
     const pluralSentence = singularSentence
