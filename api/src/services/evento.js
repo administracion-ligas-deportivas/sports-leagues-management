@@ -41,7 +41,7 @@ const getPartidosFromEvento = async (eventoId) => {
     ],
     attributes: {
       exclude: ["eventoDeportivoId", "estadisticoId", "canchaId"],
-    },s
+    },
   });
 };
 
