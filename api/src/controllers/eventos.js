@@ -1,10 +1,5 @@
-const {
-  eventoDeportivo,
-  formatoEventoDeportivo,
-  equipo,
-} = require("../db/models");
-
-const { eventoService } = require("../services/evento");
+const { eventoDeportivo } = require("../db/models");
+const { eventoService } = require("../services/eventos");
 
 // Solo un usuario con el rol de organizador lo puede crear.
 const createEvento = async (req, res, next) => {
