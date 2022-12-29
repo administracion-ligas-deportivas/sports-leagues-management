@@ -100,10 +100,7 @@ const getFormatoEvento = async (req, res) => {
     });
   }
 
-  return res.json({
-    eventoDeportivoId: eventoId,
-    formatoEvento,
-  });
+  return res.json(formatoEvento);
 };
 
 module.exports = {
