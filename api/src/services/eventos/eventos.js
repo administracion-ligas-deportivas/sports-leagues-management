@@ -1,4 +1,6 @@
-const { eventoDeportivo } = require("../../db/models");
+// const { eventoDeportivo } = require("@/db/models");
+// No funciona si 
+const { eventoDeportivo } = require("#src/db/models/index.js");
 
 const getEventos = async () => {
   return await eventoDeportivo.findAll();

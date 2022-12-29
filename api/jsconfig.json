@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      // Hacer que el alias "@" definido con Vite funcione con el IntelliSense
+      // de VSCode, ya que sin esta configuración, no funciona ni deja acceder a
+      // los archivos directamente con "alt + click".
+      //
+      // https://forum.vuejs.org/t/how-to-fix-vscode-clicking-on-import-when-using-alias/111516
+      // https://stackoverflow.com/questions/58249053/how-to-intellisense-alias-module-path-in-vscode
+      "#src/*": ["./*"]
+    }
+  }
+}
