@@ -2,7 +2,8 @@ const {
   eventoDeportivo,
   partido,
   formatoEventoDeportivo,
-  deporte,
+  cancha,
+  usuario,
 } = require("../db/models");
 
 const createEvento = async (data) => {
@@ -30,6 +31,16 @@ const getPartidosFromEvento = async (eventoId) => {
   return await partido.findAll({
     where: {
       eventoDeportivoId: eventoId,
+    },
+    include: [
+      {
+        model: usuario,
+        as: "estadistico",
+      },
+      cancha,
+    ],
+    attributes: {
+      exclude: ["eventoDeportivoId", "estadisticoId", "canchaId"],
     },
   });
 };

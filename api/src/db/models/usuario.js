@@ -69,6 +69,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     usuario.hasMany(models.partido, {
       foreignKey: "estadisticoId",
+      as: "estadistico",
     });
 
     usuario.hasMany(models.formatoEventoDeportivo, {

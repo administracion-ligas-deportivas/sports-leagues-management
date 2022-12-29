@@ -36,9 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
     partido.belongsTo(models.usuario, {
       foreignKey: { name: "estadisticoId", allowNull: false },
+      as: "estadistico",
     });
+
     partido.belongsTo(models.eventoDeportivo, {
       foreignKey: {
         allowNull: false,

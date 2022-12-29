@@ -74,7 +74,6 @@ const getPartidosFromEvento = async (req, res) => {
   }
 
   res.json({
-    eventoDeportivoId: eventoId,
     total: partidos.length,
     partidos,
   });
