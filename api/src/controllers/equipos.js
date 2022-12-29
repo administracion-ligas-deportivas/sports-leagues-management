@@ -1,4 +1,4 @@
-const { equipo, usuario, deporte } = require("../db/models");
+import { deporte, equipo, usuario } from "../db/models/index.js";
 
 const getEquipos = async (req, res) => {
   const equipos = await equipo.findAll({
@@ -25,7 +25,4 @@ const getEquipoById = async (req, res) => {
   });
 };
 
-module.exports = {
-  getEquipos,
-  getEquipoById,
-};
+export { getEquipos, getEquipoById };

@@ -1,7 +1,9 @@
-const tipoEventoRouter = require("express").Router();
+import { Router } from "express";
 
-const { createTipoEvento } = require("../controllers/tiposDeEvento");
+import { createTipoEvento } from "../controllers/tiposDeEvento.js";
+
+const tipoEventoRouter = Router();
 
 tipoEventoRouter.route("/").post(createTipoEvento);
 
-module.exports = { tipoEventoRouter };
+export { tipoEventoRouter };

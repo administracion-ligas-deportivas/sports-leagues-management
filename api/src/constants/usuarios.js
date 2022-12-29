@@ -3,6 +3,4 @@ const GENEROS = {
   MUJER: "mujer",
 };
 
-module.exports = {
-  GENEROS,
-};
+export { GENEROS };

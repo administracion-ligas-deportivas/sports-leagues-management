@@ -1,10 +1,10 @@
 "use strict";
 
-const { tipoEstadisticas } = require("../../data/tipoEstadisticas.json");
-const { tipoEstadistica, deporte } = require("../models");
+import { tipoEstadisticas } from "../../data/tipoEstadisticas.json";
+import { deporte, tipoEstadistica } from "../models.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const deportesObjArray = await deporte

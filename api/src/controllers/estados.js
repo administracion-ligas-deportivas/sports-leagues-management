@@ -1,8 +1,4 @@
-const {
-  estado,
-  municipio: municipioModel,
-  sequelize,
-} = require("../db/models");
+import { estado, municipio as municipioModel, sequelize } from "../db/models/index.js";
 
 const getEstados = async (req, res) => {
   const estados = await estado.findAll({
@@ -78,9 +74,4 @@ const eliminarEstados = async (req, res) => {
     .catch((err) => res.status(400).json({ error: err.message }));
 };
 
-module.exports = {
-  getEstados,
-  registrarEstados,
-  eliminarEstados,
-  getMunicipiosDeEstado,
-};
+export { getEstados, registrarEstados, eliminarEstados, getMunicipiosDeEstado };

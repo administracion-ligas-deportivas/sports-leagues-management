@@ -1,5 +1,5 @@
-const { faker } = require("@faker-js/faker");
-const { municipio } = require("../../db/models");
+import { faker } from "@faker-js/faker";
+import { municipio } from "../../db/models.js";
 
 const getRandomDireccion = async () => {
   const numberOfMunicipios = await municipio.count();
@@ -24,6 +24,4 @@ const getRandomDireccion = async () => {
   };
 };
 
-module.exports = {
-  getRandomDireccion,
-};
+export { getRandomDireccion };

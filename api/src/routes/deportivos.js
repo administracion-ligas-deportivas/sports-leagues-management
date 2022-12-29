@@ -1,13 +1,15 @@
-const deportivosRouter = require("express").Router();
-const {
-  getDeportivos,
-  createDeportivo,
-  getDeportivoById,
-  deleteDeportivo,
-  updateDeportivo,
-  getCanchasFromDeportivo,
+import { Router } from "express";
+import {
   createCancha,
-} = require("../controllers/deportivos");
+  createDeportivo,
+  deleteDeportivo,
+  getCanchasFromDeportivo,
+  getDeportivoById,
+  getDeportivos,
+  updateDeportivo,
+} from "../controllers/deportivos.js";
+
+const deportivosRouter = Router();
 
 deportivosRouter.route("/").get(getDeportivos).post(createDeportivo);
 deportivosRouter
@@ -21,4 +23,4 @@ deportivosRouter
   .get(getCanchasFromDeportivo)
   .post(createCancha);
 
-module.exports = { deportivosRouter };
+export { deportivosRouter };

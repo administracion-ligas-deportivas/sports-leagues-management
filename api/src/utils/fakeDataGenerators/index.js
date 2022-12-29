@@ -1,5 +1,5 @@
-const { createRandomDeportivo, createRandomCancha } = require("./deportivos");
-const { createRandomUser } = require("./usuarios");
+import { createRandomCancha, createRandomDeportivo } from "./deportivos";
+import { createRandomUser } from "./usuarios";
 
 const elementTypeMethods = {
   deportivos: createRandomDeportivo,
@@ -21,6 +21,4 @@ const createRandomElements = async (elementsType, length) => {
   );
 };
 
-module.exports = {
-  createRandomElements,
-};
+export { createRandomElements };

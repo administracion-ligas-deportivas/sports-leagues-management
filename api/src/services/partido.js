@@ -1,4 +1,4 @@
-const { partido } = require("../db/models");
+import { partido } from "../db/models/index.js";
 
 const createPartido = async (
   equipos = { local: {}, visitante: {} },
@@ -48,6 +48,4 @@ const createPartido = async (
   return createdPartido;
 };
 
-module.exports = {
-  createPartido,
-};
+export { createPartido };

@@ -1,4 +1,4 @@
-const { formatoEventoDeportivo, deporte } = require("../db/models");
+import { deporte, formatoEventoDeportivo } from "../db/models/index.js";
 
 const getFormatoEvento = async (req, res) => {
   const formato = await formatoEventoDeportivo.findAll({
@@ -31,8 +31,4 @@ const createFormatoEvento = async (req, res) => {
       .json({ error: "No se ha podido crear el formato de evento" });
   }
 };
-module.exports = {
-  getFormatoEvento,
-  getFormatoById,
-  createFormatoEvento,
-};
+export { getFormatoEvento, getFormatoById, createFormatoEvento };

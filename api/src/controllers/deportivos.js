@@ -1,4 +1,4 @@
-const { deportivo, cancha } = require("../db/models");
+import { cancha, deportivo } from "../db/models/index.js";
 
 const getDeportivos = async (req, res) => {
   const deportivos = await deportivo.findAll();
@@ -81,7 +81,7 @@ const getCanchasFromDeportivo = async (req, res) => {
   res.json(canchas);
 };
 
-module.exports = {
+export {
   getDeportivos,
   getDeportivoById,
   createDeportivos,

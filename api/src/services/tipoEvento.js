@@ -1,4 +1,4 @@
-const { tipoEventoDeportivo } = require("../db/models");
+import { tipoEventoDeportivo } from "../db/models/index.js";
 
 const getTipoEventoByNombre = async (nombre) => {
   return await tipoEventoDeportivo.findOne({
@@ -8,6 +8,4 @@ const getTipoEventoByNombre = async (nombre) => {
   });
 };
 
-module.exports = {
-  getTipoEventoByNombre,
-};
+export { getTipoEventoByNombre };

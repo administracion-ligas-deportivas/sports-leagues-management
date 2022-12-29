@@ -1,10 +1,10 @@
 "use strict";
 
-const { tiposDeEvento } = require("../../data/tiposDeEvento.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+import { tiposDeEvento } from "../../data/tiposDeEvento.json";
+import { getElementsWithTimestamps } from "../../utils/seeders.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const tiposDeEventoWithTimestamps =

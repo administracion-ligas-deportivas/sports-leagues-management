@@ -1,10 +1,6 @@
-const {
-  eventoDeportivo,
-  formatoEventoDeportivo,
-  equipo,
-} = require("../db/models");
+import { equipo, eventoDeportivo, formatoEventoDeportivo } from "../db/models/index.js";
 
-const { eventoService } = require("../services/evento");
+import { eventoService } from "../services/evento.js";
 
 // Solo un usuario con el rol de organizador lo puede crear.
 const createEvento = async (req, res, next) => {
@@ -106,7 +102,7 @@ const getFormatoEvento = async (req, res) => {
   });
 };
 
-module.exports = {
+export {
   createEvento,
   getEventos,
   getEventoById,

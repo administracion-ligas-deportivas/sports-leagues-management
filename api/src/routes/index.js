@@ -1,17 +1,17 @@
-const { loginRouter } = require("./login");
-const { usersRouter } = require("./usuarios");
-const { estadosRouter } = require("./estados");
-const { deportesRouter } = require("./deportes");
-const { deportivosRouter } = require("./deportivos");
-const { eventosRouter } = require("./eventos");
-const { canchasRouter } = require("./canchas");
-const { formatosRouter } = require("./formatoEventoDeportivo");
-const { tipoEventoRouter } = require("./tipoEventoDeportivo");
-const { rolRouter } = require("./roles");
-const { equiposRouter } = require("./equipos");
-const { partidosRouter } = require("./partidos");
+import { loginRouter } from "./login.js";
+import { usersRouter } from "./usuarios.js";
+import { estadosRouter } from "./estados.js";
+import { deportesRouter } from "./deportes.js";
+import { deportivosRouter } from "./deportivos.js";
+import { eventosRouter } from "./eventos.js";
+import { canchasRouter } from "./canchas.js";
+import { formatosRouter } from "./formatoEventoDeportivo.js";
+import { tipoEventoRouter } from "./tipoEventoDeportivo.js";
+import { rolRouter } from "./roles.js";
+import { equiposRouter } from "./equipos.js";
+import { partidosRouter } from "./partidos.js";
 
-module.exports = {
+export {
   loginRouter,
   usersRouter,
   estadosRouter,

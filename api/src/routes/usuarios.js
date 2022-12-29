@@ -1,17 +1,17 @@
-const express = require("express");
-const usersRouter = express.Router();
+import express from "express";
 
-const { userAuthenticator } = require("../middlewares");
-const {
-  getUsers,
+import { userAuthenticator } from "../middlewares/index.js";
+import {
   createUser,
-  verifyUser,
   getUserById,
-} = require("../controllers/usuarios.js");
+  getUsers,
+  verifyUser,
+} from "../controllers/usuarios.js";
+const usersRouter = express.Router();
 
 usersRouter.get("/", getUsers);
 usersRouter.post("/", createUser);
 usersRouter.get("/verify", userAuthenticator, verifyUser);
 usersRouter.get("/:usuarioId", getUserById);
 
-module.exports = { usersRouter };
+export { usersRouter };

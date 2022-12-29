@@ -1,10 +1,10 @@
 "use strict";
 
-const { deportes } = require("../../data/deportes.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+import { deportes } from "../../data/deportes.json";
+import { getElementsWithTimestamps } from "../../utils/seeders.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const deportesWithTimestamp = getElementsWithTimestamps(deportes);

@@ -1,6 +1,6 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { usuario } = require("../db/models");
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { usuario } from "../db/models/index.js";
 
 // 7 días - Que cada 7 días se tenga que volver a loguear.
 const EXPIRE_IN_DAYS = 60 * 60 * 24 * 7;
@@ -44,6 +44,4 @@ const login = async (request, response) => {
   });
 };
 
-module.exports = {
-  login,
-};
+export { login };

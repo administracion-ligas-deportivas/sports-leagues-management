@@ -1,4 +1,4 @@
-const { FORMA_PAGO } = require("../../constants/pagos");
+import { FORMA_PAGO } from "../../constants/pagos.js";
 
 module.exports = (sequelize, DataTypes) => {
   const pagoEventoDeportivo = sequelize.define(

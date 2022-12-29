@@ -1,13 +1,15 @@
-const canchasRouter = require("express").Router();
+import { Router } from "express";
 
-const {
+import {
+  deleteCancha,
   getCanchas,
   getCanchasById,
-  deleteCancha,
-} = require("../controllers/canchas");
+} from "../controllers/canchas.js";
+
+const canchasRouter = Router();
 
 canchasRouter.route("/").get(getCanchas);
 
 canchasRouter.route("/:canchaId").get(getCanchasById).delete(deleteCancha);
 
-module.exports = { canchasRouter };
+export { canchasRouter };

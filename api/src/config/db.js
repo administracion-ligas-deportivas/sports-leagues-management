@@ -1,9 +1,9 @@
-const {
-  DEV_DB_PASSWORD,
+import {
   DEV_DB_DATABASE,
   DEV_DB_HOST,
+  DEV_DB_PASSWORD,
   DEV_DB_USERNAME,
-} = require("./dev");
+} from "./dev.js";
 
 const dialect = "mariadb";
 const define = {
@@ -13,7 +13,7 @@ const define = {
   allowNull: false,
 };
 
-module.exports = {
+export default {
   development: {
     host: DEV_DB_HOST,
     username: DEV_DB_USERNAME,

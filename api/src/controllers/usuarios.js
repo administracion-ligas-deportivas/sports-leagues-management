@@ -1,9 +1,9 @@
-const bcrypt = require("bcrypt");
-const { SALT_ROUNDS } = require("../constants/auth");
-const {
+import {
+  domicilioUsuario as domicilioUsuarioModel,
   usuario,
-  domicilioUsuario: domicilioUsuarioModel,
-} = require("../db/models");
+} from "../db/models/index.js";
+import { SALT_ROUNDS } from "../constants/auth.js";
+import bcrypt from "bcrypt";
 
 const getUsers = async (req, res) => {
   const usuarios = await usuario.findAll();
@@ -75,9 +75,4 @@ const getUserById = async (req, res) => {
     .catch((err) => res.status(500).json({ error: err.message }));
 };
 
-module.exports = {
-  getUsers,
-  createUser,
-  verifyUser,
-  getUserById,
-};
+export { getUsers, createUser, verifyUser, getUserById };

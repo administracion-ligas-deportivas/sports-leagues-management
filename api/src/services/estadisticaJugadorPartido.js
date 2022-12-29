@@ -1,4 +1,4 @@
-const { estadisticaJugadorPartido } = require("../db/models");
+import { estadisticaJugadorPartido } from "../db/models/index.js";
 
 const createEstadisticaJugadorPartido = async (
   partidoId,
@@ -21,6 +21,4 @@ const createEstadisticaJugadorPartido = async (
   );
 };
 
-module.exports = {
-  createEstadisticaJugadorPartido,
-};
+export { createEstadisticaJugadorPartido };

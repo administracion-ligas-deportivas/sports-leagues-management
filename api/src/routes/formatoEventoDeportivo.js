@@ -1,13 +1,15 @@
-const formatosRouter = require("express").Router();
+import { Router } from "express";
 
-const {
-  getFormatoEvento,
-  getFormatoById,
+import {
   createFormatoEvento,
-} = require("../controllers/formatoEventoDeportivo");
+  getFormatoById,
+  getFormatoEvento,
+} from "../controllers/formatoEventoDeportivo.js";
+
+const formatosRouter = Router();
 
 formatosRouter.route("/").get(getFormatoEvento).post(createFormatoEvento);
 
 formatosRouter.route("/:formatoId").get(getFormatoById);
 
-module.exports = { formatosRouter };
+export { formatosRouter };

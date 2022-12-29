@@ -1,4 +1,4 @@
-const { partido } = require("../db/models");
+import { partido } from "../db/models/index.js";
 
 const getPartidos = async (req, res) => {
   const partidos = await partido.findAll();
@@ -24,8 +24,4 @@ const deletePartido = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = {
-  getPartidos,
-  getPartidoById,
-  deletePartido,
-};
+export { getPartidos, getPartidoById, deletePartido };

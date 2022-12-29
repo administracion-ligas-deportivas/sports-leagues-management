@@ -1,6 +1,6 @@
-const { ROLES } = require("../constants/roles");
-const { faker } = require("@faker-js/faker");
-const { rol, usuario } = require("../db/models");
+import { ROLES } from "../constants/roles.js";
+import { faker } from "@faker-js/faker";
+import { rol, usuario } from "../db/models/index.js";
 
 const getRolByNombre = async (nombre, transaction) => {
   return await rol.findOne({
@@ -44,7 +44,7 @@ const getRandomOrganizadorId = async (transaction) => {
   return faker.helpers.arrayElement(organizadoresIds);
 };
 
-module.exports = {
+export {
   getRolIds,
   getOrganizadoresIds,
   getRandomOrganizadorId,

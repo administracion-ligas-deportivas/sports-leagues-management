@@ -3,6 +3,4 @@ const LOCAL_VISITANTE = {
   VISITANTE: "visitante",
 };
 
-module.exports = {
-  LOCAL_VISITANTE,
-};
+export { LOCAL_VISITANTE };

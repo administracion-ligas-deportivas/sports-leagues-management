@@ -1,4 +1,4 @@
-const { deporte } = require("../db/models");
+import { deporte } from "../db/models/index.js";
 
 const getDeporteByNombre = async (nombre) => {
   return await deporte.findOne({
@@ -8,6 +8,4 @@ const getDeporteByNombre = async (nombre) => {
   });
 };
 
-module.exports = {
-  getDeporteByNombre,
-};
+export { getDeporteByNombre };

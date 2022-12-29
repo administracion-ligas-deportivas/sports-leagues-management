@@ -3,4 +3,4 @@ const FORMA_PAGO = {
   DIGITAL: "DIGITAL",
 };
 
-module.exports = { FORMA_PAGO };
+export { FORMA_PAGO };

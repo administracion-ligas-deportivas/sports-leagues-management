@@ -1,9 +1,9 @@
 "use strict";
-const { tipoEstadisticas } = require("../../data/tipoEstadisticas.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+import { tipoEstadisticas } from "../../data/tipoEstadisticas.json";
+import { getElementsWithTimestamps } from "../../utils/seeders.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       // Return without property 'deportes'

@@ -1,11 +1,6 @@
-const errorHandler = require("./errorHandler");
-const userAuthenticator = require("./userAuthenticator");
-const unknownEndpoint = require("./unknownEndpoint");
-const tokenExtractor = require("./tokenExtractor");
+import { errorHandler } from "./errorHandler.js";
+import { tokenExtractor } from "./tokenExtractor.js";
+import { unknownEndpoint } from "./unknownEndpoint.js";
+import { userAuthenticator } from "./userAuthenticator.js";
 
-module.exports = {
-  ...errorHandler,
-  ...userAuthenticator,
-  ...unknownEndpoint,
-  ...tokenExtractor,
-};
+export { errorHandler, userAuthenticator, unknownEndpoint, tokenExtractor };

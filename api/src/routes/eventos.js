@@ -1,17 +1,23 @@
-const {
-  getEventos,
+import { Router } from "express";
+
+import {
   createEvento,
-  getEventoById,
   deleteEvento,
-  getPartidosFromEvento,
+  getEventoById,
+  getEventos,
   getFormatoEvento,
-} = require("../controllers/eventos");
+  getPartidosFromEvento,
+} from "../controllers/eventos.js";
 
-const eventosRouter = require("express").Router();
+const eventosRouter = Router();
 
+// /api/eventos
 eventosRouter.route("/").get(getEventos).post(createEvento);
+// /api/eventos/:eventoId
 eventosRouter.route("/:eventoId").get(getEventoById).delete(deleteEvento);
+// /api/eventos/:eventoId/partidos
 eventosRouter.route("/:eventoId/partidos").get(getPartidosFromEvento);
+// /api/eventos/:eventoId/formatos
 eventosRouter.route("/:eventoId/formatos").get(getFormatoEvento);
 
-module.exports = { eventosRouter };
+export { eventosRouter };

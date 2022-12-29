@@ -1,4 +1,4 @@
-const { tipoEventoDeportivo } = require("../db/models");
+import { tipoEventoDeportivo } from "../db/models/index.js";
 
 const createTipoEvento = async (req, res) => {
   const { nombre, descripcion } = req.body;
@@ -19,6 +19,4 @@ const createTipoEvento = async (req, res) => {
   }
 };
 
-module.exports = {
-  createTipoEvento,
-};
+export { createTipoEvento };

@@ -1,10 +1,10 @@
 "use strict";
 
-const { permisos } = require("../../data/permisos.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+import { permisos } from "../../data/permisos.json";
+import { getElementsWithTimestamps } from "../../utils/seeders.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const permisosWithTimestamps = getElementsWithTimestamps(permisos);

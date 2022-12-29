@@ -1,4 +1,4 @@
-const { cancha } = require("../db/models");
+import { cancha } from "../db/models/index.js";
 
 const getCanchas = async (req, res) => {
   const canchas = await cancha.findAll();
@@ -23,8 +23,4 @@ const deleteCancha = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = {
-  getCanchas,
-  getCanchasById,
-  deleteCancha,
-};
+export { getCanchas, getCanchasById, deleteCancha };

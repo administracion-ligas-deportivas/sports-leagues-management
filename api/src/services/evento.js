@@ -1,9 +1,9 @@
-const {
-  eventoDeportivo,
-  partido,
-  formatoEventoDeportivo,
+import {
   deporte,
-} = require("../db/models");
+  eventoDeportivo,
+  formatoEventoDeportivo,
+  partido,
+} from "../db/models/index.js";
 
 const createEvento = async (data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
@@ -56,6 +56,4 @@ const eventoService = {
   getFormatoEvento,
 };
 
-module.exports = {
-  eventoService,
-};
+export { eventoService };

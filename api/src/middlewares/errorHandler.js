@@ -1,5 +1,5 @@
-const { JWT_ERROR_HANDLERS } = require("../constants/errors/jwt");
-const { SEQUELIZE_ERROR_HANDLERS } = require("../constants/errors/sequelize");
+import { JWT_ERROR_HANDLERS } from "../constants/errors/jwt.js";
+import { SEQUELIZE_ERROR_HANDLERS } from "../constants/errors/sequelize.js";
 
 // https://www.youtube.com/watch?v=btW1SefZf9M&t=473s
 const ERROR_HANDLERS = {
@@ -20,4 +20,4 @@ const errorHandler = (error, req, res, next) => {
   next(error);
 };
 
-module.exports = { errorHandler };
+export { errorHandler };

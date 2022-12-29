@@ -1,11 +1,11 @@
 "use strict";
 
-const { faker } = require("@faker-js/faker");
-const { getRolIds } = require("../../services/rol");
-const { usuario } = require("../models");
+import { faker } from "@faker-js/faker";
+import { getRolIds } from "../../services/rol.js";
+import { usuario } from "../models.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const rolIds = await getRolIds(transaction);

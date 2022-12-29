@@ -1,4 +1,4 @@
-const { getTimeStamps } = require("../fakeDataGenerators/timestamps");
+import { getTimeStamps } from "../fakeDataGenerators/timestamps";
 
 const getElementsWithTimestamps = (elements, isCamelCase = false) => {
   const timestamps = getTimeStamps(isCamelCase);
@@ -11,6 +11,4 @@ const getElementsWithTimestamps = (elements, isCamelCase = false) => {
   });
 };
 
-module.exports = {
-  getElementsWithTimestamps,
-};
+export { getElementsWithTimestamps };

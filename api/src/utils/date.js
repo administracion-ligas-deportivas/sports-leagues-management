@@ -12,7 +12,4 @@ const getOnlyDate = (date) => {
   return formatDate(date, DATE_FORMAT_LOCALES["YYYY-MM-DD"]);
 };
 
-module.exports = {
-  formatDate,
-  getOnlyDate,
-};
+export { formatDate, getOnlyDate };

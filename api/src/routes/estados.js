@@ -1,14 +1,16 @@
-const estadosRouter = require("express").Router();
-const {
-  registrarEstados,
-  getEstados,
+import { Router } from "express";
+import {
   eliminarEstados,
+  getEstados,
   getMunicipiosDeEstado,
-} = require("../controllers/estados");
+  registrarEstados,
+} from "../controllers/estados.js";
+
+const estadosRouter = Router();
 
 estadosRouter.post("/", registrarEstados);
 estadosRouter.get("/", getEstados);
 estadosRouter.get("/:estadoId/municipios", getMunicipiosDeEstado);
 // estadosRouter.delete("/", eliminarEstados);
 
-module.exports = { estadosRouter };
+export { estadosRouter };

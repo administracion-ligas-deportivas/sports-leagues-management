@@ -19,6 +19,4 @@ const tokenExtractor = (req, res, next) => {
   next();
 };
 
-module.exports = {
-  tokenExtractor,
-};
+export { tokenExtractor };

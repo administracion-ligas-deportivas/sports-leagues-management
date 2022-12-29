@@ -3,6 +3,4 @@ const TIPO_EVENTOS = {
   TORNEO: "Torneo de eliminación",
 };
 
-module.exports = {
-  TIPO_EVENTOS,
-};
+export { TIPO_EVENTOS };

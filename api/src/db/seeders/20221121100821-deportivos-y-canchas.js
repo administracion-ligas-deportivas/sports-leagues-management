@@ -1,13 +1,13 @@
 "use strict";
 
-const { createRandomElements } = require("../../utils/fakeDataGenerators");
-const {
+import { createRandomElements } from "../../utils/fakeDataGenerators.js";
+import {
   initDbData,
   resetData,
-} = require("../../utils/fakeDataGenerators/deportivos");
+} from "../../utils/fakeDataGenerators/deportivos.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       await initDbData();

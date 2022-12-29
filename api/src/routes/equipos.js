@@ -1,9 +1,11 @@
-const equiposRouter = require("express").Router();
+import { Router } from "express";
 
-const { getEquipos, getEquipoById } = require("../controllers/equipos");
+import { getEquipoById, getEquipos } from "../controllers/equipos.js";
+
+const equiposRouter = Router();
 
 equiposRouter.route("/").get(getEquipos);
 
 equiposRouter.route("/:equipoId").get(getEquipoById);
 
-module.exports = { equiposRouter };
+export { equiposRouter };

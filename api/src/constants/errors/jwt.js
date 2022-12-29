@@ -12,4 +12,4 @@ const JWT_ERROR_HANDLERS = {
   TokenExpiredError: (res) => res.status(401).json({ error: "Token expired" }),
 };
 
-module.exports = { JWT_ERROR_HANDLERS };
+export { JWT_ERROR_HANDLERS };

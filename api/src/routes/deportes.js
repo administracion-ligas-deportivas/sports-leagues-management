@@ -1,13 +1,15 @@
-const deportesRouter = require("express").Router();
+import { Router } from "express";
 
-const {
-  getDeportes,
+import {
   createDeportes,
   deleteDeporte,
   getDeporteById,
-} = require("../controllers/deportes");
+  getDeportes,
+} from "../controllers/deportes.js";
+
+const deportesRouter = Router();
 
 deportesRouter.route("/").get(getDeportes).post(createDeportes);
 deportesRouter.route("/:deporteId").get(getDeporteById).delete(deleteDeporte);
 
-module.exports = { deportesRouter };
+export { deportesRouter };

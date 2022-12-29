@@ -1,12 +1,12 @@
-const { faker } = require("@faker-js/faker");
-const { GENEROS } = require("../../constants/usuarios");
-const { getOnlyDate } = require("../date");
-const { getRolIds } = require("../../services/rol");
-const { getTimeStamps } = require("./timestamps");
-const { municipio } = require("../../db/models");
-const { SALT_ROUNDS } = require("../../constants/auth");
-const bcrypt = require("bcrypt");
-const { getRandomDireccion } = require("./direccion");
+import { faker } from "@faker-js/faker";
+import { GENEROS } from "../../constants/usuarios.js";
+import { getOnlyDate } from "../date.js";
+import { getRolIds } from "../../services/rol.js";
+import { getTimeStamps } from "./timestamps.js";
+import { municipio } from "../../db/models.js";
+import { SALT_ROUNDS } from "../../constants/auth.js";
+import bcrypt from "bcrypt";
+import { getRandomDireccion } from "./direccion.js";
 
 const FIXED_PASSWORD = "holahola";
 
@@ -74,8 +74,4 @@ const createRandomUser = async (
   return { ...user, ...caseProps };
 };
 
-module.exports = {
-  createRandomUser,
-  createRandomDomicilioUsuario,
-  initDbData,
-};
+export { createRandomUser, createRandomDomicilioUsuario, initDbData };

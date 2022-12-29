@@ -33,7 +33,4 @@ const SEQUELIZE_ERROR_HANDLERS = {
     res.status(400).json({ error: "No se ha podido crear el recurso" }),
 };
 
-module.exports = {
-  SEQUELIZE_ERROR_NAMES,
-  SEQUELIZE_ERROR_HANDLERS,
-};
+export { SEQUELIZE_ERROR_NAMES, SEQUELIZE_ERROR_HANDLERS };

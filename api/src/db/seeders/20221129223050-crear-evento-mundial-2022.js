@@ -1,30 +1,27 @@
 "use strict";
 
-const {
-  formatoEventoDeportivo,
-  eventoDeportivo,
-  usuario,
+import {
   equipo,
-} = require("../models");
+  eventoDeportivo,
+  formatoEventoDeportivo,
+  usuario,
+} from "../models.js";
 
-const {
-  formatoMundial,
-  eventoMundial,
+import {
   equipos,
-} = require("../../data/mundial-2022");
+  eventoMundial,
+  formatoMundial,
+} from "../../data/mundial-2022.js";
 
-const { getTimeStamps } = require("../../utils/fakeDataGenerators/timestamps");
-const {
-  getRandomOrganizadorId,
-  getRolByNombre,
-} = require("../../services/rol");
-const { getDeporteByNombre } = require("../../services/deporte");
-const { getTipoEventoByNombre } = require("../../services/tipoEvento");
-const { TIPO_EVENTOS } = require("../../constants/eventos");
-const { DEPORTES } = require("../../constants/deportes");
-const { createRandomUser } = require("../../utils/fakeDataGenerators/usuarios");
-const { ROLES } = require("../../constants/roles");
-const { createMexicoVsArgentina } = require("../../utils/seeders/partidos");
+import { getTimeStamps } from "../../utils/fakeDataGenerators/timestamps.js";
+import { getRandomOrganizadorId, getRolByNombre } from "../../services/rol.js";
+import { getDeporteByNombre } from "../../services/deporte.js";
+import { getTipoEventoByNombre } from "../../services/tipoEvento.js";
+import { TIPO_EVENTOS } from "../../constants/eventos.js";
+import { DEPORTES } from "../../constants/deportes.js";
+import { createRandomUser } from "../../utils/fakeDataGenerators/usuarios.js";
+import { ROLES } from "../../constants/roles.js";
+import { createMexicoVsArgentina } from "../../utils/seeders/partidos.js";
 
 const createFormatoMundial = async (organizadorId, transaction) => {
   const { id: deporteId } = await getDeporteByNombre(DEPORTES.FUTBOL);
@@ -163,7 +160,7 @@ const createEventoMundial = async (organizadorId, transaction) => {
 };
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       const randomOrganizadorId = await getRandomOrganizadorId();

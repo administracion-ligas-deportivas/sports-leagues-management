@@ -1,14 +1,11 @@
-const rolRouter = require("express").Router();
+import { Router } from "express";
 
-const {
-  createRol,
-  getRoles,
-  getRolId,
-  deleteRol,
-} = require("../controllers/roles");
+import { createRol, deleteRol, getRolId, getRoles } from "../controllers/roles.js";
+
+const rolRouter = Router();
 
 rolRouter.route("/").post(createRol).get(getRoles);
 
 rolRouter.route("/:rolId").get(getRolId).delete(deleteRol);
 
-module.exports = { rolRouter };
+export { rolRouter };

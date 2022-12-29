@@ -1,4 +1,4 @@
-const { deporte } = require("../db/models");
+import { deporte } from "../db/models/index.js";
 
 const getDeportes = async (req, res) => {
   const deportes = await deporte.findAll();
@@ -32,9 +32,4 @@ const deleteDeporte = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = {
-  getDeportes,
-  getDeporteById,
-  createDeportes,
-  deleteDeporte,
-};
+export { getDeportes, getDeporteById, createDeportes, deleteDeporte };

@@ -1,8 +1,8 @@
-const { faker } = require("@faker-js/faker");
+import { faker } from "@faker-js/faker";
 
-const { deportivo } = require("../../db/models");
-const { getRandomDireccion } = require("./direccion");
-const { getTimeStamps } = require("./timestamps");
+import { deportivo } from "../../db/models.js";
+import { getRandomDireccion } from "./direccion.js";
+import { getTimeStamps } from "./timestamps.js";
 
 let numberOfMunicipios = null;
 let deportivoIds = null;
@@ -65,9 +65,4 @@ const createRandomCancha = async (deportivoId) => {
   return cancha;
 };
 
-module.exports = {
-  createRandomDeportivo,
-  createRandomCancha,
-  initDbData,
-  resetData,
-};
+export { createRandomDeportivo, createRandomCancha, initDbData, resetData };

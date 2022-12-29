@@ -1,14 +1,14 @@
 "use strict";
-
-const { usuario: usuarioModel, domicilioUsuario } = require("../models");
-const {
+import {
   createRandomDomicilioUsuario,
   initDbData,
-} = require("../../utils/fakeDataGenerators/usuarios");
-const { createRandomElements } = require("../../utils/fakeDataGenerators");
+} from "../../utils/fakeDataGenerators/usuarios.js";
+import { domicilioUsuario, usuario as usuarioModel } from "../models.js";
+
+import { createRandomElements } from "../../utils/fakeDataGenerators.js";
 
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface) {
     // https://sequelize.org/api/v6/class/src/dialects/abstract/query-interface.js~queryinterface
     await queryInterface.sequelize.transaction(async (transaction) => {

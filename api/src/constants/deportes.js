@@ -4,4 +4,4 @@ const DEPORTES = {
   SOFTBOL: "Sóftbol",
 };
 
-module.exports = { DEPORTES };
+export { DEPORTES };

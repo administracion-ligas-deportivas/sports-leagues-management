@@ -10,4 +10,4 @@ const capitalizeEveryWord = (str) => {
     .join(" ");
 };
 
-module.exports = { capitalizeFirstLetter, capitalizeEveryWord };
+export { capitalizeFirstLetter, capitalizeEveryWord };

@@ -1,4 +1,4 @@
-const { rol } = require("../db/models");
+import { rol } from "../db/models/index.js";
 
 const getRoles = async (req, res) => {
   const roles = await rol.findAll();
@@ -38,9 +38,4 @@ const deleteRol = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = {
-  getRolId,
-  getRoles,
-  createRol,
-  deleteRol,
-};
+export { getRolId, getRoles, createRol, deleteRol };

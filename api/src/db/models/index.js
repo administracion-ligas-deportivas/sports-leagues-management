@@ -1,12 +1,22 @@
 "use strict";
 
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
-const process = require("process");
+import { __dirname, __filename } from "../../constants/commonjs.js";
+import fs from "node:fs";
+import path from "node:path";
+import process from "node:process";
+import Sequelize from "sequelize";
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../../config/db.js")[env];
+// https://nodejs.org/api/esm.html#esm_differences_between_es_modules_and_commonjs:~:text=module.createRequire().-,No%20__filename%20or%20__dirname,-%23
+const config = await import(`${__dirname}/../../config/db.js`).then(
+  (config) => {
+    return config[env];
+  }
+);
+
+console.log({ config });
+
 const db = {};
 
 let sequelize;
@@ -27,11 +37,11 @@ fs.readdirSync(__dirname)
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );
   })
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
+  .forEach(async (file) => {
+    const model = await import(path.join(__dirname, file)).then(
+      (model) => model.default
+    )(sequelize, Sequelize.DataTypes);
+
     db[model.name] = model;
   });
 
