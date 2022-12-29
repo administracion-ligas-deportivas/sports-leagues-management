@@ -1,23 +1,16 @@
 const {
   eventoDeportivo,
   partido,
-  formatoEventoDeportivo,
   cancha,
   usuario,
-  equipo,
 } = require("../db/models");
 
 const getEventos = async () => {
-  return await eventoDeportivo.findAll({
-    include: [
-      formatoEventoDeportivo,
-      equipo,
-      {
-        model: usuario,
-        as: "estadisticos",
-      },
-    ],
-  });
+  return await eventoDeportivo.findAll();
+};
+
+const getEventoById = async (eventoId) => {
+  return await eventoDeportivo.scope("includeEverything").findByPk(eventoId);
 };
 
 const createEvento = async (data) => {
@@ -42,7 +35,7 @@ const createEvento = async (data) => {
 };
 
 const getPartidosFromEvento = async (eventoId) => {
-  return await partido.findAll({
+  return await partido.scope("withFullData").findAll({
     where: {
       eventoDeportivoId: eventoId,
     },
@@ -60,17 +53,7 @@ const getPartidosFromEvento = async (eventoId) => {
 };
 
 const getFormatoEvento = async (eventoId) => {
-  const evento = await eventoDeportivo.findByPk(eventoId, {
-    include: [
-      {
-        model: formatoEventoDeportivo,
-        include: ["deporte", "tipoEventoDeportivo"],
-        attributes: {
-          exclude: ["deporteId", "tipoEventoDeportivoId"],
-        },
-      },
-    ],
-  });
+  const evento = await eventoDeportivo.scope("withFormato").findByPk(eventoId);
 
   return { evento, formatoEvento: evento?.formatoEventoDeportivo };
 };
@@ -118,6 +101,7 @@ const eventoService = {
   getFormatoEvento,
   getEquiposFromEvento,
   getEstadisticosFromEvento,
+  getEventoById,
 };
 
 module.exports = {

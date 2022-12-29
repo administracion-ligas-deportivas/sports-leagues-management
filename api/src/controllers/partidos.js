@@ -7,7 +7,7 @@ const getPartidos = async (req, res) => {
 
 const getPartidoById = async (req, res) => {
   const { partidoId } = req.params;
-  const partidos = await partido.findByPk(partidoId);
+  const partidos = await partido.scope("withFullData").findByPk(partidoId);
 
   return res.json(partidos);
 };

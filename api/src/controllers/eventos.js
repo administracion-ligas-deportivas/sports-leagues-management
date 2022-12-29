@@ -37,9 +37,7 @@ const getEventos = async (req, res) => {
 const getEventoById = async (req, res) => {
   const { eventoId } = req.params;
 
-  const evento = await eventoDeportivo.findByPk(eventoId, {
-    include: [formatoEventoDeportivo, equipo],
-  });
+  const evento = await eventoService.getEventoById(eventoId);
 
   // https://stackoverflow.com/questions/11746894/what-is-the-proper-rest-response-code-for-a-valid-request-but-an-empty-data
   if (!evento) {

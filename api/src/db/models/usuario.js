@@ -43,7 +43,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    {}
+    {
+      defaultScope: {
+        attributes: { exclude: ["password"] },
+      },
+    }
   );
 
   usuario.associate = (models) => {
@@ -58,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     });
-    
+
     usuario.belongsToMany(models.equipo, {
       through: models.jugadorEquipo,
     });
@@ -70,7 +74,10 @@ module.exports = (sequelize, DataTypes) => {
     });
     usuario.hasMany(models.partido, {
       foreignKey: "estadisticoId",
-      as: "estadistico",
+      as: {
+        singular: "estadistico",
+        plural: "estadisticos",
+      },
     });
 
     usuario.hasMany(models.formatoEventoDeportivo, {
