@@ -58,6 +58,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     });
+    
     usuario.belongsToMany(models.equipo, {
       through: models.jugadorEquipo,
     });

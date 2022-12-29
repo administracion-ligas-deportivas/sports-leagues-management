@@ -50,7 +50,11 @@ module.exports = (sequelize, DataTypes) => {
 
     eventoDeportivo.belongsToMany(models.usuario, {
       through: models.estadisticoEventoDeportivo,
-      as: "estadistico",
+      as: {
+        // https://sequelize.org/docs/v6/other-topics/naming-strategies/#overriding-singulars-and-plurals-when-defining-aliases
+        singular: "estadistico",
+        plural: "estadisticos",
+      },
       foreignKey: { name: "evento_deportivo_id", allowNull: false },
     });
 

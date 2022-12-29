@@ -26,9 +26,7 @@ const createEvento = async (req, res, next) => {
 };
 
 const getEventos = async (req, res) => {
-  const eventos = await eventoDeportivo.findAll({
-    include: [formatoEventoDeportivo, equipo],
-  });
+  const eventos = await eventoService.getEventos();
 
   return res.json({
     total: eventos.length,
@@ -116,6 +114,20 @@ const getEquiposFromEvento = async (req, res) => {
   });
 };
 
+const getEstadisticosFromEvento = async (req, res) => {
+  const { eventoId } = req.params;
+  const estadisticos = await eventoService.getEstadisticosFromEvento(eventoId);
+
+  if (!estadisticos?.length) {
+    return res.status(404).end();
+  }
+
+  res.json({
+    total: estadisticos.length,
+    estadisticos,
+  });
+};
+
 module.exports = {
   createEvento,
   getEventos,
@@ -124,4 +136,5 @@ module.exports = {
   getPartidosFromEvento,
   getFormatoEvento,
   getEquiposFromEvento,
+  getEstadisticosFromEvento,
 };

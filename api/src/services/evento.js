@@ -4,7 +4,21 @@ const {
   formatoEventoDeportivo,
   cancha,
   usuario,
+  equipo,
 } = require("../db/models");
+
+const getEventos = async () => {
+  return await eventoDeportivo.findAll({
+    include: [
+      formatoEventoDeportivo,
+      equipo,
+      {
+        model: usuario,
+        as: "estadisticos",
+      },
+    ],
+  });
+};
 
 const createEvento = async (data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
@@ -87,11 +101,23 @@ const getEquiposFromEvento = async (eventoId) => {
   return await evento.getEquipos({ joinTableAttributes: [] });
 };
 
+const getEstadisticosFromEvento = async (eventoId) => {
+  const evento = await eventoDeportivo.findByPk(eventoId);
+
+  if (!evento) return null;
+
+  return await evento?.getEstadisticos({
+    joinTableAttributes: [],
+  });
+};
+
 const eventoService = {
   createEvento,
+  getEventos,
   getPartidosFromEvento,
   getFormatoEvento,
   getEquiposFromEvento,
+  getEstadisticosFromEvento,
 };
 
 module.exports = {
