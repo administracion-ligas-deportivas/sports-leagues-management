@@ -1,15 +1,15 @@
-const { getRandomCancha } = require("../../services/cancha");
-const { createPartido } = require("../../services/partido");
+const { getRandomCancha } = require("#src/services/cancha.js");
+const { createPartido } = require("#src/services/partido.js");
 const {
   usuario,
   equipo,
   tipoEstadistica,
   estadisticaJugadorPartido,
-} = require("../../db/models");
-const { estadisticasMexicoVsArgentina } = require("../../data/mundial-2022");
+} = require("#src/db/models/index.js");
+const { estadisticasMexicoVsArgentina } = require("#src/data/mundial-2022/index.js");
 const {
   createEstadisticaJugadorPartido,
-} = require("../../services/estadisticaJugadorPartido");
+} = require("#src/services/estadisticaJugadorPartido.js");
 
 const createEstadisticasJugadores = async (
   jugadores,

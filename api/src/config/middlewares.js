@@ -2,7 +2,7 @@ const {
   errorHandler,
   tokenExtractor,
   unknownEndpoint,
-} = require("../middlewares");
+} = require("#src/middlewares/index.js");
 const express = require("express");
 const cors = require("cors");
 

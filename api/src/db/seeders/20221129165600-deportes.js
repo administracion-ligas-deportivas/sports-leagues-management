@@ -1,7 +1,7 @@
 "use strict";
 
-const { deportes } = require("../../data/deportes.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+const { deportes } = require("#src/data/deportes.json");
+const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

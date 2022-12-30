@@ -1,4 +1,4 @@
-const { ROUTES_WITH_CONTROLLERS } = require("../constants/routes.js");
+const { ROUTES_WITH_CONTROLLERS } = require("#src/constants/routes.js");
 
 const initRoutes = (app) => {
   ROUTES_WITH_CONTROLLERS.forEach((route) => {

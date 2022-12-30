@@ -1,8 +1,8 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
 
-const db = require("./db/models");
 const express = require("express");
+const db = require("#src/db/models/index.js");
 
 const {
   PORT,

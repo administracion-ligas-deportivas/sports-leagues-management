@@ -1,4 +1,4 @@
-const { partido } = require("../db/models");
+const { partido } = require("#src/db/models/index.js");
 
 const getPartidos = async (req, res) => {
   const partidos = await partido.findAll();

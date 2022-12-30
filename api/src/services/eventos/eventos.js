@@ -1,4 +1,4 @@
-// const { eventoDeportivo } = require("@/db/models");
+// const { eventoDeportivo } = require("#src/db/models/index.js");
 // No funciona si 
 const { eventoDeportivo } = require("#src/db/models/index.js");
 

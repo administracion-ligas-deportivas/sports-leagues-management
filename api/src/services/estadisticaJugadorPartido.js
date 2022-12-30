@@ -1,4 +1,4 @@
-const { estadisticaJugadorPartido } = require("../db/models");
+const { estadisticaJugadorPartido } = require("#src/db/models/index.js");
 
 const createEstadisticaJugadorPartido = async (
   partidoId,

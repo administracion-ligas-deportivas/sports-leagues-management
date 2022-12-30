@@ -1,7 +1,7 @@
 "use strict";
 
-const { tiposDeEvento } = require("../../data/tiposDeEvento.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+const { tiposDeEvento } = require("#src/data/tiposDeEvento.json");
+const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

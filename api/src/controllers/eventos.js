@@ -1,5 +1,5 @@
-const { eventoDeportivo } = require("../db/models");
-const { eventoService } = require("../services/eventos");
+const { eventoDeportivo } = require("#src/db/models/index.js");
+const { eventoService } = require("#src/services/eventos/index.js");
 
 // Solo un usuario con el rol de organizador lo puede crear.
 const createEvento = async (req, res, next) => {
@@ -46,11 +46,15 @@ const getEventoById = async (req, res) => {
 const deleteEvento = async (req, res) => {
   const { eventoId } = req.params;
 
-  await eventoDeportivo.destroy({
+  const wasDeleted = await eventoDeportivo.destroy({
     where: {
       id: eventoId,
     },
   });
+
+  if (!wasDeleted) {
+    return res.status(404).end();
+  }
 
   res.status(204).end();
 };

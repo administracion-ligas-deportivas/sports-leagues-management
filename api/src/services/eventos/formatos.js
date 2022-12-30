@@ -1,4 +1,4 @@
-const { eventoDeportivo } = require("../../db/models");
+const { eventoDeportivo } = require("#src/db/models/index.js");
 
 const getFormatoEvento = async (eventoId) => {
   const evento = await eventoDeportivo.scope("withFormato").findByPk(eventoId);

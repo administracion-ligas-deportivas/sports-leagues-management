@@ -1,7 +1,7 @@
 "use strict";
 
 const { faker } = require("@faker-js/faker");
-const { getRolIds } = require("../../services/rol");
+const { getRolIds } = require("#src/services/rol.js");
 const { usuario } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */

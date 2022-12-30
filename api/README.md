@@ -41,3 +41,5 @@ tiene la misma estructura que el diagrama original.
 - [Fazt | Nodejs MySQL REST API, Desde cero a Despliegue](https://www.youtube.com/watch?v=3dSkc-DIM74&t=2413s)
 - [Fullstack Open | Part 13: Migraciones, relaciones de muchos-a-muchos](https://fullstackopen.com/es/part13/migraciones_relaciones_de_muchos_a_muchos#relaciones-de-muchos-a-muchos)
 - [Client Side Session vs Server Side Session](https://medium.com/@tiff.sage/client-side-session-vs-server-side-session-d506f5408e8c)
+- [Node.js | "imports"](https://nodejs.org/api/packages.html#imports)
+- [Node.js | Subpath imports](https://nodejs.org/api/packages.html#subpath-imports)

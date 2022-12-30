@@ -11,7 +11,7 @@ const {
   rolRouter,
   tipoEventoRouter,
   usersRouter,
-} = require("../routes");
+} = require("#src/routes/index.js");
 
 const ROUTE_PATHS = {
   usuarios: "/api/usuarios",

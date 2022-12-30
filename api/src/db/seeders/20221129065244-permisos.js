@@ -1,7 +1,7 @@
 "use strict";
 
-const { permisos } = require("../../data/permisos.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+const { permisos } = require("#src/data/permisos.json");
+const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

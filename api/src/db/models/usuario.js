@@ -1,4 +1,4 @@
-const { GENEROS } = require("../../constants/usuarios");
+const { GENEROS } = require("#src/constants/usuarios.js");
 
 module.exports = (sequelize, DataTypes) => {
   const usuario = sequelize.define(

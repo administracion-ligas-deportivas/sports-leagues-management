@@ -1,6 +1,6 @@
 "use strict";
 
-const { tipoEstadisticas } = require("../../data/tipoEstadisticas.json");
+const { tipoEstadisticas } = require("#src/data/tipoEstadisticas.json");
 const { tipoEstadistica, deporte } = require("../models");
 
 /** @type {import('sequelize-cli').Migration} */
