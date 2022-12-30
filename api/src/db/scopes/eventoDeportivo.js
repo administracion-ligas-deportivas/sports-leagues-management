@@ -1,7 +1,7 @@
 const getScopesEventoDeportivo = (models) => {
-  const { equipo, formatoEventoDeportivo, partido, usuario } = models;
+  const { formatoEventoDeportivo, equipo, usuario, partido } = models;
 
-  const scopesEventoDeportivo = {
+  const SCOPES_EVENTO_DEPORTIVO = {
     generalData: {
       name: "generalData",
       scope: {
@@ -77,14 +77,12 @@ const getScopesEventoDeportivo = (models) => {
     },
   };
 
-  const { generalData, withFormato, includeEverything } = scopesEventoDeportivo;
+  const { generalData, withFormato, includeEverything } =
+    SCOPES_EVENTO_DEPORTIVO;
 
-  const scopesToInclude = [generalData, withFormato, includeEverything];
+  const SCOPES_TO_INCLUDE = [generalData, withFormato, includeEverything];
 
-  return {
-    scopes: scopesToInclude,
-    scopesToInclude,
-  };
+  return { SCOPES_EVENTO_DEPORTIVO, SCOPES_TO_INCLUDE };
 };
 
 module.exports = { getScopesEventoDeportivo };

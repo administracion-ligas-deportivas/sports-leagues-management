@@ -47,9 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       usuario,
     } = models;
 
-    const { scopesToInclude } = getScopesEventoDeportivo(models);
+    const { SCOPES_TO_INCLUDE } = getScopesEventoDeportivo(models);
 
-    addScopes(eventoDeportivo, scopesToInclude);
+    addScopes(eventoDeportivo, SCOPES_TO_INCLUDE);
 
     eventoDeportivo.belongsTo(formatoEventoDeportivo, {
       foreignKey: {
