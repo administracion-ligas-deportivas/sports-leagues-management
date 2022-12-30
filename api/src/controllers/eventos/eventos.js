@@ -59,79 +59,9 @@ const deleteEvento = async (req, res) => {
   res.status(204).end();
 };
 
-const getPartidosFromEvento = async (req, res) => {
-  const { eventoId } = req.params;
-
-  const partidos = await eventoService.getPartidosFromEvento(eventoId);
-
-  if (!partidos?.length) {
-    return res.status(404).end();
-  }
-
-  res.json({
-    total: partidos.length,
-    partidos,
-  });
-};
-
-const getFormatoEvento = async (req, res) => {
-  const { eventoId } = req.params;
-
-  const { evento, formatoEvento } = await eventoService.getFormatoEvento(
-    eventoId
-  );
-
-  if (!evento) {
-    return res.status(404).json({
-      error: "No se ha encontrado el evento",
-    });
-  }
-
-  if (!formatoEvento) {
-    return res.status(404).json({
-      error:
-        "No se ha encontrado un formato para el evento. En este caso, el evento tiene un deporte.",
-    });
-  }
-
-  return res.json(formatoEvento);
-};
-
-const getEquiposFromEvento = async (req, res) => {
-  const { eventoId } = req.params;
-  const equipos = await eventoService.getEquiposFromEvento(eventoId);
-
-  if (!equipos?.length) {
-    return res.status(404).end();
-  }
-
-  res.json({
-    total: equipos.length,
-    equipos,
-  });
-};
-
-const getEstadisticosFromEvento = async (req, res) => {
-  const { eventoId } = req.params;
-  const estadisticos = await eventoService.getEstadisticosFromEvento(eventoId);
-
-  if (!estadisticos?.length) {
-    return res.status(404).end();
-  }
-
-  res.json({
-    total: estadisticos.length,
-    estadisticos,
-  });
-};
-
 module.exports = {
   createEvento,
   getEventos,
   getEventoById,
   deleteEvento,
-  getPartidosFromEvento,
-  getFormatoEvento,
-  getEquiposFromEvento,
-  getEstadisticosFromEvento,
 };
