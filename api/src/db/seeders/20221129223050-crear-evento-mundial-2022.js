@@ -11,20 +11,20 @@ const {
   formatoMundial,
   eventoMundial,
   equipos,
-} = require("../../data/mundial-2022");
+} = require("#src/data/mundial-2022/index.js");
 
-const { getTimeStamps } = require("../../utils/fakeDataGenerators/timestamps");
+const { getTimeStamps } = require("#src/utils/fakeDataGenerators/timestamps.js");
 const {
   getRandomOrganizadorId,
   getRolByNombre,
-} = require("../../services/rol");
-const { getDeporteByNombre } = require("../../services/deporte");
-const { getTipoEventoByNombre } = require("../../services/tipoEvento");
-const { TIPO_EVENTOS } = require("../../constants/eventos");
-const { DEPORTES } = require("../../constants/deportes");
-const { createRandomUser } = require("../../utils/fakeDataGenerators/usuarios");
-const { ROLES } = require("../../constants/roles");
-const { createMexicoVsArgentina } = require("../../utils/seeders/partidos");
+} = require("#src/services/rol.js");
+const { getDeporteByNombre } = require("#src/services/deporte.js");
+const { getTipoEventoByNombre } = require("#src/services/tipoEvento.js");
+const { TIPO_EVENTOS } = require("#src/constants/eventos.js");
+const { DEPORTES } = require("#src/constants/deportes.js");
+const { createRandomUser } = require("#src/utils/fakeDataGenerators/usuarios.js");
+const { ROLES } = require("#src/constants/roles.js");
+const { createMexicoVsArgentina } = require("#src/utils/seeders/partidos.js");
 
 const createFormatoMundial = async (organizadorId, transaction) => {
   const { id: deporteId } = await getDeporteByNombre(DEPORTES.FUTBOL);

@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker");
-const { municipio } = require("../../db/models");
+const { municipio } = require("#src/db/models/index.js");
 
 const getRandomDireccion = async () => {
   const numberOfMunicipios = await municipio.count();

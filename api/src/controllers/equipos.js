@@ -1,4 +1,4 @@
-const { equipo, usuario, deporte } = require("../db/models");
+const { equipo, usuario, deporte } = require("#src/db/models/index.js");
 
 const getEquipos = async (req, res) => {
   const equipos = await equipo.findAll({

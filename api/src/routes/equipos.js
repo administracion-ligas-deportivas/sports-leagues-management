@@ -1,6 +1,6 @@
 const equiposRouter = require("express").Router();
 
-const { getEquipos, getEquipoById } = require("../controllers/equipos");
+const { getEquipos, getEquipoById } = require("#src/controllers/equipos.js");
 
 equiposRouter.route("/").get(getEquipos);
 

@@ -4,7 +4,7 @@ const {
   getFormatoEvento,
   getFormatoById,
   createFormatoEvento,
-} = require("../controllers/formatoEventoDeportivo");
+} = require("#src/controllers/formatoEventoDeportivo.js");
 
 formatosRouter.route("/").get(getFormatoEvento).post(createFormatoEvento);
 

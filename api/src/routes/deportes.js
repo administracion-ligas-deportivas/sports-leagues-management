@@ -5,7 +5,7 @@ const {
   createDeportes,
   deleteDeporte,
   getDeporteById,
-} = require("../controllers/deportes");
+} = require("#src/controllers/deportes.js");
 
 deportesRouter.route("/").get(getDeportes).post(createDeportes);
 deportesRouter.route("/:deporteId").get(getDeporteById).delete(deleteDeporte);

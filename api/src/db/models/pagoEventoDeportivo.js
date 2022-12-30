@@ -1,4 +1,4 @@
-const { FORMA_PAGO } = require("../../constants/pagos");
+const { FORMA_PAGO } = require("#src/constants/pagos.js");
 
 module.exports = (sequelize, DataTypes) => {
   const pagoEventoDeportivo = sequelize.define(

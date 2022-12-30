@@ -1,10 +1,10 @@
 "use strict";
 
-const { createRandomElements } = require("../../utils/fakeDataGenerators");
+const { createRandomElements } = require("#src/utils/fakeDataGenerators/index.js");
 const {
   initDbData,
   resetData,
-} = require("../../utils/fakeDataGenerators/deportivos");
+} = require("#src/utils/fakeDataGenerators/deportivos.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

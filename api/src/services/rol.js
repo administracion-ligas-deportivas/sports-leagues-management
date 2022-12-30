@@ -1,6 +1,6 @@
-const { ROLES } = require("../constants/roles");
+const { ROLES } = require("#src/constants/roles.js");
 const { faker } = require("@faker-js/faker");
-const { rol, usuario } = require("../db/models");
+const { rol, usuario } = require("#src/db/models/index.js");
 
 const getRolByNombre = async (nombre, transaction) => {
   return await rol.findOne({

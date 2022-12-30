@@ -1,4 +1,4 @@
-const { tipoEventoDeportivo } = require("../db/models");
+const { tipoEventoDeportivo } = require("#src/db/models/index.js");
 
 const createTipoEvento = async (req, res) => {
   const { nombre, descripcion } = req.body;

@@ -4,8 +4,8 @@ const { usuario: usuarioModel, domicilioUsuario } = require("../models");
 const {
   createRandomDomicilioUsuario,
   initDbData,
-} = require("../../utils/fakeDataGenerators/usuarios");
-const { createRandomElements } = require("../../utils/fakeDataGenerators");
+} = require("#src/utils/fakeDataGenerators/usuarios.js");
+const { createRandomElements } = require("#src/utils/fakeDataGenerators/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

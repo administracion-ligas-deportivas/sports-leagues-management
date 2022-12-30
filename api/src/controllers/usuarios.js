@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
-const { SALT_ROUNDS } = require("../constants/auth");
+const { SALT_ROUNDS } = require("#src/constants/auth.js");
 const {
   usuario,
   domicilioUsuario: domicilioUsuarioModel,
-} = require("../db/models");
+} = require("#src/db/models/index.js");
 
 const getUsers = async (req, res) => {
   const usuarios = await usuario.findAll();

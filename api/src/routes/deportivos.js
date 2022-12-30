@@ -7,7 +7,7 @@ const {
   updateDeportivo,
   getCanchasFromDeportivo,
   createCancha,
-} = require("../controllers/deportivos");
+} = require("#src/controllers/deportivos.js");
 
 deportivosRouter.route("/").get(getDeportivos).post(createDeportivo);
 deportivosRouter

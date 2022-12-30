@@ -36,9 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
     partido.belongsTo(models.usuario, {
       foreignKey: { name: "estadisticoId", allowNull: false },
+      as: "estadistico",
     });
+
     partido.belongsTo(models.eventoDeportivo, {
       foreignKey: {
         allowNull: false,
@@ -47,10 +50,48 @@ module.exports = (sequelize, DataTypes) => {
 
     partido.belongsToMany(models.equipo, {
       through: models.equipoPartido,
-      as: "equipo",
+      as: {
+        singular: "equipo",
+        plural: "equipos",
+      },
     });
 
-    partido.hasMany(models.estadisticaJugadorPartido);
+    partido.hasMany(models.estadisticaJugadorPartido, {
+      as: {
+        singular: "estadisticaJugadorPartido",
+        plural: "estadisticasJugadoresPartido",
+      },
+    });
+
+    partido.addScope("withFullData", {
+      include: [
+        {
+          model: models.equipo,
+          as: "equipos",
+          through: {
+            attributes: ["puntos", "localVisitante"],
+          },
+        },
+        models.cancha,
+        {
+          model: models.usuario,
+          as: "estadistico",
+        },
+        {
+          model: models.estadisticaJugadorPartido,
+          as: "estadisticasJugadoresPartido",
+        },
+        models.eventoDeportivo,
+      ],
+      attributes: {
+        exclude: [
+          "canchaId",
+          "estadisticoId",
+          "eventoDeportivoId",
+          "eventoDeportivoId",
+        ],
+      },
+    });
   };
   return partido;
 };

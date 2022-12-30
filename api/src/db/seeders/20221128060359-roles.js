@@ -1,6 +1,6 @@
 "use strict";
-const { roles } = require("../../data/roles.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+const { roles } = require("#src/data/roles.json");
+const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

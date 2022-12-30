@@ -1,4 +1,4 @@
-const { LOCAL_VISITANTE } = require("../../constants/partidos");
+const { LOCAL_VISITANTE } = require("#src/constants/partidos.js");
 
 module.exports = (sequelize, DataTypes) => {
   const equipoPartido = sequelize.define(

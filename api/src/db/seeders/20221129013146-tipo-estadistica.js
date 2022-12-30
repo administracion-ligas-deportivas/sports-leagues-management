@@ -1,6 +1,6 @@
 "use strict";
-const { tipoEstadisticas } = require("../../data/tipoEstadisticas.json");
-const { getElementsWithTimestamps } = require("../../utils/seeders");
+const { tipoEstadisticas } = require("#src/data/tipoEstadisticas.json");
+const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

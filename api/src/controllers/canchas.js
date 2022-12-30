@@ -1,4 +1,4 @@
-const { cancha } = require("../db/models");
+const { cancha } = require("#src/db/models/index.js");
 
 const getCanchas = async (req, res) => {
   const canchas = await cancha.findAll();

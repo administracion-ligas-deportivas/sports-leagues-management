@@ -4,7 +4,7 @@ const {
   getCanchas,
   getCanchasById,
   deleteCancha,
-} = require("../controllers/canchas");
+} = require("#src/controllers/canchas.js");
 
 canchasRouter.route("/").get(getCanchas);
 

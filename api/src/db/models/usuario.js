@@ -1,4 +1,4 @@
-const { GENEROS } = require("../../constants/usuarios");
+const { GENEROS } = require("#src/constants/usuarios.js");
 
 module.exports = (sequelize, DataTypes) => {
   const usuario = sequelize.define(
@@ -43,7 +43,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    {}
+    {
+      defaultScope: {
+        attributes: { exclude: ["password"] },
+      },
+    }
   );
 
   usuario.associate = (models) => {
@@ -58,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     });
+
     usuario.belongsToMany(models.equipo, {
       through: models.jugadorEquipo,
     });
@@ -69,6 +74,10 @@ module.exports = (sequelize, DataTypes) => {
     });
     usuario.hasMany(models.partido, {
       foreignKey: "estadisticoId",
+      as: {
+        singular: "estadistico",
+        plural: "estadisticos",
+      },
     });
 
     usuario.hasMany(models.formatoEventoDeportivo, {

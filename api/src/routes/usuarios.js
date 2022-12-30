@@ -1,7 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 
-const { userAuthenticator } = require("../middlewares");
+const { userAuthenticator } = require("#src/middlewares/index.js");
 const {
   getUsers,
   createUser,

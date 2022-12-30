@@ -2,7 +2,7 @@ const {
   estado,
   municipio: municipioModel,
   sequelize,
-} = require("../db/models");
+} = require("#src/db/models/index.js");
 
 const getEstados = async (req, res) => {
   const estados = await estado.findAll({

@@ -1,4 +1,4 @@
-const { rol } = require("../db/models");
+const { rol } = require("#src/db/models/index.js");
 
 const getRoles = async (req, res) => {
   const roles = await rol.findAll();

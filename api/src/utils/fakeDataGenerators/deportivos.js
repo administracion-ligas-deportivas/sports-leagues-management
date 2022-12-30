@@ -1,6 +1,6 @@
 const { faker } = require("@faker-js/faker");
 
-const { deportivo } = require("../../db/models");
+const { deportivo } = require("#src/db/models/index.js");
 const { getRandomDireccion } = require("./direccion");
 const { getTimeStamps } = require("./timestamps");
 

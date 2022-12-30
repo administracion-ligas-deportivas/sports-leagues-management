@@ -1,10 +1,10 @@
 const { faker } = require("@faker-js/faker");
-const { GENEROS } = require("../../constants/usuarios");
+const { GENEROS } = require("#src/constants/usuarios.js");
 const { getOnlyDate } = require("../date");
-const { getRolIds } = require("../../services/rol");
+const { getRolIds } = require("#src/services/rol.js");
 const { getTimeStamps } = require("./timestamps");
-const { municipio } = require("../../db/models");
-const { SALT_ROUNDS } = require("../../constants/auth");
+const { municipio } = require("#src/db/models/index.js");
+const { SALT_ROUNDS } = require("#src/constants/auth.js");
 const bcrypt = require("bcrypt");
 const { getRandomDireccion } = require("./direccion");
 

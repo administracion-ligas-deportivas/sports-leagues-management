@@ -1,6 +1,16 @@
-const { eventoDeportivo } = require("../db/models");
+// const { eventoDeportivo } = require("#src/db/models/index.js");
+// No funciona si 
+const { eventoDeportivo } = require("#src/db/models/index.js");
 
-const createEvento = async (eventoId, data) => {
+const getEventos = async () => {
+  return await eventoDeportivo.findAll();
+};
+
+const getEventoById = async (eventoId) => {
+  return await eventoDeportivo.scope("includeEverything").findByPk(eventoId);
+};
+
+const createEvento = async (data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
 
   if (!formatoEventoDeportivoId && !deporteId) {
@@ -18,17 +28,11 @@ const createEvento = async (eventoId, data) => {
     deporteId: formatoEventoDeportivoId ? null : deporteId,
   };
 
-  return await eventoDeportivo.create(evento, {
-    where: {
-      id: eventoId,
-    },
-  });
-};
-
-const eventoService = {
-  createEvento,
+  return await eventoDeportivo.create(evento);
 };
 
 module.exports = {
-  eventoService,
+  getEventos,
+  getEventoById,
+  createEvento,
 };
