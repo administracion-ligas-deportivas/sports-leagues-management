@@ -1,7 +1,7 @@
 const {
   getScopesEventoDeportivo,
 } = require("#src/db/scopes/eventoDeportivo.js");
-const { addScopes } = require("#src/utils/db/scopes.js");
+const { initModelScopes } = require("#src/utils/db/scopes.js");
 
 module.exports = (sequelize, DataTypes) => {
   const eventoDeportivo = sequelize.define(
@@ -47,9 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       usuario,
     } = models;
 
-    const { SCOPES_TO_INCLUDE } = getScopesEventoDeportivo(models);
-
-    addScopes(eventoDeportivo, SCOPES_TO_INCLUDE);
+    initModelScopes(eventoDeportivo, models, getScopesEventoDeportivo);
 
     eventoDeportivo.belongsTo(formatoEventoDeportivo, {
       foreignKey: {
