@@ -43,3 +43,5 @@ tiene la misma estructura que el diagrama original.
 - [Client Side Session vs Server Side Session](https://medium.com/@tiff.sage/client-side-session-vs-server-side-session-d506f5408e8c)
 - [Node.js | "imports"](https://nodejs.org/api/packages.html#imports)
 - [Node.js | Subpath imports](https://nodejs.org/api/packages.html#subpath-imports)
+- [Stack Overflow | Node can't find modules without .js extension](https://stackoverflow.com/questions/64242186/node-cant-find-modules-without-js-extension)
+  - [Respuesta de RickN - 07/OCT/2020](https://stackoverflow.com/a/64242299/13562806)

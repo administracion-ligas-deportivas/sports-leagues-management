@@ -4,7 +4,7 @@ const {
   getEstados,
   eliminarEstados,
   getMunicipiosDeEstado,
-} = require("../controllers/estados");
+} = require("#src/controllers/estados.js");
 
 estadosRouter.post("/", registrarEstados);
 estadosRouter.get("/", getEstados);

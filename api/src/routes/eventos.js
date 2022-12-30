@@ -7,7 +7,7 @@ const {
   getFormatoEvento,
   getEquiposFromEvento,
   getEstadisticosFromEvento,
-} = require("../controllers/eventos");
+} = require("#src/controllers/eventos.js");
 
 const eventosRouter = require("express").Router();
 

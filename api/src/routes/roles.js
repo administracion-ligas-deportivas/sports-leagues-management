@@ -5,7 +5,7 @@ const {
   getRoles,
   getRolId,
   deleteRol,
-} = require("../controllers/roles");
+} = require("#src/controllers/roles.js");
 
 rolRouter.route("/").post(createRol).get(getRoles);
 
