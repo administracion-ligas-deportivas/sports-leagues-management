@@ -11,8 +11,6 @@ const getEquipoById = async (equipoId) => {
 const getEncargadoEquipo = async (equipoId) => {
   const foundEquipo = await equipo.scope("includeEncargado").findByPk(equipoId);
 
-  console.log({ foundEquipo });
-
   return foundEquipo?.encargado;
 };
 
@@ -20,8 +18,6 @@ const getEncargadoEquipo = async (equipoId) => {
 // mismo que el del encargado del equipo.
 const isUsuarioEncargadoEquipo = async (usuarioId, equipoId) => {
   const encargado = await getEncargadoEquipo(equipoId);
-
-  console.log({ encargadoId: encargado?.id, usuarioId });
 
   return encargado?.id === usuarioId;
 };

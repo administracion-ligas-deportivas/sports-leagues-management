@@ -1,8 +1,8 @@
-const { eventoService } = require("#src/services/index.js");
+const { eventosService } = require("#src/services/index.js");
 
 const getEstadisticosFromEvento = async (req, res) => {
   const { eventoId } = req.params;
-  const estadisticos = await eventoService.getEstadisticosFromEvento(eventoId);
+  const estadisticos = await eventosService.getEstadisticosFromEvento(eventoId);
 
   if (!estadisticos?.length) {
     return res.status(404).end();

@@ -4,7 +4,7 @@ const eventos = require("./eventos");
 const estadisticos = require("./estadisticos");
 const equipos = require("./equipos");
 
-const eventoService = {
+const eventosService = {
   ...partidos,
   ...formatos,
   ...eventos,
@@ -13,5 +13,5 @@ const eventoService = {
 };
 
 module.exports = {
-  eventoService,
+  eventosService,
 };

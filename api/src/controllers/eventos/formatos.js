@@ -1,9 +1,9 @@
-const { eventoService } = require("#src/services/index.js");
+const { eventosService } = require("#src/services/index.js");
 
 const getFormatoEvento = async (req, res) => {
   const { eventoId } = req.params;
 
-  const { evento, formatoEvento } = await eventoService.getFormatoEvento(
+  const { evento, formatoEvento } = await eventosService.getFormatoEvento(
     eventoId
   );
 

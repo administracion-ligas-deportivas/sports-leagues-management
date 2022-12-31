@@ -1,9 +1,9 @@
 const { equiposService } = require("./equipos");
-const { eventoService } = require("./eventos");
+const { eventosService } = require("./eventos");
 const { pagosService } = require("./pagos");
 
 module.exports = {
   equiposService,
-  eventoService,
+  eventosService,
   pagosService,
 };

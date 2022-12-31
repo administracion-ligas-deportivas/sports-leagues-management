@@ -9,11 +9,14 @@ const {
   getEstadisticosFromEvento,
   realizarPagoEnEvento,
 } = require("#src/controllers/eventos/index.js");
+
 const {
   checkParamsId,
   validateRules,
 } = require("#src/middlewares/validateRules.js");
+
 const { canPay } = require("#src/middlewares/pagos.js");
+const { eventoExists } = require("#src/middlewares/eventos.js");
 const { isUsuarioEncargadoEquipo } = require("#src/middlewares/equipos.js");
 
 const eventosRouter = require("express").Router();
@@ -30,8 +33,9 @@ eventosRouter.route("/:eventoId/partidos").get(getPartidosFromEvento);
 eventosRouter.route("/:eventoId/formatos").get(getFormatoEvento);
 eventosRouter.route("/:eventoId/equipos").get(getEquiposFromEvento);
 eventosRouter.route("/:eventoId/estadisticos").get(getEstadisticosFromEvento);
+
 eventosRouter
   .route("/:eventoId/pagos")
-  .post([isUsuarioEncargadoEquipo, canPay], realizarPagoEnEvento);
+  .post([eventoExists, isUsuarioEncargadoEquipo, canPay], realizarPagoEnEvento);
 
 module.exports = { eventosRouter };

@@ -1,3 +1,5 @@
+const { eventosService } = require("#src/services/index.js");
+
 const requiredEventoId = (req, res, next) => {
   const { eventoId } = req.params;
 
@@ -20,6 +22,23 @@ const requiredEventoId = (req, res, next) => {
   next();
 };
 
+const eventoExists = async (req, res, next) => {
+  const eventoId = req.params?.eventoId ?? req.body?.eventoId;
+
+  const evento = await eventosService.getEventoById(eventoId);
+
+  if (!evento) {
+    return res.status(404).json({
+      message: "El evento no existe.",
+    });
+  }
+
+  req.evento = evento;
+
+  next();
+};
+
 module.exports = {
   requiredEventoId,
+  eventoExists,
 };
