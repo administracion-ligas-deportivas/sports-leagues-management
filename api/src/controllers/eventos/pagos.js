@@ -1,6 +1,5 @@
 const { FORMA_PAGO } = require("#src/constants/pagos.js");
-const { eventoService } = require("#src/services/eventos/index.js");
-const { pagosService } = require("#src/services/pagos.js");
+const { pagosService, eventoService } = require("#src/services/index.js");
 
 const realizarPagoEnEvento = async (req, res, next) => {
   const { eventoId } = req.params;

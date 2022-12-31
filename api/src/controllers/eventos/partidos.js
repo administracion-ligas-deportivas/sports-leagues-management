@@ -1,4 +1,4 @@
-const { eventoService } = require("#src/services/eventos/index.js");
+const { eventoService } = require("#src/services/index.js");
 
 const getPartidosFromEvento = async (req, res) => {
   const { eventoId } = req.params;
