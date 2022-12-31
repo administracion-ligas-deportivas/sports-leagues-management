@@ -1,4 +1,3 @@
-const { equipo, usuario, deporte } = require("#src/db/models/index.js");
 const { equiposService } = require("#src/services/equipos/index.js");
 
 const getEquipos = async (req, res) => {

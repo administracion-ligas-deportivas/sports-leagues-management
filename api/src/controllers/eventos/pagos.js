@@ -1,12 +1,8 @@
-const { pagosService } = require("#src/services/index.js");
+const { pagosService, equiposService } = require("#src/services/index.js");
 
 const realizarPagoEnEvento = async (req, res, next) => {
   const { eventoId } = req.params;
   const { tipoPago, equipoId, ...data } = req.body;
-  const { id: encargadoEquipoId } = req.user;
-
-  // Revisar que el ID del encargado (usuario que realizó la petición) sea el
-  // mismo que el del encargado del equipo.
 
   try {
     const pago = await pagosService.realizarPagoEnEvento(
@@ -16,7 +12,8 @@ const realizarPagoEnEvento = async (req, res, next) => {
     );
 
     res.json({
-      message: "Aún no implementado, pero se realizaría el pago.",
+      message:
+        "Aún no implementado, pero se realizaría el pago. El usuario es el encargado del equipo.",
       pago,
     });
   } catch (error) {

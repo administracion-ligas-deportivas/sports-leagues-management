@@ -18,17 +18,45 @@ module.exports = (sequelize, DataTypes) => {
   equipo.associate = (models) => {
     const { deporte, usuario } = models;
 
-    equipo.addScope("defaultScope", {
+    equipo.addScope("withNumberOfJugadores", {
       // Add jugadores count
       attributes: {
         include: [
           [
+            // https://sequelize.org/docs/v6/other-topics/scopes/#definition
+            // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#specifying-attributes-for-select-queries
+            // https://sequelize.org/docs/v6/other-topics/sub-queries/
             sequelize.literal(
               "(SELECT COUNT(*) FROM jugador_equipo WHERE equipo.id = jugador_equipo.equipo_id)"
             ),
             "numberOfJugadores",
           ],
         ],
+      },
+    });
+
+    // equipo.addScope("defaultScope", {
+    //   include: {
+    //     model: usuario,
+    //     as: "jugadores",
+    //   },
+    //   attributes: {
+    //     include: [
+    //       // sequelize.fn("COUNT"),
+    //       [
+    //         sequelize.fn("COUNT", sequelize.col("jugador_equipo.equipo_id")),
+    //         // sequelize.fn("COUNT", sequelize.col("jugador_equipo.equipo_id")),
+    //         "numberOfJugadores",
+    //       ],
+    //     ],
+    //   },
+    //   // group: ["jugador_equipo.equipo_id"],
+    // });
+
+    equipo.addScope("includeEncargado", {
+      include: {
+        model: usuario,
+        as: "encargado",
       },
     });
 
