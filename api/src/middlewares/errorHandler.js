@@ -1,11 +1,20 @@
 const { JWT_ERROR_HANDLERS } = require("#src/constants/errors/jwt.js");
-const { SEQUELIZE_ERROR_HANDLERS } = require("#src/constants/errors/sequelize.js");
+const {
+  SEQUELIZE_ERROR_HANDLERS,
+} = require("#src/constants/errors/sequelize.js");
 
 // https://www.youtube.com/watch?v=btW1SefZf9M&t=473s
 const ERROR_HANDLERS = {
   ...JWT_ERROR_HANDLERS,
   ...SEQUELIZE_ERROR_HANDLERS,
-
+  SyntaxError: (res) =>
+    res
+      .status(400)
+      .json({
+        error:
+          "No se ha podido procesar la petición. Ha ocurrido un error de sintaxis.",
+      })
+      .end(),
   defaultError: (res) => res.status(500).end(),
 };
 

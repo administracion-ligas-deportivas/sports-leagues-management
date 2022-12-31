@@ -1,4 +1,23 @@
 const { partido } = require("#src/db/models/index.js");
+const { partidosService } = require("#src/services/index.js");
+
+const createPartido = async (req, res, next) => {
+  const { eventoId } = req.params;
+  const { body } = req;
+
+  try {
+    const createdPartido = await partidosService.createPartido(eventoId, body);
+
+    console.log("🚀 ~ file: partidos.js:10 ~ createPartido ~ createdPartido", {
+      createdPartido,
+    });
+
+    res.json(createdPartido);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
 
 const getPartidos = async (req, res) => {
   const partidos = await partido.findAll();
@@ -25,6 +44,7 @@ const deletePartido = async (req, res) => {
 };
 
 module.exports = {
+  createPartido,
   getPartidos,
   getPartidoById,
   deletePartido,

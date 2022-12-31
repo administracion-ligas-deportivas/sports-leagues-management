@@ -1,5 +1,5 @@
 // const { eventoDeportivo } = require("#src/db/models/index.js");
-// No funciona si 
+// No funciona si
 const { eventoDeportivo } = require("#src/db/models/index.js");
 
 const getEventos = async () => {

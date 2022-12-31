@@ -1,3 +1,8 @@
+const {
+  getScopesEventoDeportivo,
+} = require("#src/db/scopes/eventoDeportivo.js");
+const { initModelScopes } = require("#src/utils/db/scopes.js");
+
 module.exports = (sequelize, DataTypes) => {
   const eventoDeportivo = sequelize.define(
     "eventoDeportivo",
@@ -42,71 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       usuario,
     } = models;
 
-    // eventoDeportivo.addScope("defaultScope", {});
-
-    eventoDeportivo.addScope("generalData", {
-      include: [formatoEventoDeportivo, { model: usuario, as: "organizador" }],
-      attributes: {
-        exclude: ["organizadorId", "formatoEventoDeportivoId"],
-      },
-    });
-
-    eventoDeportivo.addScope("includeEverything", {
-      include: [
-        formatoEventoDeportivo,
-        {
-          model: equipo,
-          through: {
-            attributes: [],
-          },
-        },
-        { model: usuario, as: "organizador" },
-        {
-          model: usuario,
-          as: "estadisticos",
-          // No obtener atributos de la tabla pivote, "estadisticoEventoDeportivo".
-          through: {
-            attributes: [],
-          },
-        },
-      ],
-      attributes: {
-        exclude: ["organizadorId", "formatoEventoDeportivoId"],
-      },
-    });
-
-    eventoDeportivo.addScope("withFormato", {
-      include: [
-        {
-          model: formatoEventoDeportivo,
-          include: ["deporte", "tipoEventoDeportivo"],
-          attributes: {
-            exclude: ["deporteId", "tipoEventoDeportivoId"],
-          },
-        },
-      ],
-    });
-
-    eventoDeportivo.addScope("withPartidos", {
-      include: partido,
-    });
-
-    eventoDeportivo.addScope("withEstadisticos", {
-      include: {
-        model: usuario,
-        as: "estadisticos",
-        // No obtener atributos de la tabla pivote,
-        // "estadisticoEventoDeportivo".
-
-        through: {
-          attributes: [],
-        },
-      },
-    });
-
-    eventoDeportivo.addScope("withPagos", {
-      include: pagoEventoDeportivo,
-    });
+    initModelScopes(eventoDeportivo, models, getScopesEventoDeportivo);
 
     eventoDeportivo.belongsTo(formatoEventoDeportivo, {
       foreignKey: {

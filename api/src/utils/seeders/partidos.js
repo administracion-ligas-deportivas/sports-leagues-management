@@ -1,12 +1,14 @@
 const { getRandomCancha } = require("#src/services/cancha.js");
-const { createPartido } = require("#src/services/partido.js");
+const { partidosService } = require("#src/services/index.js");
 const {
   usuario,
   equipo,
   tipoEstadistica,
-  estadisticaJugadorPartido,
+  // estadisticaJugadorPartido,
 } = require("#src/db/models/index.js");
-const { estadisticasMexicoVsArgentina } = require("#src/data/mundial-2022/index.js");
+// const {
+//   estadisticasMexicoVsArgentina,
+// } = require("#src/data/mundial-2022/index.js");
 const {
   createEstadisticaJugadorPartido,
 } = require("#src/services/estadisticaJugadorPartido.js");
@@ -54,7 +56,7 @@ const createEstadisticasJugadores = async (
 };
 
 const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
-  const { equipos: equiposEstadisticas } = estadisticasMexicoVsArgentina;
+  // const { equipos: equiposEstadisticas } = estadisticasMexicoVsArgentina;
   const estadistico = await usuario.findOne({
     where: { nombre: "Daniele", apellido: "Orsato" },
     transaction,
@@ -70,11 +72,6 @@ const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
     transaction,
   });
 
-  const equipos = {
-    local: { equipo: mexico, puntos: 0 },
-    visitante: { equipo: argentina, puntos: 3 },
-  };
-
   const randomCancha = await getRandomCancha();
 
   const datosPartido = {
@@ -89,7 +86,12 @@ const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
     eventoDeportivoId,
   };
 
-  const createdPartido = await createPartido(
+  const equipos = {
+    local: { equipo: mexico, puntos: 0 },
+    visitante: { equipo: argentina, puntos: 3 },
+  };
+
+  const createdPartido = await partidosService.createPartidoAndAddEquipos(
     equipos,
     datosPartido,
     eventoDeportivoId,
@@ -139,4 +141,5 @@ const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
 
 module.exports = {
   createMexicoVsArgentina,
+  createEstadisticasJugadores,
 };

@@ -63,6 +63,19 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
 
+    partido.addScope("minimal", {
+      include: [
+        {
+          model: models.usuario,
+          as: "estadistico",
+        },
+        models.cancha,
+      ],
+      attributes: {
+        exclude: ["eventoDeportivoId", "estadisticoId", "canchaId"],
+      },
+    });
+
     partido.addScope("withFullData", {
       include: [
         {

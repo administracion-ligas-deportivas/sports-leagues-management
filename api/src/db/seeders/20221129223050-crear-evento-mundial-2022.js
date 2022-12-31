@@ -13,7 +13,9 @@ const {
   equipos,
 } = require("#src/data/mundial-2022/index.js");
 
-const { getTimeStamps } = require("#src/utils/fakeDataGenerators/timestamps.js");
+const {
+  getTimeStamps,
+} = require("#src/utils/fakeDataGenerators/timestamps.js");
 const {
   getRandomOrganizadorId,
   getRolByNombre,
@@ -22,7 +24,9 @@ const { getDeporteByNombre } = require("#src/services/deporte.js");
 const { getTipoEventoByNombre } = require("#src/services/tipoEvento.js");
 const { TIPO_EVENTOS } = require("#src/constants/eventos.js");
 const { DEPORTES } = require("#src/constants/deportes.js");
-const { createRandomUser } = require("#src/utils/fakeDataGenerators/usuarios.js");
+const {
+  createRandomUser,
+} = require("#src/utils/fakeDataGenerators/usuarios.js");
 const { ROLES } = require("#src/constants/roles.js");
 const { createMexicoVsArgentina } = require("#src/utils/seeders/partidos.js");
 

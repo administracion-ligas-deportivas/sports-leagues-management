@@ -1,6 +1,8 @@
 "use strict";
 
-const { createRandomElements } = require("#src/utils/fakeDataGenerators/index.js");
+const {
+  createRandomElements,
+} = require("#src/utils/fakeDataGenerators/index.js");
 const {
   initDbData,
   resetData,

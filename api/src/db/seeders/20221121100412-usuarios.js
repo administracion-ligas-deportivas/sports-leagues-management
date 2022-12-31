@@ -5,7 +5,9 @@ const {
   createRandomDomicilioUsuario,
   initDbData,
 } = require("#src/utils/fakeDataGenerators/usuarios.js");
-const { createRandomElements } = require("#src/utils/fakeDataGenerators/index.js");
+const {
+  createRandomElements,
+} = require("#src/utils/fakeDataGenerators/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -16,6 +18,7 @@ module.exports = {
       const randomUsuarios = await createRandomElements("usuarios", 50).then(
         (usuarios) => {
           return usuarios.map((usuario) => {
+            // eslint-disable-next-line camelcase
             const { rol_id, ...restUsuario } = usuario;
             return restUsuario;
           });

@@ -3,15 +3,13 @@ const formatos = require("./formatos");
 const eventos = require("./eventos");
 const estadisticos = require("./estadisticos");
 const equipos = require("./equipos");
+const pagos = require("./pagos");
 
-const eventosService = {
+module.exports = {
   ...partidos,
   ...formatos,
   ...eventos,
   ...estadisticos,
   ...equipos,
-};
-
-module.exports = {
-  eventosService,
+  ...pagos,
 };
