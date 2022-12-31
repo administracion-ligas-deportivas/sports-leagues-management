@@ -18,6 +18,7 @@ const getEquipos = async (req, res) => {
 
 const getEquipoById = async (req, res) => {
   const { equipoId } = req.params;
+
   const foundEquipo = await equipo
     .scope("includeEverything")
     .findByPk(equipoId);
