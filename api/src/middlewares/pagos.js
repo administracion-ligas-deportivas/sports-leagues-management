@@ -1,5 +1,5 @@
 const { FORMA_PAGO } = require("#src/constants/pagos.js");
-const { pagosService } = require("#src/services/pagos.js");
+const { pagosService } = require("#src/services/pagos/index.js");
 
 const canPay = (req, res, next) => {
   const { tipoPago } = req.body;
