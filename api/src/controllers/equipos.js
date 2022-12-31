@@ -18,11 +18,11 @@ const getEquipos = async (req, res) => {
 
 const getEquipoById = async (req, res) => {
   const { equipoId } = req.params;
-  const foundEquipo = await equipo.findByPk(equipoId);
-  return res.json({
-    ...foundEquipo,
-    jugadores: await foundEquipo.getJugadors(),
-  });
+  const foundEquipo = await equipo
+    .scope("includeEverything")
+    .findByPk(equipoId);
+
+  return res.json(foundEquipo);
 };
 
 module.exports = {

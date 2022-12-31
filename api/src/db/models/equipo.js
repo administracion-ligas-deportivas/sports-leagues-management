@@ -16,6 +16,25 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   equipo.associate = (models) => {
+    const { deporte, usuario } = models;
+
+    equipo.addScope("includeEverything", {
+      include: [
+        {
+          model: usuario,
+          as: "jugadores",
+        },
+        {
+          model: usuario,
+          as: "encargado",
+        },
+        deporte,
+      ],
+      attributes: {
+        exclude: ["deporteId", "encargadoEquipoId"],
+      },
+    });
+
     equipo.belongsTo(models.usuario, {
       foreignKey: {
         name: "encargadoEquipoId",
@@ -31,7 +50,10 @@ module.exports = (sequelize, DataTypes) => {
 
     equipo.belongsToMany(models.usuario, {
       through: models.jugadorEquipo,
-      as: "jugador",
+      as: {
+        singular: "jugador",
+        plural: "jugadores",
+      },
     });
     equipo.belongsToMany(models.eventoDeportivo, {
       through: models.equipoEventoDeportivo,
