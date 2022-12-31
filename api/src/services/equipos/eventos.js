@@ -8,8 +8,6 @@ const isEquipoInEvento = async (equipoId, eventoDeportivoId) => {
     },
   });
 
-  console.log({ foundEquipoInEvento: foundEquipo });
-
   return foundEquipo !== null;
 };
 

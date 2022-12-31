@@ -25,6 +25,7 @@ const {
 
 const { canPay } = require("#src/middlewares/pagos.js");
 const { eventoExists } = require("#src/middlewares/eventos.js");
+const { createPartido } = require("#src/controllers/partidos.js");
 
 const eventosRouter = require("express").Router();
 
@@ -36,7 +37,12 @@ eventosRouter.route("/").get(getEventos).post(createEvento);
 eventosRouter.use("/:eventoId", [checkParamsId("eventoId"), validateRules]);
 
 eventosRouter.route("/:eventoId").get(getEventoById).delete(deleteEvento);
-eventosRouter.route("/:eventoId/partidos").get(getPartidosFromEvento);
+
+eventosRouter
+  .route("/:eventoId/partidos")
+  .get(getPartidosFromEvento)
+  .post(createPartido);
+
 eventosRouter.route("/:eventoId/formatos").get(getFormatoEvento);
 eventosRouter.route("/:eventoId/equipos").get(getEquiposFromEvento);
 eventosRouter.route("/:eventoId/estadisticos").get(getEstadisticosFromEvento);
@@ -51,17 +57,16 @@ eventosRouter
     realizarPagoEnEvento
   );
 
+eventosRouter.use("/:eventoId/equipos/:equipoId", [
+  checkParamsId("equipoId"),
+  validateRules,
+  eventoExists,
+  equipoExists,
+  isEquipoInEvento,
+]);
+
 eventosRouter
   .route("/:eventoId/equipos/:equipoId/pagos")
-  .get(
-    [
-      checkParamsId("equipoId"),
-      validateRules,
-      eventoExists,
-      equipoExists,
-      isEquipoInEvento,
-    ],
-    getPagosFromEquipoInEvento
-  );
+  .get([], getPagosFromEquipoInEvento);
 
 module.exports = { eventosRouter };

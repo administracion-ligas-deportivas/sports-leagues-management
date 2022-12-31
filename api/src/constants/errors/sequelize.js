@@ -3,9 +3,22 @@ const SEQUELIZE_ERROR_NAMES = {
 };
 
 const SEQUELIZE_ERROR_HANDLERS = {
+  SequelizeDatabaseError: (res, { original }) => {
+    // Puede ser sensible mostrar el texto porque podría contener información
+    // sobre las tablas y columnas.
+    const error = original.code;
+    // const error = `[${original.code}]: ${original.text}`;
+    res.status(400).json({ error });
+  },
   // Add Sequelize validation error handler
   SequelizeValidationError: (res, { errors }) => {
     console.log("ValidationError");
+    const errorMessages = errors.map(({ message }) => message);
+
+    res.status(400).json({ errors: errorMessages });
+  },
+
+  SequelizeUniqueConstraintError: (res, { errors }) => {
     const errorMessages = errors.map(({ message }) => message);
 
     res.status(400).json({ errors: errorMessages });
