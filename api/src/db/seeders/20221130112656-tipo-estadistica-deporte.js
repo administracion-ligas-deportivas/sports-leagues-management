@@ -53,7 +53,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface) {
+  async down() {
     /**
      * Add commands to revert seed here.
      *

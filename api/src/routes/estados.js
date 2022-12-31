@@ -2,7 +2,6 @@ const estadosRouter = require("express").Router();
 const {
   registrarEstados,
   getEstados,
-  eliminarEstados,
   getMunicipiosDeEstado,
 } = require("#src/controllers/estados.js");
 

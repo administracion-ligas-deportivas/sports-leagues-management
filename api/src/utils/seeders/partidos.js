@@ -4,11 +4,11 @@ const {
   usuario,
   equipo,
   tipoEstadistica,
-  estadisticaJugadorPartido,
+  // estadisticaJugadorPartido,
 } = require("#src/db/models/index.js");
-const {
-  estadisticasMexicoVsArgentina,
-} = require("#src/data/mundial-2022/index.js");
+// const {
+//   estadisticasMexicoVsArgentina,
+// } = require("#src/data/mundial-2022/index.js");
 const {
   createEstadisticaJugadorPartido,
 } = require("#src/services/estadisticaJugadorPartido.js");
@@ -56,7 +56,7 @@ const createEstadisticasJugadores = async (
 };
 
 const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
-  const { equipos: equiposEstadisticas } = estadisticasMexicoVsArgentina;
+  // const { equipos: equiposEstadisticas } = estadisticasMexicoVsArgentina;
   const estadistico = await usuario.findOne({
     where: { nombre: "Daniele", apellido: "Orsato" },
     transaction,
@@ -141,4 +141,5 @@ const createMexicoVsArgentina = async (eventoDeportivoId, transaction) => {
 
 module.exports = {
   createMexicoVsArgentina,
+  createEstadisticasJugadores,
 };

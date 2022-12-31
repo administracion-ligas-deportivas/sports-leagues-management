@@ -7,7 +7,7 @@ module.exports = (sequelize /* DataTypes */) => {
     }
   );
 
-  jugadorEquipo.associate = (models) => {
+  jugadorEquipo.associate = () => {
     // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#specifying-attributes-for-select-queries
     // jugadorEquipo.addScope("numberOfJugadores", {
     //   attributes: {
