@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         name: "encargadoEquipoId",
         allowNull: false,
       },
+      as: "encargadoEquipo",
     });
 
     pagoEventoDeportivo.belongsTo(models.eventoDeportivo, {

@@ -13,7 +13,7 @@ const equipoExists = async (req, res, next) => {
 
   req.equipo = {
     ...equipo,
-    encargadoId: equipo?.encargado?.id,
+    encargadoEquipoId: equipo?.encargado?.id,
   };
 
   next();
@@ -21,17 +21,17 @@ const equipoExists = async (req, res, next) => {
 
 const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
-  const { encargadoId } = req?.equipo ?? {};
+  const { encargadoEquipoId } = req?.equipo ?? {};
   let { equipoId } = req?.equipo ?? {};
 
   if (!equipoId) {
     equipoId = req.params?.equipoId ?? req.body?.equipoId;
   }
 
-  // No hacer petición a la BD si el encargadoId ya fue establecido por el
+  // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.
-  const isEncargado = encargadoId
-    ? encargadoId === id
+  const isEncargado = encargadoEquipoId
+    ? encargadoEquipoId === id
     : await equiposService.isUsuarioEncargadoEquipo(id, equipoId);
 
   if (!isEncargado) {

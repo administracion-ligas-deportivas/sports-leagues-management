@@ -17,7 +17,10 @@ const {
 
 const { canPay } = require("#src/middlewares/pagos.js");
 const { eventoExists } = require("#src/middlewares/eventos.js");
-const { isUsuarioEncargadoEquipo } = require("#src/middlewares/equipos.js");
+const {
+  isUsuarioEncargadoEquipo,
+  equipoExists,
+} = require("#src/middlewares/equipos.js");
 
 const eventosRouter = require("express").Router();
 
@@ -36,6 +39,9 @@ eventosRouter.route("/:eventoId/estadisticos").get(getEstadisticosFromEvento);
 
 eventosRouter
   .route("/:eventoId/pagos")
-  .post([eventoExists, isUsuarioEncargadoEquipo, canPay], realizarPagoEnEvento);
+  .post(
+    [eventoExists, equipoExists, isUsuarioEncargadoEquipo, canPay],
+    realizarPagoEnEvento
+  );
 
 module.exports = { eventosRouter };

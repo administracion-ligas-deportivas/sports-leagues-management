@@ -8,7 +8,7 @@ const SEQUELIZE_ERROR_HANDLERS = {
     console.log("ValidationError");
     const errorMessages = errors.map(({ message }) => message);
 
-    res.status(400).json({ error: errorMessages });
+    res.status(400).json({ errors: errorMessages });
   },
 
   // No funciona.
