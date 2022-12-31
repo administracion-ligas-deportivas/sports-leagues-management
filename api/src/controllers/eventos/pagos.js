@@ -1,9 +1,12 @@
-const { FORMA_PAGO } = require("#src/constants/pagos.js");
 const { pagosService } = require("#src/services/index.js");
 
 const realizarPagoEnEvento = async (req, res, next) => {
   const { eventoId } = req.params;
-  const { tipoPago, ...data } = req.body;
+  const { tipoPago, equipoId, ...data } = req.body;
+  const { id: encargadoEquipoId } = req.user;
+
+  // Revisar que el ID del encargado (usuario que realizó la petición) sea el
+  // mismo que el del encargado del equipo.
 
   try {
     const pago = await pagosService.realizarPagoEnEvento(

@@ -18,11 +18,29 @@ module.exports = (sequelize, DataTypes) => {
   equipo.associate = (models) => {
     const { deporte, usuario } = models;
 
+    equipo.addScope("defaultScope", {
+      // Add jugadores count
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM jugador_equipo WHERE equipo.id = jugador_equipo.equipo_id)"
+            ),
+            "numberOfJugadores",
+          ],
+        ],
+      },
+    });
+
     equipo.addScope("includeEverything", {
       include: [
         {
           model: usuario,
           as: "jugadores",
+
+          through: {
+            attributes: [],
+          },
         },
         {
           model: usuario,

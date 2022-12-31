@@ -1,27 +1,19 @@
 const { equipo, usuario, deporte } = require("#src/db/models/index.js");
+const { equiposService } = require("#src/services/equipos/index.js");
 
 const getEquipos = async (req, res) => {
-  const equipos = await equipo.findAll({
-    include: [
-      {
-        model: usuario,
-        as: "jugador",
-      },
-      {
-        model: deporte,
-      },
-    ],
-  });
+  const equipos = await equiposService.getAllEquipos();
 
-  return res.json({ equipos });
+  return res.json({
+    total: equipos.length,
+    equipos,
+  });
 };
 
 const getEquipoById = async (req, res) => {
   const { equipoId } = req.params;
 
-  const foundEquipo = await equipo
-    .scope("includeEverything")
-    .findByPk(equipoId);
+  const foundEquipo = await equiposService.getEquipoById(equipoId);
 
   return res.json(foundEquipo);
 };

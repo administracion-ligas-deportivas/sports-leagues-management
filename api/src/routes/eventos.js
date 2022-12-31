@@ -9,11 +9,11 @@ const {
   getEstadisticosFromEvento,
   realizarPagoEnEvento,
 } = require("#src/controllers/eventos/index.js");
-const { canPay } = require("#src/middlewares/pagos.js");
 const {
   checkParamsId,
   validateRules,
 } = require("#src/middlewares/validateRules.js");
+const { canPay } = require("#src/middlewares/pagos.js");
 
 const eventosRouter = require("express").Router();
 
