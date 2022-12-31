@@ -16,7 +16,17 @@ const getPagosFromEvento = async (eventoDeportivoId) => {
   });
 };
 
+const getPagosFromEquipoInEvento = async (equipoId, eventoDeportivoId) => {
+  return await pagoEventoDeportivo.findAndCountAll({
+    where: {
+      eventoDeportivoId,
+      equipoId,
+    },
+  });
+};
+
 module.exports = {
   realizarPagoEnEvento,
   getPagosFromEvento,
+  getPagosFromEquipoInEvento,
 };

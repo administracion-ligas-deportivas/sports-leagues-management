@@ -25,6 +25,8 @@ const requiredEventoId = (req, res, next) => {
 const eventoExists = async (req, res, next) => {
   const eventoId = req.params?.eventoId ?? req.body?.eventoId;
 
+  console.log({ eventoId });
+
   const evento = await eventosService.getEventoById(eventoId);
 
   if (!evento) {

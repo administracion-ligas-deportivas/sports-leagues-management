@@ -41,7 +41,26 @@ const getPagosFromEvento = async (req, res, next) => {
   }
 };
 
+const getPagosFromEquipoInEvento = async (req, res, next) => {
+  const { eventoId, equipoId } = req.params;
+
+  try {
+    const pagos = await pagosService.getPagosFromEquipoInEvento(
+      equipoId,
+      eventoId
+    );
+
+    res.json({
+      total: pagos?.count,
+      pagos: pagos?.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   realizarPagoEnEvento,
   getPagosFromEvento,
+  getPagosFromEquipoInEvento,
 };

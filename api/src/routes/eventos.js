@@ -9,11 +9,13 @@ const {
   getEstadisticosFromEvento,
   realizarPagoEnEvento,
   getPagosFromEvento,
+  getPagosFromEquipoInEvento,
 } = require("#src/controllers/eventos/index.js");
 
 const {
   isUsuarioEncargadoEquipo,
   equipoExists,
+  isEquipoInEvento,
 } = require("#src/middlewares/equipos.js");
 
 const {
@@ -47,6 +49,19 @@ eventosRouter
   .post(
     [eventoExists, equipoExists, isUsuarioEncargadoEquipo, canPay],
     realizarPagoEnEvento
+  );
+
+eventosRouter
+  .route("/:eventoId/equipos/:equipoId/pagos")
+  .get(
+    [
+      checkParamsId("equipoId"),
+      validateRules,
+      eventoExists,
+      equipoExists,
+      isEquipoInEvento,
+    ],
+    getPagosFromEquipoInEvento
   );
 
 module.exports = { eventosRouter };

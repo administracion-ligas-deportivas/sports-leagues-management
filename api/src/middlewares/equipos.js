@@ -19,6 +19,23 @@ const equipoExists = async (req, res, next) => {
   next();
 };
 
+const isEquipoInEvento = async (req, res, next) => {
+  const { equipoId, eventoId } = req.params;
+
+  const isEquipoInEvento = await equiposService.isEquipoInEvento(
+    equipoId,
+    eventoId
+  );
+
+  if (!isEquipoInEvento) {
+    return res.status(404).json({
+      message: "El equipo no está inscrito en el evento.",
+    });
+  }
+
+  next();
+};
+
 const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
   const { encargadoEquipoId } = req?.equipo ?? {};
@@ -46,4 +63,5 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
 module.exports = {
   isUsuarioEncargadoEquipo,
   equipoExists,
+  isEquipoInEvento,
 };
