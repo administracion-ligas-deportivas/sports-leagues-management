@@ -8,7 +8,13 @@ const {
   getEquiposFromEvento,
   getEstadisticosFromEvento,
   realizarPagoEnEvento,
+  getPagosFromEvento,
 } = require("#src/controllers/eventos/index.js");
+
+const {
+  isUsuarioEncargadoEquipo,
+  equipoExists,
+} = require("#src/middlewares/equipos.js");
 
 const {
   checkParamsId,
@@ -17,10 +23,6 @@ const {
 
 const { canPay } = require("#src/middlewares/pagos.js");
 const { eventoExists } = require("#src/middlewares/eventos.js");
-const {
-  isUsuarioEncargadoEquipo,
-  equipoExists,
-} = require("#src/middlewares/equipos.js");
 
 const eventosRouter = require("express").Router();
 
@@ -39,6 +41,9 @@ eventosRouter.route("/:eventoId/estadisticos").get(getEstadisticosFromEvento);
 
 eventosRouter
   .route("/:eventoId/pagos")
+  // Solo un administrador y organizador de evento pueden ver los pagos de un
+  // evento.
+  .get([eventoExists], getPagosFromEvento)
   .post(
     [eventoExists, equipoExists, isUsuarioEncargadoEquipo, canPay],
     realizarPagoEnEvento
