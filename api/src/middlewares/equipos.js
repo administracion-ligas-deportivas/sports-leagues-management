@@ -113,10 +113,23 @@ const areEquiposInEvento = async (req, res, next) => {
   next();
 };
 
+const areEquiposTheSame = async (req, res, next) => {
+  const { local, visitante } = req?.equipos ?? {};
+
+  if (equiposService.areEquiposTheSame(local, visitante)) {
+    return res.status(400).json({
+      message: "El equipo local y visitante son el mismo.",
+    });
+  }
+
+  next();
+};
+
 module.exports = {
   isUsuarioEncargadoEquipo,
   equipoExists,
   isEquipoInEvento,
   areEquiposInEvento,
   equiposExist,
+  areEquiposTheSame,
 };

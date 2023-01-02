@@ -47,10 +47,18 @@ const isUsuarioEncargadoEquipo = (usuarioId, equipo) => {
   return usuarioId === encargadoEquipoId;
 };
 
+const areEquiposTheSame = (local, visitante) => {
+  const { id: localId } = local ?? {};
+  const { id: visitanteId } = visitante ?? {};
+
+  return localId === visitanteId;
+};
+
 module.exports = {
   getAllEquipos,
   getEquipoById,
   getEncargadoEquipo,
   isUsuarioEncargadoEquipo,
   getEquiposByIds,
+  areEquiposTheSame,
 };

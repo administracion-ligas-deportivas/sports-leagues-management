@@ -10,6 +10,22 @@ const MEXICO = {
   numberOfJugadores: 14,
 };
 
+const ARGENTINA = {
+  id: 2,
+  nombre: "Argentina",
+  uuid: "197dd7aa-5710-4432-9f0e-e15bdde3136d",
+  createdAt: "2022-06-27T17:12:17.000Z",
+  updatedAt: "2022-12-27T19:44:45.000Z",
+  deletedAt: null,
+  encargadoEquipoId: 56,
+  deporteId: 1,
+  numberOfJugadores: 12,
+};
+
+const EQUIPOS = [MEXICO, ARGENTINA];
+
 module.exports = {
   MEXICO,
+  ARGENTINA,
+  EQUIPOS,
 };
