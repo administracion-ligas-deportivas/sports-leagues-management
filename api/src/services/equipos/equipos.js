@@ -4,8 +4,8 @@ const getAllEquipos = async () => {
   return await equipo.scope("withNumberOfJugadores").findAll();
 };
 
-const getEquipoById = async (equipoId) => {
-  return await equipo.scope("includeEverything").findByPk(equipoId);
+const getEquipoById = async (equipoId, scopes = "includeEverything") => {
+  return await equipo.scope(scopes).findByPk(equipoId);
 };
 
 const getEncargadoEquipo = async (equipoId) => {

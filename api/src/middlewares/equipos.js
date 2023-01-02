@@ -3,7 +3,12 @@ const { equiposService } = require("#src/services/index.js");
 const equipoExists = async (req, res, next) => {
   const equipoId = req.params?.equipoId ?? req.body?.equipoId;
 
-  const equipo = await equiposService.getEquipoById(equipoId);
+  const equipo = await equiposService.getEquipoById(
+    equipoId,
+    "withNumberOfJugadores"
+  );
+
+  console.log(equipo.toJSON());
 
   if (!equipo) {
     return res.status(404).json({
@@ -40,7 +45,7 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
   const { equipo } = req ?? {};
 
-  console.log({ id, equipo });
+  // console.log({ id, equipo });
 
   // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.
