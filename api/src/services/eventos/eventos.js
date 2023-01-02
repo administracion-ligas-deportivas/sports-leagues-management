@@ -32,8 +32,15 @@ const createEvento = async (data) => {
   return await eventoDeportivo.create(evento);
 };
 
+const isUsuarioOrganizadorEvento = (usuarioId, evento) => {
+  const { organizadorId } = evento;
+
+  return usuarioId === organizadorId;
+};
+
 module.exports = {
   getEventos,
   getEventoById,
   createEvento,
+  isUsuarioOrganizadorEvento,
 };

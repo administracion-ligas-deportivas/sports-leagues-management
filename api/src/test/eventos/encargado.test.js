@@ -3,6 +3,7 @@ const { equiposService } = require("#src/services/index.js");
 
 const { isUsuarioEncargadoEquipo } = equiposService;
 
+
 const EQUIPO = {
   id: 1,
   nombre: "México",
@@ -18,6 +19,7 @@ const EQUIPO = {
 const USER = {
   id: 55,
 };
+
 
 describe("Encargado de un equipo", () => {
   it("El usuario sí es encargado", () => {

@@ -1,13 +1,7 @@
 const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 const { eventosService } = require("#src/services/index.js");
 
-const {
-  generalData,
-  withNumberOfPartidos,
-  withFormato,
-  withNumberOfEstadisticos,
-  withNumberOfEquipos,
-} = SCOPE_NAMES;
+const { generalData, withNumberOfPartidos, withFormato } = SCOPE_NAMES;
 
 const requiredEventoId = (req, res, next) => {
   const { eventoId } = req.params;
