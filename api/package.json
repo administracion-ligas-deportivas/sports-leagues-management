@@ -8,18 +8,21 @@
     "#src/*": "./src/*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "format": "prettier --write . --cache",
     "format:fix": "npm run format && npm run lint:fix",
-    "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore --cache",
+    "format": "prettier --write . --cache",
     "lint:fix": "npm run lint -- --fix src",
+    "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore --cache",
+    "seed:all": "sequelize-cli db:seed:all",
     "seed:generate": "sequelize-cli seed:generate --name",
     "seed:run": "sequelize-cli db:seed --seed",
+    "seed:undo:all": "sequelize-cli db:seed:undo:all",
     "seed:undo": "sequelize-cli db:seed:undo --seed",
-    "seed:all": "sequelize-cli db:seed:all",
-    "seed:undo:all": "sequelize-cli db:seed:undo:all"
+    "start": "node src/index.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:watchAll": "jest --watchAll"
   },
   "contributors": [
     {
@@ -53,12 +56,13 @@
   },
   "devDependencies": {
     "@faker-js/faker": "7.6.0",
-    "eslint": "8.30.0",
+    "eslint": "8.31.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.6.0",
     "eslint-plugin-promise": "6.1.1",
+    "jest": "29.3.1",
     "prettier": "2.8.1"
   }
 }

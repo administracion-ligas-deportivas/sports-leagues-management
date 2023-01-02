@@ -1,4 +1,7 @@
+const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 const { eventosService } = require("#src/services/index.js");
+
+const { generalData, withNumberOfPartidos, withFormato } = SCOPE_NAMES;
 
 const requiredEventoId = (req, res, next) => {
   const { eventoId } = req.params;
@@ -24,8 +27,17 @@ const requiredEventoId = (req, res, next) => {
 
 const eventoExists = async (req, res, next) => {
   const eventoId = req.params?.eventoId ?? req.body?.eventoId;
+  const scopes = [
+    generalData,
+    withFormato,
+    // Si lo utilizo, no trae la demás información. Supongo que es porque se
+    // agrupan los valores por el scope. No podría asegurar que sea esto.
+    withNumberOfPartidos,
+    // withNumberOfEstadisticos,
+    // withNumberOfEquipos,
+  ];
 
-  const evento = await eventosService.getEventoById(eventoId);
+  const evento = await eventosService.getEventoById(eventoId, scopes);
 
   if (!evento) {
     return res.status(404).json({
@@ -33,7 +45,30 @@ const eventoExists = async (req, res, next) => {
     });
   }
 
-  req.evento = evento;
+  const { id: organizadorId } = evento?.organizador ?? {};
+
+  req.evento = {
+    ...evento?.dataValues,
+    organizadorId,
+    instance: evento,
+  };
+
+  next();
+};
+
+const isUsuarioOrganizadorEvento = async (req, res, next) => {
+  const { evento } = req ?? {};
+  const { id } = req?.user ?? {};
+
+  if (!eventosService.isUsuarioOrganizadorEvento(id, evento)) {
+    // https://developer.mozilla.org/es/docs/Web/HTTP/Status/403
+    // El 401 es para cuando el usuario no está autenticado. El 403 es para cuando
+    // el usuario está autenticado pero no tiene permisos para realizar la acción.
+    res.status(403).json({
+      message: "El usuario no es organizador del evento.",
+    });
+    return;
+  }
 
   next();
 };
@@ -41,4 +76,5 @@ const eventoExists = async (req, res, next) => {
 module.exports = {
   requiredEventoId,
   eventoExists,
+  isUsuarioOrganizadorEvento,
 };

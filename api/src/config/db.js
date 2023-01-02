@@ -6,6 +6,7 @@ const {
 } = require("./dev");
 
 const dialect = "mariadb";
+
 const define = {
   underscored: true,
   freezeTableName: true,

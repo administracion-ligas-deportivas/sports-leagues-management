@@ -4,17 +4,14 @@ const {
   unknownEndpoint,
   userAuthenticator,
 } = require("#src/middlewares/index.js");
-const express = require("express");
+
+const { json } = require("express");
 const cors = require("cors");
 
 const initMiddlewaresBeforeRoutes = (app) => {
-  app.use(cors());
-  app.use(express.json());
-
   // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
-  app.use(tokenExtractor);
   // Todos los usuarios deben estar autenticados para acceder a cualquier ruta.
-  app.use(userAuthenticator);
+  app.use(cors()).use(json()).use(tokenExtractor).use(userAuthenticator);
 };
 
 const initMiddlewaresAfterRoutes = (app) => {
@@ -32,8 +29,7 @@ const initMiddlewaresAfterRoutes = (app) => {
   capturar solicitudes realizadas a rutas inexistentes. Para estas solicitudes,
   el middleware devolverá un mensaje de error en formato JSON.
   */
-  app.use(unknownEndpoint);
-  app.use(errorHandler);
+  app.use(unknownEndpoint).use(errorHandler);
 };
 
 module.exports = { initMiddlewaresBeforeRoutes, initMiddlewaresAfterRoutes };

@@ -5,12 +5,7 @@ const getEquiposFromEvento = async (eventoId) => {
 
   console.log({ evento });
 
-  if (!evento) {
-    return {
-      error: "No se ha encontrado el evento",
-      status: 404,
-    };
-  }
+  if (!evento) return;
 
   // https://sequelize.org/docs/v6/core-concepts/assocs/#foobelongstomanybar--through-baz-
   /**
