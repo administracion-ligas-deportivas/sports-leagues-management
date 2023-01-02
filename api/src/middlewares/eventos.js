@@ -56,7 +56,25 @@ const eventoExists = async (req, res, next) => {
   next();
 };
 
+const isUsuarioOrganizadorEvento = async (req, res, next) => {
+  const { evento } = req ?? {};
+  const { id } = req?.user ?? {};
+
+  if (!eventosService.isUsuarioOrganizadorEvento(id, evento)) {
+    // https://developer.mozilla.org/es/docs/Web/HTTP/Status/403
+    // El 401 es para cuando el usuario no está autenticado. El 403 es para cuando
+    // el usuario está autenticado pero no tiene permisos para realizar la acción.
+    res.status(403).json({
+      message: "El usuario no es organizador del evento.",
+    });
+    return;
+  }
+
+  next();
+};
+
 module.exports = {
   requiredEventoId,
   eventoExists,
+  isUsuarioOrganizadorEvento,
 };

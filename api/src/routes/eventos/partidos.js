@@ -6,10 +6,14 @@ const {
 } = require("#src/middlewares/equipos.js");
 
 const { createPartido } = require("#src/controllers/partidos.js");
+const { isUsuarioOrganizadorEvento } = require("#src/middlewares/eventos.js");
 
 module.exports = (eventosRouter) => {
   eventosRouter
     .route("/:eventoId/partidos")
     .get(getPartidosFromEvento)
-    .post([equiposExist, areEquiposInEvento], createPartido);
+    .post(
+      [isUsuarioOrganizadorEvento, equiposExist, areEquiposInEvento],
+      createPartido
+    );
 };
