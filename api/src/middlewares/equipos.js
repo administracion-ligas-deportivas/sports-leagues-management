@@ -38,18 +38,13 @@ const isEquipoInEvento = async (req, res, next) => {
 
 const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
-  const { encargadoEquipoId } = req?.equipo ?? {};
-  let { equipoId } = req?.equipo ?? {};
+  const { equipo } = req ?? {};
 
-  if (!equipoId) {
-    equipoId = req.params?.equipoId ?? req.body?.equipoId;
-  }
+  console.log({ id, equipo });
 
   // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.
-  const isEncargado = encargadoEquipoId
-    ? encargadoEquipoId === id
-    : await equiposService.isUsuarioEncargadoEquipo(id, equipoId);
+  const isEncargado = equiposService.isUsuarioEncargadoEquipo(id, equipo);
 
   if (!isEncargado) {
     return res.status(401).json({

@@ -16,10 +16,12 @@ const getEncargadoEquipo = async (equipoId) => {
 
 // Revisar que el ID del encargado (usuario que realizó la petición) sea el
 // mismo que el del encargado del equipo.
-const isUsuarioEncargadoEquipo = async (usuarioId, equipoId) => {
-  const encargado = await getEncargadoEquipo(equipoId);
+const isUsuarioEncargadoEquipo = (usuarioId, equipo) => {
+  const { encargadoEquipoId } = equipo ?? {};
 
-  return encargado?.id === usuarioId;
+  if (!encargadoEquipoId) return;
+
+  return usuarioId === encargadoEquipoId;
 };
 
 module.exports = {
