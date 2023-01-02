@@ -16,6 +16,7 @@ const {
   isUsuarioEncargadoEquipo,
   equipoExists,
   isEquipoInEvento,
+  areEquiposInEvento,
 } = require("#src/middlewares/equipos.js");
 
 const {
@@ -34,14 +35,18 @@ eventosRouter.route("/").get(getEventos).post(createEvento);
 // Revisar que todas las rutas siguientes tengan el id de evento y validar las
 // reglas.
 // https://expressjs.com/es/guide/using-middleware.html#middleware.router
-eventosRouter.use("/:eventoId", [checkParamsId("eventoId"), validateRules]);
+eventosRouter.use("/:eventoId", [
+  checkParamsId("eventoId"),
+  validateRules,
+  eventoExists,
+]);
 
 eventosRouter.route("/:eventoId").get(getEventoById).delete(deleteEvento);
 
 eventosRouter
   .route("/:eventoId/partidos")
   .get(getPartidosFromEvento)
-  .post(createPartido);
+  .post([areEquiposInEvento], createPartido);
 
 eventosRouter.route("/:eventoId/formatos").get(getFormatoEvento);
 eventosRouter.route("/:eventoId/equipos").get(getEquiposFromEvento);

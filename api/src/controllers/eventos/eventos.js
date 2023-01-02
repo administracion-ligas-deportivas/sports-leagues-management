@@ -30,10 +30,8 @@ const getEventos = async (req, res) => {
 };
 
 const getEventoById = async (req, res) => {
-  console.log({ evento: req?.evento });
-
-  if (req?.evento) {
-    return res.json(req.evento);
+  if (req?.evento?.data) {
+    return res.json(req.evento.data);
   }
 
   console.log("No hay evento en `req`. Buscando en la base de datos...");

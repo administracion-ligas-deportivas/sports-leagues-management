@@ -1,13 +1,18 @@
 // const { eventoDeportivo } = require("#src/db/models/index.js");
 // No funciona si
 const { eventoDeportivo } = require("#src/db/models/index.js");
+const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 
 const getEventos = async () => {
   return await eventoDeportivo.findAll();
 };
 
-const getEventoById = async (eventoId) => {
-  return await eventoDeportivo.scope("includeEverything").findByPk(eventoId);
+const getEventoById = async (eventoId, ...scopes) => {
+  const scopesToInclude = scopes.length
+    ? scopes
+    : SCOPE_NAMES.includeEverything;
+
+  return await eventoDeportivo.scope(scopesToInclude).findByPk(eventoId);
 };
 
 const createEvento = async (data) => {

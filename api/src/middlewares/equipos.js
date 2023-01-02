@@ -24,6 +24,10 @@ const equipoExists = async (req, res, next) => {
   next();
 };
 
+const equiposExists = async (req, res, next) => {
+  const { local, visitante } = req.body ?? {};
+};
+
 const isEquipoInEvento = async (req, res, next) => {
   const { equipoId, eventoId } = req.params;
 
@@ -45,7 +49,7 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
   const { equipo } = req ?? {};
 
-  console.log({ jugadores: await equipo?.instance.getJugadores() });
+  // console.log({ jugadores: await equipo?.instance.getJugadores() });
 
   // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.
@@ -60,8 +64,35 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
   next();
 };
 
+const areEquiposInEvento = async (req, res, next) => {
+  const { equipos } = req.body;
+  const { local, visitante } = equipos;
+  const { instance } = req?.evento ?? {};
+
+  console.log({ evento: req?.evento });
+
+  const equiposIds = [local?.id, visitante?.id];
+
+  const { wereFound, notFoundIds } = await equiposService.areEquiposInEvento(
+    instance,
+    equiposIds
+  );
+
+  console.log({ wereFound });
+
+  if (!wereFound) {
+    return res.status(404).json({
+      message: "Uno o más equipos no están inscritos en el evento.",
+      notFoundIds,
+    });
+  }
+
+  next();
+};
+
 module.exports = {
   isUsuarioEncargadoEquipo,
   equipoExists,
   isEquipoInEvento,
+  areEquiposInEvento,
 };

@@ -1,3 +1,4 @@
+const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 const { eventosService } = require("#src/services/index.js");
 
 const requiredEventoId = (req, res, next) => {
@@ -25,7 +26,10 @@ const requiredEventoId = (req, res, next) => {
 const eventoExists = async (req, res, next) => {
   const eventoId = req.params?.eventoId ?? req.body?.eventoId;
 
-  const evento = await eventosService.getEventoById(eventoId);
+  const evento = await eventosService.getEventoById(
+    eventoId,
+    SCOPE_NAMES.generalData
+  );
 
   if (!evento) {
     return res.status(404).json({
@@ -33,7 +37,10 @@ const eventoExists = async (req, res, next) => {
     });
   }
 
-  req.evento = evento;
+  req.evento = {
+    data: { ...evento, organizadorId: evento?.organizador?.id },
+    instance: evento,
+  };
 
   next();
 };
