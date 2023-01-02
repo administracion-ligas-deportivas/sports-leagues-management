@@ -36,7 +36,17 @@ const equiposExist = async (req, res, next) => {
 
   console.log({ foundEquipos });
 
-  if (foundEquipos.length !== equiposIds.length) {
+  // Solo un equipo se encontró y es el mismo que el otro. Por eso no hay ids
+  // sin encontrar.
+  if (notFoundIds.length === 0 && foundEquipos?.length === 1) {
+    return res.status(404).json({
+      message: "Los equipos son iguales",
+      localId: local?.id,
+      visitanteId: visitante?.id,
+    });
+  }
+
+  if (notFoundIds.length > 0) {
     return res.status(404).json({
       message: "Uno o más equipos no existen.",
       notFoundIds,
@@ -114,11 +124,30 @@ const areEquiposInEvento = async (req, res, next) => {
 };
 
 const areEquiposTheSame = async (req, res, next) => {
-  const { local, visitante } = req?.equipos ?? {};
+  const { local, visitante } = req?.equipos ?? req?.body?.equipos ?? {};
 
   if (equiposService.areEquiposTheSame(local, visitante)) {
     return res.status(400).json({
       message: "El equipo local y visitante son el mismo.",
+      localId: local?.id,
+      visitanteId: visitante?.id,
+    });
+  }
+
+  next();
+};
+
+const areEquiposSpecified = async (req, res, next) => {
+  const { equipos } = req?.body ?? {};
+  const { local, visitante } = equipos ?? {};
+  const { id: localId } = local ?? {};
+  const { id: visitanteId } = visitante ?? {};
+
+  if (!localId || !visitanteId) {
+    return res.status(400).json({
+      message: "No se especificaron los equipos.",
+      localId,
+      visitanteId,
     });
   }
 
@@ -132,4 +161,5 @@ module.exports = {
   areEquiposInEvento,
   equiposExist,
   areEquiposTheSame,
+  areEquiposSpecified,
 };

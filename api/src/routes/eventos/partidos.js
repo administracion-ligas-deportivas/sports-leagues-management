@@ -3,6 +3,8 @@ const { getPartidosFromEvento } = require("#src/controllers/eventos/index.js");
 const {
   areEquiposInEvento,
   equiposExist,
+  areEquiposTheSame,
+  areEquiposSpecified,
 } = require("#src/middlewares/equipos.js");
 
 const { createPartido } = require("#src/controllers/partidos.js");
@@ -13,7 +15,13 @@ module.exports = (eventosRouter) => {
     .route("/:eventoId/partidos")
     .get(getPartidosFromEvento)
     .post(
-      [isUsuarioOrganizadorEvento, equiposExist, areEquiposInEvento],
+      [
+        areEquiposSpecified,
+        areEquiposTheSame,
+        isUsuarioOrganizadorEvento,
+        equiposExist,
+        areEquiposInEvento,
+      ],
       createPartido
     );
 };

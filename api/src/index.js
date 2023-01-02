@@ -28,7 +28,7 @@ const server = db.sequelize.sync(SEQUELIZE_INITIAL_OPTIONS).then(() => {
   return app.listen(PORT, () => {
     db.sequelize.options = {
       ...db.sequelize.options,
-      logging: true,
+      logging: console.log,
     };
 
     console.log(`Server running on port ${PORT}`);
