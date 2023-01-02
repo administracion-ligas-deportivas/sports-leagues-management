@@ -17,8 +17,13 @@ const addScopes = (model, scopesToInclude) => {
  * `SCOPES_TO_INCLUDE` con los scopes que se van a incluir. Cada scope debe de
  * tener las propiedades `name` y `scope`.
  */
-const initModelScopes = (model, models, getModelScopesFunction) => {
-  const { SCOPES_TO_INCLUDE } = getModelScopesFunction(models);
+const initModelScopes = (
+  model,
+  models,
+  getModelScopesFunction,
+  { sequelize } = {}
+) => {
+  const { SCOPES_TO_INCLUDE } = getModelScopesFunction(models, sequelize);
 
   if (!SCOPES_TO_INCLUDE) {
     throw new Error(`No se encontraron scopes para el modelo "${model.name}".`);

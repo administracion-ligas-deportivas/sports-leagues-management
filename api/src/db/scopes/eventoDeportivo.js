@@ -1,9 +1,17 @@
+const SCOPE_NAMES = {
+  generalData: "generalData",
+  includeEverything: "includeEverything",
+  withFormato: "withFormato",
+  withPartidos: "withPartidos",
+  withEstadisticos: "withEstadisticos",
+};
+
 const getScopesEventoDeportivo = (models) => {
   const { formatoEventoDeportivo, equipo, usuario, partido } = models;
 
   const SCOPES_EVENTO_DEPORTIVO = {
     generalData: {
-      name: "generalData",
+      name: SCOPE_NAMES.generalData,
       scope: {
         include: [
           formatoEventoDeportivo,
@@ -15,7 +23,7 @@ const getScopesEventoDeportivo = (models) => {
       },
     },
     includeEverything: {
-      name: "includeEverything",
+      name: SCOPE_NAMES.includeEverything,
       scope: {
         include: [
           formatoEventoDeportivo,
@@ -41,7 +49,7 @@ const getScopesEventoDeportivo = (models) => {
       },
     },
     withFormato: {
-      name: "withFormato",
+      name: SCOPE_NAMES.withFormato,
       scope: {
         include: [
           {
@@ -55,13 +63,13 @@ const getScopesEventoDeportivo = (models) => {
       },
     },
     withPartidos: {
-      name: "withPartidos",
+      name: SCOPE_NAMES.withPartidos,
       scope: {
         include: partido,
       },
     },
     withEstadisticos: {
-      name: "withEstadisticos",
+      name: SCOPE_NAMES.withEstadisticos,
       scope: {
         include: {
           model: usuario,
@@ -85,4 +93,4 @@ const getScopesEventoDeportivo = (models) => {
   return { SCOPES_EVENTO_DEPORTIVO, SCOPES_TO_INCLUDE };
 };
 
-module.exports = { getScopesEventoDeportivo };
+module.exports = { getScopesEventoDeportivo, SCOPE_NAMES };

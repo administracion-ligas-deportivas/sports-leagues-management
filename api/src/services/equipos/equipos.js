@@ -1,15 +1,22 @@
 const { equipo } = require("#src/db/models/index.js");
+const { SCOPE_NAMES } = require("#src/db/scopes/equipo.js");
 
 const getAllEquipos = async () => {
-  return await equipo.scope("withNumberOfJugadores").findAll();
+  return await equipo.scope(SCOPE_NAMES.withNumberOfJugadores).findAll();
 };
 
-const getEquipoById = async (equipoId, scopes = "includeEverything") => {
-  return await equipo.scope(scopes).findByPk(equipoId);
+const getEquipoById = async (equipoId, ...scopes) => {
+  const scopesToInclude = scopes.length
+    ? scopes
+    : SCOPE_NAMES.includeEverything;
+
+  return await equipo.scope(scopesToInclude).findByPk(equipoId);
 };
 
 const getEncargadoEquipo = async (equipoId) => {
-  const foundEquipo = await equipo.scope("includeEncargado").findByPk(equipoId);
+  const foundEquipo = await equipo
+    .scope(SCOPE_NAMES.withEncargado)
+    .findByPk(equipoId);
 
   return foundEquipo?.encargado;
 };
@@ -18,6 +25,8 @@ const getEncargadoEquipo = async (equipoId) => {
 // mismo que el del encargado del equipo.
 const isUsuarioEncargadoEquipo = (usuarioId, equipo) => {
   const { encargadoEquipoId } = equipo ?? {};
+
+  console.log({ usuarioId, equipo });
 
   if (!encargadoEquipoId) return;
 
