@@ -8,9 +8,9 @@ const createEvento = async (req, res, next) => {
   try {
     const evento = await eventosService.createEvento(body);
 
-    if (evento?.error) {
-      return res.status(evento.status).json({
-        error: evento.error,
+    if (!evento) {
+      return res.status(404).json({
+        error: "No se ha especificado el formato del evento o el deporte",
       });
     }
 

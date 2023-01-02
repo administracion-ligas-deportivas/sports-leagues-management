@@ -13,12 +13,7 @@ const getEventoById = async (eventoId) => {
 const createEvento = async (data) => {
   const { formatoEventoDeportivoId, deporteId, ...rest } = data;
 
-  if (!formatoEventoDeportivoId && !deporteId) {
-    return {
-      error: "No se ha especificado el formato del evento o el deporte",
-      status: 400,
-    };
-  }
+  if (!formatoEventoDeportivoId && !deporteId) return;
 
   // Add formatoEventoDeportivoId and not deporteId if formatoEventoDeportivoId
   // was specified. Otherwise, add deporteId.
