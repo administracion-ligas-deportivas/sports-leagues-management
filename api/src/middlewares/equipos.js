@@ -9,8 +9,6 @@ const equipoExists = async (req, res, next) => {
     SCOPE_NAMES.withEncargado
   );
 
-  console.log(equipo.toJSON());
-
   if (!equipo) {
     return res.status(404).json({
       message: "El equipo no existe.",
@@ -19,6 +17,7 @@ const equipoExists = async (req, res, next) => {
 
   req.equipo = {
     ...equipo,
+    instance: equipo,
     encargadoEquipoId: equipo?.encargado?.id,
   };
 
@@ -46,7 +45,7 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
   const { equipo } = req ?? {};
 
-  console.log({ id });
+  console.log({ jugadores: await equipo?.instance.getJugadores() });
 
   // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.

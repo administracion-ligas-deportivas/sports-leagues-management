@@ -26,8 +26,6 @@ const getEncargadoEquipo = async (equipoId) => {
 const isUsuarioEncargadoEquipo = (usuarioId, equipo) => {
   const { encargadoEquipoId } = equipo ?? {};
 
-  console.log({ usuarioId, equipo });
-
   if (!encargadoEquipoId) return;
 
   return usuarioId === encargadoEquipoId;
