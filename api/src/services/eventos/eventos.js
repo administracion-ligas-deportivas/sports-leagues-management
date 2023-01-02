@@ -7,12 +7,13 @@ const getEventos = async () => {
   return await eventoDeportivo.findAll();
 };
 
-const getEventoById = async (eventoId, ...scopes) => {
-  const scopesToInclude = scopes.length
-    ? scopes
-    : SCOPE_NAMES.includeEverything;
+const getEventoById = async (
+  eventoId,
+  scopes = SCOPE_NAMES.includeEverything
+) => {
+  console.log({ scopes });
 
-  return await eventoDeportivo.scope(scopesToInclude).findByPk(eventoId);
+  return await eventoDeportivo.scope(scopes).findByPk(eventoId);
 };
 
 const createEvento = async (data) => {

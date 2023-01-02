@@ -47,7 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       usuario,
     } = models;
 
-    initModelScopes(eventoDeportivo, models, getScopesEventoDeportivo);
+    initModelScopes(eventoDeportivo, models, getScopesEventoDeportivo, {
+      sequelize,
+    });
 
     eventoDeportivo.belongsTo(formatoEventoDeportivo, {
       foreignKey: {

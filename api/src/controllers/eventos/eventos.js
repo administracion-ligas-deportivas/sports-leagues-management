@@ -30,23 +30,27 @@ const getEventos = async (req, res) => {
 };
 
 const getEventoById = async (req, res) => {
-  if (req?.evento?.data) {
-    return res.json(req.evento.data);
+  const { evento } = req ?? {};
+
+  if (evento) {
+    const { instance, ...eventoData } = evento;
+    console.log({ evento, instance, eventoData });
+    return res.json(eventoData);
   }
 
   console.log("No hay evento en `req`. Buscando en la base de datos...");
 
   const { eventoId } = req.params;
 
-  const evento = await eventosService.getEventoById(eventoId);
+  const foundEvento = await eventosService.getEventoById(eventoId);
 
   // https://stackoverflow.com/questions/11746894/what-is-the-proper-rest-response-code-for-a-valid-request-but-an-empty-data
-  if (!evento) {
+  if (!foundEvento) {
     // https://stackoverflow.com/questions/29555290/what-is-the-difference-between-res-end-and-res-send
     return res.status(404).end();
   }
 
-  res.json(evento);
+  res.json(foundEvento);
 };
 
 const deleteEvento = async (req, res) => {

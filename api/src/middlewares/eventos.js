@@ -1,6 +1,14 @@
 const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 const { eventosService } = require("#src/services/index.js");
 
+const {
+  generalData,
+  withNumberOfPartidos,
+  withFormato,
+  withNumberOfEstadisticos,
+  withNumberOfEquipos,
+} = SCOPE_NAMES;
+
 const requiredEventoId = (req, res, next) => {
   const { eventoId } = req.params;
 
@@ -25,11 +33,17 @@ const requiredEventoId = (req, res, next) => {
 
 const eventoExists = async (req, res, next) => {
   const eventoId = req.params?.eventoId ?? req.body?.eventoId;
+  const scopes = [
+    generalData,
+    withFormato,
+    // Si lo utilizo, no trae la demás información. Supongo que es porque se
+    // agrupan los valores por el scope. No podría asegurar que sea esto.
+    withNumberOfPartidos,
+    // withNumberOfEstadisticos,
+    // withNumberOfEquipos,
+  ];
 
-  const evento = await eventosService.getEventoById(
-    eventoId,
-    SCOPE_NAMES.generalData
-  );
+  const evento = await eventosService.getEventoById(eventoId, scopes);
 
   if (!evento) {
     return res.status(404).json({
@@ -37,8 +51,11 @@ const eventoExists = async (req, res, next) => {
     });
   }
 
+  const { id: organizadorId } = evento?.organizador ?? {};
+
   req.evento = {
-    data: { ...evento, organizadorId: evento?.organizador?.id },
+    ...evento?.dataValues,
+    organizadorId,
     instance: evento,
   };
 
