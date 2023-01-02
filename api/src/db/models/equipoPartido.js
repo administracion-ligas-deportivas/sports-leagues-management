@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       puntos: {
         type: DataTypes.INTEGER,
         allowNull: true,
+        defaultValue: null,
       },
       localVisitante: {
         type: DataTypes.ENUM(LOCAL_VISITANTE.LOCAL, LOCAL_VISITANTE.VISITANTE),

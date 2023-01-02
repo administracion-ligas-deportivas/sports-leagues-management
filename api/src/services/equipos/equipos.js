@@ -1,5 +1,6 @@
 const { equipo } = require("#src/db/models/index.js");
 const { SCOPE_NAMES } = require("#src/db/scopes/equipo.js");
+const { Op } = require("sequelize");
 
 const getAllEquipos = async () => {
   return await equipo.scope(SCOPE_NAMES.withNumberOfJugadores).findAll();
@@ -11,6 +12,21 @@ const getEquipoById = async (equipoId, ...scopes) => {
     : SCOPE_NAMES.includeEverything;
 
   return await equipo.scope(scopesToInclude).findByPk(equipoId);
+};
+
+const getEquiposByIds = async (equiposIds) => {
+  const foundEquipos = await equipo.findAll({
+    where: { id: { [Op.or]: equiposIds } },
+  });
+
+  const notFoundIds = equiposIds.filter(
+    (equipoId) => !foundEquipos.some((equipo) => equipo.id === equipoId)
+  );
+
+  return {
+    foundEquipos,
+    notFoundIds,
+  };
 };
 
 const getEncargadoEquipo = async (equipoId) => {
@@ -36,4 +52,5 @@ module.exports = {
   getEquipoById,
   getEncargadoEquipo,
   isUsuarioEncargadoEquipo,
+  getEquiposByIds,
 };

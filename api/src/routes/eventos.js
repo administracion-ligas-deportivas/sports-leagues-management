@@ -17,6 +17,7 @@ const {
   equipoExists,
   isEquipoInEvento,
   areEquiposInEvento,
+  equiposExist,
 } = require("#src/middlewares/equipos.js");
 
 const {
@@ -46,32 +47,32 @@ eventosRouter.route("/:eventoId").get(getEventoById).delete(deleteEvento);
 eventosRouter
   .route("/:eventoId/partidos")
   .get(getPartidosFromEvento)
-  .post([areEquiposInEvento], createPartido);
+  .post([equiposExist, areEquiposInEvento], createPartido);
 
 eventosRouter.route("/:eventoId/formatos").get(getFormatoEvento);
+
 eventosRouter.route("/:eventoId/equipos").get(getEquiposFromEvento);
+
 eventosRouter.route("/:eventoId/estadisticos").get(getEstadisticosFromEvento);
 
 eventosRouter
   .route("/:eventoId/pagos")
   // Solo un administrador y organizador de evento pueden ver los pagos de un
   // evento.
-  .get([eventoExists], getPagosFromEvento)
-  .post(
-    [eventoExists, equipoExists, isUsuarioEncargadoEquipo, canPay],
-    realizarPagoEnEvento
-  );
+  .get([], getPagosFromEvento);
 
 eventosRouter.use("/:eventoId/equipos/:equipoId", [
   checkParamsId("equipoId"),
   validateRules,
-  eventoExists,
   equipoExists,
   isEquipoInEvento,
 ]);
 
 eventosRouter
+  // Obtener pagos si es organizador del evento o encargado del equipo.
   .route("/:eventoId/equipos/:equipoId/pagos")
-  .get([], getPagosFromEquipoInEvento);
+  // Un organizador no puede realizar los pagos de un equipo.
+  .get([], getPagosFromEquipoInEvento)
+  .post([isUsuarioEncargadoEquipo, canPay], realizarPagoEnEvento);
 
 module.exports = { eventosRouter };

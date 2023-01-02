@@ -24,8 +24,34 @@ const equipoExists = async (req, res, next) => {
   next();
 };
 
-const equiposExists = async (req, res, next) => {
-  const { local, visitante } = req.body ?? {};
+const equiposExist = async (req, res, next) => {
+  const { equipos } = req.body ?? {};
+  const { local, visitante } = equipos ?? {};
+
+  const equiposIds = [local?.id, visitante?.id];
+
+  const { foundEquipos, notFoundIds } = await equiposService.getEquiposByIds(
+    equiposIds
+  );
+
+  console.log({ foundEquipos });
+
+  if (foundEquipos.length !== equiposIds.length) {
+    return res.status(404).json({
+      message: "Uno o más equipos no existen.",
+      notFoundIds,
+    });
+  }
+
+  const [foundLocal, foundVisitante] = foundEquipos;
+
+  req.equipos = {
+    local: foundLocal,
+    visitante: foundVisitante,
+    equiposIds,
+  };
+
+  next();
 };
 
 const isEquipoInEvento = async (req, res, next) => {
@@ -65,13 +91,10 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
 };
 
 const areEquiposInEvento = async (req, res, next) => {
-  const { equipos } = req.body;
-  const { local, visitante } = equipos;
+  const { equiposIds } = req?.equipos ?? {};
   const { instance } = req?.evento ?? {};
 
-  console.log({ evento: req?.evento });
-
-  const equiposIds = [local?.id, visitante?.id];
+  console.log({ equiposIds, equipos: req?.equipos });
 
   const { wereFound, notFoundIds } = await equiposService.areEquiposInEvento(
     instance,
@@ -95,4 +118,5 @@ module.exports = {
   equipoExists,
   isEquipoInEvento,
   areEquiposInEvento,
+  equiposExist,
 };
