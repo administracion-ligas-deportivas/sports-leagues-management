@@ -4,6 +4,7 @@ const {
   usuario,
   domicilioUsuario: domicilioUsuarioModel,
 } = require("#src/db/models/index.js");
+const { SCOPE_NAMES } = require("#src/db/scopes/usuario.js");
 
 const getUsers = async (req, res) => {
   const usuarios = await usuario.findAll();
@@ -59,16 +60,13 @@ const getUserById = async (req, res) => {
   const { usuarioId } = req.params;
   const { domicilio } = req.query;
 
-  console.log({ domicilio });
-  const include = domicilio ? [{ model: domicilioUsuarioModel }] : [];
+  const scopes = domicilio
+    ? [SCOPE_NAMES.withDomicilio, SCOPE_NAMES.withRol]
+    : [];
 
   usuario
-    .findByPk(usuarioId, {
-      attributes: {
-        exclude: ["password"],
-      },
-      include,
-    })
+    .scope(scopes)
+    .findByPk(usuarioId)
     .then((user) => {
       return user ? res.json(user) : res.status(404).end();
     })

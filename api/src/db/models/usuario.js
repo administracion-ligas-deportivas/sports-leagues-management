@@ -1,4 +1,6 @@
 const { GENEROS } = require("#src/constants/usuarios.js");
+const { initModelScopes } = require("#src/utils/db/scopes.js");
+const { getScopesUsuario } = require("#src/db/scopes/usuario.js");
 
 module.exports = (sequelize, DataTypes) => {
   const usuario = sequelize.define(
@@ -51,6 +53,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   usuario.associate = (models) => {
+    initModelScopes(usuario, models, getScopesUsuario);
+
     usuario.belongsTo(models.rol);
 
     usuario.belongsToMany(models.eventoDeportivo, {

@@ -34,8 +34,6 @@ const equiposExist = async (req, res, next) => {
     equiposIds
   );
 
-  console.log({ foundEquipos });
-
   // Solo un equipo se encontró y es el mismo que el otro. Por eso no hay ids
   // sin encontrar.
   if (notFoundIds.length === 0 && foundEquipos?.length === 1) {
@@ -85,8 +83,6 @@ const isUsuarioEncargadoEquipo = async (req, res, next) => {
   const { id } = req.user;
   const { equipo } = req ?? {};
 
-  // console.log({ jugadores: await equipo?.instance.getJugadores() });
-
   // No hacer petición a la BD si el encargadoEquipoId ya fue establecido por el
   // middleware.
   const isEncargado = equiposService.isUsuarioEncargadoEquipo(id, equipo);
@@ -104,14 +100,10 @@ const areEquiposInEvento = async (req, res, next) => {
   const { equiposIds } = req?.equipos ?? {};
   const { instance } = req?.evento ?? {};
 
-  console.log({ equiposIds, equipos: req?.equipos });
-
   const { wereFound, notFoundIds } = await equiposService.areEquiposInEvento(
     instance,
     equiposIds
   );
-
-  console.log({ wereFound });
 
   if (!wereFound) {
     return res.status(404).json({
