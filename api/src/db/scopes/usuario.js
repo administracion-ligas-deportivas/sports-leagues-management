@@ -2,14 +2,19 @@ const SCOPE_NAMES = {
   defaultScope: "defaultScope",
   withDomicilio: "withDomicilio",
   withRol: "withRol",
+  withPasswordHash: "withPasswordHash",
 };
 
 const getScopesUsuario = (models) => {
   const { rol, domicilioUsuario } = models;
 
-  const SCOPES_EQUIPO = {
+  const SCOPES_USUARIO = {
     defaultScope: {
       attributes: { exclude: ["password"] },
+    },
+    withPasswordHash: {
+      name: SCOPE_NAMES.withPasswordHash,
+      scope: { attributes: { include: ["password"] } },
     },
     withRol: {
       name: SCOPE_NAMES.withRol,
@@ -28,11 +33,9 @@ const getScopesUsuario = (models) => {
     },
   };
 
-  const { withRol, withDomicilio } = SCOPES_EQUIPO;
+  const SCOPES_TO_INCLUDE = Object.values(SCOPES_USUARIO);
 
-  const SCOPES_TO_INCLUDE = [withRol, withDomicilio];
-
-  return { SCOPES_EQUIPO, SCOPES_TO_INCLUDE };
+  return { SCOPES_USUARIO, SCOPES_TO_INCLUDE };
 };
 
 module.exports = { getScopesUsuario, SCOPE_NAMES };

@@ -4,6 +4,7 @@ const HOURS = 24;
 const DAYS = 7;
 
 const SALT_ROUNDS = 10;
+const JWT_SECRET = process.env.JWT_SECRET;
 // 7 días - Que cada 7 días se tenga que volver a loguear.
 //
 // -> 60 seconds * 60 minutes * 24 hours * 7 days
@@ -15,6 +16,7 @@ const JWT_EXPIRATION_DATE = [SECONDS, MINUTES, HOURS, DAYS].reduce(
 );
 
 module.exports = {
-  SALT_ROUNDS,
   JWT_EXPIRATION_DATE,
+  JWT_SECRET,
+  SALT_ROUNDS,
 };

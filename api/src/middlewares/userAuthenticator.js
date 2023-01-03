@@ -1,4 +1,4 @@
-const { JWT_SECRET } = require("#src/config/index.js");
+const { JWT_SECRET } = require("#src/constants/auth.js");
 const jwt = require("jsonwebtoken");
 
 const userAuthenticator = (req, res, next) => {

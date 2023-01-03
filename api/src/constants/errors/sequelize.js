@@ -42,6 +42,10 @@ const SEQUELIZE_ERROR_HANDLERS = {
       error: `Ha ocurrido un error con ${sentence}: ${foreignKeysString}`,
     });
   },
+
+  SequelizeScopeError: (res, { message }) => {
+    res.status(400).json({ error: message });
+  },
   default: (res) =>
     res.status(400).json({ error: "No se ha podido crear el recurso" }),
 };
