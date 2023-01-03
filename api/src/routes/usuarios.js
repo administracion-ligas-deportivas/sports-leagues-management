@@ -1,7 +1,6 @@
 const express = require("express");
 const usersRouter = express.Router();
 
-const { userAuthenticator } = require("#src/middlewares/index.js");
 const {
   getUsers,
   createUser,
@@ -11,7 +10,7 @@ const {
 
 usersRouter.get("/", getUsers);
 usersRouter.post("/", createUser);
-usersRouter.get("/verify", userAuthenticator, verifyUser);
+usersRouter.get("/verify", verifyUser);
 usersRouter.get("/:usuarioId", getUserById);
 
 module.exports = { usersRouter };

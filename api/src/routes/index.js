@@ -10,6 +10,7 @@ const { tipoEventoRouter } = require("./tipoEventoDeportivo");
 const { rolRouter } = require("./roles");
 const { equiposRouter } = require("./equipos");
 const { partidosRouter } = require("./partidos");
+const { meRouter } = require("./me");
 
 module.exports = {
   loginRouter,
@@ -24,4 +25,5 @@ module.exports = {
   rolRouter,
   equiposRouter,
   partidosRouter,
+  meRouter,
 };

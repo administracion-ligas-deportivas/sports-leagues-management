@@ -3,6 +3,7 @@ const { eventosService } = require("./eventos");
 const { pagosService } = require("./pagos");
 const { partidosService } = require("./partidos");
 const { usuariosService } = require("./usuarios");
+const { authService } = require("./auth");
 
 module.exports = {
   equiposService,
@@ -10,4 +11,5 @@ module.exports = {
   pagosService,
   partidosService,
   usuariosService,
+  authService,
 };

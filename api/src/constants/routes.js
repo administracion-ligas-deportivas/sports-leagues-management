@@ -7,6 +7,7 @@ const {
   eventosRouter,
   formatosRouter,
   loginRouter,
+  meRouter,
   partidosRouter,
   rolRouter,
   tipoEventoRouter,
@@ -26,12 +27,17 @@ const ROUTE_PATHS = {
   roles: "/api/roles",
   equipos: "/api/equipos",
   partidos: "/api/partidos",
+  me: "/api/me",
 };
 
 const ROUTES_WITH_CONTROLLERS = [
   {
     path: ROUTE_PATHS.usuarios,
     router: usersRouter,
+  },
+  {
+    path: ROUTE_PATHS.me,
+    router: meRouter,
   },
   {
     path: ROUTE_PATHS.login,

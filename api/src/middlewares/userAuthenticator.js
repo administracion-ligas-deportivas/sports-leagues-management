@@ -1,9 +1,10 @@
+const { JWT_SECRET } = require("#src/config/index.js");
 const jwt = require("jsonwebtoken");
 
 const userAuthenticator = (req, res, next) => {
   const { token } = req;
 
-  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const decodedToken = jwt.verify(token, JWT_SECRET);
 
   if (!token || !decodedToken.id) {
     return res

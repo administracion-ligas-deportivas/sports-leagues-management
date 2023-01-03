@@ -1,6 +1,7 @@
 const SCOPE_NAMES = {
-  withRol: "withRol",
+  defaultScope: "defaultScope",
   withDomicilio: "withDomicilio",
+  withRol: "withRol",
 };
 
 const getScopesUsuario = (models) => {

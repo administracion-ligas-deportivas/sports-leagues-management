@@ -1,4 +1,4 @@
-const userHasRoles = (user, roles) => roles.includes(user?.rol?.nombre);
+const userHasRoles = (user, roles) => roles?.includes(user?.rol?.nombre);
 
 const usuariosService = { userHasRoles };
 
