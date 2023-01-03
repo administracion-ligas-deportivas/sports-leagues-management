@@ -5,10 +5,7 @@ const {
   deleteEvento,
 } = require("#src/controllers/eventos/index.js");
 
-const {
-  checkParamsId,
-  validateRules,
-} = require("#src/middlewares/index.js");
+const { checkParamsId, validateRules } = require("#src/middlewares/index.js");
 
 const { eventoExists } = require("#src/middlewares/eventos.js");
 const { initRouterSubroutes } = require("#src/utils/routes.js");
@@ -18,6 +15,8 @@ const equiposRoutes = require("./equipos.js");
 const estadisticosRoutes = require("./estadisticos.js");
 const formatosRoutes = require("./formatos.js");
 const pagosRoutes = require("./pagos.js");
+const { hasRoles } = require("#src/middlewares/roles.js");
+const { ROLES } = require("#src/constants/roles.js");
 
 const routes = [
   partidosRoutes,
@@ -29,7 +28,13 @@ const routes = [
 
 const eventosRouter = require("express").Router();
 
-eventosRouter.route("/").get(getEventos).post(createEvento);
+eventosRouter
+  .route("/")
+  // Solo el admin puede obtener todos los eventos. El organizador puede obtener
+  // sus eventos.
+  .get([hasRoles(ROLES.ADMIN)], getEventos)
+  // Solo un organizador puede crear eventos.
+  .post(hasRoles(ROLES.ORGANIZADOR), createEvento);
 
 // Revisar que todas las rutas siguientes tengan el id de evento y validar las
 // reglas.

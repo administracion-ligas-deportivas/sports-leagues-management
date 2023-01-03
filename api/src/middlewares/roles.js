@@ -10,6 +10,8 @@ const hasRoles = (...roles) => {
       return res.status(403).json({
         message: "El usuario requiere alguno de estos roles",
         roles: roles.join(","),
+        usuarioId: req.user.id,
+        rolUsuario: req.user.rol,
       });
     }
 
