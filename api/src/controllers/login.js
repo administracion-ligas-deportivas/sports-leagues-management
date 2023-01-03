@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { usuario } = require("#src/db/models/index.js");
+const { SCOPE_NAMES } = require("#src/db/scopes/usuario.js");
 
 // 7 días - Que cada 7 días se tenga que volver a loguear.
 const EXPIRE_IN_DAYS = 60 * 60 * 24 * 7;
@@ -9,7 +10,9 @@ const login = async (request, response) => {
   const { body } = request;
   const { correo, password } = body;
 
-  const user = await usuario.findOne({ where: { correo } });
+  const user = await usuario
+    .scope(SCOPE_NAMES.withRol)
+    .findOne({ where: { correo } });
 
   const isPasswordCorrect = async () => {
     return user === null
@@ -30,6 +33,7 @@ const login = async (request, response) => {
     apellido: user.apellido,
     fechaNacimiento: user.fechaNacimiento,
     id: user.id,
+    rol: user.rol,
   };
 
   // En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente

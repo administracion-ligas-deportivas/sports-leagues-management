@@ -51,7 +51,7 @@ const areEquiposTheSame = (local, visitante) => {
   const { id: localId } = local ?? {};
   const { id: visitanteId } = visitante ?? {};
 
-  console.log({ local, visitante });
+  // console.log({ local, visitante });
 
   return localId === visitanteId;
 };

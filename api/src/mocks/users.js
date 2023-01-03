@@ -11,6 +11,15 @@ const GERARDO_MARTINO = {
   deletedAt: null,
   rolId: 3,
   domicilioUsuario: null,
+  rol: {
+    id: 3,
+    nombre: "USUARIO",
+    descripcion:
+      "Usuario que puede participar en eventos deportivos como encargado de equipos, jugador, estadístico, etc. Depende de la forma en la que entre a los eventos.",
+    createdAt: "2022-08-18T13:19:34.000Z",
+    updatedAt: "2022-12-27T19:44:45.000Z",
+    deletedAt: null,
+  },
 };
 
 const USERS = [
