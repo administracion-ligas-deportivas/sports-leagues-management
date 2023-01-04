@@ -2,7 +2,6 @@ const {
   errorHandler,
   tokenExtractor,
   unknownEndpoint,
-  userAuthenticator,
 } = require("#src/middlewares/index.js");
 
 const { json } = require("express");
@@ -11,7 +10,7 @@ const cors = require("cors");
 const initMiddlewaresBeforeRoutes = (app) => {
   // https://fullstackopen.com/es/part4/autenticacion_de_token#limitacion-de-la-creacion-de-nuevas-notas-a-los-usuarios-registrados
   // Todos los usuarios deben estar autenticados para acceder a cualquier ruta.
-  app.use(cors()).use(json()).use(tokenExtractor).use(userAuthenticator);
+  app.use(cors()).use(json()).use(tokenExtractor);
 };
 
 const initMiddlewaresAfterRoutes = (app) => {
