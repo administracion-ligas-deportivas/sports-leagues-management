@@ -5,7 +5,7 @@ export function useEventos() {
   const [eventos, setEventos] = useState([]);
 
   useEffect(() => {
-    fetchEventosReales().then((eventos) => {
+    fetchEventosReales().then(({ eventos }) => {
       console.log({ eventos });
       setEventos(eventos);
     });

@@ -16,7 +16,7 @@ export function AcordionEquipo() {
   const { equipos } = useEquipos();
   const { jugadores, deleteJugador } = useJugadores();
 
-  return equipos.map((equipo, valor) => {
+  return equipos?.map((equipo, valor) => {
     console.log(equipo);
     return (
       <Accordion key={valor}>
@@ -27,13 +27,13 @@ export function AcordionEquipo() {
         >
           <Typography>
             {" "}
-            <b>{equipo.nombre}</b> | {equipo.deporte.nombre}{" "}
+            <b>{equipo.nombre}</b> | {equipo?.deporte?.nombre}{" "}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className={styles.interlineado}>
             <h3>Nombre: {equipo.nombre}</h3>
-            <h4>Deporte: {equipo?.deporte?.nombre}</h4>
+            {equipo?.deporte && <h4>Deporte: {equipo?.deporte?.nombre}</h4>}
           </div>
           <div className={styles.centrar}>
             <table>
@@ -43,7 +43,7 @@ export function AcordionEquipo() {
                 <th>Eliminar</th>
               </tr>
 
-              {equipo.jugador.map((jugador) => {
+              {equipo?.jugadores?.map((jugador) => {
                 return (
                   <tr key={jugador.id} className={styles.info}>
                     <td>{jugador.nombre}</td>

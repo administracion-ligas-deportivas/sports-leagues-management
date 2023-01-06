@@ -20,12 +20,12 @@ const columns = [
 export default function EventosDeportivos() {
   const { eventos } = useEventos();
 
-  const rows = eventos.map((evento) => {
+  const rows = eventos?.map((evento) => {
     console.log({ evento });
     return {
-      id: evento.id,
-      evento: evento.nombre,
-      formatoEventoDeportivo: evento.formatoEventoDeportivo.nombre,
+      id: evento?.id,
+      evento: evento?.nombre,
+      formatoEventoDeportivo: evento?.formatoEventoDeportivo?.nombre,
     };
   });
 

@@ -36,6 +36,7 @@ function Login() {
         password: "",
       });
     } catch (e) {
+      console.log({ e });
       setError("Usuario o contraseña incorrectos");
     }
   };

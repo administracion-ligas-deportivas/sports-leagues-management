@@ -3,7 +3,7 @@ const { usuariosService } = require("#src/services/index.js");
 const hasRoles = (...roles) => {
   return (req, res, next) => {
     if (!req?.user) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(401).json({ message: "El usuario no ha iniciado sesión" });
     }
 
     if (!usuariosService.userHasRoles(req.user, roles)) {

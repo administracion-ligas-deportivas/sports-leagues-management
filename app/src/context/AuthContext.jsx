@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "@/hooks/useUser";
 import { authService } from "@/services/auth";
 import { ACCESS_TOKEN_STRING } from "@/constants/auth";
@@ -15,6 +15,7 @@ export function AuthProvider({ children }) {
   const { mutateUser } = useUser();
 
   const { state } = useLocation();
+  const navigate = useNavigate();
   const [nextPath, setNextPath] = useState(null);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem(ACCESS_TOKEN_STRING, JSON.stringify(user));
 
     mutateUser(user);
+    navigate("/");
   };
 
   const logout = async () => {

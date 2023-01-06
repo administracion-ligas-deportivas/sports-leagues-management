@@ -5,7 +5,11 @@ const {
   deleteEvento,
 } = require("#src/controllers/eventos/index.js");
 
-const { checkParamsId, validateRules } = require("#src/middlewares/index.js");
+const {
+  checkParamsId,
+  validateRules,
+  userAuthenticator,
+} = require("#src/middlewares/index.js");
 
 const { eventoExists } = require("#src/middlewares/eventos.js");
 const { initRouterSubroutes } = require("#src/utils/routes.js");
@@ -28,11 +32,15 @@ const routes = [
 
 const eventosRouter = require("express").Router();
 
+// /api/eventos
+// eventosRouter.use(userAuthenticator);
+
 eventosRouter
   .route("/")
   // Solo el admin puede obtener todos los eventos. El organizador puede obtener
   // sus eventos.
-  .get([hasRoles(ROLES.ADMIN)], getEventos)
+  .get([], getEventos)
+  // .get([hasRoles(ROLES.ADMIN)], getEventos)
   // Solo un organizador puede crear eventos.
   .post(hasRoles(ROLES.ORGANIZADOR), createEvento);
 
