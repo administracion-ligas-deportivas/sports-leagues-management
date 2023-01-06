@@ -3,7 +3,9 @@ const { SCOPE_NAMES } = require("#src/db/scopes/equipo.js");
 const { Op } = require("sequelize");
 
 const getAllEquipos = async () => {
-  return await equipo.scope(SCOPE_NAMES.withNumberOfJugadores).findAll();
+  return await equipo
+    .scope(SCOPE_NAMES.withNumberOfJugadores, SCOPE_NAMES.includeEverything)
+    .findAll();
 };
 
 const getEquipoById = async (equipoId, ...scopes) => {

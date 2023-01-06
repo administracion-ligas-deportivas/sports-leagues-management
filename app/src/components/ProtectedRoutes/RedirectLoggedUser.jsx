@@ -11,12 +11,13 @@ export function RedirectLoggedUser() {
 
   useEffect(() => {
     if (user) {
+      console.log({ user });
       navigate(nextPath);
     }
   }, [user, navigate]);
 
-  if (isLoading) return <Loading/>;
-  if (user) return <Loading/>;
+  if (isLoading) return <Loading />;
+  if (user) return <Loading />;
 
   return <Outlet />;
 }

@@ -4,7 +4,7 @@ const { eventoDeportivo } = require("#src/db/models/index.js");
 const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 
 const getEventos = async () => {
-  return await eventoDeportivo.findAll();
+  return await eventoDeportivo.scope(SCOPE_NAMES.withFormato).findAll();
 };
 
 const getEventoById = async (

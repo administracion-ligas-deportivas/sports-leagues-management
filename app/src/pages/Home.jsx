@@ -19,7 +19,8 @@ export default function Home() {
   const [eventos, setEventos] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetchEventosReales().then((eventos) => {
+    fetchEventosReales().then(({ eventos }) => {
+      console.log({ eventos });
       setEventos(eventos);
     });
   }, []);
@@ -72,17 +73,29 @@ export default function Home() {
                   >
                     <div className={style.anuncioText}>
                       <p>
-                        <b>Formato de evento:</b>{" "}
-                        {evento.formatoEventoDeportivo.nombre}
-                      </p>
-                      <p>
-                        Fecha de inicio:{" "}
+                        <b>Fecha de inicio: </b>
                         {new Date(evento.fechaInicio).toLocaleDateString()}
                       </p>
                       {evento?.fechaFinalizacion && (
                         <p>
                           {new Date(evento.fechaFinalizacion).toLocaleString()}
                         </p>
+                      )}
+                      {evento?.formatoEventoDeportivo && (
+                        <>
+                          <p>
+                            <b>Formato de evento:</b>{" "}
+                            {evento.formatoEventoDeportivo?.nombre}
+                          </p>
+                          <p>
+                            {
+                              evento.formatoEventoDeportivo?.tipoEventoDeportivo
+                                ?.nombre
+                            }
+                            {" de "}
+                            {evento.formatoEventoDeportivo?.deporte?.nombre}
+                          </p>
+                        </>
                       )}
                     </div>
                     <div className={style.anuncioInfo}>

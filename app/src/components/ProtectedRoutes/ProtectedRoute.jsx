@@ -7,7 +7,7 @@ import Loading from "../Loading/loading";
 // MainLayout en este caso.
 export function ProtectedRoute({ children }) {
   const { user, isLoading, isError } = useUser();
- 
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export function ProtectedRoute({ children }) {
   }, [user, isError, location, navigate]);
 
   if (isLoading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return user && children;
