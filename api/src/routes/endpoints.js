@@ -5,6 +5,8 @@ const {
 
 const endpointsRouter = require("express").Router();
 
+const { usuarios, eventos, canchas, deportes } = ENDPOINTS;
+
 endpointsRouter.route("/").get((req, res) => {
   res.json({
     message: "Bienvenido a la API de Administración de Ligas Deportivas",
@@ -13,7 +15,7 @@ endpointsRouter.route("/").get((req, res) => {
       total: countNumberOfParentEndpoints(),
       endpoints: Object.keys(ENDPOINTS),
     },
-    endpoints: [ENDPOINTS.usuarios, ENDPOINTS.eventos, ENDPOINTS.canchas],
+    endpoints: [usuarios, eventos, canchas, deportes],
   });
 });
 
