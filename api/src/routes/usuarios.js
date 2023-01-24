@@ -5,7 +5,7 @@ const usersRouter = express.Router();
 const {
   getUsers,
   createUser,
-  verifyUser,
+  authenticateUser,
   getUserById,
 } = require("../controllers/usuarios.js");
 
@@ -14,7 +14,7 @@ usersRouter.use(userAuthenticator);
 usersRouter.get("/", getUsers);
 usersRouter.post("/", createUser);
 // /api/users/verify
-usersRouter.get("/verify", verifyUser);
+usersRouter.get("/verify", authenticateUser);
 usersRouter.get("/:usuarioId", getUserById);
 
 module.exports = { usersRouter };

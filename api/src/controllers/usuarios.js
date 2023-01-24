@@ -47,7 +47,7 @@ const createUser = async (req, res) => {
   }
 };
 
-const verifyUser = (req, res) => {
+const authenticateUser = (req, res) => {
   const { user } = req;
 
   res.json({
@@ -76,6 +76,6 @@ const getUserById = async (req, res) => {
 module.exports = {
   getUsers,
   createUser,
-  verifyUser,
+  authenticateUser,
   getUserById,
 };
