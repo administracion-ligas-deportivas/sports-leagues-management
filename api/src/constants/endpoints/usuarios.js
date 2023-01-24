@@ -1,5 +1,7 @@
+const endpoint = "/usuarios";
+
 const usuarios = {
-  endpoint: "/usuarios",
+  endpoint,
   description: "Obtener todos los usuarios",
   methods: {
     GET: "Obtener todos los usuarios",
@@ -7,14 +9,14 @@ const usuarios = {
   },
   parameters: [
     {
-      name: "id",
-      endpoint: "/usuarios/:usuarioId",
+      name: "usuarioId",
+      endpoint: `${endpoint}/:usuarioId`,
       description: "Obtener un usuario por su id",
       methods: ["GET"],
     },
     {
       name: "verify",
-      endpoint: "/usuarios/verify",
+      endpoint: `${endpoint}/verify`,
       description: "Verificar la sesión del usuario",
       methods: ["GET"],
     },
