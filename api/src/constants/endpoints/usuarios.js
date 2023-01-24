@@ -21,8 +21,6 @@ const usuarios = {
   ],
 };
 
-const ENDPOINTS = {
+module.exports = {
   usuarios,
 };
-
-module.exports = { ENDPOINTS };
