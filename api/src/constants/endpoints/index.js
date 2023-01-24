@@ -1,9 +1,11 @@
-const { usuarios } = require("./usuarios");
+const { canchas } = require("./canchas");
 const { eventos } = require("./eventos");
+const { usuarios } = require("./usuarios");
 
 const ENDPOINTS = {
-  usuarios,
+  canchas,
   eventos,
+  usuarios,
 };
 
 module.exports = { ENDPOINTS };
