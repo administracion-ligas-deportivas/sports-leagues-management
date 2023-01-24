@@ -7,7 +7,7 @@ const {
   createUser,
   authenticateUser,
   getUserById,
-} = require("../controllers/usuarios.js");
+} = require("#src/controllers/usuarios.js");
 
 usersRouter.use(userAuthenticator);
 // /api/users/
