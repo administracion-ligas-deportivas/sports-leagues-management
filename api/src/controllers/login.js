@@ -14,18 +14,20 @@ const login = async (request, response) => {
     .scope(defaultScope, withRol, withDomicilio, withPasswordHash)
     .findOne({ where: { correo } });
 
-  const isPasswordCorrect = await authService.isPasswordCorrect(user, password);
+  const areCredentialsCorrect = await authService.areCredentialsCorrect(
+    user,
+    password
+  );
 
-  if (!(user && isPasswordCorrect)) {
+  if (!areCredentialsCorrect) {
     response.status(401).json({
       error: "Correo o contraseña incorrectos",
     });
+
     return;
   }
 
   const { password: passwordHash, ...userForToken } = user?.dataValues ?? {};
-
-  console.log({ userForToken, JWT_SECRET, JWT_EXPIRATION_DATE });
 
   // En este objeto se pueden guardar los datos obtenidos del usuario que se logueo correctamente
   const token = jwt.sign(userForToken, JWT_SECRET, {

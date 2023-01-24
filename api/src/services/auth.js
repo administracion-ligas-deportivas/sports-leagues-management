@@ -6,8 +6,13 @@ const isPasswordCorrect = async (user, password) => {
   return await bcrypt.compare(password, user?.password);
 };
 
+const areCredentialsCorrect = async (user, password) => {
+  return user && (await isPasswordCorrect(user, password));
+};
+
 const authService = {
   isPasswordCorrect,
+  areCredentialsCorrect,
 };
 
 module.exports = {
