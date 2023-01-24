@@ -13,7 +13,7 @@ endpointsRouter.route("/").get((req, res) => {
       total: countNumberOfParentEndpoints(),
       endpoints: Object.keys(ENDPOINTS),
     },
-    endpoints: [ENDPOINTS.usuarios],
+    endpoints: [ENDPOINTS.usuarios, ENDPOINTS.eventos],
   });
 });
 
