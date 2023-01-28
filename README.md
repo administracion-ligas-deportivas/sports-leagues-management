@@ -14,7 +14,7 @@
 ## Fechas
 
 - **Inicio del proyecto:** Febrero del 2022
-- **Finalización y entrega del proyecto:** Enero del 2023
+- **Finalización y entrega del proyecto:** Marzo del 2023
 
 ## Estructura del proyecto
 
