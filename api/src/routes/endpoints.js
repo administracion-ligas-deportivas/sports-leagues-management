@@ -13,6 +13,7 @@ const {
   deportivos,
   equipos,
   estadisticas,
+  formatos,
 } = ENDPOINTS;
 
 const ALL_ENDPOINTS = [
@@ -23,6 +24,7 @@ const ALL_ENDPOINTS = [
   deportivos,
   equipos,
   estadisticas,
+  formatos,
 ];
 
 const DEFAULT_RESPONSE = {
