@@ -5,7 +5,15 @@ const {
 
 const endpointsRouter = require("express").Router();
 
-const { usuarios, eventos, canchas, deportes, deportivos, equipos } = ENDPOINTS;
+const {
+  usuarios,
+  eventos,
+  canchas,
+  deportes,
+  deportivos,
+  equipos,
+  estadisticas,
+} = ENDPOINTS;
 
 const ALL_ENDPOINTS = [
   usuarios,
@@ -14,6 +22,7 @@ const ALL_ENDPOINTS = [
   deportes,
   deportivos,
   equipos,
+  estadisticas,
 ];
 
 const DEFAULT_RESPONSE = {
