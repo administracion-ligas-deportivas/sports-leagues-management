@@ -1,4 +1,5 @@
-const { ENDPOINTS } = require("#src/constants/index.js");
+const { ENDPOINTS, ROLES } = require("#src/constants/index.js");
+// const { userAuthenticator, hasRoles } = require("#src/middlewares/index.js");
 const {
   countNumberOfParentEndpoints,
 } = require("#src/utils/endpoints/index.js");
@@ -37,7 +38,7 @@ const DEFAULT_RESPONSE = {
   endpoints: ALL_ENDPOINTS,
 };
 
-endpointsRouter.route("/").get((req, res) => {
+const getEndpoints = (req, res) => {
   const { endpoints } = req.query;
 
   const endpointsArray = endpoints
@@ -63,6 +64,13 @@ endpointsRouter.route("/").get((req, res) => {
     },
     endpoints: foundEndpoints,
   });
-});
+};
+
+// En desarrollo no solicitar autenticación para facilitar el acceso a los
+// endpoints desde el navegador.
+/* endpointsRouter
+  .route("/")
+  .get([userAuthenticator, hasRoles(ROLES.ADMIN)], getEndpoints); */
+endpointsRouter.route("/").get(getEndpoints);
 
 module.exports = { endpointsRouter };
