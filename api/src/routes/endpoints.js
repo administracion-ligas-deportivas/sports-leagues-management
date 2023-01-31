@@ -1,4 +1,4 @@
-const { ENDPOINTS, ROLES } = require("#src/constants/index.js");
+const { ENDPOINTS } = require("#src/constants/index.js");
 // const { userAuthenticator, hasRoles } = require("#src/middlewares/index.js");
 const {
   countNumberOfParentEndpoints,
@@ -15,6 +15,7 @@ const {
   equipos,
   estadisticas,
   formatos,
+  login,
 } = ENDPOINTS;
 
 const ALL_ENDPOINTS = [
@@ -26,6 +27,7 @@ const ALL_ENDPOINTS = [
   equipos,
   estadisticas,
   formatos,
+  login,
 ];
 
 const DEFAULT_RESPONSE = {

@@ -6,6 +6,7 @@ const { deportivos } = require("./deportivos");
 const { equipos } = require("./equipos");
 const { estadisticas } = require("./estadisticas");
 const { formatos } = require("./formatos");
+const { login } = require("./login");
 
 const ENDPOINTS = {
   canchas,
@@ -16,6 +17,7 @@ const ENDPOINTS = {
   equipos,
   estadisticas,
   formatos,
+  login,
 };
 
 module.exports = { ENDPOINTS };
