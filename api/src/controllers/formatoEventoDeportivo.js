@@ -1,12 +1,16 @@
 const { formatoEventoDeportivo, deporte } = require("#src/db/models/index.js");
 
-const getFormatoEvento = async (req, res) => {
-  const formato = await formatoEventoDeportivo.findAll({
+const getFormatos = async (req, res) => {
+  const formatos = await formatoEventoDeportivo.findAll({
     include: {
       model: deporte,
     },
   });
-  return res.json(formato);
+
+  return res.json({
+    total: formatos.length,
+    formatos,
+  });
 };
 
 const getFormatoById = async (req, res) => {
@@ -17,12 +21,15 @@ const getFormatoById = async (req, res) => {
 };
 
 const createFormatoEvento = async (req, res) => {
-  const { body: formatoEvento } = req;
+  const { body: formatoEvento, user } = req;
 
   try {
-    const tipoEventoCreado = await formatoEventoDeportivo.create(formatoEvento);
+    const createdEvento = await formatoEventoDeportivo.create({
+      ...formatoEvento,
+      organizadorId: user.id,
+    });
 
-    res.status(201).json(tipoEventoCreado);
+    res.status(201).json(createdEvento);
   } catch (error) {
     console.log({ error });
 
@@ -32,7 +39,7 @@ const createFormatoEvento = async (req, res) => {
   }
 };
 module.exports = {
-  getFormatoEvento,
+  getFormatos,
   getFormatoById,
   createFormatoEvento,
 };

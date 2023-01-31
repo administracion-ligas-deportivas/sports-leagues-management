@@ -1,7 +1,7 @@
 const { eventoDeportivo } = require("#src/db/models/index.js");
 const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 
-const getFormatoEvento = async (eventoId) => {
+const getFormatos = async (eventoId) => {
   const evento = await eventoDeportivo
     .scope(SCOPE_NAMES.withFormato)
     .findByPk(eventoId);
@@ -10,5 +10,5 @@ const getFormatoEvento = async (eventoId) => {
 };
 
 module.exports = {
-  getFormatoEvento,
+  getFormatos,
 };
