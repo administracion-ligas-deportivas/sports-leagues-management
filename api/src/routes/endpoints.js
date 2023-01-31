@@ -5,7 +5,7 @@ const {
 
 const endpointsRouter = require("express").Router();
 
-const { usuarios, eventos, canchas, deportes, deportivos } = ENDPOINTS;
+const { usuarios, eventos, canchas, deportes, deportivos, equipos } = ENDPOINTS;
 
 endpointsRouter.route("/").get((req, res) => {
   res.json({
@@ -15,7 +15,7 @@ endpointsRouter.route("/").get((req, res) => {
       total: countNumberOfParentEndpoints(),
       endpoints: Object.keys(ENDPOINTS),
     },
-    endpoints: [usuarios, eventos, canchas, deportes, deportivos],
+    endpoints: [usuarios, eventos, canchas, deportes, deportivos, equipos],
   });
 });
 
