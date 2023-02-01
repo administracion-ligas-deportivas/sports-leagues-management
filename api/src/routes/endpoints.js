@@ -20,12 +20,15 @@ const getEndpoints = (req, res) => {
     ?.map((endpoint) => endpoint.trim());
 
   if (!endpoints || endpointsArray?.length === 0) {
+    const { endpoints: defaultEndpoints, ...rest } = DEFAULT_RESPONSE;
+
     res.json({
-      ...DEFAULT_RESPONSE,
+      ...rest,
       parentEndpoints: {
         total: countNumberOfParentEndpoints(),
         endpoints: Object.keys(ENDPOINTS),
       },
+      endpoints: defaultEndpoints,
     });
     return;
   }
