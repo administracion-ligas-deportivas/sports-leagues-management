@@ -31,7 +31,7 @@ const userAuthenticator = async (req, res, next) => {
     req.user = { ...user?.dataValues };
   } catch (error) {
     next(error);
-  } 
+  }
 
   // Con next() continuamos la ejecución del middleware.
   next();

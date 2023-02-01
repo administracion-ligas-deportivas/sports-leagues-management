@@ -10,7 +10,8 @@ const JWT_ERROR_HANDLERS = {
   // Podemos saber que es un token válido, pero expirado. De esta manera incluso
   // podríamos permitir ciertas acciones a usuarios que hayan estado logueados,
   // pero su sesión haya expirado.
-  TokenExpiredError: (res) => res.status(401).json({ error: "El token ha expirado" }),
+  TokenExpiredError: (res) =>
+    res.status(401).json({ error: "El token ha expirado" }),
 };
 
 module.exports = { JWT_ERROR_HANDLERS };

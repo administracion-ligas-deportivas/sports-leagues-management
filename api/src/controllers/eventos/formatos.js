@@ -3,9 +3,7 @@ const { eventosService } = require("#src/services/index.js");
 const getFormatos = async (req, res) => {
   const { eventoId } = req.params;
 
-  const { evento, formatoEvento } = await eventosService.getFormatos(
-    eventoId
-  );
+  const { evento, formatoEvento } = await eventosService.getFormatos(eventoId);
 
   if (!evento) {
     return res.status(404).json({
