@@ -12,6 +12,7 @@ const { permisos } = require("./permisos");
 const { roles } = require("./roles");
 const { tiposDeEvento } = require("./tiposDeEvento");
 const { usuarios } = require("./usuarios");
+const { estados } = require("./estados");
 
 const ENDPOINTS = {
   canchas,
@@ -19,6 +20,7 @@ const ENDPOINTS = {
   deportivos,
   equipos,
   estadisticas,
+  estados,
   eventos,
   formatos,
   login,
