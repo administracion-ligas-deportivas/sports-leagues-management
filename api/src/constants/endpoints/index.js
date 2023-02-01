@@ -8,6 +8,7 @@ const { formatos } = require("./formatos");
 const { login } = require("./login");
 const { me } = require("./me");
 const { usuarios } = require("./usuarios");
+const { partidos } = require("./partidos");
 
 const ENDPOINTS = {
   canchas,
@@ -20,6 +21,7 @@ const ENDPOINTS = {
   login,
   me,
   usuarios,
+  partidos,
 };
 
 module.exports = { ENDPOINTS };

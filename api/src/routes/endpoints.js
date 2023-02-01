@@ -34,7 +34,7 @@ const getEndpoints = (req, res) => {
     return endpointsArray.includes(endpoint.split("/").at(1));
   });
 
-  console.log({ foundEndpoints, endpoints, endpointsArray });
+  // console.log({ foundEndpoints, endpoints, endpointsArray });
 
   return res.json({
     ...DEFAULT_RESPONSE,
