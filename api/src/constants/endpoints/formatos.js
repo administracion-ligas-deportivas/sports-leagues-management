@@ -4,7 +4,8 @@ const endpoint = "/formatos";
 const formatos = {
   endpoint,
   name: "Formatos de evento",
-  description: "Formato de evento deportivo",
+  description:
+    "Formatos disponibles para los eventos deportivos. Es la forma en que se llevará a cabo un evento. Son creados por un organizador de evento y están ligados a un deporte. Esto permite reutilizar los formats de un organizador en cualquier evento.",
   methods: {
     GET: "Obtener todos los formatos",
     POST: "Crear un formato",

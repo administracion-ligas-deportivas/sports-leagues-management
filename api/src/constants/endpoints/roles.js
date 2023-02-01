@@ -3,7 +3,8 @@ const endpoint = "/roles";
 const roles = {
   endpoint,
   name: "Roles",
-  description: "Roles de usuario. Cada rol tiene permisos.",
+  description:
+    "Roles que regirán los permisos que tendrá un usuario en el sistema. Solo un administrador puede crear roles. Un rol puede tener múltiples permisos.",
   methods: {
     GET: "Obtener todos los roles",
     POST: "Crear un rol",

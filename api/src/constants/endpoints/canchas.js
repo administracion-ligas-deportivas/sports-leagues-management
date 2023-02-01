@@ -3,7 +3,8 @@ const endpoint = "/canchas";
 const canchas = {
   endpoint,
   name: "Canchas",
-  description: "Canchas de un deportivo",
+  description:
+    "Canchas de un deportivo. Es en donde se llevan a cabo los partidos.",
   methods: {
     GET: "Obtener todas las canchas del sistema",
   },

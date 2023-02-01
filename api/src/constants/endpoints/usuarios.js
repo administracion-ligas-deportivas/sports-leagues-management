@@ -3,7 +3,7 @@ const endpoint = "/usuarios";
 const usuarios = {
   endpoint,
   name: "Usuarios",
-  description: "Obtener todos los usuarios",
+  description: "Usuarios del sistema. Cada usuario tendrá un rol.",
   methods: {
     GET: "Obtener todos los usuarios",
     POST: "Crear un usuario",
@@ -12,7 +12,7 @@ const usuarios = {
     {
       name: "usuarioId",
       endpoint: `${endpoint}/:usuarioId`,
-      description: "Obtener un usuario por su id",
+      description: "ID de usuario",
       methods: ["GET"],
     },
     {

@@ -3,7 +3,8 @@ const endpoint = "/deportivos";
 const deportivos = {
   endpoint,
   name: "Deportivos",
-  description: "Deportes disponibles",
+  description:
+    "Un deportivo tiene canchas, que es en donde se lleva a cabo un partido.",
   methods: {
     GET: "Obtener todos los deportivos",
     POST: "Crear un deportivo",
