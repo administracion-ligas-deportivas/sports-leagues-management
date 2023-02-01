@@ -3,10 +3,11 @@ const endpoint = "/formatos";
 // No está implementado.
 const formatos = {
   endpoint,
+  name: "Formatos de evento",
   description: "Formato de evento deportivo",
   methods: {
     GET: "Obtener todos los formatos",
-    POST: "Crear un formato"
+    POST: "Crear un formato",
   },
   parameters: [
     {

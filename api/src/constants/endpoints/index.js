@@ -7,8 +7,11 @@ const { eventos } = require("./eventos");
 const { formatos } = require("./formatos");
 const { login } = require("./login");
 const { me } = require("./me");
-const { usuarios } = require("./usuarios");
 const { partidos } = require("./partidos");
+const { permisos } = require("./permisos");
+const { roles } = require("./roles");
+const { tiposDeEvento } = require("./tiposDeEvento");
+const { usuarios } = require("./usuarios");
 
 const ENDPOINTS = {
   canchas,
@@ -20,8 +23,11 @@ const ENDPOINTS = {
   formatos,
   login,
   me,
-  usuarios,
   partidos,
+  permisos,
+  roles,
+  tiposDeEvento,
+  usuarios,
 };
 
 module.exports = { ENDPOINTS };

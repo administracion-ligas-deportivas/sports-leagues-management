@@ -2,6 +2,7 @@ const endpoint = "/usuarios";
 
 const usuarios = {
   endpoint,
+  name: "Usuarios",
   description: "Obtener todos los usuarios",
   methods: {
     GET: "Obtener todos los usuarios",

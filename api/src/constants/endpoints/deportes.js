@@ -2,6 +2,7 @@ const endpoint = "/deportes";
 
 const deportes = {
   endpoint,
+  name: "Deportes",
   description: "Deportes disponibles",
   methods: {
     GET: "Obtener todos los deportes",

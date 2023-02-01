@@ -2,6 +2,7 @@ const endpoint = "/roles";
 
 const roles = {
   endpoint,
+  name: "Roles",
   description: "Roles de usuario. Cada rol tiene permisos.",
   methods: {
     GET: "Obtener todos los roles",
