@@ -35,11 +35,12 @@ const eventosRouter = require("express").Router();
 // /api/eventos
 // eventosRouter.use(userAuthenticator);
 
+eventosRouter.use("/", userAuthenticator);
 eventosRouter
   .route("/")
   // Solo el admin puede obtener todos los eventos. El organizador puede obtener
   // sus eventos.
-  .get([], getEventos)
+  .get(hasRoles(ROLES.ORGANIZADOR, ROLES.ADMIN), getEventos)
   // .get([hasRoles(ROLES.ADMIN)], getEventos)
   // Solo un organizador puede crear eventos.
   .post(hasRoles(ROLES.ORGANIZADOR), createEvento);

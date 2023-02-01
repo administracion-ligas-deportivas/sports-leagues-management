@@ -2,6 +2,7 @@ const {
   canchasRouter,
   deportesRouter,
   deportivosRouter,
+  endpointsRouter,
   equiposRouter,
   estadosRouter,
   eventosRouter,
@@ -9,28 +10,33 @@ const {
   loginRouter,
   meRouter,
   partidosRouter,
-  rolRouter,
-  tipoEventoRouter,
+  rolesRouter,
+  tiposDeEventoRouter,
   usersRouter,
 } = require("#src/routes/index.js");
 
 const ROUTE_PATHS = {
-  usuarios: "/api/usuarios",
-  login: "/api/login",
-  estados: "/api/estados",
+  endpoints: "/api",
+  canchas: "/api/canchas",
   deportes: "/api/deportes",
   deportivos: "/api/deportivos",
-  eventos: "/api/eventos",
-  canchas: "/api/canchas",
-  formatos: "/api/formatos",
-  tiposDeEvento: "/api/tiposDeEvento",
-  roles: "/api/roles",
   equipos: "/api/equipos",
-  partidos: "/api/partidos",
+  estados: "/api/estados",
+  eventos: "/api/eventos",
+  formatos: "/api/formatos",
+  login: "/api/login",
   me: "/api/me",
+  partidos: "/api/partidos",
+  roles: "/api/roles",
+  tiposDeEvento: "/api/tiposDeEvento",
+  usuarios: "/api/usuarios",
 };
 
 const ROUTES_WITH_CONTROLLERS = [
+  {
+    path: ROUTE_PATHS.endpoints,
+    router: endpointsRouter,
+  },
   {
     path: ROUTE_PATHS.usuarios,
     router: usersRouter,
@@ -69,11 +75,11 @@ const ROUTES_WITH_CONTROLLERS = [
   },
   {
     path: ROUTE_PATHS.tiposDeEvento,
-    router: tipoEventoRouter,
+    router: tiposDeEventoRouter,
   },
   {
     path: ROUTE_PATHS.roles,
-    router: rolRouter,
+    router: rolesRouter,
   },
   {
     path: ROUTE_PATHS.equipos,

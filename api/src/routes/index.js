@@ -1,29 +1,31 @@
-const { loginRouter } = require("./login");
-const { usersRouter } = require("./usuarios");
-const { estadosRouter } = require("./estados");
+const { canchasRouter } = require("./canchas");
 const { deportesRouter } = require("./deportes");
 const { deportivosRouter } = require("./deportivos");
-const { eventosRouter } = require("./eventos");
-const { canchasRouter } = require("./canchas");
-const { formatosRouter } = require("./formatoEventoDeportivo");
-const { tipoEventoRouter } = require("./tipoEventoDeportivo");
-const { rolRouter } = require("./roles");
+const { endpointsRouter } = require("./endpoints");
 const { equiposRouter } = require("./equipos");
-const { partidosRouter } = require("./partidos");
+const { estadosRouter } = require("./estados");
+const { eventosRouter } = require("./eventos");
+const { formatosRouter } = require("./formatoEventoDeportivo");
+const { loginRouter } = require("./login");
 const { meRouter } = require("./me");
+const { partidosRouter } = require("./partidos");
+const { rolesRouter } = require("./roles");
+const { tiposDeEventoRouter } = require("./tipoEventoDeportivo");
+const { usersRouter } = require("./usuarios");
 
 module.exports = {
-  loginRouter,
-  usersRouter,
-  estadosRouter,
+  canchasRouter,
   deportesRouter,
   deportivosRouter,
-  eventosRouter,
-  canchasRouter,
-  formatosRouter,
-  tipoEventoRouter,
-  rolRouter,
+  endpointsRouter,
   equiposRouter,
-  partidosRouter,
+  estadosRouter,
+  eventosRouter,
+  formatosRouter,
+  loginRouter,
   meRouter,
+  partidosRouter,
+  rolesRouter,
+  tiposDeEventoRouter,
+  usersRouter,
 };

@@ -1,14 +1,14 @@
-const rolRouter = require("express").Router();
+const rolesRouter = require("express").Router();
 
 const {
   createRol,
   getRoles,
-  getRolId,
+  getRolById,
   deleteRol,
 } = require("#src/controllers/roles.js");
 
-rolRouter.route("/").post(createRol).get(getRoles);
+rolesRouter.route("/").post(createRol).get(getRoles);
 
-rolRouter.route("/:rolId").get(getRolId).delete(deleteRol);
+rolesRouter.route("/:rolId").get(getRolById).delete(deleteRol);
 
-module.exports = { rolRouter };
+module.exports = { rolesRouter };
