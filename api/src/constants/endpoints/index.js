@@ -1,23 +1,25 @@
 const { canchas } = require("./canchas");
-const { eventos } = require("./eventos");
-const { usuarios } = require("./usuarios");
 const { deportes } = require("./deportes");
 const { deportivos } = require("./deportivos");
 const { equipos } = require("./equipos");
 const { estadisticas } = require("./estadisticas");
+const { eventos } = require("./eventos");
 const { formatos } = require("./formatos");
 const { login } = require("./login");
+const { me } = require("./me");
+const { usuarios } = require("./usuarios");
 
 const ENDPOINTS = {
   canchas,
-  eventos,
-  usuarios,
   deportes,
   deportivos,
   equipos,
   estadisticas,
+  eventos,
   formatos,
   login,
+  me,
+  usuarios,
 };
 
 module.exports = { ENDPOINTS };
