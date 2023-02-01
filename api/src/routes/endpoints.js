@@ -19,16 +19,19 @@ const getEndpoints = (req, res) => {
     ?.split(",")
     ?.map((endpoint) => endpoint.trim());
 
-  if (!endpoints || endpointsArray?.length === 0) {
-    const { endpoints: defaultEndpoints, ...rest } = DEFAULT_RESPONSE;
+  const { endpoints: defaultEndpoints, ...rest } = DEFAULT_RESPONSE;
 
+  if (!endpoints || endpointsArray?.length === 0) {
     res.json({
       ...rest,
       parentEndpoints: {
         total: countNumberOfParentEndpoints(),
-        endpoints: Object.keys(ENDPOINTS),
+        endpoints: Object.values(ENDPOINTS).map(({ endpoint, name }) => ({
+          endpoint,
+          name,
+        })),
       },
-      endpoints: defaultEndpoints,
+      endpoints: Object.values(defaultEndpoints),
     });
     return;
   }
@@ -40,7 +43,7 @@ const getEndpoints = (req, res) => {
   // console.log({ foundEndpoints, endpoints, endpointsArray });
 
   return res.json({
-    ...DEFAULT_RESPONSE,
+    ...rest,
     foundEndpoints: {
       total: foundEndpoints.length,
       endpoints: endpointsArray,
