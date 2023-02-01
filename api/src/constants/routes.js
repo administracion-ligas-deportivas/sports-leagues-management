@@ -10,8 +10,8 @@ const {
   loginRouter,
   meRouter,
   partidosRouter,
-  rolRouter,
-  tipoEventoRouter,
+  rolesRouter,
+  tiposDeEventoRouter,
   usersRouter,
 } = require("#src/routes/index.js");
 
@@ -75,11 +75,11 @@ const ROUTES_WITH_CONTROLLERS = [
   },
   {
     path: ROUTE_PATHS.tiposDeEvento,
-    router: tipoEventoRouter,
+    router: tiposDeEventoRouter,
   },
   {
     path: ROUTE_PATHS.roles,
-    router: rolRouter,
+    router: rolesRouter,
   },
   {
     path: ROUTE_PATHS.equipos,

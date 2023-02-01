@@ -2,10 +2,13 @@ const { rol } = require("#src/db/models/index.js");
 
 const getRoles = async (req, res) => {
   const roles = await rol.findAll();
-  return res.json(roles);
+  return res.json({
+    total: roles.length,
+    roles,
+  });
 };
 
-const getRolId = async (req, res) => {
+const getRolById = async (req, res) => {
   const { rolId } = req.params;
   const rolObteined = await rol.findByPk(rolId);
 
@@ -39,7 +42,7 @@ const deleteRol = async (req, res) => {
 };
 
 module.exports = {
-  getRolId,
+  getRolById,
   getRoles,
   createRol,
   deleteRol,
