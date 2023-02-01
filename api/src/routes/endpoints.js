@@ -6,38 +6,10 @@ const {
 
 const endpointsRouter = require("express").Router();
 
-const {
-  usuarios,
-  eventos,
-  canchas,
-  deportes,
-  deportivos,
-  equipos,
-  estadisticas,
-  formatos,
-  login,
-} = ENDPOINTS;
-
-const ALL_ENDPOINTS = [
-  usuarios,
-  eventos,
-  canchas,
-  deportes,
-  deportivos,
-  equipos,
-  estadisticas,
-  formatos,
-  login,
-];
-
 const DEFAULT_RESPONSE = {
   message: "Bienvenido a la API de Administración de Ligas Deportivas",
   lastUpdate: "Lunes, 23 de enero de 2023",
-  parentEndpoints: {
-    total: countNumberOfParentEndpoints(),
-    endpoints: Object.keys(ENDPOINTS),
-  },
-  endpoints: ALL_ENDPOINTS,
+  endpoints: ENDPOINTS,
 };
 
 const getEndpoints = (req, res) => {
@@ -48,7 +20,13 @@ const getEndpoints = (req, res) => {
     ?.map((endpoint) => endpoint.trim());
 
   if (!endpoints || endpointsArray?.length === 0) {
-    res.json(DEFAULT_RESPONSE);
+    res.json({
+      ...DEFAULT_RESPONSE,
+      parentEndpoints: {
+        total: countNumberOfParentEndpoints(),
+        endpoints: Object.keys(ENDPOINTS),
+      },
+    });
     return;
   }
 
