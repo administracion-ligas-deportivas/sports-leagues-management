@@ -9,7 +9,7 @@ const {
   getUserById,
 } = require("#src/controllers/usuarios.js");
 
-// usersRouter.use(userAuthenticator);
+usersRouter.use(userAuthenticator);
 // /api/users/
 usersRouter.get("/", getUsers);
 usersRouter.post("/", createUser);
