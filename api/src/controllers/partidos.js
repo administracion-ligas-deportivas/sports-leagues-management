@@ -43,9 +43,22 @@ const deletePartido = async (req, res) => {
   res.status(204).end();
 };
 
+const updatePartido = async (req, res) => {
+  const { partidoId } = req.params;
+  const { body } = req;
+
+  await partido.update(body, {
+    where: {
+      id: partidoId,
+    },
+  });
+  res.status(204).end();
+};
+
 module.exports = {
   createPartido,
   getPartidos,
   getPartidoById,
   deletePartido,
+  updatePartido,
 };
