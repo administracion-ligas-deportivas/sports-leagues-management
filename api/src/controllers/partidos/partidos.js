@@ -1,3 +1,4 @@
+const { equipoPartido } = require("#src/db/models/index.js");
 const { partido } = require("#src/db/models/index.js");
 const { partidosService } = require("#src/services/index.js");
 
@@ -55,10 +56,18 @@ const updatePartido = async (req, res) => {
   res.status(204).end();
 };
 
+const getEquiposByPartidoId = async (req, res) => {
+  const { partidoId } = req.params;
+  const equipos = await equipoPartido.scope("withFullData").findByPk(partidoId);
+
+  return res.json(equipos);
+};
+
 module.exports = {
   createPartido,
   getPartidos,
   getPartidoById,
   deletePartido,
   updatePartido,
+  getEquiposByPartidoId,
 };

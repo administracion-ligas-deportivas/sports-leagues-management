@@ -5,7 +5,7 @@ const {
   getPartidoById,
   deletePartido,
   updatePartido,
-} = require("#src/controllers/partidos.js");
+} = require("#src/controllers/partidos/partidos.js");
 
 partidosRouter.route("/").get(getPartidos);
 partidosRouter

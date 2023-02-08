@@ -7,7 +7,7 @@ const {
   areEquiposSpecified,
 } = require("#src/middlewares/equipos.js");
 
-const { createPartido } = require("#src/controllers/partidos.js");
+const { createPartido } = require("#src/controllers/partidos/partidos.js");
 const { isUsuarioOrganizadorEvento } = require("#src/middlewares/eventos.js");
 
 module.exports = (eventosRouter) => {
