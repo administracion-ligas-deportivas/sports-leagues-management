@@ -7,13 +7,18 @@ const { defaultScope, withRol, withDomicilio } = SCOPE_NAMES;
 
 const userAuthenticator = async (req, res, next) => {
   const { token } = req;
+  let decodedToken = {};
 
-  const decodedToken = jwt.verify(token, JWT_SECRET);
+  try {
+    decodedToken = jwt.verify(token, JWT_SECRET);
 
-  if (!token || !decodedToken.id) {
-    return res
-      .status(401)
-      .json({ error: "El token no se encuentra o no es válido" });
+    if (!token || !decodedToken.id) {
+      return res
+        .status(401)
+        .json({ error: "El token no se encuentra o no es válido" });
+    }
+  } catch (error) {
+    next(error);
   }
 
   const { iat, exp, ...userProps } = decodedToken;
