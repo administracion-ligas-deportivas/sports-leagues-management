@@ -32,7 +32,7 @@ const createEquipoFromEvento = async (evento, nombre, encargadoEmail) => {
 
   const { id } = encargado?.dataValues ?? {};
 
-  return await equipo.create({
+  return await evento?.instance?.createEquipo({
     nombre,
     encargadoEquipoId: id,
     deporteId: evento?.deporteId,

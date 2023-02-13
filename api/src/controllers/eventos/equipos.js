@@ -15,7 +15,6 @@ const getEquiposFromEvento = async (req, res) => {
 };
 
 const createEquipoFromEvento = async (req, res, next) => {
-  const { eventoId } = req.params;
   const { evento } = req;
   const { nombre, encargadoEmail } = req.body;
 
