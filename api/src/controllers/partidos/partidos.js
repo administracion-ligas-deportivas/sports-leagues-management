@@ -24,22 +24,11 @@ const getPartidos = async (req, res) => {
   return res.json(partidos);
 };
 
-/* const getPartidoById = async (req, res) => {
+const getPartidoById = async (req, res) => {
   const { partidoId } = req.params;
   const partidos = await partido.scope("withFullData").findByPk(partidoId);
 
   return res.json(partidos);
-}; */
-
-const getPartidoById = async (req, res) => {
-  const { partidoId } = req.params;
-
-  try {
-    const partidos = await partido.scope("withFullData").findByPk(partidoId);
-    return res.json(partidos);
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 const deletePartido = async (req, res) => {
