@@ -1,6 +1,7 @@
 const { equipo, eventoDeportivo } = require("#src/db/models/index.js");
 // const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
 const { usuariosService } = require("../usuarios");
+const { getDeporteIdFromEvento } = require("./eventos");
 
 const getEquiposFromEvento = async (eventoId) => {
   const evento = await eventoDeportivo.findByPk(eventoId);
@@ -31,11 +32,12 @@ const createEquipoFromEvento = async (evento, nombre, encargadoEmail) => {
   if (!encargado) return;
 
   const { id } = encargado?.dataValues ?? {};
+  const deporteId = getDeporteIdFromEvento(evento);
 
-  return await evento?.instance?.createEquipo({
+  return await evento?.createEquipo({
     nombre,
     encargadoEquipoId: id,
-    deporteId: evento?.deporteId,
+    deporteId,
   });
 };
 

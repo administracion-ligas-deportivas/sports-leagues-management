@@ -38,9 +38,14 @@ const isUsuarioOrganizadorEvento = (usuarioId, evento) => {
   return usuarioId === organizadorId;
 };
 
+const getDeporteIdFromEvento = (evento) => {
+  return evento?.deporteId ?? evento?.formatoEventoDeportivo?.deporte?.id;
+};
+
 module.exports = {
-  getEventos,
-  getEventoById,
   createEvento,
+  getDeporteIdFromEvento,
+  getEventoById,
+  getEventos,
   isUsuarioOrganizadorEvento,
 };

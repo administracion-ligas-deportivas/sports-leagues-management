@@ -20,7 +20,7 @@ const createEquipoFromEvento = async (req, res, next) => {
 
   try {
     const equipo = await eventosService.createEquipoFromEvento(
-      evento,
+      evento?.instance,
       nombre,
       encargadoEmail
     );
