@@ -7,9 +7,11 @@ const {
   deletePartido,
 } = require("#src/controllers/partidos/index.js");
 
-// const { initRouterSubroutes } = require("#src/utils/routes.js");
+const { initRouterSubroutes } = require("#src/utils/routes.js");
 
-// const routes = [getPartidos, getPartidoById, updatePartido, deletePartido];
+const equiposRoutes = require("./equipos.js");
+
+const routes = [equiposRoutes];
 
 partidosRouter.route("/").get(getPartidos);
 partidosRouter
@@ -18,6 +20,6 @@ partidosRouter
   .put(updatePartido)
   .delete(deletePartido);
 
-// initRouterSubroutes(partidosRouter, routes);
+initRouterSubroutes(partidosRouter, routes);
 
 module.exports = { partidosRouter };
