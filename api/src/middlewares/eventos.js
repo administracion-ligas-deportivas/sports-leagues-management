@@ -37,13 +37,16 @@ const eventoExists = async (req, res, next) => {
     // withNumberOfEquipos,
   ];
 
+  
   const evento = await eventosService.getEventoById(eventoId, scopes);
-
+  
   if (!evento) {
     return res.status(404).json({
       message: "El evento no existe.",
     });
   }
+  
+  const deporteId = evento?.deporteId ?? evento?.formatoEventoDeportivo?.deporte?.id;
 
   const { id: organizadorId } = evento?.organizador ?? {};
 
@@ -51,6 +54,7 @@ const eventoExists = async (req, res, next) => {
     ...evento?.dataValues,
     organizadorId,
     instance: evento,
+    deporteId,
   };
 
   next();

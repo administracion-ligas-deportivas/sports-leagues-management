@@ -14,18 +14,29 @@ const getEquiposFromEvento = async (req, res) => {
   });
 };
 
-const createEquipo = async (req, res) => {
+const createEquipoFromEvento = async (req, res, next) => {
   const { eventoId } = req.params;
+  const { evento } = req;
   const { nombre, encargadoEmail } = req.body;
 
-  const equipo = await eventosService.createEquipo(
-    eventoId,
-    nombre,
-    encargadoEmail
-  );
+  try {
+    const equipo = await eventosService.createEquipoFromEvento(
+      evento,
+      nombre,
+      encargadoEmail
+    );
+
+    if (equipo) {
+      return res.status(201).json(equipo);
+    }
+
+    res.status(404).end();
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
   getEquiposFromEvento,
-  createEquipo
+  createEquipoFromEvento,
 };

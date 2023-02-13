@@ -89,7 +89,7 @@ const addEstadisticosToEvento = async (estadisticos, evento, transaction) => {
   // console.log({ estadisticosEvento });
 };
 
-const createEquipo = async (equipoData, deporteId, transaction) => {
+const createEquipoFromEvento = async (equipoData, deporteId, transaction) => {
   const { nombre, encargadoEquipo, jugadores } = equipoData;
   const { id: rolId } = await getRolByNombre(ROLES.USUARIO, transaction);
 
@@ -180,7 +180,7 @@ module.exports = {
 
       const createdEquiposMundial = await Promise.all(
         equipos.map(async (equipo) => {
-          return await createEquipo(equipo, deporteId, transaction);
+          return await createEquipoFromEvento(equipo, deporteId, transaction);
         })
       );
 

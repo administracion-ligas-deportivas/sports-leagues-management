@@ -1,4 +1,6 @@
-const { eventoDeportivo } = require("#src/db/models/index.js");
+const { equipo, eventoDeportivo } = require("#src/db/models/index.js");
+// const { SCOPE_NAMES } = require("#src/db/scopes/eventoDeportivo.js");
+const { usuariosService } = require("../usuarios");
 
 const getEquiposFromEvento = async (eventoId) => {
   const evento = await eventoDeportivo.findByPk(eventoId);
@@ -21,9 +23,23 @@ const getEquiposFromEvento = async (eventoId) => {
   return await evento.getEquipos({ joinTableAttributes: [] });
 };
 
-const createEquipo = async (eventoId, nombre, encargadoEmail) => {};
+const createEquipoFromEvento = async (evento, nombre, encargadoEmail) => {
+  const encargado = await usuariosService.getUserByEmail(encargadoEmail);
+
+  console.log({ encargado, evento });
+
+  if (!encargado) return;
+
+  const { id } = encargado?.dataValues ?? {};
+
+  return await equipo.create({
+    nombre,
+    encargadoEquipoId: id,
+    deporteId: evento?.deporteId,
+  });
+};
 
 module.exports = {
   getEquiposFromEvento,
-  createEquipo,
+  createEquipoFromEvento,
 };
