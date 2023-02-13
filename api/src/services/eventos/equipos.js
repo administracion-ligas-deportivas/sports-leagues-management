@@ -21,6 +21,9 @@ const getEquiposFromEvento = async (eventoId) => {
   return await evento.getEquipos({ joinTableAttributes: [] });
 };
 
+const createEquipo = async (eventoId, nombre, encargadoEmail) => {};
+
 module.exports = {
   getEquiposFromEvento,
+  createEquipo,
 };
