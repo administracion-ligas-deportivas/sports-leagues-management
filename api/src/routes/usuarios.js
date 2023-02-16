@@ -9,12 +9,10 @@ const {
   getUserById,
 } = require("#src/controllers/usuarios.js");
 
-usersRouter.use(userAuthenticator);
 // /api/users/
-usersRouter.get("/", getUsers);
-usersRouter.post("/", createUser);
+usersRouter.route("/").get(userAuthenticator, getUsers).post(createUser);
 // /api/users/verify
-usersRouter.get("/verify", authenticateUser);
-usersRouter.get("/:usuarioId", getUserById);
+usersRouter.get("/verify", userAuthenticator, authenticateUser);
+usersRouter.route("/:usuarioId").get(userAuthenticator, getUserById);
 
 module.exports = { usersRouter };
