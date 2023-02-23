@@ -8,22 +8,24 @@
     "#src/*": "./src/*"
   },
   "scripts": {
-    "dev": "nodemon src/index.js",
     "dev:trace": "nodemon --trace-warnings src/index.js",
+    "dev": "nodemon src/index.js",
     "format:fix": "npm run format && npm run lint:fix",
     "format": "prettier --write . --cache",
     "lint:fix": "npm run lint -- --fix src",
     "lint": "eslint . --ext .js,.ts,.cjs,.mjs --ignore-path .gitignore --cache",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:up": "npx sequelize-cli db:migrate",
     "seed:all": "sequelize-cli db:seed:all",
     "seed:generate": "sequelize-cli seed:generate --name",
     "seed:run": "sequelize-cli db:seed --seed",
     "seed:undo:all": "sequelize-cli db:seed:undo:all",
     "seed:undo": "sequelize-cli db:seed:undo --seed",
     "start": "node src/index.js",
-    "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:watchAll": "jest --watchAll"
+    "test:watchAll": "jest --watchAll",
+    "test": "jest"
   },
   "contributors": [
     {
