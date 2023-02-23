@@ -2,6 +2,7 @@ const {
   getEquiposFromEvento,
   getPagosFromEquipoInEvento,
   realizarPagoEnEvento,
+  createEquipoFromEvento,
 } = require("#src/controllers/eventos/index.js");
 
 const {
@@ -16,9 +17,22 @@ const {
 } = require("#src/middlewares/validateRules.js");
 
 const { canPay } = require("#src/middlewares/pagos.js");
+const { hasRoles } = require("#src/middlewares/index.js");
+const { ROLES } = require("#src/constants/index.js");
+const {
+  isUsuarioOrganizadorEvento,
+  eventoExists,
+} = require("#src/middlewares/eventos.js");
 
 module.exports = (eventosRouter) => {
-  eventosRouter.route("/:eventoId/equipos").get(getEquiposFromEvento);
+  // Revisar que el usuario sea el organizador del evento.
+  eventosRouter
+    .route("/:eventoId/equipos")
+    .get([hasRoles(ROLES.ADMIN, ROLES.ORGANIZADOR)], getEquiposFromEvento)
+    .post(
+      [hasRoles(ROLES.ORGANIZADOR), eventoExists, isUsuarioOrganizadorEvento],
+      createEquipoFromEvento
+    );
 
   eventosRouter.use("/:eventoId/equipos/:equipoId", [
     checkParamsId("equipoId"),

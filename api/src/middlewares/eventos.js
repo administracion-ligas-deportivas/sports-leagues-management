@@ -45,12 +45,15 @@ const eventoExists = async (req, res, next) => {
     });
   }
 
+  const deporteId = eventosService.getDeporteIdFromEvento(evento);
+
   const { id: organizadorId } = evento?.organizador ?? {};
 
   req.evento = {
     ...evento?.dataValues,
     organizadorId,
     instance: evento,
+    deporteId,
   };
 
   next();
