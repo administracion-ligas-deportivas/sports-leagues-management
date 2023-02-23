@@ -33,27 +33,30 @@ const navtexts = [
   },
   {
     to: "/visualizar-formatos",
-    text: "Visualizar formatos",
+    text: "Formatos",
   },
   {
-    to: "/partidos-en-sistema",
-    text: "Partidos en sistema",
+    text: "Deportivos y Canchas",
   },
 
-  {
-    to: "/crear-evento-deportivo",
-    text: "Crear Evento Deportivo",
-  },
+  // {
+  //   to: "/crear-evento-deportivo",
+  //   text: "Crear Evento Deportivo",
+  // },
 
-  {
-    to: "/asignar-roles",
-    text: "Asignar roles",
-  },
+  // {
+  //   to: "/asignar-roles",
+  //   text: "Asignar roles",
+  // },
 
   // {
   //   to: "/gestion-equipo",
   //   text: "Gestion equipo",
   // },
+  {
+    to: "/partidos-en-sistema",
+    text: "Partidos",
+  },
   {
     to: "/home",
     text: "Admin",
@@ -89,10 +92,6 @@ const allNavtexts = [
   {
     to: "/enter-sports-event",
     text: "Entrar a evento deportivo",
-  },
-  {
-    to: "/estadisticas-personales",
-    text: "Estadisticas personales",
   },
   {
     to: "/nueva-cancha",
@@ -132,6 +131,62 @@ const allNavtexts = [
   },
 ];
 
+const equiposNavText = [
+  {
+    to: "/gestion-equipo",
+    text: "Gestion equipo",
+  },
+  {
+    to: "/equipos-en-sistema",
+    text: "Equipos en sistema",
+  },
+  {
+    to: "/traspaso-equipo",
+    text: "Traspaso equipo",
+  },
+  {
+    to: "/gestion-equipo-jugador",
+    text: "Gestion equipo jugador",
+  },
+];
+
+const eventosNavText = [
+  {
+    to: "/gestion-evento-deportivo",
+    text: "Gestion Evento Dep",
+  },
+  {
+    to: "/enter-sports-event",
+    text: "Entrar a evento deportivo",
+  },
+  {
+    to: "/eventos-deportivos",
+    text: "Eventos deportivos",
+  },
+];
+
+const formatosNavText = [
+  {
+    to: "/crear-formato",
+    text: "Crear formato",
+  },
+  {
+    to: "/visualizar-formatos",
+    text: "Visualizar formatos",
+  },
+];
+
+const depcanNavText = [
+  {
+    to: "/nueva-cancha",
+    text: "Nueva cancha",
+  },
+  {
+    to: "/registro-deportivo",
+    text: "Registro deportivo",
+  },
+];
+
 function Navbar() {
   const { logout } = useAuthProvider();
   const { user, isLoading } = useUser();
@@ -139,16 +194,39 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElAdmin, setAnchorElAdmin] = React.useState(null);
+  const [anchorEquipos, setAnchorEquipos] = React.useState(null);
+  const [anchorEventos, setAnchorEventos] = React.useState(null);
+  const [anchorFormatos, setAnchorFormatos] = React.useState(null);
+  const [anchorDepCan, setAnchorDepCan] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
+
   const handleOpenAdminMenu = (event) => {
     setAnchorElAdmin(event.currentTarget);
   };
+
+  const handleOpenEquiposMenu = (event) => {
+    setAnchorEquipos(event.currentTarget);
+  };
+
+  const handleOpenEventosMenu = (event) => {
+    setAnchorEventos(event.currentTarget);
+  };
+
+  const handleOpenFormatosMenu = (event) => {
+    setAnchorFormatos(event.currentTarget);
+  };
+
+  const handleOpenDepCanMenu = (event) => {
+    setAnchorDepCan(event.currentTarget);
+  };
+
   const handleCloseAdminMenu = () => {
     setAnchorElAdmin(null);
   };
@@ -159,6 +237,22 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseEquiposMenu = () => {
+    setAnchorEquipos(null);
+  };
+
+  const handleCloseEventosMenu = () => {
+    setAnchorEventos(null);
+  };
+
+  const handleCloseFormatosMenu = () => {
+    setAnchorFormatos(null);
+  };
+
+  const handleCloseDepCanMenu = () => {
+    setAnchorDepCan(null);
   };
 
   return (
@@ -259,6 +353,223 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navtexts.map((text) => {
+              if (text.text == "Deportivos y Canchas") {
+                return (
+                  <>
+                    <Button
+                      onClick={handleOpenDepCanMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      {text.text}
+                    </Button>
+                    <Menu
+                      id="menu-appbar-admin"
+                      anchorEl={anchorDepCan}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      open={Boolean(anchorDepCan)}
+                      onClose={handleCloseDepCanMenu}
+                      sx={{
+                        display: { xs: "block", md: "block" },
+                      }}
+                    >
+                      {depcanNavText.map((text) => {
+                        return (
+                          <Link
+                            to={text.to}
+                            key={text.to}
+                            className={styles.link}
+                          >
+                            <MenuItem onClick={handleCloseDepCanMenu}>
+                              <Typography textAlign="center">
+                                {text.text}
+                              </Typography>
+                            </MenuItem>
+                          </Link>
+                        );
+                      })}
+                    </Menu>
+                  </>
+                );
+              } else {
+                if (text.text == "Equipos") {
+                  return (
+                    <>
+                      <Button
+                        onClick={handleOpenEquiposMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        {text.text}
+                      </Button>
+                      <Menu
+                        id="menu-appbar-admin"
+                        anchorEl={anchorEquipos}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "left",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        open={Boolean(anchorEquipos)}
+                        onClose={handleCloseEquiposMenu}
+                        sx={{
+                          display: { xs: "block", md: "block" },
+                        }}
+                      >
+                        {equiposNavText.map((text) => {
+                          return (
+                            <Link
+                              to={text.to}
+                              key={text.to}
+                              className={styles.link}
+                            >
+                              <MenuItem onClick={handleCloseEquiposMenu}>
+                                <Typography textAlign="center">
+                                  {text.text}
+                                </Typography>
+                              </MenuItem>
+                            </Link>
+                          );
+                        })}
+                      </Menu>
+                    </>
+                  );
+                }
+              }
+              if (text.text == "Eventos deportivos") {
+                return (
+                  <>
+                    <Button
+                      onClick={handleOpenEventosMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      {text.text}
+                    </Button>
+                    <Menu
+                      id="menu-appbar-admin"
+                      anchorEl={anchorEventos}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      open={Boolean(anchorEventos)}
+                      onClose={handleCloseEventosMenu}
+                      sx={{
+                        display: { xs: "block", md: "block" },
+                      }}
+                    >
+                      {eventosNavText.map((text) => {
+                        return (
+                          <Link
+                            to={text.to}
+                            key={text.to}
+                            className={styles.link}
+                          >
+                            <MenuItem onClick={handleCloseEventosMenu}>
+                              <Typography textAlign="center">
+                                {text.text}
+                              </Typography>
+                            </MenuItem>
+                          </Link>
+                        );
+                      })}
+                    </Menu>
+                  </>
+                );
+              } else {
+                if (text.text == "Formatos") {
+                  return (
+                    <>
+                      <Button
+                        onClick={handleOpenFormatosMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        {text.text}
+                      </Button>
+                      <Menu
+                        id="menu-appbar-admin"
+                        anchorEl={anchorFormatos}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "left",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        open={Boolean(anchorFormatos)}
+                        onClose={handleCloseFormatosMenu}
+                        sx={{
+                          display: { xs: "block", md: "block" },
+                        }}
+                      >
+                        {formatosNavText.map((text) => {
+                          return (
+                            <Link
+                              to={text.to}
+                              key={text.to}
+                              className={styles.link}
+                            >
+                              <MenuItem onClick={handleCloseFormatosMenu}>
+                                <Typography textAlign="center">
+                                  {text.text}
+                                </Typography>
+                              </MenuItem>
+                            </Link>
+                          );
+                        })}
+                      </Menu>
+                    </>
+                  );
+                }
+              }
+              if (text.text == "Partidos" && text.text != "Admin") {
+                return (
+                  <Link key={text.to} to={text.to} className={styles.link}>
+                    <Button sx={{ my: 2, color: "white", display: "block" }}>
+                      {text.text}
+                    </Button>
+                  </Link>
+                );
+              }
+            })}
+          </Box>
+
+          <Box
+            sx={{ flexGrow: 0, display: "flex", flexDirection: "row-reverse" }}
+          >
+            {isLoading ? (
+              <span>Cargando...</span>
+            ) : (
+              <Tooltip title="Perfil">
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 1, color: "white" }}
+                >
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    styles={{ color: "white", fontSize: "2.5rem" }}
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
+            {navtexts.map((text) => {
               if (text.text === "Admin") {
                 return (
                   <>
@@ -304,34 +615,8 @@ function Navbar() {
                     </Menu>
                   </>
                 );
-              } else {
-                return (
-                  <Link key={text.to} to={text.to} className={styles.link}>
-                    <Button sx={{ my: 2, color: "white", display: "block" }}>
-                      {text.text}
-                    </Button>
-                  </Link>
-                );
               }
             })}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            {isLoading ? (
-              <span>Cargando...</span>
-            ) : (
-              <Tooltip title="Perfil">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: 1, color: "white" }}
-                >
-                  <FontAwesomeIcon
-                    icon={faCircleUser}
-                    styles={{ color: "white", fontSize: "2.5rem" }}
-                  />
-                </IconButton>
-              </Tooltip>
-            )}
             {user && (
               <Menu
                 sx={{ mt: "45px" }}

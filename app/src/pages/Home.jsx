@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEventos, useUser } from "@/hooks";
 import { useNavigate } from "react-router-dom";
 import { fetchPosts } from "@/services/posts";
 import { likePost } from "@/services/likes";
@@ -16,14 +16,10 @@ import Button from "@mui/material/Button";
 import { fetchEventosReales } from "@/services/eventos";
 
 export default function Home() {
-  const [eventos, setEventos] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    fetchEventosReales().then(({ eventos }) => {
-      console.log({ eventos });
-      setEventos(eventos);
-    });
-  }, []);
+  const { isOrganizador } = useUser();
+
+  const { eventos, error } = useEventos();
 
   return (
     <>
@@ -50,15 +46,16 @@ export default function Home() {
 
         <div className={style.flex}>
           <h2> Eventos deportivos </h2>
-          <Button
+          { isOrganizador && <Button
             variant="contained"
             onClick={() => navigate("/crear-evento-deportivo")}
             sx={{ height: 30, marginTop: 2 }}
           >
             Crear evento
-          </Button>
+          </Button>}
         </div>
         <div className={style.containerAnuncio}>
+          {error && <p> {error} </p>}
           {eventos &&
             eventos.map((evento, key) => {
               return (

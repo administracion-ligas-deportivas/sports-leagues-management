@@ -1,4 +1,6 @@
-const baseUrl = "/local-api";
+import { authService } from "./auth";
+
+const baseUrl = "/api/eventos";
 
 const fetchEventos = async () => {
   const response = await fetch(`${baseUrl}/eventos`);
@@ -7,7 +9,14 @@ const fetchEventos = async () => {
 };
 
 const fetchEventosReales = async () => {
-  const response = await fetch("/api/eventos");
+  const bearerToken = authService.getBearerToken();
+
+  const response = await fetch(baseUrl, {
+    headers: {
+      Authorization: bearerToken
+    }
+  });
+
   const data = await response.json();
   return data;
 };
