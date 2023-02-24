@@ -8,6 +8,7 @@
     "#src/*": "./src/*"
   },
   "scripts": {
+    "db:create": "sequelize-cli db:create",
     "dev:trace": "nodemon --trace-warnings src/index.js",
     "dev": "nodemon src/index.js",
     "format:fix": "npm run format && npm run lint:fix",
@@ -27,6 +28,7 @@
     "seed:run:production": "npm run seed:production -- db:seed --seed",
     "seed:undo:all:dev": "npm run seed:dev -- db:seed:undo:all",
     "seed:undo:all:production": "npm run seed:production -- db:seed:undo:all",
+    "seed:undo:all": "npm run seed:undo:all:dev && npm run seed:undo:all:production",
     "seed:undo:dev": "npm run seed:dev -- db:seed:undo --seed",
     "seed:undo:production": "npm run seed:production -- db:seed:undo --seed",
     "start": "node src/index.js",
