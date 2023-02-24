@@ -1,7 +1,7 @@
-const { getTimeStamps } = require("../fakeDataGenerators/timestamps");
+const { getFakeTimeStamps } = require("../fakeDataGenerators/timestamps");
 
-const getElementsWithTimestamps = (elements, isCamelCase = false) => {
-  const timestamps = getTimeStamps(isCamelCase);
+const getElementsWithFakeTimestamps = (elements, isCamelCase = false) => {
+  const timestamps = getFakeTimeStamps(isCamelCase);
 
   return elements.map((element) => {
     return {
@@ -12,5 +12,5 @@ const getElementsWithTimestamps = (elements, isCamelCase = false) => {
 };
 
 module.exports = {
-  getElementsWithTimestamps,
+  getElementsWithFakeTimestamps,
 };

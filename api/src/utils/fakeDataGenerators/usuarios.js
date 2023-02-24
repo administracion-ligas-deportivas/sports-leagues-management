@@ -2,7 +2,7 @@ const { faker } = require("@faker-js/faker");
 const { GENEROS } = require("#src/constants/usuarios.js");
 const { getOnlyDate } = require("../date");
 const { getRolIds } = require("#src/services/rol.js");
-const { getTimeStamps } = require("./timestamps");
+const { getFakeTimeStamps } = require("./timestamps");
 const { municipio } = require("#src/db/models/index.js");
 const { SALT_ROUNDS } = require("#src/constants/auth.js");
 const bcrypt = require("bcrypt");
@@ -40,7 +40,7 @@ const createRandomUser = async (
 ) => {
   const genero = faker.helpers.arrayElement(Object.values(GENEROS));
   const rolId = faker.helpers.arrayElement(rolIds || []);
-  const timestamps = getTimeStamps(false);
+  const timestamps = getFakeTimeStamps(false);
   const fechaNacimiento = getOnlyDate(faker.date.birthdate());
 
   const password = generateRandomPassword
