@@ -1,6 +1,7 @@
 const SCOPE_NAMES = {
   withNumberOfJugadores: "withNumberOfJugadores",
   withEncargado: "withEncargado",
+  withJugadores: "withJugadores",
   includeEverything: "includeEverything",
 };
 
@@ -36,6 +37,18 @@ const getScopesEquipo = (models, sequelize) => {
         },
       },
     },
+    withJugadores: {
+      name: SCOPE_NAMES.withJugadores,
+      scope: {
+        include: {
+          model: usuario,
+          as: "jugadores",
+          through: {
+            attributes: [],
+          },
+        },
+      },
+    },
     includeEverything: {
       name: SCOPE_NAMES.includeEverything,
       scope: {
@@ -61,14 +74,7 @@ const getScopesEquipo = (models, sequelize) => {
     },
   };
 
-  const { withNumberOfJugadores, withEncargado, includeEverything } =
-    SCOPES_EQUIPO;
-
-  const SCOPES_TO_INCLUDE = [
-    withNumberOfJugadores,
-    withEncargado,
-    includeEverything,
-  ];
+  const SCOPES_TO_INCLUDE = Object.values(SCOPES_EQUIPO);
 
   return { SCOPES_EQUIPO, SCOPES_TO_INCLUDE };
 };
