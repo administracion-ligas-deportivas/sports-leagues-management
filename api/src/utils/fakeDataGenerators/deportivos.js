@@ -2,7 +2,7 @@ const { faker } = require("@faker-js/faker");
 
 const { deportivo } = require("#src/db/models/index.js");
 const { getRandomDireccion } = require("./direccion");
-const { getTimeStamps } = require("./timestamps");
+const { getFakeTimeStamps } = require("./timestamps");
 
 let numberOfMunicipios = null;
 let deportivoIds = null;
@@ -28,7 +28,7 @@ const initDbData = async () => {
 };
 
 const createRandomDeportivo = async () => {
-  const timestamps = getTimeStamps(false);
+  const timestamps = getFakeTimeStamps(false);
 
   const {
     codigoPostal,
@@ -52,7 +52,7 @@ const createRandomDeportivo = async () => {
 };
 
 const createRandomCancha = async (deportivoId) => {
-  const timestamps = getTimeStamps(false);
+  const timestamps = getFakeTimeStamps(false);
 
   const cancha = {
     nombre: faker.name.fullName(),

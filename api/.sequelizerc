@@ -1,28 +1,15 @@
 require("dotenv").config();
+
+const { PROJECT_ROOT_PATH, DB_CONFIG_BASE_PATH } = require("./src/constants/sequelize");
 const { resolve } = require("path");
 const { faker } = require("@faker-js/faker");
 
 faker.setLocale("es_MX");
 
-const PROJECT_ROOT_PATH = "src";
-const DB_CONFIG_BASE_PATH = `${PROJECT_ROOT_PATH}/db`;
-
-const PATH_KEYS = ["models-path", "seeders-path", "migrations-path"];
-
-const pathsArray = PATH_KEYS.map((pathKey) => {
-  // Obtener el path del que vamos a obtener la dirección. P.ej: models,
-  // seeders, migrations
-  const path = pathKey.split("-")[0];
-
-  // { 'models-path': 'src/models' }
-  return { [pathKey]: `${DB_CONFIG_BASE_PATH}/${path}` };
-});
-
-const paths = Object.assign({}, ...pathsArray);
-
-// console.log({ paths });
-
 module.exports = {
   config: resolve(PROJECT_ROOT_PATH, "config/db.js"),
-  ...paths,
+  "models-path": resolve(DB_CONFIG_BASE_PATH, "models"),
+  "migrations-path": resolve(DB_CONFIG_BASE_PATH, "migrations"),
+  // El archivo de configuración de seeders lo indicaremos dependiendo de si lo
+  // ejecutamos en modo de desarrollo o producción.
 };

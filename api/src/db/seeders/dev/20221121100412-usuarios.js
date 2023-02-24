@@ -1,6 +1,6 @@
 "use strict";
 
-const { usuario: usuarioModel, domicilioUsuario } = require("../models");
+const { usuario: usuarioModel, domicilioUsuario } = require("../../models");
 const {
   createRandomDomicilioUsuario,
   initDbData,

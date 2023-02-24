@@ -1,6 +1,6 @@
 const { faker } = require("@faker-js/faker");
 
-const getTimeStamps = (isCamelCase = true) => {
+const getFakeTimeStamps = (isCamelCase = true) => {
   const createdAt = faker.date.past();
   const updatedAt = new Date(Date.now());
 
@@ -12,5 +12,5 @@ const getTimeStamps = (isCamelCase = true) => {
 };
 
 module.exports = {
-  getTimeStamps,
+  getFakeTimeStamps,
 };
