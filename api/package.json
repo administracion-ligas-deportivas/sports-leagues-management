@@ -18,6 +18,7 @@
     "migrate:up": "npx sequelize-cli db:migrate",
     "seed:all:dev": "npm run seed:dev -- db:seed:all",
     "seed:all:production": "npm run seed:production -- db:seed:all",
+    "seed:all": "npm run seed:all:production && npm run seed:all:dev",
     "seed:dev": "sequelize-cli --seeders-path src/db/seeders/dev",
     "seed:generate:dev": "npm run seed:dev -- seed:generate --name",
     "seed:generate:production": "npm run seed:production -- seed:generate --name",
