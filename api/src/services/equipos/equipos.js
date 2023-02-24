@@ -16,6 +16,12 @@ const getEquipoById = async (equipoId, ...scopes) => {
   return await equipo.scope(scopesToInclude).findByPk(equipoId);
 };
 
+const getEquipoByUuid = async (uuid, ...scopes) => {
+  return await equipo.scope(scopes).findOne({
+    where: { uuid },
+  });
+};
+
 const getEquiposByIds = async (equiposIds) => {
   const foundEquipos = await equipo.findAll({
     where: { id: { [Op.or]: equiposIds } },
@@ -65,4 +71,5 @@ module.exports = {
   isUsuarioEncargadoEquipo,
   getEquiposByIds,
   areEquiposTheSame,
+  getEquipoByUuid,
 };
