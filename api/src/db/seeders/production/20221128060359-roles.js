@@ -1,4 +1,5 @@
 "use strict";
+
 const { roles } = require("#src/data/roles.json");
 const { getElementsWithFakeTimestamps } = require("#src/utils/seeders/index.js");
 
