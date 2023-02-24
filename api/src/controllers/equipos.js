@@ -17,6 +17,20 @@ const getEquipoById = async (req, res) => {
   return res.json(foundEquipo);
 };
 
+const getJugadoresFromEquipo = async (req, res) => {
+  const { equipoId } = req.params;
+
+  const result = await equiposService.getJugadoresFromEquipo(equipoId);
+
+  if (!result?.nombre) {
+    return res.status(404).json({
+      error: "No se encontró el equipo.",
+    });
+  }
+
+  return res.json(result);
+};
+
 /**
  * TODO - Revisar que el jugador tenga el rol de USUARIO.
  */
@@ -50,7 +64,8 @@ const inscribirJugadorEnEquipo = async (req, res) => {
 };
 
 module.exports = {
-  getEquipos,
   getEquipoById,
+  getEquipos,
+  getJugadoresFromEquipo,
   inscribirJugadorEnEquipo,
 };

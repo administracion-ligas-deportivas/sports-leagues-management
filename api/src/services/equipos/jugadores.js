@@ -1,4 +1,5 @@
-const { getEquipoByUuid } = require("./equipos");
+const { SCOPE_NAMES } = require("#src/db/scopes/equipo.js");
+const { getEquipoByUuid, getEquipoById } = require("./equipos");
 
 /**
  *
@@ -12,6 +13,15 @@ const inscribirJugadorEnEquipo = async (equipoUuid, jugadorId) => {
   return await foundEquipo.addJugador(jugadorId);
 };
 
+const getJugadoresFromEquipo = async (equipoId) => {
+  const foundEquipo = await getEquipoById(equipoId, SCOPE_NAMES.withJugadores);
+
+  const { nombre, jugadores } = foundEquipo || {};
+
+  return { nombre, jugadores, total: jugadores?.length };
+};
+
 module.exports = {
   inscribirJugadorEnEquipo,
+  getJugadoresFromEquipo,
 };
