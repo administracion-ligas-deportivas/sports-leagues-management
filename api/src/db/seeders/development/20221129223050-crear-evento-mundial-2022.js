@@ -5,7 +5,7 @@ const {
   eventoDeportivo,
   usuario,
   equipo,
-} = require("../models");
+} = require("../../models");
 
 const {
   formatoMundial,

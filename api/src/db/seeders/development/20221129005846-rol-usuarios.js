@@ -2,7 +2,7 @@
 
 const { faker } = require("@faker-js/faker");
 const { getRolIds } = require("#src/services/rol.js");
-const { usuario } = require("../models");
+const { usuario } = require("../../models");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
