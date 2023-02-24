@@ -14,7 +14,7 @@ const {
 } = require("#src/data/mundial-2022/index.js");
 
 const {
-  getTimeStamps,
+  getFakeTimeStamps,
 } = require("#src/utils/fakeDataGenerators/timestamps.js");
 const {
   getRandomOrganizadorId,
@@ -36,7 +36,7 @@ const createFormatoMundial = async (organizadorId, transaction) => {
     TIPO_EVENTOS.LIGA
   );
 
-  const timestamps = getTimeStamps();
+  const timestamps = getFakeTimeStamps();
 
   const formatoWithTimestamps = {
     organizadorId,
@@ -109,7 +109,7 @@ const createEquipoFromEvento = async (equipoData, deporteId, transaction) => {
     nombre,
     deporteId,
     encargadoEquipoId: createdEncargado.id,
-    ...getTimeStamps(),
+    ...getFakeTimeStamps(),
   };
 
   const createdEquipo = await equipo.create(equipoWithTimestamps, {
@@ -147,7 +147,7 @@ const createEventoMundial = async (organizadorId, transaction) => {
     transaction
   );
 
-  const timestamps = getTimeStamps();
+  const timestamps = getFakeTimeStamps();
   const mundialWithTimestamps = {
     formatoEventoDeportivoId,
     organizadorId,

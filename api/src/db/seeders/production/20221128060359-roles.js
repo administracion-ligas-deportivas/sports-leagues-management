@@ -1,12 +1,12 @@
 "use strict";
 const { roles } = require("#src/data/roles.json");
-const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
+const { getElementsWithFakeTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const rolesWithTimestamps = getElementsWithTimestamps(roles);
+      const rolesWithTimestamps = getElementsWithFakeTimestamps(roles);
 
       await queryInterface.bulkInsert("rol", rolesWithTimestamps, {
         transaction,

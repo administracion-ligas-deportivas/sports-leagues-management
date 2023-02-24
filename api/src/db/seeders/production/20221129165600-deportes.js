@@ -1,13 +1,13 @@
 "use strict";
 
 const { deportes } = require("#src/data/deportes.json");
-const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
+const { getElementsWithFakeTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      const deportesWithTimestamp = getElementsWithTimestamps(deportes);
+      const deportesWithTimestamp = getElementsWithFakeTimestamps(deportes);
       await queryInterface.bulkInsert("deporte", deportesWithTimestamp, {
         transaction,
       });

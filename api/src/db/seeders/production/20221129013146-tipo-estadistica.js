@@ -1,13 +1,13 @@
 "use strict";
 const { tipoEstadisticas } = require("#src/data/tipoEstadisticas.json");
-const { getElementsWithTimestamps } = require("#src/utils/seeders/index.js");
+const { getElementsWithFakeTimestamps } = require("#src/utils/seeders/index.js");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     await queryInterface.sequelize.transaction(async (transaction) => {
       // Return without property 'deportes'
-      const estadisticas = getElementsWithTimestamps(tipoEstadisticas).map(
+      const estadisticas = getElementsWithFakeTimestamps(tipoEstadisticas).map(
         (estadistica) => {
           const { deportes, ...estadisticaWithoutDeportes } = estadistica;
           return estadisticaWithoutDeportes;
