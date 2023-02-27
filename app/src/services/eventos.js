@@ -24,7 +24,6 @@ const fetchEventosReales = async () => {
 const fetchEventoById = async (id) => {
   const response = await fetch(`/api/eventos/${id}`);
   const data = await response.json();
-  console.log({ data });
   return data;
 };
 

@@ -16,7 +16,6 @@ export function AcordionEquipo() {
   // const { jugadores, deleteJugador } = useJugadores();
 
   return equipos?.map((equipo, valor) => {
-    console.log(equipo);
     return (
       <Accordion key={valor}>
         <AccordionSummary
