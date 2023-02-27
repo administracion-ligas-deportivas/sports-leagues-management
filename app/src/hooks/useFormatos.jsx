@@ -1,12 +1,12 @@
-import { fetchFormatos } from "@/services/formatos";
 import { useEffect, useState } from "react";
+import { fetchFormatos } from "@/services/formatos";
 
 export function useFormatos() {
   const [formatos, setFormatos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchFormatos().then(( {formatos} ) => {
+    fetchFormatos().then(( { formatos } ) => {
       if (!formatos) {
         setError("No se encontraron formatos");
         return;
@@ -14,15 +14,15 @@ export function useFormatos() {
 
       setFormatos(formatos);
     })
-    .catch((error) => {
-      console.log({error});
-      setError(error);
-    });
+      .catch((error) => {
+        console.log({ error });
+        setError(error);
+      });
   }, []);
 
   useEffect(() => {
-    console.log({formatos, error});
-  }, [formatos, error])
+    console.log({ formatos, error });
+  }, [formatos, error]);
 
   return {
     formatos,

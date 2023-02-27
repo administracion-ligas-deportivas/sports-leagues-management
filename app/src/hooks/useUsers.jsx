@@ -1,5 +1,5 @@
-import { fetchUsuarios } from "@/services/usuariosSistema";
 import { useEffect, useState } from "react";
+import { fetchUsuarios } from "@/services/usuariosSistema";
 
 export function useUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -14,15 +14,15 @@ export function useUsuarios() {
 
       setUsuarios(usuarios);
     })
-    .catch((error) => {
-      console.log({error});
-      setError(error);
-    });
+      .catch((error) => {
+        console.log({ error });
+        setError(error);
+      });
   }, []);
 
   useEffect(() => {
     // console.log({usuarios, error});
-  }, [usuarios, error])
+  }, [usuarios, error]);
 
   return {
     usuarios,

@@ -1,12 +1,12 @@
-import { fetchEventosReales } from "@/services/eventos";
 import { useEffect, useState } from "react";
+import { fetchEventosReales } from "@/services/eventos";
 
 export function useEventos() {
   const [eventos, setEventos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchEventosReales().then(( {eventos} ) => {
+    fetchEventosReales().then(( { eventos } ) => {
       if (!eventos) {
         setError("No se encontraron eventos");
         return;
@@ -14,15 +14,15 @@ export function useEventos() {
 
       setEventos(eventos);
     })
-    .catch((error) => {
-      console.log({error});
-      setError(error);
-    });
+      .catch((error) => {
+        console.log({ error });
+        setError(error);
+      });
   }, []);
 
   useEffect(() => {
-    console.log({eventos, error});
-  }, [eventos, error])
+    console.log({ eventos, error });
+  }, [eventos, error]);
 
   return {
     eventos,
