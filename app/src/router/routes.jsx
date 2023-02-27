@@ -1,11 +1,12 @@
 import { ProtectedRoute } from "@/components/ProtectedRoutes/ProtectedRoute";
 import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedUser";
 import MainLayout from "@/Layouts/MainLayout";
+import { useUser } from "@/hooks/useUser";
 
 import {
   Loading,
   Register,
-  NuevaChancha,
+  AgregarCancha,
   Advise,
   AsignarRoles,
   CreateAdvise,
@@ -99,7 +100,7 @@ export const routes = [
       },
       {
         path: "/nueva-cancha",
-        element: <NuevaChancha />,
+        element: <AgregarCancha />,
       },
       {
         path: "/eventos-deportivos",

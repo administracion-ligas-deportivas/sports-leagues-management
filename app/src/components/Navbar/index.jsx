@@ -191,6 +191,8 @@ function Navbar() {
   const { logout } = useAuthProvider();
   const { user, isLoading } = useUser();
 
+  const {isAdmin} = useUser();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElAdmin, setAnchorElAdmin] = React.useState(null);
@@ -569,7 +571,8 @@ function Navbar() {
                 </IconButton>
               </Tooltip>
             )}
-            {navtexts.map((text) => {
+            {
+              isAdmin && navtexts.map((text) => {
               if (text.text === "Admin") {
                 return (
                   <>

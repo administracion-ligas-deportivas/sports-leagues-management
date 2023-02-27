@@ -24,15 +24,15 @@
         margin-left: 3em;
     }
 
-    .container .form {
-        padding: 10px;
+    .flexContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
     }
 
-    .container .formS {
-        padding: 10px;
-        width: 48%;
+    .input {
+        width: 100%;
     }
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -51,15 +51,12 @@
         background-color: rgb(243, 246, 250);
     }
 
-    .form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5em;
-        padding-top: .5em;
+    .flexContainer {
+        justify-content: space-between;
     }
 
-    .formS {
-        padding-top: .5em;
+    .input {
+        width: 100%;
     }
 
     .buttons {
