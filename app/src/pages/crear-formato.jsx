@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Stack, TextField, MenuItem } from "@mui/material";
 //import {AuthContext} from '../helpers/AuthContext';
-import styles from "@/styles/crear-formato.module.css";
+import styles from "@/styles/CrearFormato.module.css";
 
 export default function CrearFormato() {
   const sports = [
