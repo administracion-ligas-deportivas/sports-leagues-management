@@ -1,5 +1,5 @@
-import { GENEROS } from "@/constants/usuario";
 import { date, mixed, object, string } from "yup";
+import { GENEROS } from "@/constants/usuario";
 import { domicilioUsuarioSchema } from "./domicilioUsuarioSchema";
 
 // https://stackoverflow.com/a/60726477/13562806
