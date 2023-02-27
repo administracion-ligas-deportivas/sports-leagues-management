@@ -101,10 +101,6 @@ const allNavtexts = [
     text: "Eventos deportivos",
   },
   {
-    to: "/gestion-equipo-jugador",
-    text: "Gestion equipo jugador",
-  },
-  {
     to: "/registro-deportivo",
     text: "Registro deportivo",
   },
