@@ -1,5 +1,5 @@
-import { fetchEquipos } from "@/services/equipos";
 import { useEffect, useState } from "react";
+import { fetchEquipos } from "@/services/equipos";
 
 export function useEquipos() {
   const [equipos, setEquipos] = useState([]);
