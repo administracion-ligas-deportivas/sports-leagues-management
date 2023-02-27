@@ -1,40 +1,39 @@
-import { ProtectedRoute } from "@/components/ProtectedRoutes/ProtectedRoute";
-import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedUser";
-import MainLayout from "@/Layouts/MainLayout";
-import { useUser } from "@/hooks/useUser";
-
 import {
-  Loading,
-  Register,
-  AgregarCancha,
-  Advise,
-  AsignarRoles,
-  CreateAdvise,
-  CrearEventoDeportivo,
-  EnterSportsEvent,
-  EstadisticasPersonales,
-  GestionEquipoJugador,
-  // GestionTorneo,
-  Home,
-  NuevoArbitro,
-  Profile,
-  EventosDeportivos,
-  Login,
-  PageNotFound,
-  HomeAdmin,
-  GestionEventoDep,
   // GestionEquipoJugador,
-  RegistroDeportivo,
-  TraspasoEquipo,
-  RegistroEstadistico,
+  // GestionTorneo,
+  Advise,
+  AgregarCancha,
+  AsignarRoles,
+  CrearEventoDeportivo,
+  CrearFormato,
+  CreateAdvise,
+  EnterSportsEvent,
   EquiposEnSistema,
+  EstadisticasPersonales,
+  EventosDeportivos,
+  Formatos,
   GestionEquipo,
-  RegistroPagoFisico,
+  GestionEquipoJugador,
+  GestionEventoDep,
+  Home,
+  HomeAdmin,
+  Loading,
+  Login,
+  NuevoArbitro,
+  PageNotFound,
   PanelAdmin,
   PartidosEnSistema,
-  CrearFormato,
-  Formatos,
+  Profile,
+  Register,
+  RegistroDeportivo,
+  RegistroEstadistico,
+  RegistroPagoFisico,
+  TraspasoEquipo,
 } from "@/pages";
+
+import MainLayout from "@/Layouts/MainLayout";
+import { ProtectedRoute } from "@/components/ProtectedRoutes/ProtectedRoute";
+import { RedirectLoggedUser } from "@/components/ProtectedRoutes/RedirectLoggedUser";
 
 // https://reactrouter.com/en/main/route/route
 export const routes = [
@@ -105,11 +104,6 @@ export const routes = [
       {
         path: "/eventos-deportivos",
         element: <EventosDeportivos />,
-      },
-      {
-
-        path: "/gestion-equipo-jugador",
-        element: <GestionEquipoJugador />,
       },
       {
         path: "/home-admin",
