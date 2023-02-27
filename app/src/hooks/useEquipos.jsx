@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchEquipos } from "@/services/equipos";
+import { equiposService } from "@/services";
 
 export function useEquipos() {
   const [equipos, setEquipos] = useState([]);
 
   useEffect(() => {
-    fetchEquipos().then(({ equipos }) => {
-      console.log({ equipos });
+    equiposService.fetchEquipos().then(({ equipos }) => {
       setEquipos(equipos);
     });
   }, []);
