@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { fetchUsuarios } from "@/services/usuariosSistema";
+import { usuariosService } from "@/services";
 
 export function useUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchUsuarios().then(( usuarios ) => {
-      if (!usuarios) {
-        setError("No se encontraron usuarios");
-        return;
-      }
+    usuariosService.
+      fetchUsuarios()
+      .then(( usuarios ) => {
+        if (!usuarios) {
+          setError("No se encontraron usuarios");
+          return;
+        }
 
-      setUsuarios(usuarios);
-    })
+        setUsuarios(usuarios);
+      })
       .catch((error) => {
         console.log({ error });
         setError(error);
