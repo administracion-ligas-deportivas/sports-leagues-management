@@ -21,142 +21,33 @@ import {
   REGISTER_ADDRESS,
   REGISTER_FORM_FIELDS,
 } from "@/constants";
-import { Link, useNavigate } from "react-router-dom";
-import { capitalizeFirstLetter, getOnlyDate } from "@/utils";
-import { useEffect, useState } from "react";
+import { useEstados, useRegister } from "@/hooks";
+
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTime } from "luxon";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Link } from "react-router-dom";
 import { LoginSignupStyles } from "@/styles";
-import { registerSchema } from "@/validations";
-import { useEstados } from "@/hooks";
-import { useForm } from "react-hook-form";
-import { usuariosService } from "@/services";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { capitalizeFirstLetter } from "@/utils";
 
 function Signup() {
-  const {
-    register: registerProp,
+  const { 
+    currentEstado,
+    watchFechaNacimiento,
+    errors, 
     handleSubmit,
-    watch,
-    formState: { errors },
-    getValues,
-    setError,
-    // https://react-hook-form.com/api/useform/setvalue
-    setValue,
-  } = useForm({
-    resolver: yupResolver(registerSchema),
-  });
-  const navigate = useNavigate();
-  const watchEstadoId = watch("estadoId");
-  const watchMunicipioId = watch("municipioId");
-  const { estados, currentEstado, findMunicipiosEstado, resetCurrentEstado } =
-    useEstados();
-  const [selectedMunicipio, setSelectedMunicipio] = useState(null);
-  const [serverError, setServerError] = useState("");
+    registerField,
+    registerUser, 
+    selectedMunicipio,
+    serverError, 
+    setFieldErrors,
+    setValue
+  } = useRegister();
 
-  useEffect(() => {
-    if (!watchEstadoId) {
-      resetCurrentEstado();
-      setSelectedMunicipio(null);
-      return;
-    }
-
-    findMunicipiosEstado(watchEstadoId);
-    setValue("municipioId", null);
-  }, [watchEstadoId]);
-
-  useEffect(() => {
-    if (!watchMunicipioId && !currentEstado?.municipios) {
-      setSelectedMunicipio(null);
-      return;
-    }
-
-    const newSelectedMunicipio = currentEstado?.municipios.find(
-      (municipio) => municipio.id === watchMunicipioId
-    );
-
-    setSelectedMunicipio(newSelectedMunicipio ?? null);
-  }, [watchMunicipioId]);
-
-  const registerUser = async (userData) => {
-    console.log({ userData });
-    if (userData.password !== userData.confirmPassword) {
-      setError("confirmPassword", {
-        type: "focus",
-        message: "Las contraseñas no coinciden",
-      });
-      return;
-    }
-
-    const {
-      calle,
-      colonia,
-      codigoPostal,
-      numeroExterior,
-      numeroInterior,
-      municipioId,
-      fechaNacimiento,
-      ...rest
-    } = userData;
-
-    const formattedFechaNacimiento = getOnlyDate(fechaNacimiento);
-
-    const user = {
-      ...rest,
-      fechaNacimiento: formattedFechaNacimiento,
-      domicilio: {
-        calle,
-        colonia,
-        codigoPostal,
-        numeroExterior,
-        numeroInterior,
-        municipioId,
-      },
-    };
-
-    console.log({ user });
-
-    usuariosService
-      .createUser(user)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        setServerError(error);
-      });
-  };
-
-  const setFieldErrors = (prop, { setHelperText = true } = {}) => {
-    if (!errors[prop]) return null;
-
-    const hasProp = Object.hasOwn(errors, prop);
-
-    if (!hasProp) return null;
-
-    const props = {
-      error: hasProp,
-    };
-
-    if (setHelperText) {
-      props.helperText = errors?.[prop]?.message ?? null;
-    }
-
-    return props;
-  };
-
-  const register = (prop, { setErrors = true, setHelperText = true } = {}) => {
-    const fieldErrors = setErrors
-      ? { ...setFieldErrors(prop, { setHelperText }) }
-      : null;
-
-    return { ...registerProp(prop), ...fieldErrors };
-  };
+  const { estados } = useEstados();
 
   const imageClasses = [LoginSignupStyles.container, "hidden", "sm:flex"].join(" ");
 
-  // stepper
-  // stepper
   return (
     <section className={[LoginSignupStyles.mainContainerRegister]}>
       <section className={imageClasses}>
@@ -175,10 +66,9 @@ function Signup() {
         {REGISTER_FORM_FIELDS.password.map((field) => {
           return (
             <TextField
-              {...field}
               key={field.id}
               autoComplete="new-password"
-              {...register(field.name)}
+              {...registerField(field)}
               fullWidth
             />
           );
@@ -199,9 +89,8 @@ function Signup() {
             {REGISTER_FORM_FIELDS.text.map((field) => {
               return (
                 <TextField
-                  {...field}
                   key={field?.name}
-                  {...register(field.name)}
+                  {...registerField(field)}
                   fullWidth
                   sx={{ marginTop: "1.5em" }}
                 />
@@ -214,7 +103,7 @@ function Signup() {
                   labelId="genero"
                   name="genero"
                   label="Género"
-                  {...register("genero", { setHelperText: false })}
+                  {...registerField("genero", { setHelperText: false })}
                 >
                   {GENEROS.map((genero) => {
                     const capitalized = capitalizeFirstLetter(genero);
@@ -239,8 +128,8 @@ function Signup() {
                   label="Fecha de nacimiento"
                   inputFormat="DD/MM/YYYY"
                   defaultValue={DateTime.now()}
-                  {...register("fechaNacimiento")}
-                  value={watch("fechaNacimiento")}
+                  {...registerField("fechaNacimiento")}
+                  value={watchFechaNacimiento}
                   onChange={(newValue) => {
                     setValue("fechaNacimiento", newValue);
                   }}
@@ -264,8 +153,8 @@ function Signup() {
           <AccordionDetails>
             <Stack direction="row" spacing={2}>
               <Autocomplete
-                {...register(
-                  REGISTER_FORM_FIELDS.address.estado.id, 
+                {...registerField(
+                  REGISTER_FORM_FIELDS.address.estado.id,
                   { setErrors: false }
                 )}
                 fullWidth
@@ -287,7 +176,7 @@ function Signup() {
               />
 
               <Autocomplete
-                {...register(
+                {...registerField(
                   REGISTER_FORM_FIELDS.address.municipio.id, 
                   { setErrors: false }
                 )}
@@ -311,8 +200,9 @@ function Signup() {
               />
             </Stack>
             <TextField
-              {...REGISTER_FORM_FIELDS.address.calle}
-              {...register(REGISTER_FORM_FIELDS.address.calle.id)}
+              {...registerField(
+                REGISTER_FORM_FIELDS.address.calle,
+              )}
               fullWidth
               sx={{ marginTop: "1.5em" }}
             />
@@ -324,8 +214,7 @@ function Signup() {
                       addressProperty.map((field) => {
                         return (
                           <TextField
-                            {...register(field.id)}
-                            {...field}
+                            {...registerField(field,)}
                             fullWidth
                             key={field?.id}
                           />
