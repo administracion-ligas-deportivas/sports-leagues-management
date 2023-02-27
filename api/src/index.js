@@ -25,12 +25,12 @@ const SEQUELIZE_INITIAL_OPTIONS = {
 };
 
 const server = db.sequelize.sync(SEQUELIZE_INITIAL_OPTIONS).then(() => {
-  return app.listen(PORT, () => {
-    db.sequelize.options = {
-      ...db.sequelize.options,
-      logging: console.log,
-    };
+  db.sequelize.options = {
+    ...db.sequelize.options,
+    logging: console.log,
+  };
 
+  return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 });
