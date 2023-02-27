@@ -1,43 +1,33 @@
-import styles from "../styles/GestionTorneo.module.css";
-import { useEffect } from "react";
-/* ----------------------------------- MUI ---------------------------------- */
 import {
-  Button,
-  Stack,
   Autocomplete,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { TextField } from "@mui/material";
+import { DatePicker, TimePicker } from "@mui/x-date-pickers";
+import { useEffect , useState } from "react";
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { useEquipos } from "@/hooks/useEquipos";
 import { AcordionEquipo } from "@/components/AcordionEquipo";
-import { useState } from "react";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { eventosService } from "@/services";
+import styles from "../styles/GestionTorneo.module.css";
 import { useParams } from "react-router-dom";
-import { fetchEventoById } from "@/services/eventos";
 /* ----------------------------------- MUI ---------------------------------- */
 // import { DateTime } from "luxon";
 
 export default function GestionEventoDep() {
-  const { equipos } = useEquipos();
   const { eventoId } = useParams();
   const [evento, setEvento] = useState({});
   const [equiposBD, setEquiposBD] = useState([]);
-  console.log({ eventoId });
 
   useEffect(() => {
-    fetchEventoById(eventoId)
+    eventosService
+      .fetchEventoById(eventoId)
       .then((evento) => {
-        console.log({ evento });
         setEvento(evento);
         setEquiposBD(
           evento.equipos.map((equipo) => {
@@ -53,9 +43,9 @@ export default function GestionEventoDep() {
       });
   }, []);
 
-  //Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
-  function randomString(length, chars) {
-    //Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
+  // Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
+  /* function randomString(length, chars) {
+    // Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
     let mask = "";
     if (chars.indexOf("a") > -1) mask += "abcdefghijklmnopqrstuvwxyz";
     if (chars.indexOf("A") > -1) mask += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -65,10 +55,10 @@ export default function GestionEventoDep() {
     for (let i = length; i > 0; --i)
       result += mask[Math.floor(Math.random() * mask.length)];
     return result;
-  }
+  } */
 
-  const codigoAcceso = randomString(16, "#aA!");
-  //console.log(randomString(16, "#aA!"));
+  // const codigoAcceso = randomString(16, "#aA!");
+  // console.log(randomString(16, "#aA!"));
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,7 +66,7 @@ export default function GestionEventoDep() {
   const [openPago, setOpenPago] = useState(false);
   const handleOpenPago = () => setOpenPago(true);
   const handleClosePago = () => setOpenPago(false);
-  //const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
+  // const [fechaNacimiento, setFechaNacimiento] = useState(DateTime.now());
 
   const style = {
     position: "absolute",
@@ -287,7 +277,7 @@ export default function GestionEventoDep() {
                           fullWidth
                           // margin="normal"
                           id="evento-actual"
-                          //sx={{ width: 1000 }}
+                          // sx={{ width: 1000 }}
                           // options={usuarios.map((option) => option.title)}
                           options={equiposBD}
                           renderInput={(params) => (
@@ -304,7 +294,7 @@ export default function GestionEventoDep() {
                         <Autocomplete
                           fullWidth
                           id="evento-actual"
-                          //sx={{ width: 1000 }}
+                          // sx={{ width: 1000 }}
                           // options={usuarios.map((option) => option.title)}
                           options={equiposBD}
                           renderInput={(params) => (
@@ -346,7 +336,7 @@ export default function GestionEventoDep() {
                         <Autocomplete
                           fullWidth
                           id="evento-actual"
-                          //sx={{ width: 1000 }}
+                          // sx={{ width: 1000 }}
                           // options={usuarios.map((option) => option.title)}
                           options={canchas}
                           renderInput={(params) => (
@@ -377,7 +367,7 @@ export default function GestionEventoDep() {
                 <Button variant="contained">Ingresar</Button>
               </div>
               <div>
-                <Button variant="contained" color="error" onclick={handleClose}>
+                <Button variant="contained" color="error" onClick={handleClose}>
                   Cancelar
                 </Button>
               </div>

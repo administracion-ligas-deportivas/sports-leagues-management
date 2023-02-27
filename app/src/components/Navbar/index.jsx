@@ -1,26 +1,24 @@
-import * as React from "react";
-import { useAuthProvider } from "@/context/AuthContext";
-import { useUser } from "@/hooks/useUser";
-import { Link } from "react-router-dom";
-import styles from "./Navbar.module.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMedal, faCircleUser } from "@fortawesome/free-solid-svg-icons";
-
-/*----------------------MUI----------------------------*/
-import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
 import {
   AppBar,
   Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  Container,
-  Tooltip,
-  MenuItem,
   Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+  Typography,
 } from "@mui/material";
+import { faCircleUser, faMedal } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import styles from "./Navbar.module.css";
+import { useAuthProvider } from "@/context/AuthContext";
+import { useUser } from "@/hooks/useUser";
 
 const navtexts = [
   {
@@ -36,6 +34,7 @@ const navtexts = [
     text: "Formatos",
   },
   {
+    to: "/deportivos-y-canchas",
     text: "Deportivos y Canchas",
   },
 
@@ -191,15 +190,15 @@ function Navbar() {
   const { logout } = useAuthProvider();
   const { user, isLoading } = useUser();
 
-  const {isAdmin} = useUser();
+  const { isAdmin } = useUser();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [anchorElAdmin, setAnchorElAdmin] = React.useState(null);
-  const [anchorEquipos, setAnchorEquipos] = React.useState(null);
-  const [anchorEventos, setAnchorEventos] = React.useState(null);
-  const [anchorFormatos, setAnchorFormatos] = React.useState(null);
-  const [anchorDepCan, setAnchorDepCan] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElAdmin, setAnchorElAdmin] = useState(null);
+  const [anchorEquipos, setAnchorEquipos] = useState(null);
+  const [anchorEventos, setAnchorEventos] = useState(null);
+  const [anchorFormatos, setAnchorFormatos] = useState(null);
+  const [anchorDepCan, setAnchorDepCan] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -355,7 +354,7 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navtexts.map((text) => {
-              if (text.text == "Deportivos y Canchas") {
+              if (text.text === "Deportivos y Canchas") {
                 return (
                   <>
                     <Button
@@ -401,7 +400,7 @@ function Navbar() {
                   </>
                 );
               } else {
-                if (text.text == "Equipos") {
+                if (text.text === "Equipos") {
                   return (
                     <>
                       <Button
@@ -448,7 +447,7 @@ function Navbar() {
                   );
                 }
               }
-              if (text.text == "Eventos deportivos") {
+              if (text.text === "Eventos deportivos") {
                 return (
                   <>
                     <Button
@@ -494,7 +493,7 @@ function Navbar() {
                   </>
                 );
               } else {
-                if (text.text == "Formatos") {
+                if (text.text === "Formatos") {
                   return (
                     <>
                       <Button
@@ -541,7 +540,7 @@ function Navbar() {
                   );
                 }
               }
-              if (text.text == "Partidos" && text.text != "Admin") {
+              if (text.text === "Partidos" && text.text !== "Admin") {
                 return (
                   <Link key={text.to} to={text.to} className={styles.link}>
                     <Button sx={{ my: 2, color: "white", display: "block" }}>
@@ -550,6 +549,7 @@ function Navbar() {
                   </Link>
                 );
               }
+              return (<></>);
             })}
           </Box>
 
@@ -573,53 +573,55 @@ function Navbar() {
             )}
             {
               isAdmin && navtexts.map((text) => {
-              if (text.text === "Admin") {
-                return (
-                  <>
-                    <Button
-                      onClick={handleOpenAdminMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      {text.text}
-                    </Button>
-                    <Menu
-                      id="menu-appbar-admin"
-                      anchorEl={anchorElAdmin}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
-                      keepMounted
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left",
-                      }}
-                      open={Boolean(anchorElAdmin)}
-                      onClose={handleCloseAdminMenu}
-                      sx={{
-                        display: { xs: "block", md: "block" },
-                      }}
-                    >
-                      {allNavtexts.map((text) => {
-                        return (
-                          <Link
-                            to={text.to}
-                            key={text.to}
-                            className={styles.link}
-                          >
-                            <MenuItem onClick={handleCloseAdminMenu}>
-                              <Typography textAlign="center">
-                                {text.text}
-                              </Typography>
-                            </MenuItem>
-                          </Link>
-                        );
-                      })}
-                    </Menu>
-                  </>
-                );
-              }
-            })}
+                if (text.text === "Admin") {
+                  return (
+                    <>
+                      <Button
+                        onClick={handleOpenAdminMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        {text.text}
+                      </Button>
+                      <Menu
+                        id="menu-appbar-admin"
+                        anchorEl={anchorElAdmin}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "left",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        open={Boolean(anchorElAdmin)}
+                        onClose={handleCloseAdminMenu}
+                        sx={{
+                          display: { xs: "block", md: "block" },
+                        }}
+                      >
+                        {allNavtexts.map((text) => {
+                          return (
+                            <Link
+                              to={text.to}
+                              key={text.to}
+                              className={styles.link}
+                            >
+                              <MenuItem onClick={handleCloseAdminMenu}>
+                                <Typography textAlign="center">
+                                  {text.text}
+                                </Typography>
+                              </MenuItem>
+                            </Link>
+                          );
+                        })}
+                      </Menu>
+                    </>
+                  );
+                }
+                return (<></>);
+              })
+            }
             {user && (
               <Menu
                 sx={{ mt: "45px" }}
