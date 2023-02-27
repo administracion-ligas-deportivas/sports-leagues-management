@@ -8,4 +8,9 @@ const fetchJugadores = async () => {
 
 const deleteJugador = async (id) => {};
 
-export { fetchJugadores, deleteJugador };
+const jugadoresService = {
+  fetchJugadores,
+  deleteJugador,
+};
+
+export { jugadoresService, fetchJugadores, deleteJugador };

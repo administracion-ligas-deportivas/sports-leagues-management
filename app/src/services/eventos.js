@@ -30,4 +30,11 @@ const fetchEventoById = async (id) => {
 
 const deleteEvento = async (id) => {};
 
-export { fetchEventos, deleteEvento, fetchEventosReales, fetchEventoById };
+const eventosService = {
+  deleteEvento,
+  fetchEventoById,
+  fetchEventos,
+  fetchEventosReales,
+};
+
+export { eventosService, fetchEventos, deleteEvento, fetchEventosReales, fetchEventoById };

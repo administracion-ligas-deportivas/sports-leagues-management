@@ -12,4 +12,9 @@ const fetchMunicipiosEstado = async (estadoId) => {
   return data;
 };
 
-export { fetchEstados, fetchMunicipiosEstado };
+const estadosService = {
+  fetchEstados,
+  fetchMunicipiosEstado,
+};
+
+export { estadosService, fetchEstados, fetchMunicipiosEstado };

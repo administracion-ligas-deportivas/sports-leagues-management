@@ -8,4 +8,13 @@ const fetchEquipos = async () => {
 
 const deleteEquipo = async (id) => {};
 
-export { fetchEquipos, deleteEquipo };
+const equiposService = {
+  fetchEquipos,
+  deleteEquipo,
+};
+
+export { 
+  equiposService,
+  fetchEquipos, 
+  deleteEquipo 
+};
