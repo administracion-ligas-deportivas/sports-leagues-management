@@ -13,6 +13,7 @@ import { useFormatos } from "@/hooks/useFormatos";
 
 export default function Formatos() {
   const { formatos } = useFormatos();
+  console.log(formatos);
 
   return (
     <>
@@ -36,7 +37,7 @@ export default function Formatos() {
                 <AccordionDetails>
                   <div className={styles.interlineado}>
                     <h3>Nombre: {formato.nombre}</h3>
-                    {/* <h3>Crado por: {formato.nombre}</h3> */}
+                    <h3>Crado por: {formato.nombre}</h3>
                     <h4>Deporte: {formato.deporte.nombre}</h4>
                     <h4>
                       Tipo de evento deportivo: {formato.tipoEventoDeportivo}
