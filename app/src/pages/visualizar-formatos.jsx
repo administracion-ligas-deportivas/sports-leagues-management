@@ -1,11 +1,7 @@
 import React from "react";
 import styles from "@/styles/visualizarFormatos.module.css";
 import {
-  Typography,
   Stack,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -20,7 +16,11 @@ export default function Formatos() {
       <div className={styles.container}>
         <h1>Formatos</h1>
         <Stack direction="column" spacing={2} className={styles.rectangle}>
-          {formatos.map((formato, key) => {
+        {
+          formatos.length === 0 ? (
+            <p>No hay formatos</p>
+          ) : 
+          formatos.map((formato, key) => {
             console.log(formato);
             return (
               <Accordion key={key}>
