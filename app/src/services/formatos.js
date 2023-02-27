@@ -1,7 +1,7 @@
-const baseUrl = "/api";
+const baseUrl = "/api/formatos";
 
 const fetchFormatos = async () => {
-  const response = await fetch(`${baseUrl}/formatos`);
+  const response = await fetch(`${baseUrl}`);
   const data = await response.json();
   return data;
 };

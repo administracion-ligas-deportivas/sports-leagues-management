@@ -23,10 +23,23 @@ export function useEstados() {
     setEstados(sortedEstados);
   }, [estados]);
 
+  const findMunicipio = (municipioId) => {
+    console.log("municipioId", municipioId);
+    console.log("Estado actual", currentEstado);
+    
+    const foundMunicipio = currentEstado.municipios.find(
+      (municipio) => municipio.id === municipioId
+    );
+
+    console.log("municipio", { foundMunicipio });
+
+    return foundMunicipio;
+  };
+
   const findMunicipiosEstado = async (estadoId) => {
     const foundEstado = estados.find((estado) => estado.id === estadoId);
 
-    console.log({ foundEstado });
+    console.log("estado", { foundEstado });
 
     // No volver a hacer petición al servidor si el estado ya tiene municipios.
     if (!foundEstado || foundEstado?.municipios?.length) return;
@@ -51,6 +64,7 @@ export function useEstados() {
     estados,
     currentEstado,
     findMunicipiosEstado,
+    findMunicipio,
     resetCurrentEstado,
   };
 }
