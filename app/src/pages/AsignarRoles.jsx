@@ -12,11 +12,21 @@ import {
   RadioGroup,
 } from "@mui/material";
 import styles from "@/styles/AsignarRoles.module.css";
-import { useJugadores } from "@/hooks/useJugadores";
+import { useUsuarios } from "@/hooks/useUsers";
 
 export default function AsignarRoles() {
-  const { jugadores } = useJugadores();
+  const { usuarios } = useUsuarios();
+  console.log(usuarios);
 
+  const jugadores = usuarios?.map((usuario) => {
+    return {
+      id: usuario?.id,
+      nombre: usuario?.nombre,
+      apellido: usuario?.apellido
+    };
+  });
+
+  console.log(jugadores);
   return (
     <>
       <div className={styles.container}>
@@ -25,7 +35,7 @@ export default function AsignarRoles() {
           <h2>Asignar rol a los usuarios</h2>
           <Typography>
             {" "}
-            Por favor ingrese el nombre del usurio y seleccione el rol que le
+            Por favor seleccione el nombre de usuario y el rol que le
             quiere asignar{" "}
           </Typography>
           <Stack direction="row" spacing={10}>
@@ -34,7 +44,7 @@ export default function AsignarRoles() {
               sx={{ width: 700 }}
               options={jugadores.map((option) => option.nombre +' '+ option.apellido)}
               renderInput={(params) => (
-                <TextField {...params} label="Buscar Usuario" />
+                <TextField {...params} label="Buscar usuario" />
               )}
             />
             <FormControl>

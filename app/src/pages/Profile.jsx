@@ -10,15 +10,16 @@ import {
   // DateTimePicker
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { fetchUser } from "@/services/usuarios";
 import { useUser } from "@/hooks/useUser";
+import { useEstados } from "@/hooks/useEstados";
 
 export default function EditarPerfil() {
   const { user } = useUser();
-  const { nombre, apellido, fechaNacimiento, correo, numeroTelefonico } = user;
-
-  const { id } = useParams();
+  const { nombre, apellido, fechaNacimiento, correo, telefono, domicilioUsuario } = user;
+  // const { id } = useParams();
+  console.log(domicilioUsuario.municipioId);
+  const municipio = useEstados().findMunicipio(domicilioUsuario.municipioId);
+  console.log(municipio);
 
   return (
     <>
@@ -62,19 +63,9 @@ export default function EditarPerfil() {
                 fullWidth
                 id="fechaNacimiento"
                 label="Fecha de Nacimiento"
-                value=""
+                value={fechaNacimiento}
                 margin="normal"
               />
-              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker
-                  renderInput={(props) => <TextField {...props} />}
-                  label="DateTimePicker"
-                  value={value}
-                  onChange={(newValue) => {
-                    setValue(newValue);
-                  }}
-                />
-              </LocalizationProvider> */}
             </div>
             <div className={styles.input}>
               <TextField
@@ -97,7 +88,7 @@ export default function EditarPerfil() {
                 fullWidth
                 id="numero"
                 label="Número de Teléfono"
-                value="(55) 5555-5555"
+                value={telefono}
                 margin="normal"
               />
             </div>
@@ -109,15 +100,19 @@ export default function EditarPerfil() {
                 fullWidth
                 id="direccion"
                 label="Calle"
+                value={domicilioUsuario.calle}
                 margin="normal"
+                InputLabelProps={{ shrink: true }}
               />
             </div>
             <div className={styles.input}>
               <TextField
                 fullWidth
                 id="colonia"
-                label="Colonia"
+                label={"Colonia"}
+                value={domicilioUsuario.colonia}
                 margin="normal"
+                InputLabelProps={{ shrink: true }}
               />
             </div>
           </div>
@@ -127,18 +122,34 @@ export default function EditarPerfil() {
                 fullWidth
                 id="num-ext"
                 label="Núm. Exterior"
+                value={domicilioUsuario.numeroExterior}
                 type="number"
                 margin="normal"
+                InputLabelProps={{ shrink: true }}
               />
             </div>
             <div className={styles.input2}>
-              <TextField
-                fullWidth
-                id="num-int"
-                label="Núm. interior"
-                type="number"
-                margin="normal"
-              />
+              {domicilioUsuario.numeroInterior ? (
+                <TextField
+                  fullWidth
+                  id="num-int"
+                  label="Núm. interior"
+                  type="number"
+                  value={domicilioUsuario.numeroInterior}
+                  margin="normal"
+                  InputLabelProps={{ shrink: true }}
+                />
+                ) :
+                (
+                <TextField
+                  fullWidth
+                  id="num-int"
+                  label="Núm. interior"
+                  type="number"
+                  margin="normal"
+                  disabled
+                />
+                )}
             </div>
             <div className={styles.input}>
               <TextField
@@ -146,19 +157,30 @@ export default function EditarPerfil() {
                 id="cp"
                 label="Código Postal"
                 type="number"
+                value={domicilioUsuario.codigoPostal}
+                InputLabelProps={{ shrink: true }}
                 margin="normal"
               />
             </div>
           </div>
           <div className={styles.flexContainer}>
             <div className={styles.input}>
-              <TextField fullWidth id="estado" label="Estado" margin="normal" />
+              <TextField 
+                fullWidth 
+                id="estado"
+                value={domicilioUsuario.estado}
+                InputLabelProps={{ shrink: true }}
+                label="Estado"
+                margin="normal"
+              />
             </div>
             <div className={styles.input}>
               <TextField
                 fullWidth
                 id="municipio"
                 label="Municipio"
+                value={domicilioUsuario.municipio}
+                InputLabelProps={{ shrink: true }}
                 margin="normal"
               />
             </div>

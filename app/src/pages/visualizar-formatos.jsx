@@ -1,11 +1,7 @@
 import React from "react";
 import styles from "@/styles/visualizarFormatos.module.css";
 import {
-  Typography,
   Stack,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -13,13 +9,18 @@ import { useFormatos } from "@/hooks/useFormatos";
 
 export default function Formatos() {
   const { formatos } = useFormatos();
+  console.log(formatos);
 
   return (
     <>
       <div className={styles.container}>
         <h1>Formatos</h1>
         <Stack direction="column" spacing={2} className={styles.rectangle}>
-          {formatos.map((formato, key) => {
+        {
+          formatos.length === 0 ? (
+            <p>No hay formatos</p>
+          ) : 
+          formatos.map((formato, key) => {
             console.log(formato);
             return (
               <Accordion key={key}>
@@ -36,7 +37,7 @@ export default function Formatos() {
                 <AccordionDetails>
                   <div className={styles.interlineado}>
                     <h3>Nombre: {formato.nombre}</h3>
-                    {/* <h3>Crado por: {formato.nombre}</h3> */}
+                    <h3>Crado por: {formato.nombre}</h3>
                     <h4>Deporte: {formato.deporte.nombre}</h4>
                     <h4>
                       Tipo de evento deportivo: {formato.tipoEventoDeportivo}

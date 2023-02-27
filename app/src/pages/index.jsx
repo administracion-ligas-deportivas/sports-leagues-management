@@ -1,5 +1,5 @@
 import Register from "@/pages/Register";
-import NuevaChancha from "@/pages/AgregarCancha";
+import AgregarCancha from "@/pages/agregarCancha";
 import Advise from "@/pages/Advise";
 import AsignarRoles from "@/pages/AsignarRoles";
 import CreateAdvise from "@/pages/CreateAdvise";
@@ -35,7 +35,7 @@ export {
   PartidosEnSistema,
   Loading,
   Register,
-  NuevaChancha,
+  AgregarCancha,
   Advise,
   AsignarRoles,
   CreateAdvise,
