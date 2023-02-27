@@ -11,7 +11,6 @@ export function useUser() {
     authService.authenticateLoggedUser
   );
 
-  console.log({ data });
   // const mutateUser = useCallback((user) => mutate(user), [mutate]);
 
   const [user, setUser] = useState(null);
@@ -36,7 +35,7 @@ export function useUser() {
     setIsAdmin(rol === ROLES.ADMIN);
   }, [rol]);
 
-  console.log({ rol,user, error });
+  // console.log({ rol,user, error });
 
   return {
     user: error ? null : data?.user,
