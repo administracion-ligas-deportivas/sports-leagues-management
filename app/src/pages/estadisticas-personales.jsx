@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Button, TextField } from "@mui/material";
 import UserIcon from "@/components/Icon";
-import styles from "@/styles/estadisticas-personales.module.css";
+import styles from "@/styles/EstadisticasPersonales.module.css";
 
 export default function EstadisticasPersonales() {
   return (
