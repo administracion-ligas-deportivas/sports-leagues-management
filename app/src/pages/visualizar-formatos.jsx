@@ -9,26 +9,6 @@ import { useFormatos } from "@/hooks/useFormatos";
 
 export default function Formatos() {
   const { formatos } = useFormatos();
-  // const {formatos} = [
-  //   {
-  //     nombre: "Formato 1",
-  //     descripcion: "Descripcion 1",
-  //     maximoEquipos: 10,
-  //     tipoEventoDeportivo: "Evento deportivo 1",
-  //     deporte: {
-  //       nombre: "Deporte 1",
-  //     },
-  //   },
-  //   {
-  //     nombre: "Formato 2",
-  //     descripcion: "Descripcion 2",
-  //     maximoEquipos: 20,
-  //     tipoEventoDeportivo: "Evento deportivo 2",
-  //     deporte: {
-  //       nombre: "Deporte 2",
-  //     },
-  //   },
-  // ];
   console.log(formatos);
 
   return (
@@ -57,7 +37,7 @@ export default function Formatos() {
                 <AccordionDetails>
                   <div className={styles.interlineado}>
                     <h3>Nombre: {formato.nombre}</h3>
-                    {/* <h3>Crado por: {formato.nombre}</h3> */}
+                    <h3>Crado por: {formato.nombre}</h3>
                     <h4>Deporte: {formato.deporte.nombre}</h4>
                     <h4>
                       Tipo de evento deportivo: {formato.tipoEventoDeportivo}
