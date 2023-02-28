@@ -8,6 +8,7 @@ export * from "./useEventos";
 export * from "./useFormatos";
 export * from "./useJugadores";
 export * from "./useModal";
+export * from "./usePartidos";
 export * from "./useRegister";
 export * from "./useUser";
 export * from "./useUsers";
