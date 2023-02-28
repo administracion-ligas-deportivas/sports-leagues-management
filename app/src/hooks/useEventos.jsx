@@ -16,25 +16,25 @@ export function useEventos(id) {
   );
 
   const {
-    data: eventos,
+    data,
     error,
     mutate: mutateEventos,
     isLoading: isLoadingEventos
   } = useSWR(
     // https://swr.vercel.app/docs/conditional-fetching
-    id === false && ROUTE_PATHS.eventos,
+    !id && ROUTE_PATHS.eventos,
     eventosService.fetchEventosReales
   );
 
   useEffect(() => {
-    console.log({ eventos, evento, eventoError, error });
-  }, [eventos, evento, eventoError, error]);
+    console.log({ data, evento, eventoError, error });
+  }, [data, evento, eventoError, error]);
 
   return {
     error,
     evento,
     eventoError,
-    eventos,
+    eventos: data?.eventos,
     isLoadingEvento,
     mutateEvento,
     mutateEventos,
