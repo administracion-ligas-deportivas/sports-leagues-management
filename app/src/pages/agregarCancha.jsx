@@ -4,7 +4,6 @@ import { AgregarCanchaStyles } from "@/styles";
 import { useDeportivos } from "@/hooks/useDeportivos";
 import { CANCHAS_FORM_FIELDS } from "@/constants";
 import { useCanchas } from "@/hooks/useCanchas";
-import { width } from "@mui/system";
 import { Link } from "react-router-dom";
 // import { canchasSchema } from "@/validations/canchasSchema";
 

@@ -2,7 +2,6 @@ import { useCustomForm, useEstados } from "..";
 import { useEffect, useState } from "react";
 import { deportivoSchema } from "@/validations";
 import { deportivosService } from "@/services";
-import { useNavigate } from "react-router-dom";
 
 export const useDeportivosForm = () => {
   const {
@@ -13,7 +12,6 @@ export const useDeportivosForm = () => {
     ...form
   } = useCustomForm(deportivoSchema);
 
-  const navigate = useNavigate();
   const watchEstadoId = watch("estadoId");
   const watchMunicipioId = watch("municipioId");
 
