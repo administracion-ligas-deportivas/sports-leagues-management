@@ -6,8 +6,8 @@ export const deportivoSchema = object({
   nombre: string().required("Nombre requerido"),
   calle: string().required("Calle requerida"),
   colonia: string().required("Colonia requerida"),
-  codigoPostal: string().required("Código postal requerido"),
-  numeroExterior: string().required("Número exterior requerido"),
-  numeroInterior: string(),
+  codigoPostal: number().required("Código postal requerido"),
+  numeroExterior: number().required("Número exterior requerido"),
+  numeroInterior: number(),
   municipioId: number().transform(transformNaN).required("Municipio requerido"),
 });

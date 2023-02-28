@@ -1,24 +1,21 @@
-import { useCustomForm, useEstados } from ".";
+import { useCustomForm, useEstados} from ".";
 import { useEffect, useState } from "react";
-import { getOnlyDate } from "@/utils";
-import { registerSchema } from "@/validations";
+import { deportivoSchema } from "@/validations";
 import { useNavigate } from "react-router-dom";
-import { usuariosService } from "@/services";
+import { deportivosService } from "@/services";
 
-export const useRegister = () => {
+export const useDep = () => {
   const {
     watch,
     // https://react-hook-form.com/api/useform/setvalue
     setValue,
     setError,
     ...form
-  } = useCustomForm(registerSchema);
-  
+  } = useCustomForm(deportivoSchema);
 
   const navigate = useNavigate();
   const watchEstadoId = watch("estadoId");
   const watchMunicipioId = watch("municipioId");
-  const watchFechaNacimiento = watch("fechaNacimiento");
 
   const { 
     currentEstado, 
@@ -53,46 +50,34 @@ export const useRegister = () => {
     setSelectedMunicipio(newSelectedMunicipio ?? null);
   }, [watchMunicipioId]);
 
-  const registerUser = async (userData) => {
+  const registerDep = async (userData) => {
     console.log({ userData });
-    if (userData.password !== userData.confirmPassword) {
-      setError("confirmPassword", {
-        type: "focus",
-        message: "Las contraseñas no coinciden",
-      });
-      return;
-    }
-
     const {
+      nombre,
       calle,
       colonia,
       codigoPostal,
       numeroExterior,
       numeroInterior,
       municipioId,
-      fechaNacimiento,
       ...rest
     } = userData;
 
-    const formattedFechaNacimiento = getOnlyDate(fechaNacimiento);
-
-    const user = {
+    const deportivo = {
       ...rest,
-      fechaNacimiento: formattedFechaNacimiento,
-      domicilio: {
-        calle,
-        colonia,
-        codigoPostal,
-        numeroExterior,
-        numeroInterior,
-        municipioId,
-      },
+      nombre,
+      calle,
+      colonia,
+      codigoPostal,
+      numeroExterior,
+      numeroInterior,
+      municipioId
     };
 
-    console.log({ user });
+    console.log({ deportivo });
 
-    usuariosService
-      .createUser(user)
+    deportivosService
+      .createDeportivo(deportivo)
       .then(() => {
         navigate("/");
       })
@@ -102,12 +87,11 @@ export const useRegister = () => {
   };
 
   return {
-    registerSchema,
-    registerUser,
+    deportivoSchema,
+    registerDep,
     serverError,
     currentEstado,
     selectedMunicipio,
-    watchFechaNacimiento,
     setValue,
     ...form,
   };

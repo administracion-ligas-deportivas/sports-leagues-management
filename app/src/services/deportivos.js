@@ -27,10 +27,17 @@ export const createDeportivo = async (deportivo) => {
   return data;
 };
 
+const fetchDeportivoById = async (id) => {
+  const response = await fetch(`/api/deportivos/${id}`);
+  const data = await response.json();
+  return data;
+};
+
 const deportivosService = {
   baseUrl,
   createDeportivo,
   fetchDeportivos,
+  fetchDeportivoById
 };
 
-export { deportivosService, fetchDeportivos };
+export { deportivosService, fetchDeportivos, fetchDeportivoById};

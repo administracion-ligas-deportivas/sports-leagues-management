@@ -72,6 +72,64 @@ const REGISTER_FORM_FIELDS = {
       label: "Código Postal",
     },
   },
+  deportivo:{
+    nombre:{
+      id: "nombre",
+      name: "nombre",
+      label: "Nombre del deportivo",
+    },
+    calle: {
+      id: "calle",
+      type: "text",
+      name: "calle",
+      label: "Calle",
+    },
+    colonia: {
+      id: "colonia",
+      type: "text",
+      name: "colonia",
+      label: "Colonia",
+    },
+    codigoPostal: {
+      id: "codigo-postal",
+      type: "text",
+      name: "codigoPostal",
+      label: "Código Postal",
+    },
+    numeroExterior: {
+      id: "numero-exterior",
+      type: "text",
+      name: "numeroExterior",
+      label: "Número Exterior",
+    },
+    numeroInterior: {
+      id: "numero-interior",
+      type: "text",
+      name: "numeroInterior",
+      label: "Número Interior",
+    },
+  },
+  cancha:{
+    nombre:{
+      id: "nombre",
+      name: "nombre",
+      label: "Nombre de la cancha",
+    },
+    numero: {
+      id: "numero",
+      name: "numero",
+      label: "Número",
+    },
+    descripcion: {
+      id: "descripcion",
+      name: "descripcion",
+      label: "Descripción",
+    },
+    deportivo: {
+      id: "deportivoId",
+      label: "Selecciona un deportivo"
+    },
+  }
 };
 
 const REGISTER_ADDRESS = {

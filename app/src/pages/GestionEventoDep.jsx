@@ -16,14 +16,32 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { eventosService } from "@/services";
 import styles from "../styles/GestionTorneo.module.css";
 import { useParams } from "react-router-dom";
+import { useCanchasLoad } from "@/hooks/useCanchasLoad";
+import { fetchEventoById } from "@/services/eventos";
 /* ----------------------------------- MUI ---------------------------------- */
 // import { DateTime } from "luxon";
 
 export default function GestionEventoDep() {
+  const { canchas } = useCanchasLoad();
+
+  // console.log(canchas);
+
+  const rows = canchas?.map((cancha) => {
+    return {
+      id: cancha?.id,
+      nombre: cancha?.nombre,
+      numero: cancha?.numero
+    };
+  }); 
+
+  // console.log(rows);
+
   const { eventoId } = useParams();
+  // console.log(eventoId);
   const [evento, setEvento] = useState({});
   const [equiposBD, setEquiposBD] = useState([]);
 
+  
   useEffect(() => {
     eventosService
       .fetchEventoById(eventoId)
@@ -42,6 +60,12 @@ export default function GestionEventoDep() {
         console.log({ err });
       });
   }, []);
+
+  // useEffect(() =>{
+  //   console.log({evento});
+  // }, [evento]);
+
+  // console.log(evento);
 
   // Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
   /* function randomString(length, chars) {
@@ -79,18 +103,18 @@ export default function GestionEventoDep() {
     p: 5,
   };
 
-  const canchas = [
-    { label: "Cancha A", id: 1 },
-    { label: "Cancha B", id: 2 },
-    { label: "Cancha C", id: 3 },
-    { label: "Cancha D", id: 4 },
-    { label: "Cancha E", id: 5 },
-    { label: "Cancha F", id: 6 },
-    { label: "Cancha G", id: 7 },
-    { label: "Cancha H", id: 8 },
-    { label: "Cancha I", id: 9 },
-    { label: "Cancha J", id: 10 },
-  ];
+  // const canchas = [
+  //   { label: "Cancha A", id: 1 },
+  //   { label: "Cancha B", id: 2 },
+  //   { label: "Cancha C", id: 3 },
+  //   { label: "Cancha D", id: 4 },
+  //   { label: "Cancha E", id: 5 },
+  //   { label: "Cancha F", id: 6 },
+  //   { label: "Cancha G", id: 7 },
+  //   { label: "Cancha H", id: 8 },
+  //   { label: "Cancha I", id: 9 },
+  //   { label: "Cancha J", id: 10 },
+  // ];
 
   return (
     <>
@@ -105,6 +129,7 @@ export default function GestionEventoDep() {
                   id="sports-event-name"
                   label="Nombre"
                   margin="normal"
+                  // value={}
                 />
               </div>
               <div className={styles.input}>
@@ -338,9 +363,9 @@ export default function GestionEventoDep() {
                           id="evento-actual"
                           // sx={{ width: 1000 }}
                           // options={usuarios.map((option) => option.title)}
-                          options={canchas}
+                          options={rows.map((option) => option.nombre)}
                           renderInput={(params) => (
-                            <TextField {...params} label="Cancha" />
+                          <TextField {...params} label="Buscar cancha" margin="normal" />
                           )}
                         />
                       </Stack>
