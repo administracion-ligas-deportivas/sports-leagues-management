@@ -1,0 +1,16 @@
+export const ROUTE_PATHS = {
+  endpoints: "/api",
+  canchas: "/api/canchas",
+  deportes: "/api/deportes",
+  deportivos: "/api/deportivos",
+  equipos: "/api/equipos",
+  estados: "/api/estados",
+  eventos: "/api/eventos",
+  formatos: "/api/formatos",
+  login: "/api/login",
+  me: "/api/me",
+  partidos: "/api/partidos",
+  roles: "/api/roles",
+  tiposDeEvento: "/api/tiposDeEvento",
+  usuarios: "/api/usuarios",
+};
