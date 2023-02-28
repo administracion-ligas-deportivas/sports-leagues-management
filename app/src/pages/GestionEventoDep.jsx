@@ -16,23 +16,30 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { eventosService } from "@/services";
 import styles from "../styles/GestionTorneo.module.css";
 import { useParams } from "react-router-dom";
-import { useCanchasLoad } from "@/hooks/useCanchasLoad";
-import { fetchEventoById } from "@/services/eventos";
+import { useCanchas } from "@/hooks";
 /* ----------------------------------- MUI ---------------------------------- */
 // import { DateTime } from "luxon";
 
 export default function GestionEventoDep() {
-  const { canchas } = useCanchasLoad();
+  const { canchas } = useCanchas();
 
   // console.log(canchas);
 
-  const rows = canchas?.map((cancha) => {
-    return {
-      id: cancha?.id,
-      nombre: cancha?.nombre,
-      numero: cancha?.numero
-    };
-  }); 
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    const newRows = canchas?.map(({ id, nombre, numero, deportivo }) => {
+      const nombreCancha = `#${numero} ${nombre} | ${deportivo?.nombre}`;
+
+      return {
+        id,
+        nombre: nombreCancha,
+        numero,
+      };
+    });
+
+    setRows(newRows);
+  }, [canchas]);
 
   // console.log(rows);
 
@@ -40,7 +47,6 @@ export default function GestionEventoDep() {
   // console.log(eventoId);
   const [evento, setEvento] = useState({});
   const [equiposBD, setEquiposBD] = useState([]);
-
   
   useEffect(() => {
     eventosService
@@ -61,28 +67,6 @@ export default function GestionEventoDep() {
       });
   }, []);
 
-  // useEffect(() =>{
-  //   console.log({evento});
-  // }, [evento]);
-
-  // console.log(evento);
-
-  // Funcion para crear el código de acceso, creo que debería ir en crear evento deportivo, no en la gestión.
-  /* function randomString(length, chars) {
-    // Yo creo lo de generar código deberia ir en crear evento no en gestionm, porque el codigo cambiaria. ¿?
-    let mask = "";
-    if (chars.indexOf("a") > -1) mask += "abcdefghijklmnopqrstuvwxyz";
-    if (chars.indexOf("A") > -1) mask += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (chars.indexOf("#") > -1) mask += "0123456789";
-    if (chars.indexOf("!") > -1) mask += "!@#$%&*?/";
-    let result = "";
-    for (let i = length; i > 0; --i)
-      result += mask[Math.floor(Math.random() * mask.length)];
-    return result;
-  } */
-
-  // const codigoAcceso = randomString(16, "#aA!");
-  // console.log(randomString(16, "#aA!"));
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -102,19 +86,6 @@ export default function GestionEventoDep() {
     boxShadow: 24,
     p: 5,
   };
-
-  // const canchas = [
-  //   { label: "Cancha A", id: 1 },
-  //   { label: "Cancha B", id: 2 },
-  //   { label: "Cancha C", id: 3 },
-  //   { label: "Cancha D", id: 4 },
-  //   { label: "Cancha E", id: 5 },
-  //   { label: "Cancha F", id: 6 },
-  //   { label: "Cancha G", id: 7 },
-  //   { label: "Cancha H", id: 8 },
-  //   { label: "Cancha I", id: 9 },
-  //   { label: "Cancha J", id: 10 },
-  // ];
 
   return (
     <>
@@ -363,9 +334,9 @@ export default function GestionEventoDep() {
                           id="evento-actual"
                           // sx={{ width: 1000 }}
                           // options={usuarios.map((option) => option.title)}
-                          options={rows.map((option) => option.nombre)}
+                          options={rows?.map?.((option) => option.nombre)}
                           renderInput={(params) => (
-                          <TextField {...params} label="Buscar cancha" margin="normal" />
+                            <TextField {...params} label="Buscar cancha" margin="normal" />
                           )}
                         />
                       </Stack>
