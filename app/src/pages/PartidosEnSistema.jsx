@@ -1,91 +1,92 @@
-import style from "@/styles/Home.module.css";
-import { Typography, Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { HomeStyles } from "@/styles";
+import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import { usePartidos } from "@/hooks";
 
 function PartidosEnSistema() {
+  const { partidos, isLoadingPartidos } = usePartidos();
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    setRows(
+      partidos?.map(({ 
+        id, fecha, efectuado, cancha, estadistico, eventoDeportivo 
+      }) => ({
+        id,
+        fecha: dayjs(fecha).format("DD/MMM/YYYY"),
+        efectuado: efectuado ? "Sí" : "No",
+        cancha: `#${cancha?.numero} - ${cancha?.nombre}`,
+        estadistico: `${estadistico?.nombre} ${estadistico?.apellido}`,
+        eventoDeportivo: {
+          nombre: eventoDeportivo?.nombre,
+          id: eventoDeportivo?.id,
+        },
+      }))
+    );
+  }, [partidos]);
+
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "fecha",
-      headerName: "Fecha",
-      width: 100,
-    },
-    {
-      field: "duracion_partido",
-      headerName: "Duración del partido",
-      width: 150,
-    },
+    { field: "id", headerName: "ID", },
     {
       field: "efectuado",
       headerName: "Efectuado",
-      width: 90,
     },
     {
-      field: "cancelado",
-      headerName: "Cancelado",
-      width: 90,
+      field: "fecha",
+      headerName: "Fecha",
+      flex: 1
     },
     {
-      field: "cancha_id",
+      field: "cancha",
       headerName: "Cancha",
-      type: "number",
-      width: 60,
-    },
-    {
-      field: "evento_deportivo_id",
-      headerName: "Evento deportivo",
-      type: "number",
-      width: 60,
+      flex: 1
     },
     {
       field: "estadistico",
       headerName: "Estadístico",
-      width: 110,
+      flex: 1
     },
-  ];
-
-  const rows = [
-    /* Ejemplo */ { id: 1, lastName: "Snow", nombrePartido: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", nombrePartido: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", nombrePartido: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", nombrePartido: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", nombrePartido: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", nombrePartido: null, age: 150 },
-    { id: 7, lastName: "Clifford", nombrePartido: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", nombrePartido: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", nombrePartido: "Harvey", age: 65 },
+    {
+      field: "eventoDeportivo",
+      headerName: "Evento deportivo",
+      flex: 1,
+      renderCell: (params) => params.value?.id && (
+        <Link to={`/gestion-evento-deportivo/${params.value.id}`}>
+          {params.value.nombre}
+        </Link>
+      ),
+    }
   ];
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h1>Partidos en el sistema</h1>
-          </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <h1>Partidos en el sistema</h1>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <div className={style.rectangle}>
-              <Typography>
-                {" "}
-                Actualmente, los partidos que existen en el sistema son:{" "}
-              </Typography>
-              <Box sx={{ height: 400, width: "100%" }}>
-                <DataGrid
-                  rows={rows}
-                  columns={columns}
-                  pageSize={5}
-                  rowsPerPageOptions={[5]}
-                  disableSelectionOnClick
-                  experimentalFeatures={{ newEditingApi: true }}
-                />
-              </Box>
-            </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <div className={HomeStyles.rectangle}>
+            <Box sx={{ width: "100%" }}>
+              <DataGrid
+                rows={rows || []}
+                columns={columns}
+                pageSize={5}
+                autoPageSize={true}
+                loading={isLoadingPartidos}
+                autoHeight={true}
+                rowsPerPageOptions={[5]}
+                experimentalFeatures={{ newEditingApi: true }}
+              />
+            </Box>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
