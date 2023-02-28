@@ -14,6 +14,12 @@ const getBearerToken = (token) => {
   return `Bearer ${authToken}`;
 };
 
+const getAuthorizationHeader = () => {
+  return {
+    Authorization: getBearerToken(),
+  };
+};
+
 const login = async ({ correo, password } = {}) => {
   const response = await fetch(LOGIN_URL, {
     method: "POST",
@@ -54,6 +60,7 @@ const authService = {
   logout,
   authenticateLoggedUser,
   getBearerToken,
+  getAuthorizationHeader
 };
 
 export { authService };

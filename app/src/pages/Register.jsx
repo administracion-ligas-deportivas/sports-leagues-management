@@ -64,7 +64,9 @@ function Signup() {
         className={[LoginSignupStyles.container, LoginSignupStyles.signupContainer].join(" ")}
       >
         <Link to="/login">Iniciar sesión</Link>
-        <h1 className={LoginSignupStyles.titlePageSignUp}>Regístrate</h1>
+        <h1 className={LoginSignupStyles.titlePageSignUp}>
+          Regístrate
+        </h1>
 
         {REGISTER_FORM_FIELDS.password.map((field) => {
           return (
