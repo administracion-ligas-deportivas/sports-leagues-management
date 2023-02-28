@@ -1,4 +1,5 @@
 export { authService } from "./auth";
+export { canchasService } from "./canchas";
 export { deportivosService } from "./deportivos";
 export { equiposService } from "./equipos";
 export { estadosService } from "./estados";

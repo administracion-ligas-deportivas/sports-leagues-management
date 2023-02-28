@@ -1,67 +1,55 @@
-import { useCustomForm, useDeportivos} from ".";
-import { useEffect, useState } from "react";
-import { canchasSchema } from "@/validations/canchasSchema";
-import { useNavigate } from "react-router-dom";
-import { canchasService } from "@/services/canchas";
+import { canchasSchema } from "@/validations";
+import { canchasService } from "@/services";
+import { useCustomForm } from ".";
+import { useState } from "react";
 
 export const useCanchas = () => {
-const {
+  const {
     watch,
     // https://react-hook-form.com/api/useform/setvalue
     setValue,
     setError,
+    reset,
     ...form
-} = useCustomForm(canchasSchema);
+  } = useCustomForm(canchasSchema);
 
-const navigate = useNavigate();
-// const watchDeportivoId = watch("deportivoId");
+  // const watchDeportivoId = watch("deportivoId");
 
+  const [serverError, setServerError] = useState("");
 
-const [serverError, setServerError] = useState("");
+  // useEffect(() => {
+  //     if (!watchDeportivoId) {
+  //         resetCurrentDeportivo();
+  //         return;
+  //     }
 
-// useEffect(() => {
-//     if (!watchDeportivoId) {
-//         resetCurrentDeportivo();
-//         return;
-//     }
+  //     setValue("deportivoId", null);
+  // }, [watchDeportivoId]);
 
-//     setValue("deportivoId", null);
-// }, [watchDeportivoId]);
+  const registerCancha = ({ nombre, numero, descripcion, deportivoId } = {}) => {
+    console.log({ nombre, numero, descripcion, deportivoId });
 
-const registerCan = async (userData) => {
-    console.log({ userData });
-    const {
-        nombre,
-        numero,
-        descripcion,
-        deportivoId,
-        ...rest
-    } = userData;
-
-    const cancha = {
-        ...rest,
-        nombre,
-        numero,
-        descripcion,
-        deportivoId,
-    };
-
-    console.log({ cancha });
-    
-    canchasService.createCancha(cancha)
-    .then(() => {
-        navigate("/");
-    })
-    .catch((error) => {
+    canchasService
+      .createCanchaInDeportivo({ 
+        nombre, 
+        numero, 
+        descripcion, 
+        deportivoId 
+      })
+      .then(() => {
+        alert("Cancha registrada correctamente");
+        // reset();
+      })
+      .catch((error) => {
         setServerError(error);
-    });
-};
+      });
+  };
 
-return {
+  return {
     canchasSchema,
-    registerCan,
+    registerCancha,
     serverError,
     setValue,
     ...form,
-};
+  };
 };

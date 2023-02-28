@@ -1,36 +1,38 @@
+import { ROUTE_PATHS } from "@/constants";
 import { authService } from "./auth";
 const baseUrl = "/api/canchas";
 
 const fetchCanchas = async () => {
-    const bearerToken = authService.getBearerToken();
+  const bearerToken = authService.getBearerToken();
     
-    const response = await fetch(baseUrl, {
-        headers: {
-        Authorization: bearerToken
+  const response = await fetch(baseUrl, {
+    headers: {
+      Authorization: bearerToken
     }
-    });
+  });
     
-    const data = await response.json();
-    return data;
+  const data = await response.json();
+  return data;
 };
 
-export const createCancha = async (cancha) => {
-    const response = await fetch(baseUrl, {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
+export const createCanchaInDeportivo = async ({ nombre, numero, descripcion, deportivoId } = {}) => {
+  const url = `${ROUTE_PATHS.deportivos}/${deportivoId}/canchas`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(cancha),
-    });
+    body: JSON.stringify({ nombre, numero, descripcion }),
+  });
     
-    const data = await response.json();
-    return data;
+  return await response.json();
 };
 
 const canchasService = {
-    baseUrl,
-    createCancha,
-    fetchCanchas,
+  baseUrl,
+  createCanchaInDeportivo,
+  fetchCanchas,
 };
 
 export { canchasService, fetchCanchas };
