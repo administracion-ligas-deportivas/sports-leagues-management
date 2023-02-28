@@ -1,10 +1,10 @@
-import { useCustomForm, useEstados} from ".";
+import { useCustomForm, useEstados } from "..";
 import { useEffect, useState } from "react";
 import { deportivoSchema } from "@/validations";
-import { useNavigate } from "react-router-dom";
 import { deportivosService } from "@/services";
+import { useNavigate } from "react-router-dom";
 
-export const useDep = () => {
+export const useDeportivosForm = () => {
   const {
     watch,
     // https://react-hook-form.com/api/useform/setvalue
@@ -50,7 +50,7 @@ export const useDep = () => {
     setSelectedMunicipio(newSelectedMunicipio ?? null);
   }, [watchMunicipioId]);
 
-  const registerDep = async (userData) => {
+  const registerDeportivo = async (userData) => {
     console.log({ userData });
     const {
       nombre,
@@ -79,7 +79,7 @@ export const useDep = () => {
     deportivosService
       .createDeportivo(deportivo)
       .then(() => {
-        navigate("/");
+        alert("Deportivo registrado con éxito");
       })
       .catch((error) => {
         setServerError(error);
@@ -88,7 +88,7 @@ export const useDep = () => {
 
   return {
     deportivoSchema,
-    registerDep,
+    registerDeportivo,
     serverError,
     currentEstado,
     selectedMunicipio,

@@ -13,7 +13,6 @@ export const useRegister = () => {
     setError,
     ...form
   } = useCustomForm(registerSchema);
-  
 
   const navigate = useNavigate();
   const watchEstadoId = watch("estadoId");
