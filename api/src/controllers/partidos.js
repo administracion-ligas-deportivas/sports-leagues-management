@@ -20,7 +20,7 @@ const createPartido = async (req, res, next) => {
 };
 
 const getPartidos = async (req, res) => {
-  const partidos = await partido.findAll();
+  const partidos = await partido.scope("withFullData").findAll();
   return res.json(partidos);
 };
 
