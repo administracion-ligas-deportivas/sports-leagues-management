@@ -10,7 +10,8 @@ const SCOPE_NAMES = {
 };
 
 const getScopesEventoDeportivo = (models, sequelize) => {
-  const { formatoEventoDeportivo, equipo, usuario, partido } = models;
+  const { formatoEventoDeportivo, equipo, usuario, partido, deporte, cancha } =
+    models;
 
   const SCOPES_EVENTO_DEPORTIVO = {
     generalData: {
@@ -30,8 +31,28 @@ const getScopesEventoDeportivo = (models, sequelize) => {
       scope: {
         include: [
           formatoEventoDeportivo,
+          deporte,
+          {
+            model: partido,
+            as: "partidos",
+            include: [
+              {
+                model: equipo,
+                as: "equipos",
+                through: {
+                  attributes: ["puntos", "localVisitante"],
+                },
+              },
+              cancha,
+              {
+                model: usuario,
+                as: "estadistico",
+              },
+            ]
+          },
           {
             model: equipo,
+            as: "equipos",
             through: {
               attributes: [],
             },

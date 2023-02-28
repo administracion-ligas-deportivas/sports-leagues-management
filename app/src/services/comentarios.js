@@ -41,3 +41,9 @@ export const deleteComentario = async (id) => {
 
   return response.then((res) => res.json());
 };
+
+export const comentariosService = {
+  createComentario,
+  deleteComentario,
+  fetchComentariosByAnuncioId,
+};

@@ -1,0 +1,10 @@
+export { authService } from "./auth";
+export { canchasService } from "./canchas";
+export { deportivosService } from "./deportivos";
+export { equiposService } from "./equipos";
+export { estadosService } from "./estados";
+export { eventosService } from "./eventos";
+export { formatosService } from "./formatos";
+export { jugadoresService } from "./jugadores";
+export { partidosService } from "./partidos";
+export { usuariosService } from "./usuarios";

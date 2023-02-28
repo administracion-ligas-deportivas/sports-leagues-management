@@ -1,5 +1,5 @@
-import { fetchJugadores } from "@/services/jugadores";
 import { useEffect, useState } from "react";
+import { fetchJugadores } from "@/services/jugadores";
 
 export function useJugadores() {
   const [jugadores, setJugadores] = useState([]);

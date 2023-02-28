@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
   // Las relaciones se generan de esta manera
   // Tabla.relacion(talblaARelacionar, {as: nombre de Fk, onDelete: "cascade", onUpdate: 'cascade'});
   cancha.associate = (models) => {
+    cancha.addScope("defaultScope", {
+      include: [models.deportivo],
+    });
+
     cancha.belongsTo(models.deportivo, {
       foreignKey: {
         allowNull: false,

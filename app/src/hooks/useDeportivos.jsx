@@ -1,5 +1,5 @@
-import { fetchDeportivos } from "@/services/deportivos";
 import { useEffect, useState } from "react";
+import { fetchDeportivos } from "@/services/deportivos";
 
 export function useDeportivos() {
   const [deportivos, setDeportivos] = useState([]);
@@ -14,15 +14,15 @@ export function useDeportivos() {
 
       setDeportivos(deportivos);
     })
-    .catch((error) => {
-      console.log({error});
-      setError(error);
-    });
+      .catch((error) => {
+        console.log({ error });
+        setError(error);
+      });
   }, []);
 
   useEffect(() => {
-    console.log({deportivos, error});
-  }, [deportivos, error])
+    console.log({ deportivos, error });
+  }, [deportivos, error]);
 
   return {
     deportivos,

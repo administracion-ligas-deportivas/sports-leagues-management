@@ -1,61 +1,29 @@
-import Register from "@/pages/Register";
-import AgregarCancha from "@/pages/agregarCancha";
-import Advise from "@/pages/Advise";
-import AsignarRoles from "@/pages/AsignarRoles";
-import CreateAdvise from "@/pages/CreateAdvise";
-import CrearEventoDeportivo from "@/pages/CreateSportEvent";
-import EnterSportsEvent from "@/pages/enter-sports-event";
-import EstadisticasPersonales from "@/pages/estadisticas-personales";
-import RegistroEstadistico from "@/pages/Registrar-Estadistico";
-import GestionEquipoJugador from "@/pages/GestionEquipoJugador";
-import GestionTorneo from "@/pages/gestion-torneo";
-import Home from "@/pages/Home";
-import NuevoArbitro from "@/pages/NuevoArbitro";
-import Profile from "@/pages/Profile";
-import EventosDeportivos from "@/pages/EventosDeportivos";
-import Login from "@/pages/Login";
-import PageNotFound from "@/pages/PageNotFound";
-import HomeAdmin from "@/pages/HomeAdmin";
-import GestionEventoDep from "@/pages/GestionEventoDep";
-import RegistroDeportivo from "@/pages/RegistroDeportivo";
-import TraspasoEquipo from "@/pages/TraspasoEquipo";
-import EquiposEnSistema from "@/pages/EquiposEnSistema";
-import GestionEquipo from "@/pages/GestionEquipo";
-import RegistroPagoFisico from "@/pages/RegistroPagoFísico";
-import Loading from "@/components/Loading/loading";
-import PanelAdmin from "@/pages/panel-admin";
-import CrearFormato from "@/pages/crear-formato";
-import Formatos from "@/pages/visualizar-formatos";
-import PartidosEnSistema from "@/pages/PartidosEnSistema";
-
-export {
-  Formatos,
-  CrearFormato,
-  PanelAdmin,
-  PartidosEnSistema,
-  Loading,
-  Register,
-  AgregarCancha,
-  Advise,
-  AsignarRoles,
-  CreateAdvise,
-  CrearEventoDeportivo,
-  EnterSportsEvent,
-  EstadisticasPersonales,
-  GestionEquipoJugador,
-  GestionTorneo,
-  RegistroEstadistico,
-  Home,
-  NuevoArbitro,
-  Profile,
-  EventosDeportivos,
-  Login,
-  PageNotFound,
-  HomeAdmin,
-  GestionEventoDep,
-  RegistroDeportivo,
-  TraspasoEquipo,
-  EquiposEnSistema,
-  GestionEquipo,
-  RegistroPagoFisico,
-};
+export { default as Register } from "@/pages/Register";
+export { default as AgregarCancha } from "@/pages/AgregarCancha";
+export { default as Advise } from "@/pages/Advise";
+export { default as AsignarRoles } from "@/pages/AsignarRoles";
+export { default as CreateAdvise } from "@/pages/CreateAdvise";
+export { default as CrearEventoDeportivo } from "@/pages/CreateSportEvent";
+export { default as EnterSportsEvent } from "@/pages/enter-sports-event";
+export { default as EstadisticasPersonales } from "@/pages/estadisticas-personales";
+export { default as RegistroEstadistico } from "@/pages/Registrar-Estadistico";
+export { default as GestionEquipoJugador } from "@/pages/GestionEquipoJugador";
+export { default as GestionTorneo } from "@/pages/gestion-torneo";
+export { default as Home } from "@/pages/Home";
+export { default as NuevoArbitro } from "@/pages/NuevoArbitro";
+export { default as Profile } from "@/pages/Profile";
+export { default as EventosDeportivos } from "@/pages/EventosDeportivos";
+export { default as Login } from "@/pages/Login";
+export { default as PageNotFound } from "@/pages/PageNotFound";
+export { default as HomeAdmin } from "@/pages/HomeAdmin";
+export { default as GestionEventoDep } from "@/pages/GestionEventoDep";
+export { default as RegistroDeportivo } from "@/pages/RegistroDeportivo";
+export { default as TraspasoEquipo } from "@/pages/TraspasoEquipo";
+export { default as EquiposEnSistema } from "@/pages/EquiposEnSistema";
+export { default as GestionEquipo } from "@/pages/GestionEquipo";
+export { default as RegistroPagoFisico } from "@/pages/RegistroPagoFísico";
+export { default as Loading } from "@/components/Loading/loading";
+export { default as PanelAdmin } from "@/pages/panel-admin";
+export { default as CrearFormato } from "@/pages/crear-formato";
+export { default as Formatos } from "@/pages/visualizar-formatos";
+export { default as PartidosEnSistema } from "@/pages/PartidosEnSistema";

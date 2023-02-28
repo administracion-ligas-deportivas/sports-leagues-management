@@ -1,3 +1,4 @@
+import { ROUTE_PATHS } from "@/constants";
 import { authService } from "./auth";
 
 const baseUrl = "/api/eventos";
@@ -9,11 +10,9 @@ const fetchEventos = async () => {
 };
 
 const fetchEventosReales = async () => {
-  const bearerToken = authService.getBearerToken();
-
   const response = await fetch(baseUrl, {
     headers: {
-      Authorization: bearerToken
+      ...authService.getAuthorizationHeader()
     }
   });
 
@@ -22,12 +21,29 @@ const fetchEventosReales = async () => {
 };
 
 const fetchEventoById = async (id) => {
-  const response = await fetch(`/api/eventos/${id}`);
+  const response = await fetch(
+    `${ROUTE_PATHS.eventos}/${id}`, {
+      headers: {
+        ...authService.getAuthorizationHeader()
+      }
+    });
   const data = await response.json();
-  console.log({ data });
   return data;
 };
 
 const deleteEvento = async (id) => {};
 
-export { fetchEventos, deleteEvento, fetchEventosReales, fetchEventoById };
+const getDeporteEvento = (evento) => {
+  const { formatoEventoDeportivo, deporte } = evento || {};
+  return formatoEventoDeportivo?.deporte?.nombre || deporte?.nombre;
+}; 
+
+const eventosService = {
+  deleteEvento,
+  fetchEventoById,
+  fetchEventos,
+  fetchEventosReales,
+  getDeporteEvento,
+};
+
+export { eventosService, fetchEventos, deleteEvento, fetchEventosReales, fetchEventoById };

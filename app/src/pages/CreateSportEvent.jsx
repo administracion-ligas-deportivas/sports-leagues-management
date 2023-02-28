@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import styles from "@/styles/create-sports-event.module.css";
+import styles from "@/styles/CreateSportsEvent.module.css";
 
 /* ----------------------------------- MUI ---------------------------------- */
 import { Button, TextField, MenuItem, Stack } from "@mui/material";

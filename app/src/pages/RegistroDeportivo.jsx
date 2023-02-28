@@ -1,159 +1,147 @@
-import React from "react";
-import { Button, Stack, TextField } from "@mui/material";
-//import {AuthContext} from '../helpers/AuthContext';
-import styles from "@/styles/RegistroDeportivo.module.css";
-import { createDeportivo } from "@/services/deportivos";
-import { useState } from "react";
-import { useEffect } from "react";
+import { 
+  Alert, 
+  Autocomplete, 
+  Button, 
+  Stack, 
+  TextField 
+} from "@mui/material";
+// import {AuthContext} from '../helpers/AuthContext';
+import { DEPORTIVOS_FORM_FIELDS, REGISTER_FORM_FIELDS } from "@/constants";
+import {  useDeportivosForm, useEstados } from "@/hooks";
+import { RegistroDeportivoStyles } from "@/styles";
 
 export default function RegistroDeportivo() {
-  // const deportivoFields = {
-  //   calle: {
-  //     id: "user-input-calle",
-  //     type: "text",
-  //     name: "calle",
-  //     label: "Calle",
-  //   },
-  // };
+  const { 
+    currentEstado,
+    errors, 
+    handleSubmit,
+    registerField,
+    selectedMunicipio,
+    registerDeportivo,
+    serverError, 
+    setFieldErrors,
+    setValue
+  } = useDeportivosForm();
 
-  // const {
-  //   calle,
-  //   colonia,
-  //   codigoPostal,
-  //   numeroExterior,
-  //   numeroInterior,
-  //   municipioId,
-  //   ...rest
-  // } = deportivoData;
-
-  // const user = {
-  //   ...rest,
-  //   deportivo: {
-  //     calle,
-  //     colonia,
-  //     codigoPostal,
-  //     numeroExterior,
-  //     numeroInterior,
-  //     municipioId,
-  //   },
-  // };
-
-  // const setFieldErrors = (prop, { setHelperText = true } = {}) => {
-  //   if (!errors[prop]) return null;
-
-  //   const hasProp = Object.hasOwn(errors, prop);
-
-  //   if (!hasProp) return null;
-
-  //   const props = {
-  //     error: hasProp,
-  //   };
-
-  //   if (setHelperText) {
-  //     props.helperText = errors?.[prop]?.message ?? null;
-  //   }
-
-  //   return props;
-  // };
-
-  // const register = (prop, { setErrors = true, setHelperText = true } = {}) => {
-  //   const fieldErrors = setErrors
-  //     ? { ...setFieldErrors(prop, { setHelperText }) }
-  //     : null;
-
-  //   return { ...registerProp(prop), ...fieldErrors };
-  // };
+  const { estados } = useEstados();
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={RegistroDeportivoStyles.container}>
         <h1>Registro de deportivo</h1>
-        <Stack spacing={2} className={styles.rectangle}>
-          <form>
-            <div className={styles.flexContainer}>
-            <div className={styles.input}>
+        <Stack spacing={2} className={RegistroDeportivoStyles.rectangle}>
+          <form onSubmit={handleSubmit(registerDeportivo)}>
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
-                  // {...deportivoFields.calle}
-                  // {...register("calle")}
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.nombre)} 
+                  key={DEPORTIVOS_FORM_FIELDS.nombre.id}
                   fullWidth
-                  id="nombre-deportivo"
-                  label="Nombre del deportivo"
-                  //placeholder="Tipo de evento deportivo"
-                  //value={}
                   margin="normal"
-                  //onChange={(event) => setName(event.target.value)}
-                  //InputLabelProps={{ shrink: true }}
                 />
               </div>
-              <div className={styles.input}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.calle)} 
+                  key={DEPORTIVOS_FORM_FIELDS.calle.id}
                   fullWidth
-                  id="calle"
-                  label="Calle"
-                  //placeholder="Tipo de evento deportivo"
-                  //value={}
                   margin="normal"
-                  //onChange={(event) => setName(event.target.value)}
-                  //InputLabelProps={{ shrink: true }}
                 />
               </div>
             </div>
-            <div className={styles.flexContainer}>
-              <div className={styles.input}>
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.colonia)} 
+                  key={DEPORTIVOS_FORM_FIELDS.colonia.id}
                   fullWidth
-                  // size="small"
-                  id="colonia"
-                  label="Colonia"
-                  //value={}
-                  //onChange={}
-                  //InputLabelProps={{ shrink: true }}
                   margin="normal"
                 />
               </div>
-              <div className={styles.input}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.codigoPostal)}
+                  key={DEPORTIVOS_FORM_FIELDS.codigoPostal.id} 
                   fullWidth
-                  // size="small"
-                  id="codigo-postal"
-                  label="Código postal"
-                  //placeholder="Tipo de evento deportivo"
-                  //value={}
                   margin="normal"
-                  //onChange={(event) => setName(event.target.value)}
-                  //InputLabelProps={{ shrink: true }}
                 />
               </div>
             </div>
-            <div className={styles.flexContainer}>
-              <div className={styles.input}>
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.numeroExterior)}
+                  key={DEPORTIVOS_FORM_FIELDS.numeroExterior.id} 
                   fullWidth
-                  // size="small"
-                  id="numero-exterior"
-                  label="Número exterior"
-                  //value={}
-                  //onChange={}
-                  //InputLabelProps={{ shrink: true }}
                   margin="normal"
                 />
               </div>
-              <div className={styles.input}>
+              <div className={RegistroDeportivoStyles.input}>
                 <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.numeroInterior)}
+                  key={DEPORTIVOS_FORM_FIELDS.numeroInterior.id} 
                   fullWidth
-                  id="numero-interior"
-                  label="Número interior"
-                  //placeholder=""
-                  //value={}
                   margin="normal"
-                  //onChange={(event) => setName(event.target.value)}
-                  //InputLabelProps={{ shrink: true }}
                 />
               </div>
             </div>
-            <div className={styles.buttons}>
+            <Stack direction="row" spacing={2}>
+              <Autocomplete
+                {...registerField(
+                  REGISTER_FORM_FIELDS.address.estado.id,
+                  { setErrors: false }
+                )}
+                fullWidth
+                options={estados}
+                getOptionLabel={(option) => option.nombre}
+                onChange={(event, newValue) => {
+                  console.log({ newValue });
+                  setValue(REGISTER_FORM_FIELDS.address.estado.id, newValue?.id);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label={REGISTER_FORM_FIELDS.address.estado.label}
+                    {...setFieldErrors(
+                      REGISTER_FORM_FIELDS.address.estado.id
+                    )}
+                  />
+                )}
+              />
+              <Autocomplete
+                {...registerField(
+                  REGISTER_FORM_FIELDS.address.municipio.id, 
+                  { setErrors: false }
+                )}
+                onChange={(event, newValue) => {
+                  console.log({ municipio: newValue });
+                  setValue(REGISTER_FORM_FIELDS.address.municipio.id, newValue?.id);
+                }}
+                fullWidth
+                value={selectedMunicipio}
+                options={currentEstado?.municipios || []}
+                getOptionLabel={(option) => option?.nombre}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label={REGISTER_FORM_FIELDS.address.municipio.label}
+                    {...setFieldErrors(
+                      REGISTER_FORM_FIELDS.address.municipio.id
+                    )}
+                  />
+                )}
+              />
+            </Stack>
+            {serverError && <Alert severity="error">{serverError}</Alert>}
+            <div className={RegistroDeportivoStyles.buttons}>
               <div>
-                <Button variant="contained">Aceptar</Button>
+                <Button variant="contained" type="submit">Aceptar</Button>
               </div>
               <div>
                 <Button variant="contained" color="error">
