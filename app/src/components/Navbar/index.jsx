@@ -104,10 +104,10 @@ const allNavtexts = [
     to: "/registro-deportivo",
     text: "Registro deportivo",
   },
-  {
-    to: "/traspaso-equipo",
-    text: "Traspaso equipo",
-  },
+  // {
+  //   to: "/traspaso-equipo",
+  //   text: "Traspaso equipo",
+  // },
   {
     to: "/registro-estadistico",
     text: "Registro estadistico",
@@ -135,10 +135,10 @@ const equiposNavText = [
     to: "/equipos-en-sistema",
     text: "Equipos en sistema",
   },
-  {
-    to: "/traspaso-equipo",
-    text: "Traspaso equipo",
-  },
+  // {
+  //   to: "/traspaso-equipo",
+  //   text: "Traspaso equipo",
+  // },
   {
     to: "/gestion-equipo-jugador",
     text: "Gestion equipo jugador",
