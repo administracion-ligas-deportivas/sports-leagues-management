@@ -230,13 +230,14 @@ export default function GestionEventoDep() {
                   Partidos
                 </Typography>
                 <div style={{
-                  display: "flex",
-                  gap: ".5rem",
+                  display: "grid",
+                  gap: "1rem",
+                  gridTemplateColumns: "repeat(2, 1fr)"
                 }}>
                   {
                     evento?.partidos?.length === 0 ? "No hay partidos registrados" : evento?.partidos?.map((partido) => {
                       return (
-                        <Card key={partido.id} sx={{ width: "480px" }}>
+                        <Card key={partido.id} sx={{  }}>
                           <CardContent>
                             <Typography variant="h6" component="div">
                               {partidosService.getEquiposStringInPartido(partido)}
