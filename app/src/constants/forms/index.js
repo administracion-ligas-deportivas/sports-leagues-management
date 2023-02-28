@@ -1,3 +1,4 @@
 export * from "./canchas";
-export * from "./register";
 export * from "./deportivos";
+export * from "./partidos";
+export * from "./register";

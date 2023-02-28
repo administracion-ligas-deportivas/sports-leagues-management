@@ -1,3 +1,4 @@
+import { ROUTE_PATHS } from "@/constants";
 import { authService } from "./auth";
 const baseUrl = "/api/deportivos";
 
@@ -28,7 +29,7 @@ export const createDeportivo = async (deportivo) => {
 };
 
 const fetchDeportivoById = async (id) => {
-  const response = await fetch(`/api/deportivos/${id}`);
+  const response = await fetch(`${ROUTE_PATHS.deportivos}/${id}`);
   const data = await response.json();
   return data;
 };
@@ -40,4 +41,4 @@ const deportivosService = {
   fetchDeportivoById
 };
 
-export { deportivosService, fetchDeportivos, fetchDeportivoById};
+export { deportivosService, fetchDeportivos, fetchDeportivoById };
