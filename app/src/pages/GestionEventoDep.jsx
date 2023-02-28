@@ -15,7 +15,8 @@ import { CreateMatchModal } from "@/components";
 import { GestionTorneoStyles } from "@/styles";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { eventosService } from "@/services";
+import { eventosService, partidosService } from "@/services";
+import dayjs from "dayjs";
 
 export default function GestionEventoDep() {
   const { eventoId } = useParams();
@@ -228,38 +229,47 @@ export default function GestionEventoDep() {
                 <Typography variant="h5" component="h2">
                   Partidos
                 </Typography>
-                
-                {
-                  evento?.partidos?.length === 0 ? "No hay partidos registrados" : evento?.partidos?.map((partido) => {
-                    return (
-                      <Card key={partido.id}>
-                        <CardContent>
-                          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                            {partido?.fecha}
-                          </Typography>
-                          <Typography variant="h5" component="div">
-                            <b>Deportivo: </b> {partido?.cancha?.deportivo?.nombre}
-                          </Typography>
-                          <Typography variant="h5" component="div">
-                            <b>Cancha: </b> {partido?.cancha?.nombre}
-                          </Typography>
-                          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            <b>Realizado:</b> {partido?.efectuado ? "Sí" : "No"}
-                          </Typography>
-                          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            <b>Cancelado:</b> {partido?.cancelado ? "Sí" : "No"}
-                          </Typography>
-                          <Typography variant="body2">
-                            {partido?.notas}
-                          </Typography>
-                        </CardContent>
-                        {/* <CardActions>
-                          <Button size="small">Learn More</Button>
-                        </CardActions> */}
-                      </Card>
-                    );
-                  })
-                }
+                <div style={{
+                  display: "flex",
+                  gap: ".5rem",
+                }}>
+                  {
+                    evento?.partidos?.length === 0 ? "No hay partidos registrados" : evento?.partidos?.map((partido) => {
+                      return (
+                        <Card key={partido.id} sx={{ width: "480px" }}>
+                          <CardContent>
+                            <Typography variant="h6" component="div">
+                              {partidosService.getEquiposStringInPartido(partido)}
+                            </Typography>
+                            <div>
+                              <b>Deportivo: </b> {partido?.cancha?.deportivo?.nombre}
+                            </div>
+                            <div>
+                              <b>Cancha: </b> {`#${partido?.cancha?.numero} ${partido?.cancha?.nombre}`}
+                            </div>
+                            
+                            <div style={{
+                              marginBlock: "1rem"
+                            }}>
+                              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                <div><b>Estadistico:</b> {`${partido?.estadistico?.nombre} ${partido?.estadistico?.apellido}`}</div>
+                                <div><b>Fecha:</b> {dayjs(partido?.fecha).format("DD-MM-YYYY")}</div>
+                                <div><b>Realizado:</b> {partido?.efectuado ? "Sí" : "No"}</div>
+                                <div><b>Cancelado:</b> {partido?.cancelado ? "Sí" : "No"}</div>
+                              </Typography>
+                            </div>
+                            <Typography variant="body2">
+                              {partido?.notas}
+                            </Typography>
+                          </CardContent>
+                          {/* <CardActions>
+                            <Button size="small">Learn More</Button>
+                          </CardActions> */}
+                        </Card>
+                      );
+                    })
+                  }
+                </div>
               </Stack>
               <Stack direction="column" spacing={2} className={GestionTorneoStyles.equipos}>
                 <Typography variant="h5" component="h2">
