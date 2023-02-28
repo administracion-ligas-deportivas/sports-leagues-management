@@ -9,7 +9,11 @@ const {
   createCancha,
 } = require("#src/controllers/deportivos.js");
 
-deportivosRouter.route("/").get(getDeportivos).post(createDeportivo);
+deportivosRouter
+  .route("/")
+  .get(getDeportivos)
+  .post(createDeportivo);
+
 deportivosRouter
   .route("/:deportivoId")
   .get(getDeportivoById)

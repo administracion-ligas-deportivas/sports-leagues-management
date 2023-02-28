@@ -1,4 +1,3 @@
-import React from "react";
 import style from "@/styles/Home.module.css";
 import { Typography, Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";

@@ -1,15 +1,14 @@
-import React from "react";
-import { Autocomplete, Button, Stack, TextField, Alert } from "@mui/material";
-//import {AuthContext} from '../helpers/AuthContext';
-import styles from "@/styles/RegistroDeportivo.module.css";
-import { createDeportivo } from "@/services/deportivos";
-import { useState } from "react";
-import { useEffect } from "react";
-import { REGISTER_FORM_FIELDS,
-} from "@/constants";
-import {  useDep } from "@/hooks/useDep"
-import { useEstados } from "@/hooks";
-
+import { 
+  Alert, 
+  Autocomplete, 
+  Button, 
+  Stack, 
+  TextField 
+} from "@mui/material";
+// import {AuthContext} from '../helpers/AuthContext';
+import { DEPORTIVOS_FORM_FIELDS, REGISTER_FORM_FIELDS } from "@/constants";
+import {  useDeportivosForm, useEstados } from "@/hooks";
+import { RegistroDeportivoStyles } from "@/styles";
 
 export default function RegistroDeportivo() {
   const { 
@@ -18,78 +17,78 @@ export default function RegistroDeportivo() {
     handleSubmit,
     registerField,
     selectedMunicipio,
-    registerDep,
+    registerDeportivo,
     serverError, 
     setFieldErrors,
     setValue
-  } = useDep();
+  } = useDeportivosForm();
 
   const { estados } = useEstados();
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={RegistroDeportivoStyles.container}>
         <h1>Registro de deportivo</h1>
-        <Stack spacing={2} className={styles.rectangle}>
-          <form onSubmit={handleSubmit(registerDep)}>
-            <div className={styles.flexContainer}>
-              <div className={styles.input}>
-              <TextField
-                {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.nombre)} 
-                key={REGISTER_FORM_FIELDS.deportivo.nombre.id}
-                fullWidth
-                margin="normal"
-              />
+        <Stack spacing={2} className={RegistroDeportivoStyles.rectangle}>
+          <form onSubmit={handleSubmit(registerDeportivo)}>
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.nombre)} 
+                  key={DEPORTIVOS_FORM_FIELDS.nombre.id}
+                  fullWidth
+                  margin="normal"
+                />
               </div>
-              <div className={styles.input}>
-              <TextField
-              {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.calle)} 
-                key={REGISTER_FORM_FIELDS.deportivo.calle.id}
-                fullWidth
-                margin="normal"
-              />
-              </div>
-            </div>
-            <div className={styles.flexContainer}>
-            <div className={styles.input}>
-              <TextField
-              {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.colonia)} 
-                key={REGISTER_FORM_FIELDS.deportivo.colonia.id}
-                fullWidth
-                margin="normal"
-              />
-              </div>
-              <div className={styles.input}>
-              <TextField
-              {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.codigoPostal)}
-                key={REGISTER_FORM_FIELDS.deportivo.codigoPostal.id} 
-                fullWidth
-                margin="normal"
-              />
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.calle)} 
+                  key={DEPORTIVOS_FORM_FIELDS.calle.id}
+                  fullWidth
+                  margin="normal"
+                />
               </div>
             </div>
-            <div className={styles.flexContainer}>
-            <div className={styles.input}>
-              <TextField
-              {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.numeroExterior)}
-                key={REGISTER_FORM_FIELDS.deportivo.numeroExterior.id} 
-                fullWidth
-                margin="normal"
-              />
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.colonia)} 
+                  key={DEPORTIVOS_FORM_FIELDS.colonia.id}
+                  fullWidth
+                  margin="normal"
+                />
               </div>
-              <div className={styles.input}>
-              <TextField
-              {...registerField(
-                REGISTER_FORM_FIELDS.deportivo.numeroInterior)}
-                key={REGISTER_FORM_FIELDS.deportivo.numeroInterior.id} 
-                fullWidth
-                margin="normal"
-              />
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.codigoPostal)}
+                  key={DEPORTIVOS_FORM_FIELDS.codigoPostal.id} 
+                  fullWidth
+                  margin="normal"
+                />
+              </div>
+            </div>
+            <div className={RegistroDeportivoStyles.flexContainer}>
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.numeroExterior)}
+                  key={DEPORTIVOS_FORM_FIELDS.numeroExterior.id} 
+                  fullWidth
+                  margin="normal"
+                />
+              </div>
+              <div className={RegistroDeportivoStyles.input}>
+                <TextField
+                  {...registerField(
+                    DEPORTIVOS_FORM_FIELDS.numeroInterior)}
+                  key={DEPORTIVOS_FORM_FIELDS.numeroInterior.id} 
+                  fullWidth
+                  margin="normal"
+                />
               </div>
             </div>
             <Stack direction="row" spacing={2}>
@@ -140,7 +139,7 @@ export default function RegistroDeportivo() {
               />
             </Stack>
             {serverError && <Alert severity="error">{serverError}</Alert>}
-            <div className={styles.buttons}>
+            <div className={RegistroDeportivoStyles.buttons}>
               <div>
                 <Button variant="contained" type="submit">Aceptar</Button>
               </div>

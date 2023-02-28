@@ -18,9 +18,10 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import {
   GENEROS,
-  REGISTER_ADDRESS,
+  REGISTER_ADDRESS_FIELDS,
   REGISTER_FORM_FIELDS,
 } from "@/constants";
+
 import { useEstados, useRegister } from "@/hooks";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -46,7 +47,9 @@ function Signup() {
 
   const { estados } = useEstados();
 
-  const imageClasses = [LoginSignupStyles.container, "hidden", "sm:flex"].join(" ");
+  const imageClasses = [
+    LoginSignupStyles.container, "hidden", "sm:flex"
+  ].join(" ");
 
   return (
     <section className={[LoginSignupStyles.mainContainerRegister]}>
@@ -207,7 +210,7 @@ function Signup() {
               sx={{ marginTop: "1.5em" }}
             />
             {
-              Object.values(REGISTER_ADDRESS).map((addressProperty, index) => {
+              Object.values(REGISTER_ADDRESS_FIELDS).map((addressProperty, index) => {
                 return (
                   <Stack direction="row" spacing={2} sx={{ marginTop: "1.5em" }} key={index}>
                     {
