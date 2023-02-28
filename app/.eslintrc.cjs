@@ -31,6 +31,8 @@ module.exports = {
     ],
     quotes: ["error", "double"],
     semi: ["error", "always"],
+    // Print width
+    // "max-len": ["error", { code: 80 }],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "no-var": "error",
