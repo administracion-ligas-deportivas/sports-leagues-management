@@ -1,6 +1,22 @@
 import { ROUTE_PATHS } from "@/constants";
 import { authService } from "./auth";
 
+const fetchPartidos = async () => {
+  const response = await fetch(ROUTE_PATHS.partidos, {
+    headers: {
+      ...authService.getAuthorizationHeader()
+    }
+  });
+  return await response.json();
+};
+
+const fetchPartidoById = async (id) => {
+  return await fetch(`${ROUTE_PATHS.partidos}/${id}`, {
+    headers: authService.getAuthorizationHeader()
+  })
+    .then(res => res.json());
+};
+
 const createPartido = async ({
   canchaId,
   estadisticoId,
@@ -69,5 +85,7 @@ const getEquiposStringInPartido = (partido) => {
 
 export const partidosService = {
   createPartido,
-  getEquiposStringInPartido
+  fetchPartidos,
+  getEquiposStringInPartido,
+  fetchPartidoById
 };
