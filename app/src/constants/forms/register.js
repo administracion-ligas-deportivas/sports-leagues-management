@@ -109,30 +109,9 @@ const REGISTER_FORM_FIELDS = {
       label: "Número Interior",
     },
   },
-  cancha:{
-    nombre:{
-      id: "nombre",
-      name: "nombre",
-      label: "Nombre de la cancha",
-    },
-    numero: {
-      id: "numero",
-      name: "numero",
-      label: "Número",
-    },
-    descripcion: {
-      id: "descripcion",
-      name: "descripcion",
-      label: "Descripción",
-    },
-    deportivo: {
-      id: "deportivoId",
-      label: "Selecciona un deportivo"
-    },
-  }
 };
 
-const REGISTER_ADDRESS = {
+const REGISTER_ADDRESS_FIELDS = {
   numbers: [
     REGISTER_FORM_FIELDS.address.numeroExterior,
     REGISTER_FORM_FIELDS.address.numeroInterior,
@@ -143,4 +122,4 @@ const REGISTER_ADDRESS = {
   ]
 };
 
-export { REGISTER_FORM_FIELDS, REGISTER_ADDRESS };
+export { REGISTER_FORM_FIELDS, REGISTER_ADDRESS_FIELDS };
