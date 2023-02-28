@@ -61,6 +61,13 @@ const createPartido = async ({
   return await response.json();  
 };
 
+const getEquiposStringInPartido = (partido) => {
+  return partido?.equipos?.map(({ nombre }) => {
+    return nombre;
+  }).join(" vs ");
+};
+
 export const partidosService = {
   createPartido,
+  getEquiposStringInPartido
 };

@@ -34,7 +34,7 @@ const fetchEventoById = async (id) => {
 const deleteEvento = async (id) => {};
 
 const getDeporteEvento = (evento) => {
-  const { formatoEventoDeportivo, deporte } = evento;
+  const { formatoEventoDeportivo, deporte } = evento || {};
   return formatoEventoDeportivo?.deporte?.nombre || deporte?.nombre;
 }; 
 
